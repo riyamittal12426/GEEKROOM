@@ -333,6 +333,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', requestTick);
     
+    // Team Section Animation
+    const teamSection = document.querySelector('.our-team-section');
+    if (teamSection) {
+        const teamObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Reset and restart letter animations
+                    const letters = entry.target.querySelectorAll('.team-title .letter');
+                    letters.forEach(letter => {
+                        letter.style.animation = 'none';
+                        letter.offsetHeight; // Trigger reflow
+                        letter.style.animation = null;
+                    });
+                    
+                    // Add entrance animation for buttons
+                    const buttons = entry.target.querySelectorAll('.team-actions .btn');
+                    buttons.forEach((btn, index) => {
+                        btn.style.opacity = '0';
+                        btn.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            btn.style.transition = 'all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1)';
+                            btn.style.opacity = '1';
+                            btn.style.transform = 'translateY(0)';
+                        }, 1000 + (index * 200));
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        teamObserver.observe(teamSection);
+    }
+    
     console.log('GeekRoom Adgips - Initialized successfully! 🚀');
 });
 
