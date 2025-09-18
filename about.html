@@ -1,245 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - GeekRoom Adgips</title>
-    <meta name="description" content="Learn about GeekRoom Adgips - A professional platform for technology enthusiasts and innovators.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — GeekRoom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;1,400;0,700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #07120f; /* deep black-green */
+      --bg-2: #04110e;
+      --accent: #9ef99e; /* neon green */
+      --accent-2: #ff9f4d; /* orange */
+      --muted: #9aa7a0;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,var(--bg-1) 0%, #000 60%);
+      color:#e6efe6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* section layout */
+    .about-section{
+      min-height:90vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:6rem 2rem;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* subtle particle canvas sits behind content */
+    canvas#particles{
+      position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.25;mix-blend-mode:screen;
+    }
+
+    .container{
+      width:100%;max-width:1100px;text-align:center;z-index:5;
+      padding:2.5rem 2rem;
+      border-radius:18px;
+      backdrop-filter: blur(4px);
+    }
+
+    .eyebrow{
+      display:inline-block;padding:6px 12px;border-radius:999px;font-weight:600;font-size:.9rem;color:var(--muted);
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      margin-bottom:1.25rem;
+    }
+
+    h1{
+      margin:0; font-family: 'Playfair Display', serif; font-weight:700; font-size:4.2rem; letter-spacing: -1px; color:var(--accent);
+      text-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 18px rgba(158,249,158,0.06);
+    }
+    @media (max-width:720px){ h1{font-size:2.4rem} }
+
+    p.tagline{
+      margin-top:0.9rem;margin-bottom:1.6rem;font-size:1.125rem;color:var(--muted);max-width:820px;margin-left:auto;margin-right:auto;
+    }
+
+    /* glowing divider */
+    .divider{
+      height:6px; width:70%; max-width:560px;margin:1.25rem auto;border-radius:999px; background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 30px rgba(158,249,158,0.08);
+    }
+
+    blockquote{
+      margin:2.4rem auto 1.8rem; max-width:980px; font-size:1.6rem; font-style:italic; line-height:1.6; color:#eaf6ea; font-weight:300;
+      letter-spacing:0.6px; transform-origin:center; padding:0 1rem;
+    }
+    blockquote strong{ color:var(--accent); font-weight:600 }
+
+    /* CTA button */
+    .cta{
+      display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.4rem;border-radius:14px;font-weight:700;border:none;cursor:pointer;margin-top:1.4rem;
+      background: linear-gradient(90deg, rgba(158,249,158,0.12), rgba(255,159,77,0.08)); color:var(--accent);
+      box-shadow: 0 8px 40px rgba(2,6,4,0.5);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .cta:hover{ transform:translateY(-4px); box-shadow: 0 18px 60px rgba(2,6,4,0.7), 0 0 30px rgba(158,249,158,0.06); }
+
+    .cta:before{
+      content:'';width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent);display:inline-block;
+    }
+
+    /* highlighted inline words style */
+    .hl{ color:var(--accent); font-weight:700; padding:.06rem .18rem; border-radius:.4rem; }
+
+    /* lower quote large section */
+    .big-quote-section{
+      background: #020202; padding:5.5rem 2rem; margin-top:2.5rem; border-top:1px solid rgba(158,249,158,0.02);
+      text-align:center;
+    }
+    .big-quote{ max-width:1200px;margin:0 auto;font-size:2.2rem;font-style:italic;line-height:1.35;color:#fff;font-family:'Playfair Display', serif;font-weight:400;letter-spacing:0.5px;}
+    @media (max-width:720px){ .big-quote{font-size:1.25rem} }
+
+    /* small flourish at page bottom */
+    .footer-note{ color:var(--muted); font-size:.9rem; margin-top:1.6rem }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
-            </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link active">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="features.html" class="nav-link">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a href="events.html" class="nav-link">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="team.html" class="nav-link">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="nav-hamburger" id="nav-hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="page-title">About GeekRoom</h1>
-            <p class="page-subtitle">Building the future of technology education and innovation</p>
-        </div>
-    </section>
+  <section class="about-section">
 
-    <!-- Hero Statement -->
-    <section class="hero-statement">
-        <div class="container">
-            <div class="statement-content">
-                <h2 class="statement-text">
-                    "We believe technology should be accessible, collaborative, and transformative. 
-                    GeekRoom is where ambitious minds converge to shape tomorrow's innovations."
-                </h2>
-                <div class="statement-author">
-                    <span class="author-name">Ayush Choudhary</span>
-                    <span class="author-title">Founder, GeekRoom Adgips</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    <canvas id="particles"></canvas>
 
-    <!-- Core Information -->
-    <section class="core-info">
-        <div class="container">
-            <div class="info-grid">
-                <div class="info-block">
-                    <h3>What We Do</h3>
-                    <p>
-                        GeekRoom Adgips is a premier technology community focused on fostering innovation 
-                        through practical learning, collaborative projects, and industry mentorship. 
-                        We bridge the gap between academic theory and real-world application.
-                    </p>
-                </div>
-                <div class="info-block">
-                    <h3>How We Do It</h3>
-                    <p>
-                        Through hands-on workshops, hackathons, mentorship programs, and collaborative 
-                        projects, we create an environment where learning happens naturally through 
-                        doing, sharing, and building together.
-                    </p>
-                </div>
-                <div class="info-block">
-                    <h3>Why It Matters</h3>
-                    <p>
-                        In today's rapidly evolving tech landscape, continuous learning and adaptation 
-                        are essential. We provide the community, resources, and opportunities needed 
-                        to stay ahead and make meaningful contributions.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="container" id="content">
+      <div class="eyebrow">About</div>
+      <h1 id="title">About GeekRoom</h1>
+      <p class="tagline">Building the future of <span class="hl">technology education</span> and <span class="hl">innovation</span></p>
 
-    <!-- Key Metrics -->
-    <section class="key-metrics">
-        <div class="container">
-            <div class="metrics-grid">
-                <div class="metric">
-                    <div class="metric-number">1000+</div>
-                    <div class="metric-label">Community Members</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-number">500+</div>
-                    <div class="metric-label">Projects Delivered</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-number">50+</div>
-                    <div class="metric-label">Industry Mentors</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-number">100+</div>
-                    <div class="metric-label">Learning Sessions</div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="divider" aria-hidden="true"></div>
 
-    <!-- Principles -->
-    <section class="principles">
-        <div class="container">
-            <h2 class="section-title">Our Principles</h2>
-            <div class="principles-grid">
-                <div class="principle-card">
-                    <div class="principle-number">01</div>
-                    <h4>Learning by Doing</h4>
-                    <p>We believe the best way to learn technology is through hands-on experience and real-world projects.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-number">02</div>
-                    <h4>Collaborative Growth</h4>
-                    <p>Individual success is amplified through community collaboration and knowledge sharing.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-number">03</div>
-                    <h4>Innovation Focus</h4>
-                    <p>We encourage experimentation, creative problem-solving, and pushing technological boundaries.</p>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-number">04</div>
-                    <h4>Inclusive Excellence</h4>
-                    <p>Diversity of thought and background drives innovation and creates stronger solutions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <blockquote id="quote">"We believe technology should be <strong>accessible</strong>, <strong>collaborative</strong>, and <strong>transformative</strong>. GeekRoom is where ambitious minds converge to shape tomorrow's innovations."</blockquote>
 
-    <!-- Timeline -->
-    <section class="timeline">
-        <div class="container">
-            <h2 class="section-title">Our Journey</h2>
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023</div>
-                        <h4>Foundation</h4>
-                        <p>GeekRoom Adgips was founded with the vision of creating a collaborative tech community at ADGIPS.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2024</div>
-                        <h4>Expansion</h4>
-                        <p>Reached 500+ members and established partnerships with leading tech companies for mentorship programs.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2025</div>
-                        <h4>Innovation Hub</h4>
-                        <p>Launched advanced programs in AI, blockchain, and emerging technologies with 1000+ active members.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <button class="cta" id="cta">Join the Innovation</button>
+      <div class="footer-note">Free workshops • Projects • Community</div>
+    </div>
+  </section>
 
-    <!-- Call to Action -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Join Our Mission</h2>
-                <p class="cta-subtitle">
-                    Ready to be part of a community that's shaping the future of technology?
-                </p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary btn-large">
-                        Get Started
-                        <span class="btn-arrow">→</span>
-                    </a>
-                    <a href="team.html" class="btn btn-outline btn-large">
-                        Meet the Team
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="big-quote-section">
+    <div class="big-quote" id="bigQuote">"We believe technology should be accessible, collaborative, and transformative. GeekRoom is where ambitious minds converge to shape tomorrow's innovations."</div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
-                </div>
-                <div class="footer-links">
-                    <a href="about.html">About</a>
-                    <a href="features.html">Features</a>
-                    <a href="events.html">Events</a>
-                    <a href="team.html">Team</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 GeekRoom Adgips. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    // Simple particle field - lightweight
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = innerWidth;
+    let h = canvas.height = innerHeight;
+    const particles = [];
+    const count = Math.max(20, Math.floor((w*h)/90000));
 
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
+    window.addEventListener('resize', ()=>{ w = canvas.width = innerWidth; h = canvas.height = innerHeight; particles.length=0; init(); });
+
+    function rand(min,max){ return Math.random()*(max-min)+min }
+    function init(){
+      for(let i=0;i<count;i++){ particles.push({x:rand(0,w), y:rand(0,h), r:rand(0.6,2.8), vx:rand(-0.2,0.2), vy:rand(-0.2,0.2)}) }
+      requestAnimationFrame(render);
+    }
+    function render(){ ctx.clearRect(0,0,w,h);
+      for(let p of particles){ p.x += p.vx; p.y += p.vy; if(p.x<0) p.x=w; if(p.x>w) p.x=0; if(p.y<0) p.y=h; if(p.y>h) p.y=0;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(158,249,158,0.08)'; ctx.fill(); }
+      requestAnimationFrame(render);
+    }
+    init();
+
+    // GSAP animations
+    const tl = gsap.timeline({defaults:{duration:0.9, ease:'power3.out'}});
+    tl.from('#title',{y:40, opacity:0, duration:1.2, ease:'expo.out'})
+      .from('.tagline',{y:24, opacity:0}, '-=0.6')
+      .from('.divider',{scaleX:0, transformOrigin:'left center', opacity:0}, '-=0.45')
+      .from('#quote',{y:18, opacity:0, duration:1}, '-=0.35')
+      .from('#cta',{y:8, opacity:0, duration:0.6}, '-=0.5');
+
+    // subtle infinite glow
+    gsap.to('#title', {textShadow:'0 10px 40px rgba(158,249,158,0.12)', repeat:-1, yoyo:true, duration:3, ease:'sine.inOut'});
+
+    // typewriter-like reveal for big quote
+    const bigQ = document.getElementById('bigQuote');
+    const text = bigQ.textContent.trim(); bigQ.textContent='';
+    let i=0;
+    function type(){ if(i<text.length){ bigQ.textContent += text[i++]; setTimeout(type, 12 + Math.random()*18); } }
+    // start typing after small delay
+    setTimeout(()=>{ type() }, 1200);
+
+    // CTA hover micro-interaction
+    const cta = document.getElementById('cta');
+    cta.addEventListener('mouseenter', ()=> gsap.to(cta, {scale:1.03, boxShadow:'0 18px 60px rgba(2,6,4,0.7), 0 0 36px rgba(158,249,158,0.08)', duration:0.25}))
+    cta.addEventListener('mouseleave', ()=> gsap.to(cta, {scale:1, boxShadow:'0 8px 40px rgba(2,6,4,0.5)', duration:0.25}));
+
+    // Accessibility: prefer-reduced-motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(prefersReduced){ gsap.globalTimeline.timeScale(0); }
+  </script>
 </body>
 </html>
