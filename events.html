@@ -426,6 +426,74 @@
                 opacity: 1 !important;
             }
         }
+
+        /* All Events Title Step Ladder Animation */
+        .all-events-title {
+            text-align: center !important;
+            margin-bottom: 3rem !important;
+        }
+
+        .all-events-title .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px) rotateX(90deg) scale(0.8);
+            animation: allEventsLetterAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            color: #FFFFFF !important;
+            font-weight: 700 !important;
+        }
+
+        .all-events-title .space {
+            display: inline-block;
+            width: 0.3em;
+        }
+
+        /* Staggered delay for each letter in "All Events" */
+        .all-events-title .letter:nth-child(1) { animation-delay: 0.1s; }
+        .all-events-title .letter:nth-child(2) { animation-delay: 0.2s; }
+        .all-events-title .letter:nth-child(3) { animation-delay: 0.3s; }
+        .all-events-title .letter:nth-child(5) { animation-delay: 0.5s; }
+        .all-events-title .letter:nth-child(6) { animation-delay: 0.6s; }
+        .all-events-title .letter:nth-child(7) { animation-delay: 0.7s; }
+        .all-events-title .letter:nth-child(8) { animation-delay: 0.8s; }
+        .all-events-title .letter:nth-child(9) { animation-delay: 0.9s; }
+        .all-events-title .letter:nth-child(10) { animation-delay: 1.0s; }
+
+        @keyframes allEventsLetterAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) rotateX(90deg) scale(0.8);
+            }
+            50% {
+                opacity: 0.7;
+                transform: translateY(-5px) rotateX(0deg) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) rotateX(0deg) scale(1);
+            }
+        }
+
+        /* Hover effect for All Events letters */
+        .all-events-title .letter:hover {
+            transform: translateY(-3px) scale(1.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #A0FF8F !important;
+            text-shadow: 0 4px 15px rgba(160, 255, 143, 0.4);
+        }
+
+        /* Mobile responsiveness for All Events title */
+        @media (max-width: 768px) {
+            .all-events-title {
+                font-size: 2rem !important;
+                margin-bottom: 2rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .all-events-title {
+                font-size: 1.5rem !important;
+            }
+        }
     </style>
     </style>
 </head>
@@ -465,7 +533,7 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
+    <!-- <section class="page-header">
         <div class="container">
             <h1 class="page-title">
                 <span class="letter">U</span>
@@ -486,7 +554,7 @@
             </h1>
             <p class="page-subtitle">Join us for exciting workshops, hackathons, tech talks, and networking opportunities</p>
         </div>
-    </section>
+    </section> -->
 
   
 
@@ -543,7 +611,18 @@
     <!-- Events Grid -->
     <section class="events-grid-section">
         <div class="container">
-            <h2 class="section-title">All Events</h2>
+            <h2 class="section-title all-events-title">
+                <span class="letter">A</span>
+                <span class="letter">l</span>
+                <span class="letter">l</span>
+                <span class="space">&nbsp;</span>
+                <span class="letter">E</span>
+                <span class="letter">v</span>
+                <span class="letter">e</span>
+                <span class="letter">n</span>
+                <span class="letter">t</span>
+                <span class="letter">s</span>
+            </h2>
             <div class="events-grid">
                 
                 <!-- Workshop Event -->
@@ -795,6 +874,26 @@
             eventCards.forEach(card => {
                 observer.observe(card);
             });
+
+            // Add intersection observer for "All Events" title animation
+            const allEventsTitle = document.querySelector('.all-events-title');
+            if (allEventsTitle) {
+                const titleObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Reset animations and restart
+                            const letters = entry.target.querySelectorAll('.letter');
+                            letters.forEach(letter => {
+                                letter.style.animation = 'none';
+                                letter.offsetHeight; // Trigger reflow
+                                letter.style.animation = null;
+                            });
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                titleObserver.observe(allEventsTitle);
+            }
         });
     </script>
 </body>
