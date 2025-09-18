@@ -9,63 +9,167 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=2">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     
-    <!-- Inline Critical CSS for Contact Page -->
+    <!-- Enhanced Critical CSS for Contact Page -->
     <style>
+        :root {
+            --contact-primary: #000000;
+            --contact-secondary: #A0FF8F;
+            --contact-accent: #7FE65A;
+            --contact-text-primary: #FFFFFF;
+            --contact-text-secondary: #E5E5E5;
+            --contact-text-muted: #999999;
+            --contact-glass: rgba(255, 255, 255, 0.08);
+            --contact-glass-border: rgba(160, 255, 143, 0.15);
+            --contact-shadow: 0 25px 50px rgba(160, 255, 143, 0.1);
+            --contact-radius: 20px;
+            --contact-radius-large: 28px;
+            --contact-transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
         .page-header {
-            padding: 140px 0 80px !important;
-            text-align: center !important;
-            background: linear-gradient(135deg, rgba(160, 255, 143, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
-            border-bottom: 1px solid rgba(160, 255, 143, 0.3) !important;
+            position: relative;
+            padding: 160px 0 100px;
+            background: radial-gradient(ellipse at center top, rgba(160, 255, 143, 0.08) 0%, transparent 70%),
+                        linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
+            overflow: hidden;
         }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1" fill="%23A0FF8F" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="%23A0FF8F" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="%23A0FF8F" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23A0FF8F" opacity="0.1"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
         .page-title {
-            font-size: 3.5rem !important;
-            font-weight: 700 !important;
-            color: #FFFFFF !important;
-            margin-bottom: 1rem !important;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            font-weight: 800;
+            color: var(--contact-text-primary);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--contact-secondary) 50%, var(--contact-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
         }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--contact-text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
         .contact-content {
-            padding: 100px 0 !important;
-            background: rgba(0, 0, 0, 0.95) !important;
+            padding: 120px 0;
+            background: var(--contact-primary);
         }
+
         .contact-grid {
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            gap: 60px !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 0 20px !important;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            align-items: start;
         }
+
         .contact-form-section {
-            background: rgba(255, 255, 255, 0.05) !important;
-            padding: 40px !important;
-            border-radius: 12px !important;
-            border: 1px solid rgba(160, 255, 143, 0.3) !important;
+            background: var(--contact-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--contact-glass-border);
+            border-radius: var(--contact-radius-large);
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
         }
-        .contact-info-section h2, .contact-form-section h2 {
-            font-size: 2rem !important;
-            font-weight: 600 !important;
-            color: #FFFFFF !important;
-            margin-bottom: 2rem !important;
+
+        .contact-form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--contact-secondary), transparent);
         }
+
+        .contact-info-section {
+            padding: 20px 0;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--contact-text-primary);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--contact-secondary), var(--contact-accent));
+            border-radius: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                gap: 60px;
+                padding: 0 30px;
+            }
+            .contact-form-section {
+                padding: 40px;
+            }
+        }
+
         @media (max-width: 768px) {
             .contact-grid {
-                grid-template-columns: 1fr !important;
-                gap: 40px !important;
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding: 0 20px;
             }
-            .page-title {
-                font-size: 2.5rem !important;
+            .page-header {
+                padding: 140px 0 80px;
+            }
+            .contact-form-section {
+                padding: 30px;
             }
         }
     </style>
     
-    <!-- GSAP -->
+    <!-- Animation Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <!-- Framer Motion for React-like animations -->
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -115,67 +219,112 @@
         <div class="container">
             <div class="contact-grid">
                 <!-- Contact Form -->
-                <div class="contact-form-section">
-                    <h2>Send us a Message</h2>
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="contact-form-section" data-animate="slide-right">
+                    <h2 class="section-title">Send us a Message</h2>
+                    <form class="modern-contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <input type="text" id="name" name="name" required>
+                                    <label for="name">Full Name</label>
+                                    <div class="input-highlight"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">Email Address</label>
+                                    <div class="input-highlight"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <input type="tel" id="phone" name="phone">
+                                    <label for="phone">Phone Number</label>
+                                    <div class="input-highlight"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-wrapper">
+                                    <select id="interest" name="interest">
+                                        <option value="" disabled selected></option>
+                                        <option value="web-development">Web Development</option>
+                                        <option value="mobile-development">Mobile Development</option>
+                                        <option value="data-science">Data Science & AI</option>
+                                        <option value="cybersecurity">Cybersecurity</option>
+                                        <option value="ui-ux">UI/UX Design</option>
+                                        <option value="blockchain">Blockchain</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="interest">Area of Interest</label>
+                                    <div class="input-highlight"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                        <div class="form-group full-width">
+                            <div class="input-wrapper">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="input-highlight"></div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="interest">Area of Interest</label>
-                            <select id="interest" name="interest">
-                                <option value="">Select your interest</option>
-                                <option value="web-development">Web Development</option>
-                                <option value="mobile-development">Mobile Development</option>
-                                <option value="data-science">Data Science & AI</option>
-                                <option value="cybersecurity">Cybersecurity</option>
-                                <option value="ui-ux">UI/UX Design</option>
-                                <option value="blockchain">Blockchain</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-large">
-                            Send Message
-                            <span class="btn-arrow">→</span>
+                        <button type="submit" class="modern-btn modern-btn-primary">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <div class="btn-ripple"></div>
                         </button>
                     </form>
                 </div>
 
                 <!-- Contact Info -->
-                <div class="contact-info-section">
-                    <h2>Join Our Community</h2>
+                <div class="contact-info-section" data-animate="slide-left">
+                    <h2 class="section-title">Join Our Community</h2>
                     <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">📧</div>
+                        <div class="contact-method" data-delay="0.1">
+                            <div class="method-icon-wrapper">
+                                <div class="method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
                             <div class="method-content">
                                 <h4>Email Us</h4>
                                 <p>geekroom.adgips@gmail.com</p>
                                 <span>We'll respond within 24 hours</span>
                             </div>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">💬</div>
+                        <div class="contact-method" data-delay="0.2">
+                            <div class="method-icon-wrapper">
+                                <div class="method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
                             <div class="method-content">
                                 <h4>Discord Server</h4>
                                 <p>Join our active community</p>
                                 <a href="#" class="method-link">Join Discord →</a>
                             </div>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">📱</div>
+                        <div class="contact-method" data-delay="0.3">
+                            <div class="method-icon-wrapper">
+                                <div class="method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
                             <div class="method-content">
                                 <h4>Social Media</h4>
                                 <p>Follow us for updates</p>
@@ -186,8 +335,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">📍</div>
+                        <div class="contact-method" data-delay="0.4">
+                            <div class="method-icon-wrapper">
+                                <div class="method-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.3639 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
                             <div class="method-content">
                                 <h4>Visit Us</h4>
                                 <p>Dr. A.P.J. Abdul Kalam Technical University</p>
@@ -201,33 +357,90 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="modern-faq-section">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>How can I join GeekRoom Adgips?</h4>
-                    <p>Simply fill out the contact form above or join our Discord server. We welcome all skill levels and backgrounds!</p>
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about joining GeekRoom</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item" data-animate="fade-up" data-delay="0.1">
+                    <div class="faq-question">
+                        <h4>How can I join GeekRoom Adgips?</h4>
+                        <div class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply fill out the contact form above or join our Discord server. We welcome all skill levels and backgrounds! Our community is open to anyone passionate about technology and learning.</p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>Is there a membership fee?</h4>
-                    <p>No, GeekRoom Adgips is completely free to join. We believe in making technology education accessible to everyone.</p>
+                <div class="faq-item" data-animate="fade-up" data-delay="0.2">
+                    <div class="faq-question">
+                        <h4>Is there a membership fee?</h4>
+                        <div class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, GeekRoom Adgips is completely free to join. We believe in making technology education accessible to everyone and removing financial barriers to learning.</p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>What events do you organize?</h4>
-                    <p>We organize weekly workshops, monthly hackathons, tech talks, project showcases, and networking events.</p>
+                <div class="faq-item" data-animate="fade-up" data-delay="0.3">
+                    <div class="faq-question">
+                        <h4>What events do you organize?</h4>
+                        <div class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We organize weekly workshops, monthly hackathons, tech talks, project showcases, networking events, coding competitions, and collaborative learning sessions across various technology domains.</p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>Can beginners join?</h4>
-                    <p>Absolutely! We have programs designed for all skill levels, from complete beginners to advanced developers.</p>
+                <div class="faq-item" data-animate="fade-up" data-delay="0.4">
+                    <div class="faq-question">
+                        <h4>Can beginners join?</h4>
+                        <div class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We have programs designed for all skill levels, from complete beginners to advanced developers. Our mentors provide personalized guidance to help you grow at your own pace.</p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>Do you offer mentorship?</h4>
-                    <p>Yes, we have experienced mentors who provide guidance on projects, career development, and skill building.</p>
+                <div class="faq-item" data-animate="fade-up" data-delay="0.5">
+                    <div class="faq-question">
+                        <h4>Do you offer mentorship?</h4>
+                        <div class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have experienced mentors who provide guidance on projects, career development, technical skills, and personal growth in the technology industry.</p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h4>How often are events held?</h4>
-                    <p>We have regular weekly activities, with special events monthly. Check our Discord for the latest schedule.</p>
+                <div class="faq-item" data-animate="fade-up" data-delay="0.6">
+                    <div class="faq-question">
+                        <h4>How often are events held?</h4>
+                        <div class="faq-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have regular weekly activities, with special events monthly. Check our Discord server and events page for the latest schedule and upcoming opportunities.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -280,31 +493,749 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script>
-        // Contact form handling
+        // GSAP Setup and Animations
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page title animation
+            gsap.fromTo('.page-title', {
+                y: 100,
+                opacity: 0,
+                scale: 0.8
+            }, {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 1.2,
+                ease: "power3.out"
+            });
+
+            // Page subtitle animation
+            gsap.fromTo('.page-subtitle', {
+                y: 50,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                delay: 0.3,
+                ease: "power2.out"
+            });
+
+            // Staggered animations for contact sections
+            gsap.fromTo('[data-animate="slide-right"]', {
+                x: 100,
+                opacity: 0
+            }, {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                delay: 0.6,
+                ease: "power3.out"
+            });
+
+            gsap.fromTo('[data-animate="slide-left"]', {
+                x: -100,
+                opacity: 0
+            }, {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                delay: 0.8,
+                ease: "power3.out"
+            });
+
+            // Contact methods staggered animation
+            gsap.fromTo('.contact-method', {
+                y: 50,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.1,
+                delay: 1.2,
+                ease: "power2.out"
+            });
+
+            // FAQ animations with ScrollTrigger
+            gsap.fromTo('[data-animate="fade-up"]', {
+                y: 60,
+                opacity: 0
+            }, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: '.modern-faq-section',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            // Form input animations
+            setupFormAnimations();
+            setupFAQInteractions();
+            setupButtonAnimations();
+        });
+
+        // Enhanced form animations and interactions
+        function setupFormAnimations() {
+            const inputWrappers = document.querySelectorAll('.input-wrapper');
+            
+            inputWrappers.forEach(wrapper => {
+                const input = wrapper.querySelector('input, select, textarea');
+                const label = wrapper.querySelector('label');
+                const highlight = wrapper.querySelector('.input-highlight');
+                
+                // Focus animations
+                input.addEventListener('focus', () => {
+                    gsap.to(label, {
+                        y: -25,
+                        scale: 0.8,
+                        color: '#A0FF8F',
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                    
+                    gsap.to(highlight, {
+                        scaleX: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+
+                    // Add glow effect
+                    gsap.to(wrapper, {
+                        boxShadow: '0 0 20px rgba(160, 255, 143, 0.2)',
+                        duration: 0.3
+                    });
+                });
+                
+                // Blur animations
+                input.addEventListener('blur', () => {
+                    if (!input.value) {
+                        gsap.to(label, {
+                            y: 0,
+                            scale: 1,
+                            color: '#999999',
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    }
+                    
+                    gsap.to(highlight, {
+                        scaleX: 0,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+
+                    gsap.to(wrapper, {
+                        boxShadow: '0 0 0px rgba(160, 255, 143, 0)',
+                        duration: 0.3
+                    });
+                });
+
+                // Check if input has value on load
+                if (input.value) {
+                    gsap.set(label, {
+                        y: -25,
+                        scale: 0.8,
+                        color: '#A0FF8F'
+                    });
+                }
+            });
+        }
+
+        // FAQ interactions
+        function setupFAQInteractions() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const toggle = item.querySelector('.faq-toggle svg');
+                
+                // Set initial state
+                gsap.set(answer, { height: 0, opacity: 0 });
+                
+                question.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('active');
+                    
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            const otherToggle = otherItem.querySelector('.faq-toggle svg');
+                            
+                            gsap.to(otherAnswer, {
+                                height: 0,
+                                opacity: 0,
+                                duration: 0.3,
+                                ease: "power2.inOut"
+                            });
+                            
+                            gsap.to(otherToggle, {
+                                rotation: 0,
+                                duration: 0.3,
+                                ease: "power2.inOut"
+                            });
+                            
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isOpen) {
+                        gsap.to(answer, {
+                            height: 0,
+                            opacity: 0,
+                            duration: 0.3,
+                            ease: "power2.inOut"
+                        });
+                        
+                        gsap.to(toggle, {
+                            rotation: 0,
+                            duration: 0.3,
+                            ease: "power2.inOut"
+                        });
+                        
+                        item.classList.remove('active');
+                    } else {
+                        gsap.to(answer, {
+                            height: 'auto',
+                            opacity: 1,
+                            duration: 0.4,
+                            ease: "power2.inOut"
+                        });
+                        
+                        gsap.to(toggle, {
+                            rotation: 180,
+                            duration: 0.3,
+                            ease: "power2.inOut"
+                        });
+                        
+                        item.classList.add('active');
+                    }
+                });
+
+                // Hover effects
+                question.addEventListener('mouseenter', () => {
+                    gsap.to(item, {
+                        y: -2,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+
+                question.addEventListener('mouseleave', () => {
+                    gsap.to(item, {
+                        y: 0,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        }
+
+        // Button animations and interactions
+        function setupButtonAnimations() {
+            const modernBtn = document.querySelector('.modern-btn');
+            const ripple = modernBtn.querySelector('.btn-ripple');
+            
+            modernBtn.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                gsap.set(ripple, {
+                    left: x,
+                    top: y,
+                    scale: 0,
+                    opacity: 1
+                });
+                
+                gsap.to(ripple, {
+                    scale: 3,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
+            });
+
+            // Hover animations
+            modernBtn.addEventListener('mouseenter', () => {
+                gsap.to(modernBtn.querySelector('.btn-icon'), {
+                    x: 5,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            modernBtn.addEventListener('mouseleave', () => {
+                gsap.to(modernBtn.querySelector('.btn-icon'), {
+                    x: 0,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // Enhanced contact form handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
+            const submitBtn = this.querySelector('.modern-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnIcon = submitBtn.querySelector('.btn-icon');
+            const originalText = btnText.textContent;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            gsap.to(btnText, {
+                text: 'Sending...',
+                duration: 0.3
+            });
+            
+            gsap.to(btnIcon, {
+                rotation: 360,
+                duration: 1,
+                ease: "power2.inOut",
+                repeat: -1
+            });
             
             // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = 'Sending...';
-            submitBtn.disabled = true;
-            
             setTimeout(() => {
-                alert('Thank you for your message! We\'ll get back to you soon.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
+                // Success animation
+                gsap.to(btnText, {
+                    text: 'Message Sent!',
+                    duration: 0.3
+                });
+                
+                gsap.to(btnIcon, {
+                    rotation: 0,
+                    duration: 0.3,
+                    repeat: 0
+                });
+                
+                // Success notification
+                showSuccessNotification();
+                
+                // Reset form and button
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.disabled = false;
+                    
+                    gsap.to(btnText, {
+                        text: originalText,
+                        duration: 0.3
+                    });
+                    
+                    // Reset all form labels
+                    document.querySelectorAll('.input-wrapper label').forEach(label => {
+                        gsap.to(label, {
+                            y: 0,
+                            scale: 1,
+                            color: '#999999',
+                            duration: 0.3
+                        });
+                    });
+                }, 2000);
             }, 1500);
         });
+
+        // Success notification
+        function showSuccessNotification() {
+            const notification = document.createElement('div');
+            notification.className = 'success-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Thank you! We'll get back to you soon.</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            gsap.fromTo(notification, {
+                y: -100,
+                opacity: 0
+            }, {
+                y: 20,
+                opacity: 1,
+                duration: 0.5,
+                ease: "power3.out"
+            });
+            
+            setTimeout(() => {
+                gsap.to(notification, {
+                    y: -100,
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "power3.in",
+                    onComplete: () => {
+                        notification.remove();
+                    }
+                });
+            }, 3000);
+        }
+
+        // Parallax effect for page header
+        gsap.to('.page-header::before', {
+            y: '-50%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.page-header',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
     </script>
+    
+    <!-- Enhanced CSS for modern styling -->
+    <style>
+        /* Modern Form Styles */
+        .modern-contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .input-wrapper input,
+        .input-wrapper select,
+        .input-wrapper textarea {
+            width: 100%;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(160, 255, 143, 0.1);
+            border-radius: 16px;
+            color: var(--contact-text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--contact-transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .input-wrapper input:focus,
+        .input-wrapper select:focus,
+        .input-wrapper textarea:focus {
+            outline: none;
+            border-color: var(--contact-secondary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .input-wrapper label {
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            color: var(--contact-text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+            pointer-events: none;
+            transition: var(--contact-transition);
+            transform-origin: left center;
+        }
+
+        .input-highlight {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--contact-secondary), var(--contact-accent));
+            border-radius: 1px;
+            transform: scaleX(0);
+            transform-origin: center;
+        }
+
+        .input-wrapper textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Modern Button */
+        .modern-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, var(--contact-secondary) 0%, var(--contact-accent) 100%);
+            color: #000000;
+            border: none;
+            border-radius: var(--contact-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--contact-transition);
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modern-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--contact-shadow);
+        }
+
+        .modern-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-ripple {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Contact Methods Enhanced */
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--contact-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--contact-glass-border);
+            border-radius: var(--contact-radius);
+            transition: var(--contact-transition);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+            border-color: rgba(160, 255, 143, 0.3);
+            box-shadow: var(--contact-shadow);
+        }
+
+        .method-icon-wrapper {
+            position: relative;
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--contact-secondary) 0%, var(--contact-accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+        }
+
+        .method-content h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--contact-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .method-content p {
+            color: var(--contact-text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .method-content span {
+            color: var(--contact-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .method-link {
+            color: var(--contact-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--contact-transition);
+        }
+
+        .method-link:hover {
+            color: var(--contact-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: var(--contact-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border: 1px solid rgba(160, 255, 143, 0.2);
+            border-radius: 20px;
+            transition: var(--contact-transition);
+        }
+
+        .social-link:hover {
+            background: var(--contact-secondary);
+            color: #000000;
+        }
+
+        /* Modern FAQ Styles */
+        .modern-faq-section {
+            padding: 120px 0;
+            background: rgba(255, 255, 255, 0.005);
+            border-top: 1px solid rgba(160, 255, 143, 0.1);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--contact-text-secondary);
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--contact-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--contact-glass-border);
+            border-radius: var(--contact-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--contact-transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(160, 255, 143, 0.25);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            cursor: pointer;
+            transition: var(--contact-transition);
+        }
+
+        .faq-question h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--contact-text-primary);
+            margin: 0;
+        }
+
+        .faq-toggle {
+            color: var(--contact-secondary);
+            transition: var(--contact-transition);
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-answer {
+            padding: 0 2rem 2rem;
+            overflow: hidden;
+        }
+
+        .faq-answer p {
+            color: var(--contact-text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Success Notification */
+        .success-notification {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            background: linear-gradient(135deg, var(--contact-secondary) 0%, var(--contact-accent) 100%);
+            color: #000000;
+            padding: 1rem 2rem;
+            border-radius: 0 0 16px 16px;
+            box-shadow: var(--contact-shadow);
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .contact-method {
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+            
+            .method-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .faq-question {
+                padding: 1.5rem;
+            }
+            
+            .faq-answer {
+                padding: 0 1.5rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modern-btn {
+                width: 100%;
+                padding: 16px 24px;
+            }
+            
+            .contact-method {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .method-icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
 </body>
 </html>
