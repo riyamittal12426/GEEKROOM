@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - GeekRoom Adgips</title>
+    <meta name="description" content="Get in touch with GeekRoom Adgips. Join our community or reach out for collaborations.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css?v=2">
+    
+    <!-- Inline Critical CSS for Contact Page -->
+    <style>
+        .page-header {
+            padding: 140px 0 80px !important;
+            text-align: center !important;
+            background: linear-gradient(135deg, rgba(160, 255, 143, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%) !important;
+            border-bottom: 1px solid rgba(160, 255, 143, 0.3) !important;
+        }
+        .page-title {
+            font-size: 3.5rem !important;
+            font-weight: 700 !important;
+            color: #FFFFFF !important;
+            margin-bottom: 1rem !important;
+        }
+        .contact-content {
+            padding: 100px 0 !important;
+            background: rgba(0, 0, 0, 0.95) !important;
+        }
+        .contact-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 60px !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+        }
+        .contact-form-section {
+            background: rgba(255, 255, 255, 0.05) !important;
+            padding: 40px !important;
+            border-radius: 12px !important;
+            border: 1px solid rgba(160, 255, 143, 0.3) !important;
+        }
+        .contact-info-section h2, .contact-form-section h2 {
+            font-size: 2rem !important;
+            font-weight: 600 !important;
+            color: #FFFFFF !important;
+            margin-bottom: 2rem !important;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+            .page-title {
+                font-size: 2.5rem !important;
+            }
+        }
+    </style>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="features.html" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-hamburger" id="nav-hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Get In Touch</h1>
+            <p class="page-subtitle">Ready to join our community? We'd love to hear from you!</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <h2>Send us a Message</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Area of Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select your interest</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="mobile-development">Mobile Development</option>
+                                <option value="data-science">Data Science & AI</option>
+                                <option value="cybersecurity">Cybersecurity</option>
+                                <option value="ui-ux">UI/UX Design</option>
+                                <option value="blockchain">Blockchain</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large">
+                            Send Message
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-section">
+                    <h2>Join Our Community</h2>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">📧</div>
+                            <div class="method-content">
+                                <h4>Email Us</h4>
+                                <p>geekroom.adgips@gmail.com</p>
+                                <span>We'll respond within 24 hours</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">💬</div>
+                            <div class="method-content">
+                                <h4>Discord Server</h4>
+                                <p>Join our active community</p>
+                                <a href="#" class="method-link">Join Discord →</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">📱</div>
+                            <div class="method-content">
+                                <h4>Social Media</h4>
+                                <p>Follow us for updates</p>
+                                <div class="social-links">
+                                    <a href="#" class="social-link">Instagram</a>
+                                    <a href="#" class="social-link">LinkedIn</a>
+                                    <a href="#" class="social-link">Twitter</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">📍</div>
+                            <div class="method-content">
+                                <h4>Visit Us</h4>
+                                <p>Dr. A.P.J. Abdul Kalam Technical University</p>
+                                <span>Uttar Pradesh, India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How can I join GeekRoom Adgips?</h4>
+                    <p>Simply fill out the contact form above or join our Discord server. We welcome all skill levels and backgrounds!</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is there a membership fee?</h4>
+                    <p>No, GeekRoom Adgips is completely free to join. We believe in making technology education accessible to everyone.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What events do you organize?</h4>
+                    <p>We organize weekly workshops, monthly hackathons, tech talks, project showcases, and networking events.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can beginners join?</h4>
+                    <p>Absolutely! We have programs designed for all skill levels, from complete beginners to advanced developers.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you offer mentorship?</h4>
+                    <p>Yes, we have experienced mentors who provide guidance on projects, career development, and skill building.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How often are events held?</h4>
+                    <p>We have regular weekly activities, with special events monthly. Check our Discord for the latest schedule.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Start Your Journey?</h2>
+                <p class="cta-subtitle">
+                    Join thousands of tech enthusiasts who are already part of the GeekRoom family.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contactForm" class="btn btn-primary btn-large">
+                        Join Community
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="about.html" class="btn btn-outline btn-large">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="features.html">Features</a>
+                    <a href="events.html">Events</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GeekRoom Adgips. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

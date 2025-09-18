@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - GeekRoom Adgips</title>
+    <meta name="description" content="Join upcoming events, workshops, hackathons, and tech talks organized by GeekRoom Adgips.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css?v=3">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="features.html" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link active">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-hamburger" id="nav-hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Upcoming Events</h1>
+            <p class="page-subtitle">Join us for exciting workshops, hackathons, tech talks, and networking opportunities</p>
+        </div>
+    </section>
+
+    <!-- Events Filter -->
+    <section class="events-filter">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="workshop">Workshops</button>
+                <button class="filter-btn" data-filter="hackathon">Hackathons</button>
+                <button class="filter-btn" data-filter="talk">Tech Talks</button>
+                <button class="filter-btn" data-filter="networking">Networking</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Event -->
+    <section class="featured-event">
+        <div class="container">
+            <div class="featured-card">
+                <div class="featured-badge">Featured Event</div>
+                <div class="featured-content">
+                    <div class="featured-info">
+                        <span class="event-category hackathon">Hackathon</span>
+                        <h2 class="featured-title">GeekRoom Annual Hackathon 2025</h2>
+                        <p class="featured-description">
+                            Join us for our biggest hackathon of the year! Build innovative solutions, collaborate with amazing teams, 
+                            and compete for exciting prizes. Open to all skill levels with mentorship available.
+                        </p>
+                        <div class="event-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📅</span>
+                                <span>October 15-17, 2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>ADGIPS Campus, Delhi</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">👥</span>
+                                <span>500+ Participants Expected</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🏆</span>
+                                <span>₹1,00,000 in Prizes</span>
+                            </div>
+                        </div>
+                        <div class="featured-actions">
+                            <button class="btn btn-primary btn-large">
+                                Register Now
+                                <span class="btn-arrow">→</span>
+                            </button>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+                    </div>
+                    <div class="featured-image">
+                        <div class="image-placeholder">
+                            <span class="placeholder-icon">🚀</span>
+                            <span class="placeholder-text">Hackathon 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Grid -->
+    <section class="events-grid-section">
+        <div class="container">
+            <h2 class="section-title">All Events</h2>
+            <div class="events-grid">
+                
+                <!-- Workshop Event -->
+                <div class="event-card" data-category="workshop">
+                    <div class="event-date">
+                        <span class="date-day">25</span>
+                        <span class="date-month">SEP</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category workshop">Workshop</span>
+                        <h3 class="event-title">React.js Fundamentals</h3>
+                        <p class="event-description">Learn the basics of React.js, component lifecycle, and state management in this hands-on workshop.</p>
+                        <div class="event-meta">
+                            <span class="event-time">⏰ 6:00 PM - 8:00 PM</span>
+                            <span class="event-location">📍 Lab 101</span>
+                        </div>
+                        <div class="event-footer">
+                            <span class="event-price">Free</span>
+                            <button class="btn btn-small btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Talk Event -->
+                <div class="event-card" data-category="talk">
+                    <div class="event-date">
+                        <span class="date-day">30</span>
+                        <span class="date-month">SEP</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category talk">Tech Talk</span>
+                        <h3 class="event-title">AI in Modern Applications</h3>
+                        <p class="event-description">Explore how AI is transforming modern applications with industry expert John Smith from Google.</p>
+                        <div class="event-meta">
+                            <span class="event-time">⏰ 7:00 PM - 8:30 PM</span>
+                            <span class="event-location">📍 Auditorium</span>
+                        </div>
+                        <div class="event-footer">
+                            <span class="event-price">Free</span>
+                            <button class="btn btn-small btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Networking Event -->
+                <div class="event-card" data-category="networking">
+                    <div class="event-date">
+                        <span class="date-day">05</span>
+                        <span class="date-month">OCT</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category networking">Networking</span>
+                        <h3 class="event-title">Tech Professionals Meetup</h3>
+                        <p class="event-description">Network with industry professionals, share experiences, and build meaningful connections.</p>
+                        <div class="event-meta">
+                            <span class="event-time">⏰ 5:00 PM - 7:00 PM</span>
+                            <span class="event-location">📍 Community Hall</span>
+                        </div>
+                        <div class="event-footer">
+                            <span class="event-price">₹200</span>
+                            <button class="btn btn-small btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workshop Event -->
+                <div class="event-card" data-category="workshop">
+                    <div class="event-date">
+                        <span class="date-day">10</span>
+                        <span class="date-month">OCT</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category workshop">Workshop</span>
+                        <h3 class="event-title">Python for Data Science</h3>
+                        <p class="event-description">Master Python libraries for data analysis including Pandas, NumPy, and Matplotlib.</p>
+                        <div class="event-meta">
+                            <span class="event-time">⏰ 10:00 AM - 4:00 PM</span>
+                            <span class="event-location">📍 Lab 201</span>
+                        </div>
+                        <div class="event-footer">
+                            <span class="event-price">₹500</span>
+                            <button class="btn btn-small btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hackathon Event -->
+                <div class="event-card" data-category="hackathon">
+                    <div class="event-date">
+                        <span class="date-day">22</span>
+                        <span class="date-month">OCT</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category hackathon">Hackathon</span>
+                        <h3 class="event-title">Green Tech Challenge</h3>
+                        <p class="event-description">24-hour hackathon focused on building solutions for environmental challenges and sustainability.</p>
+                        <div class="event-meta">
+                            <span class="event-time">⏰ 48 Hours</span>
+                            <span class="event-location">📍 Innovation Center</span>
+                        </div>
+                        <div class="event-footer">
+                            <span class="event-price">Free</span>
+                            <button class="btn btn-small btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Talk Event -->
+                <div class="event-card" data-category="talk">
+                    <div class="event-date">
+                        <span class="date-day">28</span>
+                        <span class="date-month">OCT</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category talk">Tech Talk</span>
+                        <h3 class="event-title">Blockchain and Web3</h3>
+                        <p class="event-description">Understanding the future of web with blockchain technology and decentralized applications.</p>
+                        <div class="event-meta">
+                            <span class="event-time">⏰ 6:30 PM - 8:00 PM</span>
+                            <span class="event-location">📍 Seminar Hall</span>
+                        </div>
+                        <div class="event-footer">
+                            <span class="event-price">Free</span>
+                            <button class="btn btn-small btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Guidelines -->
+    <section class="event-guidelines">
+        <div class="container">
+            <h2 class="section-title">Event Guidelines</h2>
+            <div class="guidelines-grid">
+                <div class="guideline-card">
+                    <div class="guideline-icon">📝</div>
+                    <h3>Registration Required</h3>
+                    <p>Most events require prior registration. Register early to secure your spot as seats are limited.</p>
+                </div>
+                <div class="guideline-card">
+                    <div class="guideline-icon">🎫</div>
+                    <h3>Bring Your ID</h3>
+                    <p>Valid student or professional ID required for entry. Screenshots of registration confirmations accepted.</p>
+                </div>
+                <div class="guideline-card">
+                    <div class="guideline-icon">💻</div>
+                    <h3>Bring Your Laptop</h3>
+                    <p>For workshops and hackathons, bring your laptop with necessary software pre-installed.</p>
+                </div>
+                <div class="guideline-card">
+                    <div class="guideline-icon">🤝</div>
+                    <h3>Networking Encouraged</h3>
+                    <p>Connect with fellow attendees, share ideas, and build professional relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Want to Organize an Event?</h2>
+                <p class="cta-subtitle">
+                    Have an idea for a workshop, talk, or event? We'd love to help you make it happen!
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-large">
+                        Propose an Event
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="about.html" class="btn btn-outline btn-large">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="features.html">Features</a>
+                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GeekRoom Adgips. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Event filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const eventCards = document.querySelectorAll('.event-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    eventCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // Add smooth scroll animation for event cards
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            eventCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
