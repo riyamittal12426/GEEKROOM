@@ -19,92 +19,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Ensure elements are hidden on page load
+    // Remove scroll-triggered show/hide for hero content
+    // Instead, show elements on page load
     const geekroomDescription = document.querySelector('.geekroom-description');
     const adgipsText = document.querySelector('.adgips-text');
     const heroSubtitle = document.querySelector('.hero-subtitle');
     const heroButtons = document.querySelector('.hero-buttons');
-    
-    // Force hide elements on load
-    if (geekroomDescription) geekroomDescription.classList.remove('show');
-    if (adgipsText) adgipsText.classList.remove('show');
-    if (heroSubtitle) heroSubtitle.classList.remove('show');
-    if (heroButtons) heroButtons.classList.remove('show');
-    
-    // Scroll-triggered hero content animation
-    window.addEventListener('scroll', function() {
-        const scrollPosition = window.scrollY;
-        const triggerPoint1 = window.innerHeight * 0.15; // First trigger for GeekRoom description
-        const triggerPoint2 = window.innerHeight * 0.35; // Second trigger for other elements
-        
-        console.log('Scroll position:', scrollPosition, 'Trigger 1:', triggerPoint1, 'Trigger 2:', triggerPoint2);
-        
-        // Show GeekRoom description first
-        if (scrollPosition > triggerPoint1) {
-            console.log('Showing GeekRoom description');
-            if (geekroomDescription) geekroomDescription.classList.add('show');
-        } else {
-            console.log('Hiding GeekRoom description');
-            if (geekroomDescription) geekroomDescription.classList.remove('show');
-        }
-        
-        // Show other elements later
-        if (scrollPosition > triggerPoint2) {
-            console.log('Showing other elements');
-            if (adgipsText) adgipsText.classList.add('show');
-            if (heroSubtitle) heroSubtitle.classList.add('show');
-            if (heroButtons) heroButtons.classList.add('show');
-        } else {
-            console.log('Hiding other elements');
-            if (adgipsText) adgipsText.classList.remove('show');
-            if (heroSubtitle) heroSubtitle.classList.remove('show');
-            if (heroButtons) heroButtons.classList.remove('show');
-        }
-    });
-    
-    // Navbar Scroll Effect
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-    
-    // Smooth Scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-    
-    // Scroll to sections on scroll indicator click
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', function() {
-            document.querySelector('#about').scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    }
-    
-    // Intersection Observer for Fade-in Animations
+
+    if (geekroomDescription) geekroomDescription.classList.add('show');
+    if (adgipsText) adgipsText.classList.add('show');
+    if (heroSubtitle) heroSubtitle.classList.add('show');
+    if (heroButtons) heroButtons.classList.add('show');
+
+    // For fade-in/slide-in elements, only add 'visible' class once
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Only animate once
             }
         });
     }, observerOptions);
