@@ -3,72 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team - GeekRoom Adgips</title>
-    <meta name="description" content="Meet the amazing team behind GeekRoom Adgips - our core members, leads, and co-leads driving innovation.">
+    <title>Team - Room Adgips</title>
+    <meta name="description" content="Meet the amazing team behind Room Adgips - our core members, leads, and innovators driving technological excellence.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=5">
+    <link rel="stylesheet" href="css/styles.css">
     
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Splash Cursor Effect -->
+    <script src="js/splash-cursor.js"></script>
 </head>
-<body class="team-page">
-    <!-- Animated Background -->
-    <div class="cyber-background">
-        <div class="grid-overlay"></div>
-        <div class="floating-particles"></div>
-        <div class="cyber-lines"></div>
-    </div>
-
+<body>
     <!-- Navigation -->
-    <nav class="navbar futuristic-nav" id="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="nav-logo cyber-logo">
-                <a href="index.html">
-                    <span class="logo-bracket">[</span>
-                    GeekRoom <span class="accent">Adgips</span>
-                    <span class="logo-bracket">]</span>
-                </a>
+            <div class="nav-logo">
+                <a href="index.html"><span class="accent">Adgips</span></a>
             </div>
-            <ul class="nav-menu cyber-menu" id="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link cyber-link">
-                        <span class="link-bracket">&lt;</span>Home<span class="link-bracket">/&gt;</span>
-                    </a>
+                    <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="about.html" class="nav-link cyber-link">
-                        <span class="link-bracket">&lt;</span>About<span class="link-bracket">/&gt;</span>
-                    </a>
+                    <a href="about.html" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="features.html" class="nav-link cyber-link">
-                        <span class="link-bracket">&lt;</span>Features<span class="link-bracket">/&gt;</span>
-                    </a>
+                    <a href="events.html" class="nav-link">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="events.html" class="nav-link cyber-link">
-                        <span class="link-bracket">&lt;</span>Events<span class="link-bracket">/&gt;</span>
-                    </a>
+                    <a href="team.html" class="nav-link active">Team</a>
                 </li>
                 <li class="nav-item">
-                    <a href="team.html" class="nav-link cyber-link active">
-                        <span class="link-bracket">&lt;</span>Team<span class="link-bracket">/&gt;</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link cyber-link">
-                        <span class="link-bracket">&lt;</span>Contact<span class="link-bracket">/&gt;</span>
-                    </a>
+                    <a href="contact.html" class="nav-link">Contact</a>
                 </li>
             </ul>
-            <div class="nav-hamburger cyber-hamburger" id="nav-hamburger">
+            <div class="nav-hamburger" id="nav-hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -78,674 +58,362 @@
 
     <!-- Hero Section -->
     <section class="team-hero">
+        <div class="hero-background">
+            <div class="animated-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-controls">
-                            <span class="terminal-btn close"></span>
-                            <span class="terminal-btn minimize"></span>
-                            <span class="terminal-btn maximize"></span>
-                        </div>
-                        <div class="terminal-title">team.exe</div>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="terminal-line">
-                            <span class="prompt">root@geekroom:~$</span>
-                            <span class="command">initialize_team_display</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span class="output">Loading team members...</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span class="output success">✓ Team data loaded successfully</span>
-                        </div>
-                    </div>
-                </div>
-                
                 <h1 class="hero-title">
-                    <span class="title-line">
-                        <span class="char">O</span><span class="char">u</span><span class="char">r</span>
-                        <span class="char space"> </span>
-                        <span class="char">T</span><span class="char">e</span><span class="char">a</span><span class="char">m</span>
-                    </span>
+                    <span class="letter">O</span>
+                    <span class="letter">u</span>
+                    <span class="letter">r</span>
+                    <span class="space">&nbsp;</span>
+                    <span class="letter">T</span>
+                    <span class="letter">e</span>
+                    <span class="letter">a</span>
+                    <span class="letter">m</span>
                 </h1>
-                
-                <p class="hero-subtitle glitch-text" data-text="Innovators • Creators • Problem Solvers">
-                    Innovators • Creators • Problem Solvers
+                <p class="hero-subtitle">
+                    Meet the brilliant minds driving innovation at Room Adgips. 
+                    Our diverse team of passionate individuals is dedicated to building 
+                    tomorrow's tech leaders through mentorship, collaboration, and excellence.
                 </p>
-                
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number" data-count="15">0</div>
                         <div class="stat-label">Team Members</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-count="50">0</div>
-                        <div class="stat-label">Projects</div>
+                        <div class="stat-number" data-count="500">0</div>
+                        <div class="stat-label">Projects Delivered</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number" data-count="1000">0</div>
-                        <div class="stat-label">Community</div>
+                        <div class="stat-label">Students Mentored</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">Events Organized</div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Floating Tech Icons -->
-        <div class="tech-icons">
-            <div class="tech-icon" data-tech="JavaScript">JS</div>
-            <div class="tech-icon" data-tech="Python">PY</div>
-            <div class="tech-icon" data-tech="React">⚛</div>
-            <div class="tech-icon" data-tech="Node.js">⚡</div>
-            <div class="tech-icon" data-tech="Docker">🐳</div>
-            <div class="tech-icon" data-tech="Git">🌿</div>
-        </div>
     </section>
 
-    <!-- Team Categories -->
-    <section class="team-categories">
+    <!-- Team Mini Navbar -->
+    <section class="team-mini-navbar">
         <div class="container">
-            <div class="category-selector">
-                <div class="selector-header">
-                    <span class="selector-prompt">$</span>
-                    <span class="selector-command">select_team_category</span>
-                </div>
-                <div class="category-tabs">
-                    <button class="category-tab active" data-category="leadership">
-                        <span class="tab-icon">👑</span>
-                        <span class="tab-label">Leadership</span>
-                        <span class="tab-count">4</span>
-                    </button>
-                    <button class="category-tab" data-category="developers">
-                        <span class="tab-icon">⚡</span>
-                        <span class="tab-label">Developers</span>
+            <div class="mini-nav-wrapper">
+                <div class="mini-nav-tabs">
+                    <button class="mini-nav-tab active" data-category="core-members">
+                        <span class="tab-icon">👥</span>
+                        <span class="tab-label">Core Members</span>
                         <span class="tab-count">8</span>
                     </button>
-                    <button class="category-tab" data-category="designers">
-                        <span class="tab-icon">🎨</span>
-                        <span class="tab-label">Designers</span>
-                        <span class="tab-count">3</span>
+                    <button class="mini-nav-tab" data-category="leads">
+                        <span class="tab-icon">⭐</span>
+                        <span class="tab-label">Leads/Co-leads</span>
+                        <span class="tab-count">7</span>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leadership Team -->
-    <section id="leadership" class="team-section active">
+    <!-- Core Members -->
+    <section id="core-members" class="team-section active">
         <div class="container">
             <div class="section-header">
-                <div class="header-line">
-                    <span class="line-number">001</span>
-                    <h2 class="section-title">
-                        <span class="title-bracket">{</span>
-                        Leadership
-                        <span class="title-bracket">}</span>
-                    </h2>
-                </div>
-                <p class="section-subtitle">The visionaries steering our technological odyssey</p>
+                <h2 class="section-title">Core Members</h2>
+                <p class="section-subtitle">The passionate individuals building the foundation of our community</p>
             </div>
             
-            <div class="team-matrix">
-                <!-- Leader 1 -->
-                <div class="member-card elite">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">ID: 001</div>
-                        <div class="member-status online">ONLINE</div>
+            <div class="team-grid">
+                <!-- Core Member 1 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-green-200 via-green-300 to-green-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-green-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AM</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">AC</span>
-                            </div>
-                            <div class="avatar-ring"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Ayush Choudhary</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">Founder</span>
-                            <span class="title-suffix">extends Leader</span>
-                        </div>
-                        <div class="member-stats">
-                            <div class="stat">
-                                <span class="stat-label">Projects:</span>
-                                <span class="stat-value">50+</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Experience:</span>
-                                <span class="stat-value">5 years</span>
-                            </div>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Full Stack</span>
-                            <span class="tech">Leadership</span>
-                            <span class="tech">Strategy</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="action-btn primary">
-                                <span class="btn-icon">💬</span>
-                                Connect
-                            </button>
-                            <button class="action-btn secondary">
-                                <span class="btn-icon">📁</span>
-                                Portfolio
-                            </button>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Ananya Malhotra</span>
+                        <p class="text-gray-600">Full Stack Developer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Node.js</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">AWS</span>
                         </div>
                     </div>
+                    <a class="bg-green-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-green-500" href="#">Connect</a>
                 </div>
 
-                <!-- Leader 2 -->
-                <div class="member-card elite">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">ID: 002</div>
-                        <div class="member-status online">ONLINE</div>
+                <!-- Core Member 2 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-blue-200 via-blue-300 to-blue-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-blue-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">RS</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">NK</span>
-                            </div>
-                            <div class="avatar-ring"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Nisha Kapoor</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">TechLead</span>
-                            <span class="title-suffix">extends Leader</span>
-                        </div>
-                        <div class="member-stats">
-                            <div class="stat">
-                                <span class="stat-label">Mentored:</span>
-                                <span class="stat-value">100+</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Architecture:</span>
-                                <span class="stat-value">Expert</span>
-                            </div>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">System Design</span>
-                            <span class="tech">Mentoring</span>
-                            <span class="tech">Architecture</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="action-btn primary">
-                                <span class="btn-icon">💬</span>
-                                Connect
-                            </button>
-                            <button class="action-btn secondary">
-                                <span class="btn-icon">📁</span>
-                                Portfolio
-                            </button>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Rohit Sharma</span>
+                        <p class="text-gray-600">AI Engineer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">TensorFlow</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">PyTorch</span>
                         </div>
                     </div>
+                    <a class="bg-blue-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Connect</a>
                 </div>
 
-                <!-- Leader 3 -->
-                <div class="member-card elite">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">ID: 003</div>
-                        <div class="member-status online">ONLINE</div>
+                <!-- Core Member 3 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-purple-200 via-purple-300 to-purple-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-purple-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AK</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">RV</span>
-                            </div>
-                            <div class="avatar-ring"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Raj Verma</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">OpsLead</span>
-                            <span class="title-suffix">extends Leader</span>
-                        </div>
-                        <div class="member-stats">
-                            <div class="stat">
-                                <span class="stat-label">Events:</span>
-                                <span class="stat-value">30+</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Partnerships:</span>
-                                <span class="stat-value">15+</span>
-                            </div>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Operations</span>
-                            <span class="tech">Strategy</span>
-                            <span class="tech">Growth</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="action-btn primary">
-                                <span class="btn-icon">💬</span>
-                                Connect
-                            </button>
-                            <button class="action-btn secondary">
-                                <span class="btn-icon">📁</span>
-                                Portfolio
-                            </button>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Arjun Kumar</span>
+                        <p class="text-gray-600">Mobile Developer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Flutter</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">React Native</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Kotlin</span>
                         </div>
                     </div>
+                    <a class="bg-purple-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-purple-500" href="#">Connect</a>
                 </div>
 
-                <!-- Leader 4 -->
-                <div class="member-card elite">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">ID: 004</div>
-                        <div class="member-status online">ONLINE</div>
+                <!-- Core Member 4 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-orange-200 via-orange-300 to-orange-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-orange-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">SN</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">MS</span>
-                            </div>
-                            <div class="avatar-ring"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Meera Singh</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">CommunityLead</span>
-                            <span class="title-suffix">extends Leader</span>
-                        </div>
-                        <div class="member-stats">
-                            <div class="stat">
-                                <span class="stat-label">Members:</span>
-                                <span class="stat-value">1000+</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label">Engagement:</span>
-                                <span class="stat-value">95%</span>
-                            </div>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Community</span>
-                            <span class="tech">Engagement</span>
-                            <span class="tech">Growth</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="action-btn primary">
-                                <span class="btn-icon">💬</span>
-                                Connect
-                            </button>
-                            <button class="action-btn secondary">
-                                <span class="btn-icon">📁</span>
-                                Portfolio
-                            </button>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Sneha Nair</span>
+                        <p class="text-gray-600">DevOps Engineer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Docker</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Kubernetes</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Jenkins</span>
                         </div>
                     </div>
+                    <a class="bg-orange-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-orange-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 5 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-pink-200 via-pink-300 to-pink-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-pink-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">PG</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Priya Gupta</span>
+                        <p class="text-gray-600">UX Designer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Figma</span>
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Adobe XD</span>
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Prototyping</span>
+                        </div>
+                    </div>
+                    <a class="bg-pink-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-pink-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 6 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-teal-200 via-teal-300 to-teal-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-teal-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">KM</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Kiran Mehta</span>
+                        <p class="text-gray-600">Visual Designer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Illustrator</span>
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Photoshop</span>
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Branding</span>
+                        </div>
+                    </div>
+                    <a class="bg-teal-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-teal-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 7 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-indigo-200 via-indigo-300 to-indigo-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-indigo-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">TA</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Tanvi Agarwal</span>
+                        <p class="text-gray-600">Motion Designer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">After Effects</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Lottie</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Cinema 4D</span>
+                        </div>
+                    </div>
+                    <a class="bg-indigo-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-indigo-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 8 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-red-200 via-red-300 to-red-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-red-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">VK</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Vikram Kumar</span>
+                        <p class="text-gray-600">Backend Developer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Django</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">PostgreSQL</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Redis</span>
+                        </div>
+                    </div>
+                    <a class="bg-red-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-red-500" href="#">Connect</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Developers Team -->
-    <section id="developers" class="team-section">
+    <!-- Leads/Co-leads -->
+    <section id="leads" class="team-section">
         <div class="container">
             <div class="section-header">
-                <div class="header-line">
-                    <span class="line-number">002</span>
-                    <h2 class="section-title">
-                        <span class="title-bracket">{</span>
-                        Developers
-                        <span class="title-bracket">}</span>
-                    </h2>
-                </div>
-                <p class="section-subtitle">Code architects building the future, one commit at a time</p>
+                <h2 class="section-title">Leads & Co-leads</h2>
+                <p class="section-subtitle">The leaders guiding our community towards excellence and innovation</p>
             </div>
             
-            <div class="team-matrix developers-grid">
-                <!-- Developer 1 -->
-                <div class="member-card">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">DEV: 001</div>
-                        <div class="member-status online">CODING</div>
+            <div class="team-grid">
+                <!-- Lead 1 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-yellow-200 via-yellow-300 to-yellow-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-yellow-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AC</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">AM</span>
-                            </div>
-                            <div class="avatar-ring dev"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Ananya Malhotra</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">FullStackDev</span>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">React</span>
-                            <span class="tech">Node.js</span>
-                            <span class="tech">AWS</span>
-                        </div>
-                        <div class="commit-stats">
-                            <div class="commit-count">
-                                <span class="count">847</span>
-                                <span class="label">commits</span>
-                            </div>
-                            <div class="streak">
-                                <span class="count">23</span>
-                                <span class="label">day streak</span>
-                            </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Ayush Choudhary</span>
+                        <p class="text-gray-600">Founder & President</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Leadership</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Strategy</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Vision</span>
                         </div>
                     </div>
+                    <a class="bg-yellow-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-yellow-500" href="#">Connect</a>
                 </div>
 
-                <!-- Developer 2 -->
-                <div class="member-card">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">DEV: 002</div>
-                        <div class="member-status online">DEBUGGING</div>
+                <!-- Lead 2 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-emerald-200 via-emerald-300 to-emerald-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-emerald-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">NK</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">RS</span>
-                            </div>
-                            <div class="avatar-ring dev"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Rohit Sharma</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">AIEngineer</span>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Python</span>
-                            <span class="tech">TensorFlow</span>
-                            <span class="tech">PyTorch</span>
-                        </div>
-                        <div class="commit-stats">
-                            <div class="commit-count">
-                                <span class="count">692</span>
-                                <span class="label">commits</span>
-                            </div>
-                            <div class="streak">
-                                <span class="count">18</span>
-                                <span class="label">day streak</span>
-                            </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Nisha Kapoor</span>
+                        <p class="text-gray-600">Technical Lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">System Design</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">Mentoring</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">Architecture</span>
                         </div>
                     </div>
+                    <a class="bg-emerald-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-emerald-500" href="#">Connect</a>
                 </div>
 
-                <!-- Developer 3 -->
-                <div class="member-card">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">DEV: 003</div>
-                        <div class="member-status online">DEPLOYING</div>
+                <!-- Lead 3 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-cyan-200 via-cyan-300 to-cyan-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-cyan-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">RV</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">AK</span>
-                            </div>
-                            <div class="avatar-ring dev"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Arjun Kumar</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">MobileDev</span>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Flutter</span>
-                            <span class="tech">React Native</span>
-                            <span class="tech">Kotlin</span>
-                        </div>
-                        <div class="commit-stats">
-                            <div class="commit-count">
-                                <span class="count">534</span>
-                                <span class="label">commits</span>
-                            </div>
-                            <div class="streak">
-                                <span class="count">15</span>
-                                <span class="label">day streak</span>
-                            </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Raj Verma</span>
+                        <p class="text-gray-600">Operations Lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs">Operations</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs">Events</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs">Growth</span>
                         </div>
                     </div>
+                    <a class="bg-cyan-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-cyan-500" href="#">Connect</a>
                 </div>
 
-                <!-- Developer 4 -->
-                <div class="member-card">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">DEV: 004</div>
-                        <div class="member-status online">MONITORING</div>
+                <!-- Lead 4 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-rose-200 via-rose-300 to-rose-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-rose-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">MS</span>
                     </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">SN</span>
-                            </div>
-                            <div class="avatar-ring dev"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Sneha Nair</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">DevOpsEng</span>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Docker</span>
-                            <span class="tech">Kubernetes</span>
-                            <span class="tech">Jenkins</span>
-                        </div>
-                        <div class="commit-stats">
-                            <div class="commit-count">
-                                <span class="count">721</span>
-                                <span class="label">commits</span>
-                            </div>
-                            <div class="streak">
-                                <span class="count">31</span>
-                                <span class="label">day streak</span>
-                            </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Meera Singh</span>
+                        <p class="text-gray-600">Community Lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-rose-100 text-rose-800 px-2 py-1 rounded-full text-xs">Community</span>
+                            <span class="bg-rose-100 text-rose-800 px-2 py-1 rounded-full text-xs">Engagement</span>
+                            <span class="bg-rose-100 text-rose-800 px-2 py-1 rounded-full text-xs">Outreach</span>
                         </div>
                     </div>
+                    <a class="bg-rose-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-rose-500" href="#">Connect</a>
+                </div>
+
+                <!-- Co-lead 1 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-violet-200 via-violet-300 to-violet-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-violet-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AJ</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Aarav Joshi</span>
+                        <p class="text-gray-600">Technical Co-lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-violet-100 text-violet-800 px-2 py-1 rounded-full text-xs">Frontend</span>
+                            <span class="bg-violet-100 text-violet-800 px-2 py-1 rounded-full text-xs">UI/UX</span>
+                            <span class="bg-violet-100 text-violet-800 px-2 py-1 rounded-full text-xs">Team Lead</span>
+                        </div>
+                    </div>
+                    <a class="bg-violet-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-violet-500" href="#">Connect</a>
+                </div>
+
+                <!-- Co-lead 2 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-lime-200 via-lime-300 to-lime-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-lime-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">SP</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Siya Patel</span>
+                        <p class="text-gray-600">Events Co-lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-lime-100 text-lime-800 px-2 py-1 rounded-full text-xs">Event Planning</span>
+                            <span class="bg-lime-100 text-lime-800 px-2 py-1 rounded-full text-xs">Coordination</span>
+                            <span class="bg-lime-100 text-lime-800 px-2 py-1 rounded-full text-xs">Management</span>
+                        </div>
+                    </div>
+                    <a class="bg-lime-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-lime-500" href="#">Connect</a>
+                </div>
+
+                <!-- Co-lead 3 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-slate-200 via-slate-300 to-slate-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-slate-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">DK</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Dev Kumar</span>
+                        <p class="text-gray-600">Marketing Co-lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded-full text-xs">Digital Marketing</span>
+                            <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded-full text-xs">Social Media</span>
+                            <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded-full text-xs">Branding</span>
+                        </div>
+                    </div>
+                    <a class="bg-slate-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-slate-500" href="#">Connect</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Designers Team -->
-    <section id="designers" class="team-section">
+    <!-- Join Our Team Section -->
+    <section class="join-team-section">
         <div class="container">
-            <div class="section-header">
-                <div class="header-line">
-                    <span class="line-number">003</span>
-                    <h2 class="section-title">
-                        <span class="title-bracket">{</span>
-                        Designers
-                        <span class="title-bracket">}</span>
-                    </h2>
-                </div>
-                <p class="section-subtitle">Visual storytellers crafting experiences that inspire and engage</p>
-            </div>
-            
-            <div class="team-matrix designers-grid">
-                <!-- Designer 1 -->
-                <div class="member-card">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">DES: 001</div>
-                        <div class="member-status online">CREATING</div>
-                    </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">PG</span>
-                            </div>
-                            <div class="avatar-ring design"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Priya Gupta</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">UXDesigner</span>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Figma</span>
-                            <span class="tech">Adobe XD</span>
-                            <span class="tech">Prototyping</span>
-                        </div>
-                        <div class="design-stats">
-                            <div class="design-count">
-                                <span class="count">156</span>
-                                <span class="label">designs</span>
-                            </div>
-                            <div class="projects">
-                                <span class="count">24</span>
-                                <span class="label">projects</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Designer 2 -->
-                <div class="member-card">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">DES: 002</div>
-                        <div class="member-status online">ITERATING</div>
-                    </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">KM</span>
-                            </div>
-                            <div class="avatar-ring design"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Kiran Mehta</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">VisualDesigner</span>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">Illustrator</span>
-                            <span class="tech">Photoshop</span>
-                            <span class="tech">Branding</span>
-                        </div>
-                        <div class="design-stats">
-                            <div class="design-count">
-                                <span class="count">289</span>
-                                <span class="label">designs</span>
-                            </div>
-                            <div class="projects">
-                                <span class="count">18</span>
-                                <span class="label">projects</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Designer 3 -->
-                <div class="member-card">
-                    <div class="card-border"></div>
-                    <div class="card-header">
-                        <div class="member-id">DES: 003</div>
-                        <div class="member-status online">PROTOTYPING</div>
-                    </div>
-                    <div class="member-avatar">
-                        <div class="avatar-frame">
-                            <div class="avatar-image">
-                                <span class="avatar-initials">TA</span>
-                            </div>
-                            <div class="avatar-ring design"></div>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Tanvi Agarwal</h3>
-                        <div class="member-title">
-                            <span class="title-prefix">class</span>
-                            <span class="title-main">MotionDesigner</span>
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech">After Effects</span>
-                            <span class="tech">Lottie</span>
-                            <span class="tech">Cinema 4D</span>
-                        </div>
-                        <div class="design-stats">
-                            <div class="design-count">
-                                <span class="count">97</span>
-                                <span class="label">animations</span>
-                            </div>
-                            <div class="projects">
-                                <span class="count">12</span>
-                                <span class="label">projects</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recruitment Terminal -->
-    <section class="recruitment-terminal">
-        <div class="container">
-            <div class="terminal-recruitment">
-                <div class="terminal-header">
-                    <div class="terminal-controls">
-                        <span class="terminal-btn close"></span>
-                        <span class="terminal-btn minimize"></span>
-                        <span class="terminal-btn maximize"></span>
-                    </div>
-                    <div class="terminal-title">recruitment.sh</div>
-                </div>
-                <div class="terminal-body">
-                    <div class="terminal-line">
-                        <span class="prompt">geekroom@recruitment:~$</span>
-                        <span class="command typing-effect">./join_team.sh</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">Scanning for talent...</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">Requirements: Passion = true, Skills > 0, Curiosity = infinite</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output success">✓ Ready to onboard new members</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="prompt">geekroom@recruitment:~$</span>
-                        <span class="cursor">_</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recruitment-content">
-                <h2 class="recruitment-title">
-                    <span class="code-bracket">function</span>
-                    <span class="function-name">joinTeam</span>
-                    <span class="code-bracket">()</span>
-                </h2>
-                <p class="recruitment-subtitle">
+            <div class="join-team-content">
+                <h2 class="join-title">Join Our Team</h2>
+                <p class="join-subtitle">
                     Ready to be part of something extraordinary? We're building the future of tech education and innovation.
+                    Join our community of passionate learners and contributors.
                 </p>
                 
-                <div class="recruitment-stats">
+                <div class="join-stats">
                     <div class="stat-box">
                         <div class="stat-icon">🚀</div>
                         <div class="stat-text">
@@ -769,130 +437,65 @@
                     </div>
                 </div>
                 
-                <div class="recruitment-actions">
-                    <button class="cyber-btn primary">
-                        <span class="btn-text">Execute Application</span>
-                        <span class="btn-icon">▶</span>
-                    </button>
-                    <button class="cyber-btn secondary">
-                        <span class="btn-text">View Documentation</span>
-                        <span class="btn-icon">📖</span>
-                    </button>
+                <div class="join-actions">
+                    <a href="contact.html" class="btn btn-primary btn-large">
+                        Apply Now
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="about.html" class="btn btn-outline btn-large">
+                        Learn More
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="cyber-footer">
+    <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <span class="logo-bracket">[</span>
-                        GeekRoom <span class="accent">Adgips</span>
-                        <span class="logo-bracket">]</span>
-                    </div>
-                    <p class="footer-tagline">
-                        Building tomorrow's tech leaders, one line of code at a time.
-                    </p>
-                    <div class="footer-status">
-                        <span class="status-indicator online"></span>
-                        <span class="status-text">System Online</span>
-                    </div>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Room <span class="accent">Adgips</span></a>
                 </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html" class="footer-link">&gt; Home</a></li>
-                        <li><a href="about.html" class="footer-link">&gt; About</a></li>
-                        <li><a href="features.html" class="footer-link">&gt; Features</a></li>
-                        <li><a href="events.html" class="footer-link">&gt; Events</a></li>
-                        <li><a href="team.html" class="footer-link active">&gt; Team</a></li>
-                        <li><a href="contact.html" class="footer-link">&gt; Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4 class="footer-title">System Info</h4>
-                    <div class="system-info">
-                        <div class="info-line">
-                            <span class="info-label">Version:</span>
-                            <span class="info-value">2.0.1</span>
-                        </div>
-                        <div class="info-line">
-                            <span class="info-label">Build:</span>
-                            <span class="info-value">20250918</span>
-                        </div>
-                        <div class="info-line">
-                            <span class="info-label">Status:</span>
-                            <span class="info-value success">Operational</span>
-                        </div>
-                    </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="team.html">Team</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <div class="footer-copyright">
-                    <span class="copyright-symbol">©</span>
-                    <span class="copyright-year">2025</span>
-                    <span class="copyright-text">GeekRoom Adgips. All rights reserved.</span>
-                </div>
-                <div class="footer-credits">
-                    <span class="credits-text">Crafted with</span>
-                    <span class="heart">💚</span>
-                    <span class="credits-text">by the GeekRoom Team</span>
-                </div>
+                <p>&copy; 2025 Room Adgips. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
+    
     <script>
-        // Futuristic Team Page Functionality
+        // Team Page Specific Functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize GSAP
             gsap.registerPlugin(ScrollTrigger);
 
-            // Animate background particles
-            function createParticles() {
-                const particlesContainer = document.querySelector('.floating-particles');
+            // Animate hero title letters
+            function animateHeroTitle() {
+                const letters = document.querySelectorAll('.hero-title .letter');
                 
-                for (let i = 0; i < 20; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.cssText = `
-                        position: absolute;
-                        width: ${Math.random() * 4 + 2}px;
-                        height: ${Math.random() * 4 + 2}px;
-                        background: #00ff88;
-                        border-radius: 50%;
-                        left: ${Math.random() * 100}%;
-                        top: ${Math.random() * 100}%;
-                        opacity: ${Math.random() * 0.8 + 0.2};
-                        animation: float ${Math.random() * 20 + 10}s linear infinite;
-                        box-shadow: 0 0 10px #00ff88;
-                    `;
-                    particlesContainer.appendChild(particle);
-                }
-            }
-
-            // Character animation for hero title
-            function animateTitle() {
-                const chars = document.querySelectorAll('.hero-title .char');
-                
-                gsap.fromTo(chars, 
+                gsap.fromTo(letters, 
                     {
                         opacity: 0,
                         y: 50,
-                        rotationX: 90
+                        scale: 0.8
                     },
                     {
                         opacity: 1,
                         y: 0,
-                        rotationX: 0,
+                        scale: 1,
                         duration: 0.8,
                         stagger: 0.1,
                         ease: "back.out(1.7)"
@@ -920,16 +523,16 @@
                 });
             }
 
-            // Team category switching
-            const categoryTabs = document.querySelectorAll('.category-tab');
+            // Team mini navbar switching
+            const miniNavTabs = document.querySelectorAll('.mini-nav-tab');
             const teamSections = document.querySelectorAll('.team-section');
 
-            categoryTabs.forEach(tab => {
+            miniNavTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     
                     // Remove active class from all tabs and sections
-                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    miniNavTabs.forEach(t => t.classList.remove('active'));
                     teamSections.forEach(s => s.classList.remove('active'));
                     
                     // Add active class to clicked tab
@@ -941,16 +544,16 @@
                         targetSection.classList.add('active');
                         
                         // Animate cards in the new section
-                        const cards = targetSection.querySelectorAll('.member-card');
+                        const cards = targetSection.querySelectorAll('.group');
                         gsap.fromTo(cards,
-                            { opacity: 0, y: 30, scale: 0.9 },
+                            { opacity: 0, y: 30, scale: 0.95 },
                             { 
                                 opacity: 1, 
                                 y: 0, 
                                 scale: 1,
                                 duration: 0.6,
                                 stagger: 0.1,
-                                ease: "back.out(1.2)"
+                                ease: "power2.out"
                             }
                         );
                     }
@@ -958,19 +561,17 @@
             });
 
             // Animate member cards on scroll
-            const memberCards = document.querySelectorAll('.member-card');
+            const memberCards = document.querySelectorAll('.group');
             
             memberCards.forEach((card, index) => {
                 gsap.fromTo(card,
                     {
                         opacity: 0,
-                        y: 50,
-                        rotationY: 15
+                        y: 50
                     },
                     {
                         opacity: 1,
                         y: 0,
-                        rotationY: 0,
                         duration: 0.8,
                         scrollTrigger: {
                             trigger: card,
@@ -979,151 +580,28 @@
                         }
                     }
                 );
-
-                // Add hover effects
-                card.addEventListener('mouseenter', function() {
-                    gsap.to(this, {
-                        y: -10,
-                        scale: 1.02,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    gsap.to(this, {
-                        y: 0,
-                        scale: 1,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
             });
 
-            // Floating tech icons animation
-            const techIcons = document.querySelectorAll('.tech-icon');
-            
-            techIcons.forEach((icon, index) => {
-                gsap.set(icon, {
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight
-                });
-
-                gsap.to(icon, {
-                    x: `+=${Math.random() * 200 - 100}`,
-                    y: `+=${Math.random() * 200 - 100}`,
-                    duration: Math.random() * 10 + 5,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "power1.inOut"
-                });
-
-                // Rotation animation
-                gsap.to(icon, {
-                    rotation: 360,
-                    duration: Math.random() * 20 + 10,
-                    repeat: -1,
-                    ease: "none"
-                });
-            });
-
-            // Typing effect for terminal
-            function typeText(element, text, speed = 50) {
-                let i = 0;
-                element.innerHTML = '';
-                
-                function type() {
-                    if (i < text.length) {
-                        element.innerHTML += text.charAt(i);
-                        i++;
-                        setTimeout(type, speed);
-                    }
-                }
-                type();
-            }
-
-            // Terminal typing effect
-            const typingElement = document.querySelector('.typing-effect');
-            if (typingElement) {
-                const originalText = typingElement.textContent;
-                setTimeout(() => {
-                    typeText(typingElement, originalText, 100);
-                }, 1000);
-            }
-
-            // Glitch effect for subtitle
-            function glitchEffect() {
-                const glitchElements = document.querySelectorAll('.glitch-text');
-                
-                glitchElements.forEach(element => {
-                    setInterval(() => {
-                        element.style.textShadow = `
-                            ${Math.random() * 4 - 2}px 0 #ff0062,
-                            ${Math.random() * 4 - 2}px 0 #00ff88,
-                            ${Math.random() * 4 - 2}px 0 #0080ff
-                        `;
-                        
-                        setTimeout(() => {
-                            element.style.textShadow = 'none';
-                        }, 100);
-                    }, Math.random() * 3000 + 2000);
-                });
-            }
-
-            // Initialize all animations
-            createParticles();
-            animateTitle();
+            // Initialize animations
+            animateHeroTitle();
             animateCounters();
-            glitchEffect();
-
-            // Cursor effect
-            const cursor = document.querySelector('.cursor');
-            if (cursor) {
-                setInterval(() => {
-                    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-                }, 500);
-            }
-
-            // Add cyber grid lines
-            function createCyberLines() {
-                const cyberLines = document.querySelector('.cyber-lines');
-                
-                for (let i = 0; i < 5; i++) {
-                    const line = document.createElement('div');
-                    line.style.cssText = `
-                        position: absolute;
-                        width: 100%;
-                        height: 1px;
-                        background: linear-gradient(90deg, transparent, #00ff88, transparent);
-                        top: ${Math.random() * 100}%;
-                        opacity: 0.3;
-                        animation: scan ${Math.random() * 5 + 3}s linear infinite;
-                    `;
-                    cyberLines.appendChild(line);
+            
+            // Initialize Splash Cursor Effect
+            setTimeout(() => {
+                if (window.SplashCursor) {
+                    const splashCursor = new SplashCursor({
+                        SPLAT_RADIUS: 0.15,
+                        SPLAT_FORCE: 4000,
+                        DENSITY_DISSIPATION: 2.5,
+                        VELOCITY_DISSIPATION: 1.5,
+                        COLOR_UPDATE_SPEED: 8,
+                        CURL: 4,
+                        SHADING: true
+                    });
+                    console.log('Splash Cursor initialized on team page! 🎨');
                 }
-            }
-
-            createCyberLines();
+            }, 500);
         });
     </script>
-    
-    <style>
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(120deg); }
-            66% { transform: translateY(10px) rotate(240deg); }
-            100% { transform: translateY(0px) rotate(360deg); }
-        }
-        
-        @keyframes scan {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-    </style>
 </body>
 </html>
