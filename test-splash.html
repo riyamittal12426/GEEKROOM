@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Cursor Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        
+        .test-content {
+            z-index: 1;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .test-area {
+            width: 300px;
+            height: 200px;
+            border: 2px solid white;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .test-area:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .debug-info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-info" id="debug-info">
+        <div>SplashCursor Status: Loading...</div>
+        <div>WebGL Support: Checking...</div>
+        <div>Canvas: Not created</div>
+        <div>Mouse: 0, 0</div>
+    </div>
+    
+    <div class="test-content">
+        <h1>Splash Cursor Test</h1>
+        <p>Move your mouse around and click to test the splash cursor effect</p>
+        <div class="test-area">
+            <span>Click and drag here!</span>
+        </div>
+        <p><small>Check the debug info in the top-left corner</small></p>
+    </div>
+
+    <script src="js/splash-cursor.js"></script>
+    <script>
+        const debugInfo = document.getElementById('debug-info');
+        let mouseX = 0, mouseY = 0;
+        
+        function updateDebugInfo() {
+            const canvas = document.getElementById('fluid-cursor');
+            const webglSupport = !!window.WebGLRenderingContext;
+            const webgl2Support = !!window.WebGL2RenderingContext;
+            
+            debugInfo.innerHTML = `
+                <div>SplashCursor Status: ${window.SplashCursor ? 'Loaded' : 'Not Found'}</div>
+                <div>WebGL Support: ${webglSupport ? 'Yes' : 'No'} (WebGL2: ${webgl2Support ? 'Yes' : 'No'})</div>
+                <div>Canvas: ${canvas ? 'Created' : 'Not created'}</div>
+                <div>Mouse: ${mouseX}, ${mouseY}</div>
+                <div>Instance: ${window.splashCursorInstance ? 'Created' : 'Not created'}</div>
+            `;
+        }
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            updateDebugInfo();
+        });
+        
+        // Update debug info initially and periodically
+        updateDebugInfo();
+        setInterval(updateDebugInfo, 1000);
+        
+        // Initialize splash cursor when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing SplashCursor...');
+            
+            if (window.SplashCursor) {
+                try {
+                    window.splashCursorInstance = new SplashCursor({
+                        SPLAT_RADIUS: 0.15,
+                        SPLAT_FORCE: 5000,
+                        DENSITY_DISSIPATION: 3.0,
+                        VELOCITY_DISSIPATION: 2.0,
+                        COLOR_UPDATE_SPEED: 8,
+                        CURL: 4,
+                        SHADING: true
+                    });
+                    console.log('SplashCursor initialized successfully!');
+                } catch (error) {
+                    console.error('Failed to initialize SplashCursor:', error);
+                }
+            } else {
+                console.error('SplashCursor class not found!');
+                setTimeout(() => {
+                    if (window.SplashCursor) {
+                        console.log('SplashCursor found after delay, initializing...');
+                        try {
+                            window.splashCursorInstance = new SplashCursor();
+                            console.log('SplashCursor initialized successfully!');
+                        } catch (error) {
+                            console.error('Failed to initialize SplashCursor:', error);
+                        }
+                    }
+                }, 500);
+            }
+            
+            updateDebugInfo();
+        });
+    </script>
+</body>
+</html>

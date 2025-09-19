@@ -366,6 +366,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     console.log('GeekRoom Adgips - Initialized successfully! 🚀');
+    
+    // Initialize Splash Cursor Effect
+    function initSplashCursor() {
+        if (window.SplashCursor) {
+            try {
+                const splashCursor = new SplashCursor({
+                    SPLAT_RADIUS: 0.12,
+                    SPLAT_FORCE: 3500,
+                    DENSITY_DISSIPATION: 2.8,
+                    VELOCITY_DISSIPATION: 1.8,
+                    COLOR_UPDATE_SPEED: 6,
+                    CURL: 3.5,
+                    SHADING: true
+                });
+                console.log('Splash Cursor initialized! 🎨');
+                window.splashCursorInstance = splashCursor;
+            } catch (error) {
+                console.error('Failed to initialize Splash Cursor:', error);
+                console.log('WebGL might not be supported. Falling back to simple cursor effect.');
+            }
+        } else {
+            console.error('SplashCursor class not found. Make sure splash-cursor.js is loaded.');
+        }
+    }
+    
+    // Try to initialize immediately, then with fallback
+    initSplashCursor();
+    
+    // Fallback initialization after a delay
+    if (!window.splashCursorInstance) {
+        setTimeout(initSplashCursor, 1000);
+    }
 });
 
 // CSS for ripple effect
