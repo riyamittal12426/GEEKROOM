@@ -3916,9 +3916,27 @@ section {
         font-size: 2.5rem;
     }
     
+    .team-hero .hero-title {
+        font-size: 3.5rem !important;
+    }
+    
+    #team-hero-title {
+        font-size: 3.5rem !important;
+    }
+    
     .stats-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-hero .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    #team-hero-title {
+        font-size: 2.5rem !important;
     }
     
     .category-tabs {
@@ -4009,10 +4027,38 @@ section {
 }
 
 .team-hero .hero-title {
-    font-size: 4rem;
+    font-size: 6rem;
     font-weight: 700;
     margin-bottom: 2rem;
     color: var(--text-primary);
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    display: block !important;
+    text-align: center;
+    line-height: 1.1;
+    text-shadow: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Backup visibility rules */
+#team-hero-title {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    color: #FFFFFF !important;
+    font-size: 6rem !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.team-heading-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
 }
 
 .team-hero .hero-title .letter {
