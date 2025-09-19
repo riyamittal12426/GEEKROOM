@@ -17,12 +17,56 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     
+    <!-- SplitText Animation Styles -->
+    <style>
+        .split-text-heading {
+            overflow: hidden;
+        }
+        
+        .split-char {
+            display: inline-block;
+            will-change: transform, opacity;
+            transform-origin: center center;
+        }
+        
+        .split-word {
+            display: inline-block;
+            will-change: transform, opacity;
+            transform-origin: center center;
+        }
+        
+        .split-line {
+            overflow: hidden;
+            will-change: transform, opacity;
+        }
+        
+        .split-line > span {
+            display: inline-block;
+            will-change: transform, opacity;
+        }
+        
+        /* Ensure proper spacing and readability */
+        .hero-title.split-text-heading .split-char {
+            font-weight: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+        }
+    </style>
+    
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
+    <!-- Simple SplitText Implementation -->
+    <script src="js/simple-split-text.js"></script>
+    
+    <!-- SplitText Animation -->
+    <script src="js/split-text-animation.js"></script>
+    
     <!-- Splash Cursor Effect -->
     <script src="js/splash-cursor.js"></script>
+    <script src="js/splash-init.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -67,15 +111,8 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="letter">O</span>
-                    <span class="letter">u</span>
-                    <span class="letter">r</span>
-                    <span class="space">&nbsp;</span>
-                    <span class="letter">T</span>
-                    <span class="letter">e</span>
-                    <span class="letter">a</span>
-                    <span class="letter">m</span>
+                <h1 class="hero-title split-text-heading" id="team-hero-title">
+                    Our Team
                 </h1>
                 <p class="hero-subtitle">
                     Meet the brilliant minds driving innovation at Room Adgips. 
@@ -482,25 +519,49 @@
             // Initialize GSAP
             gsap.registerPlugin(ScrollTrigger);
 
-            // Animate hero title letters
-            function animateHeroTitle() {
-                const letters = document.querySelectorAll('.hero-title .letter');
-                
-                gsap.fromTo(letters, 
-                    {
-                        opacity: 0,
-                        y: 50,
-                        scale: 0.8
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        duration: 0.8,
-                        stagger: 0.1,
-                        ease: "back.out(1.7)"
+            // Initialize SplitText Animation for Team Heading
+            function initSplitTextAnimation() {
+                const teamHeading = document.getElementById('team-hero-title');
+                if (teamHeading && window.SplitTextAnimation) {
+                    try {
+                        window.teamHeadingSplitText = new SplitTextAnimation(teamHeading, {
+                            delay: 80,              // Delay between each character animation
+                            duration: 0.8,          // Duration of each character animation
+                            ease: 'back.out(1.7)',  // Easing function
+                            splitType: 'chars',     // Split by characters
+                            from: { 
+                                opacity: 0, 
+                                y: 60, 
+                                scale: 0.8,
+                                rotation: 20
+                            },
+                            to: { 
+                                opacity: 1, 
+                                y: 0, 
+                                scale: 1,
+                                rotation: 0
+                            },
+                            threshold: 0.2,         // Start animation when 20% visible
+                            rootMargin: '-50px',    // Trigger 50px before coming into view
+                            onComplete: () => {
+                                console.log('Team heading animation completed! 🎉');
+                            }
+                        });
+                        console.log('Team heading SplitText animation initialized! ✨');
+                    } catch (error) {
+                        console.error('Failed to initialize team heading SplitText:', error);
                     }
-                );
+                } else {
+                    console.warn('Team heading element or SplitTextAnimation not found');
+                }
+            }
+
+            // Animate hero title letters (legacy function - now replaced by SplitText)
+            function animateHeroTitle() {
+                // This function is now replaced by SplitText animation
+                // Keeping for backward compatibility but it won't do anything
+                // since the letter spans have been replaced with plain text
+                console.log('Legacy animateHeroTitle called - now using SplitText animation');
             }
 
             // Counter animation for stats
@@ -586,21 +647,10 @@
             animateHeroTitle();
             animateCounters();
             
-            // Initialize Splash Cursor Effect
-            setTimeout(() => {
-                if (window.SplashCursor) {
-                    const splashCursor = new SplashCursor({
-                        SPLAT_RADIUS: 0.15,
-                        SPLAT_FORCE: 4000,
-                        DENSITY_DISSIPATION: 2.5,
-                        VELOCITY_DISSIPATION: 1.5,
-                        COLOR_UPDATE_SPEED: 8,
-                        CURL: 4,
-                        SHADING: true
-                    });
-                    console.log('Splash Cursor initialized on team page! 🎨');
-                }
-            }, 500);
+            // Initialize SplitText Animation for Team Heading
+            initSplitTextAnimation();
+            
+            // Note: Splash Cursor is now handled by splash-init.js universal script
         });
     </script>
 </body>
