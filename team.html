@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     
@@ -98,317 +101,300 @@
         </div>
     </section>
 
-    <!-- Team Categories -->
-    <section class="team-categories">
+    <!-- Team Mini Navbar -->
+    <section class="team-mini-navbar">
         <div class="container">
-            <div class="category-selector">
-                <div class="category-tabs">
-                    <button class="category-tab active" data-category="leadership">
-                        <span class="tab-label">Leadership</span>
-                        <span class="tab-count">4</span>
-                    </button>
-                    <button class="category-tab" data-category="developers">
-                        <span class="tab-label">Developers</span>
+            <div class="mini-nav-wrapper">
+                <div class="mini-nav-tabs">
+                    <button class="mini-nav-tab active" data-category="core-members">
+                        <span class="tab-icon">👥</span>
+                        <span class="tab-label">Core Members</span>
                         <span class="tab-count">8</span>
                     </button>
-                    <button class="category-tab" data-category="designers">
-                        <span class="tab-label">Designers</span>
-                        <span class="tab-count">3</span>
+                    <button class="mini-nav-tab" data-category="leads">
+                        <span class="tab-icon">⭐</span>
+                        <span class="tab-label">Leads/Co-leads</span>
+                        <span class="tab-count">7</span>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leadership Team -->
-    <section id="leadership" class="team-section active">
+    <!-- Core Members -->
+    <section id="core-members" class="team-section active">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Leadership</h2>
-                <p class="section-subtitle">The visionaries steering our technological journey</p>
+                <h2 class="section-title">Core Members</h2>
+                <p class="section-subtitle">The passionate individuals building the foundation of our community</p>
             </div>
             
             <div class="team-grid">
-                <!-- Leader 1 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">AC</span>
+                <!-- Core Member 1 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-green-200 via-green-300 to-green-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-green-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AM</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Ananya Malhotra</span>
+                        <p class="text-gray-600">Full Stack Developer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Node.js</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">AWS</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Ayush Choudhary</h3>
-                        <div class="member-title">Founder & Lead</div>
-                        <p class="member-description">
-                            Passionate about building tech communities and fostering innovation through 
-                            collaborative learning and real-world project experience.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Full Stack Development</span>
-                            <span class="tech">Leadership</span>
-                            <span class="tech">Strategy</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="btn btn-primary">Connect</button>
-                            <button class="btn btn-secondary">Portfolio</button>
-                        </div>
-                    </div>
+                    <a class="bg-green-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-green-500" href="#">Connect</a>
                 </div>
 
-                <!-- Leader 2 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">NK</span>
+                <!-- Core Member 2 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-blue-200 via-blue-300 to-blue-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-blue-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">RS</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Rohit Sharma</span>
+                        <p class="text-gray-600">AI Engineer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">TensorFlow</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">PyTorch</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Nisha Kapoor</h3>
-                        <div class="member-title">Technical Lead</div>
-                        <p class="member-description">
-                            Dedicated to mentoring the next generation of developers and architects 
-                            through hands-on guidance and technical excellence.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">System Design</span>
-                            <span class="tech">Mentoring</span>
-                            <span class="tech">Architecture</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="btn btn-primary">Connect</button>
-                            <button class="btn btn-secondary">Portfolio</button>
-                        </div>
-                    </div>
+                    <a class="bg-blue-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Connect</a>
                 </div>
 
-                <!-- Leader 3 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">RV</span>
+                <!-- Core Member 3 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-purple-200 via-purple-300 to-purple-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-purple-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AK</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Arjun Kumar</span>
+                        <p class="text-gray-600">Mobile Developer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Flutter</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">React Native</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Kotlin</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Raj Verma</h3>
-                        <div class="member-title">Operations Lead</div>
-                        <p class="member-description">
-                            Focused on creating meaningful events and partnerships that drive 
-                            community growth and provide valuable learning opportunities.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Operations</span>
-                            <span class="tech">Event Management</span>
-                            <span class="tech">Growth Strategy</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="btn btn-primary">Connect</button>
-                            <button class="btn btn-secondary">Portfolio</button>
-                        </div>
-                    </div>
+                    <a class="bg-purple-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-purple-500" href="#">Connect</a>
                 </div>
 
-                <!-- Leader 4 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">MS</span>
+                <!-- Core Member 4 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-orange-200 via-orange-300 to-orange-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-orange-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">SN</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Sneha Nair</span>
+                        <p class="text-gray-600">DevOps Engineer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Docker</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Kubernetes</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Jenkins</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Meera Singh</h3>
-                        <div class="member-title">Community Lead</div>
-                        <p class="member-description">
-                            Passionate about building inclusive communities where every member 
-                            feels valued and empowered to achieve their potential.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Community Building</span>
-                            <span class="tech">Engagement</span>
-                            <span class="tech">Outreach</span>
-                        </div>
-                        <div class="member-actions">
-                            <button class="btn btn-primary">Connect</button>
-                            <button class="btn btn-secondary">Portfolio</button>
+                    <a class="bg-orange-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-orange-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 5 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-pink-200 via-pink-300 to-pink-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-pink-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">PG</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Priya Gupta</span>
+                        <p class="text-gray-600">UX Designer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Figma</span>
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Adobe XD</span>
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Prototyping</span>
                         </div>
                     </div>
+                    <a class="bg-pink-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-pink-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 6 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-teal-200 via-teal-300 to-teal-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-teal-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">KM</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Kiran Mehta</span>
+                        <p class="text-gray-600">Visual Designer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Illustrator</span>
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Photoshop</span>
+                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Branding</span>
+                        </div>
+                    </div>
+                    <a class="bg-teal-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-teal-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 7 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-indigo-200 via-indigo-300 to-indigo-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-indigo-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">TA</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Tanvi Agarwal</span>
+                        <p class="text-gray-600">Motion Designer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">After Effects</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Lottie</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Cinema 4D</span>
+                        </div>
+                    </div>
+                    <a class="bg-indigo-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-indigo-500" href="#">Connect</a>
+                </div>
+
+                <!-- Core Member 8 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-red-200 via-red-300 to-red-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-red-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">VK</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Vikram Kumar</span>
+                        <p class="text-gray-600">Backend Developer</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Django</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">PostgreSQL</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Redis</span>
+                        </div>
+                    </div>
+                    <a class="bg-red-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-red-500" href="#">Connect</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Developers Team -->
-    <section id="developers" class="team-section">
+    <!-- Leads/Co-leads -->
+    <section id="leads" class="team-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Developers</h2>
-                <p class="section-subtitle">Code architects building the future, one commit at a time</p>
+                <h2 class="section-title">Leads & Co-leads</h2>
+                <p class="section-subtitle">The leaders guiding our community towards excellence and innovation</p>
             </div>
             
             <div class="team-grid">
-                <!-- Developer 1 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">AM</span>
+                <!-- Lead 1 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-yellow-200 via-yellow-300 to-yellow-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-yellow-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AC</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Ayush Choudhary</span>
+                        <p class="text-gray-600">Founder & President</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Leadership</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Strategy</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Vision</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Ananya Malhotra</h3>
-                        <div class="member-title">Full Stack Developer</div>
-                        <p class="member-description">
-                            Specializes in building scalable web applications with modern frameworks 
-                            and cloud technologies. Passionate about clean code and user experience.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">React</span>
-                            <span class="tech">Node.js</span>
-                            <span class="tech">AWS</span>
-                        </div>
-                    </div>
+                    <a class="bg-yellow-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-yellow-500" href="#">Connect</a>
                 </div>
 
-                <!-- Developer 2 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">RS</span>
+                <!-- Lead 2 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-emerald-200 via-emerald-300 to-emerald-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-emerald-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">NK</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Nisha Kapoor</span>
+                        <p class="text-gray-600">Technical Lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">System Design</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">Mentoring</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">Architecture</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Rohit Sharma</h3>
-                        <div class="member-title">AI Engineer</div>
-                        <p class="member-description">
-                            Focused on machine learning and artificial intelligence solutions. 
-                            Experienced in building ML models and deploying AI-powered applications.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Python</span>
-                            <span class="tech">TensorFlow</span>
-                            <span class="tech">PyTorch</span>
-                        </div>
-                    </div>
+                    <a class="bg-emerald-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-emerald-500" href="#">Connect</a>
                 </div>
 
-                <!-- Developer 3 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">AK</span>
+                <!-- Lead 3 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-cyan-200 via-cyan-300 to-cyan-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-cyan-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">RV</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Raj Verma</span>
+                        <p class="text-gray-600">Operations Lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs">Operations</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs">Events</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded-full text-xs">Growth</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Arjun Kumar</h3>
-                        <div class="member-title">Mobile Developer</div>
-                        <p class="member-description">
-                            Expert in cross-platform mobile development creating engaging user 
-                            experiences across iOS and Android platforms.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Flutter</span>
-                            <span class="tech">React Native</span>
-                            <span class="tech">Kotlin</span>
-                        </div>
-                    </div>
+                    <a class="bg-cyan-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-cyan-500" href="#">Connect</a>
                 </div>
 
-                <!-- Developer 4 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">SN</span>
+                <!-- Lead 4 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-rose-200 via-rose-300 to-rose-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-rose-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">MS</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Meera Singh</span>
+                        <p class="text-gray-600">Community Lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-rose-100 text-rose-800 px-2 py-1 rounded-full text-xs">Community</span>
+                            <span class="bg-rose-100 text-rose-800 px-2 py-1 rounded-full text-xs">Engagement</span>
+                            <span class="bg-rose-100 text-rose-800 px-2 py-1 rounded-full text-xs">Outreach</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Sneha Nair</h3>
-                        <div class="member-title">DevOps Engineer</div>
-                        <p class="member-description">
-                            Specializes in automation, CI/CD pipelines, and infrastructure management. 
-                            Ensures reliable and scalable deployment processes.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Docker</span>
-                            <span class="tech">Kubernetes</span>
-                            <span class="tech">Jenkins</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Designers Team -->
-    <section id="designers" class="team-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Designers</h2>
-                <p class="section-subtitle">Visual storytellers crafting experiences that inspire and engage</p>
-            </div>
-            
-            <div class="team-grid">
-                <!-- Designer 1 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">PG</span>
-                        </div>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Priya Gupta</h3>
-                        <div class="member-title">UX Designer</div>
-                        <p class="member-description">
-                            Creates intuitive and engaging user experiences through research-driven 
-                            design solutions and prototyping methodologies.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Figma</span>
-                            <span class="tech">Adobe XD</span>
-                            <span class="tech">Prototyping</span>
-                        </div>
-                    </div>
+                    <a class="bg-rose-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-rose-500" href="#">Connect</a>
                 </div>
 
-                <!-- Designer 2 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">KM</span>
+                <!-- Co-lead 1 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-violet-200 via-violet-300 to-violet-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-violet-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">AJ</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Aarav Joshi</span>
+                        <p class="text-gray-600">Technical Co-lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-violet-100 text-violet-800 px-2 py-1 rounded-full text-xs">Frontend</span>
+                            <span class="bg-violet-100 text-violet-800 px-2 py-1 rounded-full text-xs">UI/UX</span>
+                            <span class="bg-violet-100 text-violet-800 px-2 py-1 rounded-full text-xs">Team Lead</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Kiran Mehta</h3>
-                        <div class="member-title">Visual Designer</div>
-                        <p class="member-description">
-                            Specializes in brand identity and visual communication, creating 
-                            compelling designs that tell stories and build connections.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">Illustrator</span>
-                            <span class="tech">Photoshop</span>
-                            <span class="tech">Branding</span>
-                        </div>
-                    </div>
+                    <a class="bg-violet-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-violet-500" href="#">Connect</a>
                 </div>
 
-                <!-- Designer 3 -->
-                <div class="member-card">
-                    <div class="member-avatar">
-                        <div class="avatar-image">
-                            <span class="avatar-initials">TA</span>
+                <!-- Co-lead 2 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-lime-200 via-lime-300 to-lime-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-lime-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">SP</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Siya Patel</span>
+                        <p class="text-gray-600">Events Co-lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-lime-100 text-lime-800 px-2 py-1 rounded-full text-xs">Event Planning</span>
+                            <span class="bg-lime-100 text-lime-800 px-2 py-1 rounded-full text-xs">Coordination</span>
+                            <span class="bg-lime-100 text-lime-800 px-2 py-1 rounded-full text-xs">Management</span>
                         </div>
                     </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Tanvi Agarwal</h3>
-                        <div class="member-title">Motion Designer</div>
-                        <p class="member-description">
-                            Brings designs to life through animation and motion graphics, 
-                            creating dynamic visual experiences across digital platforms.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech">After Effects</span>
-                            <span class="tech">Lottie</span>
-                            <span class="tech">Cinema 4D</span>
+                    <a class="bg-lime-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-lime-500" href="#">Connect</a>
+                </div>
+
+                <!-- Co-lead 3 -->
+                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-slate-200 via-slate-300 to-slate-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                    <div class="w-28 h-28 bg-slate-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl">DK</span>
+                    </div>
+                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
+                        <span class="text-2xl font-semibold text-gray-800">Dev Kumar</span>
+                        <p class="text-gray-600">Marketing Co-lead</p>
+                        <div class="mt-2 flex flex-wrap justify-center gap-1">
+                            <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded-full text-xs">Digital Marketing</span>
+                            <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded-full text-xs">Social Media</span>
+                            <span class="bg-slate-100 text-slate-800 px-2 py-1 rounded-full text-xs">Branding</span>
                         </div>
                     </div>
+                    <a class="bg-slate-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-slate-500" href="#">Connect</a>
                 </div>
             </div>
         </div>
@@ -534,16 +520,16 @@
                 });
             }
 
-            // Team category switching
-            const categoryTabs = document.querySelectorAll('.category-tab');
+            // Team mini navbar switching
+            const miniNavTabs = document.querySelectorAll('.mini-nav-tab');
             const teamSections = document.querySelectorAll('.team-section');
 
-            categoryTabs.forEach(tab => {
+            miniNavTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     
                     // Remove active class from all tabs and sections
-                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    miniNavTabs.forEach(t => t.classList.remove('active'));
                     teamSections.forEach(s => s.classList.remove('active'));
                     
                     // Add active class to clicked tab
@@ -555,7 +541,7 @@
                         targetSection.classList.add('active');
                         
                         // Animate cards in the new section
-                        const cards = targetSection.querySelectorAll('.member-card');
+                        const cards = targetSection.querySelectorAll('.group');
                         gsap.fromTo(cards,
                             { opacity: 0, y: 30, scale: 0.95 },
                             { 
@@ -572,7 +558,7 @@
             });
 
             // Animate member cards on scroll
-            const memberCards = document.querySelectorAll('.member-card');
+            const memberCards = document.querySelectorAll('.group');
             
             memberCards.forEach((card, index) => {
                 gsap.fromTo(card,
@@ -591,25 +577,6 @@
                         }
                     }
                 );
-
-                // Add hover effects
-                card.addEventListener('mouseenter', function() {
-                    gsap.to(this, {
-                        y: -5,
-                        scale: 1.02,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    gsap.to(this, {
-                        y: 0,
-                        scale: 1,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
-                });
             });
 
             // Initialize animations
