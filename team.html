@@ -16,13 +16,92 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/universal-smooth-scroll.css">
+    
+    <!-- SplitText Animation Styles -->
+    <style>
+        /* Force team heading to be visible */
+        #team-hero-title {
+            opacity: 1 !important;
+            visibility: visible !important;
+            color: #FFFFFF !important;
+            font-size: 6rem !important;
+            font-weight: 700 !important;
+            text-shadow: none !important;
+            display: block !important;
+            text-align: center !important;
+            margin-bottom: 2rem !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
+        
+        .team-heading-visible {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+            text-shadow: none !important;
+        }
+        
+        /* Ensure proper spacing and readability */
+        .hero-title.team-heading-visible {
+            font-weight: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+            opacity: 1 !important;
+            visibility: visible !important;
+            text-shadow: none !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Character animation styles */
+        #team-hero-title .char-span {
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: default;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            text-shadow: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Fallback in case animation fails */
+        #team-hero-title:empty::after {
+            content: "Our Team";
+            opacity: 1;
+            color: #FFFFFF;
+            text-shadow: none;
+        }
+        
+        /* Responsive font sizes */
+        @media (max-width: 768px) {
+            #team-hero-title {
+                font-size: 3.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #team-hero-title {
+                font-size: 2.5rem !important;
+            }
+        }
+    </style>
     
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
+    <!-- Simple SplitText Implementation -->
+    <script src="js/simple-split-text.js"></script>
+    
+    <!-- SplitText Animation -->
+    <script src="js/split-text-animation.js"></script>
+    
     <!-- Splash Cursor Effect -->
     <script src="js/splash-cursor.js"></script>
+    <script src="js/splash-init.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -67,39 +146,11 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="letter">O</span>
-                    <span class="letter">u</span>
-                    <span class="letter">r</span>
-                    <span class="space">&nbsp;</span>
-                    <span class="letter">T</span>
-                    <span class="letter">e</span>
-                    <span class="letter">a</span>
-                    <span class="letter">m</span>
+                <h1 class="hero-title team-heading-visible" id="team-hero-title" style="opacity: 1 !important; visibility: visible !important; color: #FFFFFF !important; font-size: 6rem !important; font-weight: 700 !important; text-shadow: none !important;">
+                    Our Team
                 </h1>
-                <p class="hero-subtitle">
-                    Meet the brilliant minds driving innovation at Room Adgips. 
-                    Our diverse team of passionate individuals is dedicated to building 
-                    tomorrow's tech leaders through mentorship, collaboration, and excellence.
-                </p>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="15">0</div>
-                        <div class="stat-label">Team Members</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="500">0</div>
-                        <div class="stat-label">Projects Delivered</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="1000">0</div>
-                        <div class="stat-label">Students Mentored</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="50">0</div>
-                        <div class="stat-label">Events Organized</div>
-                    </div>
-                </div>
+                
+               
             </div>
         </div>
     </section>
@@ -479,28 +530,184 @@
     <script>
         // Team Page Specific Functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Immediate visibility fix for team heading
+            const teamHeading = document.getElementById('team-hero-title');
+            if (teamHeading) {
+                teamHeading.style.opacity = '1';
+                teamHeading.style.visibility = 'visible';
+                teamHeading.style.color = '#FFFFFF';
+                teamHeading.style.textShadow = 'none';
+                teamHeading.style.webkitFontSmoothing = 'antialiased';
+                teamHeading.style.mozOsxFontSmoothing = 'grayscale';
+                console.log('Team heading made visible immediately');
+            }
+            
             // Initialize GSAP
             gsap.registerPlugin(ScrollTrigger);
 
-            // Animate hero title letters
-            function animateHeroTitle() {
-                const letters = document.querySelectorAll('.hero-title .letter');
+            // Fallback CSS animation if GSAP fails
+            function initFallbackAnimation() {
+                const teamHeading = document.getElementById('team-hero-title');
+                if (!teamHeading) return;
                 
-                gsap.fromTo(letters, 
-                    {
-                        opacity: 0,
-                        y: 50,
-                        scale: 0.8
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        duration: 0.8,
-                        stagger: 0.1,
-                        ease: "back.out(1.7)"
-                    }
-                );
+                teamHeading.style.cssText = `
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.95);
+                    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                `;
+                
+                setTimeout(() => {
+                    teamHeading.style.cssText = `
+                        opacity: 1 !important;
+                        transform: translateY(0) scale(1);
+                        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                        font-size: 6rem;
+                        font-weight: 700;
+                        color: #FFFFFF;
+                        visibility: visible !important;
+                        text-shadow: none !important;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                    `;
+                }, 300);
+            }
+
+            // Initialize Enhanced Title Animation with better error handling
+            function initSimpleHeadingAnimation() {
+                const teamHeading = document.getElementById('team-hero-title');
+                if (!teamHeading) {
+                    console.warn('Team heading element not found');
+                    return;
+                }
+                
+                // Force visibility immediately
+                teamHeading.style.cssText = `
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    color: #FFFFFF !important;
+                    font-size: 6rem !important;
+                    font-weight: 700 !important;
+                    text-shadow: none !important;
+                    display: block !important;
+                `;
+                
+                console.log('Team heading forced to visible');
+                return; // Skip animation for now to ensure visibility
+                
+                if (!window.gsap) {
+                    console.warn('GSAP not loaded, using CSS fallback');
+                    initFallbackAnimation();
+                    return;
+                }
+                
+                // Ensure heading is visible first
+                teamHeading.style.opacity = '1';
+                teamHeading.style.visibility = 'visible';
+                
+                try {
+                    // Get original text and clear content
+                    const text = teamHeading.textContent.trim();
+                    teamHeading.innerHTML = '';
+                    
+                    // Create character spans
+                    const chars = [];
+                    text.split('').forEach((char, index) => {
+                        const span = document.createElement('span');
+                        span.textContent = char === ' ' ? '\u00A0' : char;
+                        span.className = 'char-span';
+                        span.style.cssText = `
+                            display: inline-block;
+                            opacity: 0;
+                            transform: translateY(60px) scale(0.8);
+                            transition: all 0.3s ease;
+                        `;
+                        teamHeading.appendChild(span);
+                        chars.push(span);
+                    });
+                    
+                    console.log(`Created ${chars.length} character spans for animation`);
+                    
+                    // Animate characters with GSAP
+                    gsap.fromTo(chars, 
+                        {
+                            opacity: 0,
+                            y: 60,
+                            scale: 0.8,
+                            rotationX: 90
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            rotationX: 0,
+                            duration: 0.6,
+                            ease: "back.out(1.7)",
+                            stagger: 0.08,
+                            delay: 0.5,
+                            onComplete: function() {
+                                console.log('Team heading animation completed!');
+                                
+                                // Add hover effects after animation completes
+                                chars.forEach((char, index) => {
+                                    char.addEventListener('mouseenter', function() {
+                                        gsap.to(this, {
+                                            scale: 1.15,
+                                            color: '#A0FF8F',
+                                            duration: 0.3,
+                                            ease: "power2.out"
+                                        });
+                                    });
+                                    
+                                    char.addEventListener('mouseleave', function() {
+                                        gsap.to(this, {
+                                            scale: 1,
+                                            color: '#FFFFFF',
+                                            duration: 0.3,
+                                            ease: "power2.out"
+                                        });
+                                    });
+                                });
+                                
+                                // Remove the continuous glow to prevent blur
+                                // Add a subtle one-time glow effect instead
+                                gsap.to(teamHeading, {
+                                    textShadow: "0 0 5px rgba(160, 255, 143, 0.2)",
+                                    duration: 0.5,
+                                    ease: "power2.out"
+                                });
+                            }
+                        }
+                    );
+                    
+                } catch (error) {
+                    console.error('Error in team heading animation:', error);
+                    // Fallback to CSS animation
+                    initFallbackAnimation();
+                }
+            }
+            
+            // Debug function to check if everything is loaded
+            function checkDependencies() {
+                console.log('=== Team Page Debug Info ===');
+                console.log('GSAP loaded:', !!window.gsap);
+                console.log('ScrollTrigger loaded:', !!window.ScrollTrigger);
+                console.log('Team heading element:', !!document.getElementById('team-hero-title'));
+                console.log('Document ready state:', document.readyState);
+                console.log('============================');
+            }
+
+            // Initialize SplitText Animation for Team Heading (fallback)
+            function initSplitTextAnimation() {
+                // This is now a fallback - we'll use the simple animation instead
+                console.log('Using simple animation instead of SplitText');
+            }
+
+            // Animate hero title letters (legacy function - now replaced by SplitText)
+            function animateHeroTitle() {
+                // This function is now replaced by SplitText animation
+                // Keeping for backward compatibility but it won't do anything
+                // since the letter spans have been replaced with plain text
+                console.log('Legacy animateHeroTitle called - now using SplitText animation');
             }
 
             // Counter animation for stats
@@ -582,26 +789,31 @@
                 );
             });
 
-            // Initialize animations
-            animateHeroTitle();
-            animateCounters();
+            // Initialize animations with proper timing
+            function initializeAnimations() {
+                checkDependencies();
+                
+                animateHeroTitle();
+                animateCounters();
+                
+                // Wait a bit more for GSAP to be fully ready
+                setTimeout(() => {
+                    initSimpleHeadingAnimation();
+                }, 200);
+            }
             
-            // Initialize Splash Cursor Effect
-            setTimeout(() => {
-                if (window.SplashCursor) {
-                    const splashCursor = new SplashCursor({
-                        SPLAT_RADIUS: 0.15,
-                        SPLAT_FORCE: 4000,
-                        DENSITY_DISSIPATION: 2.5,
-                        VELOCITY_DISSIPATION: 1.5,
-                        COLOR_UPDATE_SPEED: 8,
-                        CURL: 4,
-                        SHADING: true
-                    });
-                    console.log('Splash Cursor initialized on team page! 🎨');
-                }
-            }, 500);
+            // Initialize when DOM is ready and GSAP is available
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeAnimations);
+            } else {
+                initializeAnimations();
+            }
+            
+            // Note: Splash Cursor is now handled by splash-init.js universal script
         });
     </script>
+    
+    <!-- Universal Smooth Scrolling -->
+    <script src="js/universal-smooth-scroll.js"></script>
 </body>
 </html>

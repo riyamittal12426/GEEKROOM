@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Adgips - Where Innovation Meets Excellence</title>
-    <meta name="description" content="Room Adgips - A professional platform for technology enthusiasts and innovators.">
-    
+    <title>Geek Room Adgips - Where Innovation Meets Excellence</title>
+    <meta name="description"
+        content="Geek Room Adgips - A professional platform for technology enthusiasts and innovators.">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
-    
+    <link rel="stylesheet" href="css/universal-smooth-scroll.css">
+
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+
     <!-- Splash Cursor Effect -->
     <script src="js/splash-cursor.js"></script>
-    
+    <script src="js/splash-init.js"></script>
+
     <!-- Framer Motion (via CDN for vanilla JS) -->
     <script src="https://unpkg.com/framer-motion@11.0.0/dist/framer-motion.js"></script>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html"><span class="accent">Adgips</span></a>
+                <a href="index.html">
+                    <div class="logo-icon">A</div>
+                    <span class="accent">Adgips</span>
+                </a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
@@ -71,46 +81,56 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="geekroom-text">Geek Room</span>
+                    <span class="geekroom-text">Room</span>
                 </h1>
                 
                 <!-- Room Society Description -->
-                <div class="geekroom-description" style="opacity: 0; transform: translateY(30px);">
-                    <h2 class="society-title">Building Tomorrow's Tech Leaders</h2>
+                <div class="geekroom-description">
+                    <h2 class="society-title">Geek Room</h2>
                     <p class="society-text">
-                        A premier technology community where innovation thrives through collaboration, 
-                        learning, and real-world application. Join 1000+ passionate developers, designers, 
-                        and tech enthusiasts shaping the future of technology.
+                        A premier tech community where innovation meets collaboration.<br>
+                        Join 1000+ developers, designers & tech leaders shaping the future.
                     </p>
                     <div class="society-highlights">
                         <div class="highlight-item">
-                            <span class="highlight-icon">🎯</span>
+                            <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="3" />
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1" />
+                            </svg>
                             <span class="highlight-text">Project-Based Learning</span>
                         </div>
                         <div class="highlight-item">
-                            <span class="highlight-icon">🤝</span>
+                            <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="8.5" cy="7" r="4" />
+                                <path d="M20 8v6M23 11h-6" />
+                            </svg>
                             <span class="highlight-text">Industry Mentorship</span>
                         </div>
                         <div class="highlight-item">
-                            <span class="highlight-icon">�</span>
+                            <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M3 3v18h18" />
+                                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+                            </svg>
                             <span class="highlight-text">Career Growth</span>
                         </div>
                     </div>
                 </div>
-                
-                <h2 class="adgips-text" style="opacity: 0; transform: translateY(30px);">
-                    ADGIPS
-                </h2>
-                <p class="hero-subtitle" style="opacity: 0; transform: translateY(30px);">
-                    Empowering the next generation of tech innovators through hands-on learning, 
+
+
+                <p class="hero-subtitle">
+                    Empowering the next generation of tech innovators through hands-on learning,
                     collaboration, and industry-relevant projects at ADGIPS.
                 </p>
                 <div class="hero-buttons" style="opacity: 0; transform: translateY(30px);">
                     <a href="about.html" class="btn btn-primary" id="hero-cta">
-                        Discover Geek Room
+                        Discover Room
                         <span class="btn-arrow">→</span>
                     </a>
-                    <a href="events.html" class="btn btn-secondary">
+                    <a href="events.html" class="btn btn-outline">
                         View Events
                     </a>
                 </div>
@@ -132,9 +152,9 @@
                 <div class="preview-card">
                     <div class="preview-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                            <path d="M2 17l10 5 10-5" />
+                            <path d="M2 12l10 5 10-5" />
                         </svg>
                     </div>
                     <h3>Hands-on Projects</h3>
@@ -143,10 +163,10 @@
                 <div class="preview-card">
                     <div class="preview-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                         </svg>
                     </div>
                     <h3>Expert Mentorship</h3>
@@ -155,7 +175,7 @@
                 <div class="preview-card">
                     <div class="preview-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                         </svg>
                     </div>
                     <h3>Innovation Focus</h3>
@@ -166,7 +186,7 @@
     </section>
 
     <!-- Quick Stats -->
-    <section class="quick-stats">
+    <!-- <section class="quick-stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
@@ -187,7 +207,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Upcoming Event Highlight -->
     <section class="event-highlight">
@@ -196,7 +216,7 @@
                 <div class="event-badge">Upcoming Event</div>
                 <div class="event-content">
                     <div class="event-info">
-                        <h3>Geek Room Annual Hackathon 2025</h3>
+                        <h3>Room Annual Hackathon 2025</h3>
                         <p>Join us for our biggest event of the year. 48 hours of innovation, collaboration, and amazing prizes!</p>
                         <div class="event-details">
                             <span class="event-date">📅 October 15-17, 2025</span>
@@ -213,7 +233,7 @@
     </section>
 
     <!-- Our Team Section -->
-    <section class="our-team-section">
+    <!-- <section class="our-team-section">
         <div class="team-background">
             <div class="animated-particles"></div>
             <div class="neon-grid"></div>
@@ -232,7 +252,7 @@
                 </h2>
                 <p class="team-subtitle">Meet the brilliant minds driving innovation at Room Adgips</p>
             </div>
-            <div class="team-actions">
+            <!-- <div class="team-actions">
                 <a href="team.html" class="btn team-btn-primary">
                     <span>Core Members</span>
                     <div class="btn-glow"></div>
@@ -240,12 +260,12 @@
                 <a href="about.html" class="btn team-btn-secondary">
                     <span>Learn More</span>
                 </a>
-            </div>
-        </div>
-    </section>
+            </div> -->
+    </div>
+    </section> -->
 
     <!-- Call to Action Section -->
-    <section id="cta" class="cta">
+    <!-- <section id="cta" class="cta">
         <div class="container">
             <div class="cta-content">
                 <h2 class="cta-title">Ready to Start Your Tech Journey?</h2>
@@ -263,7 +283,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -289,7 +309,11 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/universal-smooth-scroll.js"></script>
+    <script src="js/scroll-animations.js"></script>
+    <script src="js/enhanced-animations.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

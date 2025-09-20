@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Rays Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .test-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .light-rays-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.8;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #A0FF8F 0%, #7FE65A 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(160, 255, 143, 0.5);
+        }
+        
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        label {
+            font-size: 0.9rem;
+            color: #A0FF8F;
+            font-weight: 600;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: rgba(160, 255, 143, 0.2);
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #A0FF8F;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        button {
+            padding: 0.8rem 1.5rem;
+            background: rgba(160, 255, 143, 0.1);
+            border: 2px solid rgba(160, 255, 143, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: rgba(160, 255, 143, 0.2);
+            border-color: rgba(160, 255, 143, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #A0FF8F;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            z-index: 1000;
+            border: 1px solid rgba(160, 255, 143, 0.3);
+        }
+        
+        .fps {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #A0FF8F;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1000;
+            border: 1px solid rgba(160, 255, 143, 0.3);
+        }
+    </style>
+    
+    <script src="js/light-rays.js"></script>
+</head>
+<body>
+    <div class="status" id="status">
+        Light Rays: Loading...
+    </div>
+    
+    <div class="fps" id="fps">
+        FPS: --
+    </div>
+    
+    <div class="test-container">
+        <div id="light-rays-test" class="light-rays-bg"></div>
+        
+        <div class="content">
+            <h1>✨ Light Rays Effect</h1>
+            <p>Interactive WebGL light rays with real-time controls</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="speed">Speed</label>
+                    <input type="range" id="speed" min="0.1" max="3" step="0.1" value="0.8">
+                </div>
+                
+                <div class="control-group">
+                    <label for="spread">Light Spread</label>
+                    <input type="range" id="spread" min="0.5" max="3" step="0.1" value="1.2">
+                </div>
+                
+                <div class="control-group">
+                    <label for="length">Ray Length</label>
+                    <input type="range" id="length" min="0.5" max="3" step="0.1" value="1.8">
+                </div>
+                
+                <div class="control-group">
+                    <label for="mouse">Mouse Influence</label>
+                    <input type="range" id="mouse" min="0" max="0.5" step="0.01" value="0.15">
+                </div>
+                
+                <div class="control-group">
+                    <label for="noise">Noise Amount</label>
+                    <input type="range" id="noise" min="0" max="0.5" step="0.01" value="0.1">
+                </div>
+                
+                <div class="control-group">
+                    <label for="distortion">Distortion</label>
+                    <input type="range" id="distortion" min="0" max="0.2" step="0.01" value="0.05">
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button onclick="togglePulsating()">Toggle Pulsating</button>
+                <button onclick="changeColor()">Change Color</button>
+                <button onclick="changeOrigin()">Change Origin</button>
+                <button onclick="resetSettings()">Reset Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let lightRaysInstance = null;
+        let frameCount = 0;
+        let lastTime = performance.now();
+        
+        const colors = ['#A0FF8F', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7'];
+        let currentColorIndex = 0;
+        
+        const origins = ['top-center', 'top-left', 'top-right', 'left', 'right', 'bottom-center', 'bottom-left', 'bottom-right'];
+        let currentOriginIndex = 0;
+        
+        const status = document.getElementById('status');
+        const fpsDisplay = document.getElementById('fps');
+        
+        function updateStatus() {
+            const hasClass = !!window.LightRays;
+            const hasInstance = !!lightRaysInstance;
+            
+            let statusText = 'Light Rays: ';
+            if (hasInstance) {
+                statusText += '✅ Active & Rendering';
+            } else if (hasClass) {
+                statusText += '⚠️ Class Loaded, Not Initialized';
+            } else {
+                statusText += '❌ Not Found';
+            }
+            
+            status.textContent = statusText;
+            status.style.color = hasInstance ? '#A0FF8F' : '#ff6b6b';
+        }
+        
+        function updateFPS() {
+            frameCount++;
+            const now = performance.now();
+            if (now - lastTime >= 1000) {
+                const fps = Math.round((frameCount * 1000) / (now - lastTime));
+                fpsDisplay.textContent = `FPS: ${fps}`;
+                frameCount = 0;
+                lastTime = now;
+            }
+            requestAnimationFrame(updateFPS);
+        }
+        
+        function initLightRays() {
+            const container = document.getElementById('light-rays-test');
+            if (container && window.LightRays) {
+                try {
+                    lightRaysInstance = new LightRays(container, {
+                        raysOrigin: 'top-center',
+                        raysColor: '#A0FF8F',
+                        raysSpeed: 0.8,
+                        lightSpread: 1.2,
+                        rayLength: 1.8,
+                        pulsating: true,
+                        fadeDistance: 0.9,
+                        saturation: 0.9,
+                        followMouse: true,
+                        mouseInfluence: 0.15,
+                        noiseAmount: 0.1,
+                        distortion: 0.05
+                    });
+                    console.log('Light Rays Test initialized! ✨');
+                    setupControls();
+                } catch (error) {
+                    console.error('Failed to initialize Light Rays:', error);
+                }
+            }
+            updateStatus();
+        }
+        
+        function setupControls() {
+            if (!lightRaysInstance) return;
+            
+            document.getElementById('speed').addEventListener('input', (e) => {
+                lightRaysInstance.updateConfig({ raysSpeed: parseFloat(e.target.value) });
+            });
+            
+            document.getElementById('spread').addEventListener('input', (e) => {
+                lightRaysInstance.updateConfig({ lightSpread: parseFloat(e.target.value) });
+            });
+            
+            document.getElementById('length').addEventListener('input', (e) => {
+                lightRaysInstance.updateConfig({ rayLength: parseFloat(e.target.value) });
+            });
+            
+            document.getElementById('mouse').addEventListener('input', (e) => {
+                lightRaysInstance.updateConfig({ mouseInfluence: parseFloat(e.target.value) });
+            });
+            
+            document.getElementById('noise').addEventListener('input', (e) => {
+                lightRaysInstance.updateConfig({ noiseAmount: parseFloat(e.target.value) });
+            });
+            
+            document.getElementById('distortion').addEventListener('input', (e) => {
+                lightRaysInstance.updateConfig({ distortion: parseFloat(e.target.value) });
+            });
+        }
+        
+        function togglePulsating() {
+            if (lightRaysInstance) {
+                const newPulsating = !lightRaysInstance.config.pulsating;
+                lightRaysInstance.updateConfig({ pulsating: newPulsating });
+                console.log('Pulsating:', newPulsating);
+            }
+        }
+        
+        function changeColor() {
+            if (lightRaysInstance) {
+                currentColorIndex = (currentColorIndex + 1) % colors.length;
+                const newColor = colors[currentColorIndex];
+                lightRaysInstance.updateConfig({ raysColor: newColor });
+                console.log('Color changed to:', newColor);
+            }
+        }
+        
+        function changeOrigin() {
+            if (lightRaysInstance) {
+                currentOriginIndex = (currentOriginIndex + 1) % origins.length;
+                const newOrigin = origins[currentOriginIndex];
+                lightRaysInstance.updateConfig({ raysOrigin: newOrigin });
+                console.log('Origin changed to:', newOrigin);
+            }
+        }
+        
+        function resetSettings() {
+            if (lightRaysInstance) {
+                lightRaysInstance.updateConfig({
+                    raysOrigin: 'top-center',
+                    raysColor: '#A0FF8F',
+                    raysSpeed: 0.8,
+                    lightSpread: 1.2,
+                    rayLength: 1.8,
+                    pulsating: true,
+                    mouseInfluence: 0.15,
+                    noiseAmount: 0.1,
+                    distortion: 0.05
+                });
+                
+                // Reset sliders
+                document.getElementById('speed').value = 0.8;
+                document.getElementById('spread').value = 1.2;
+                document.getElementById('length').value = 1.8;
+                document.getElementById('mouse').value = 0.15;
+                document.getElementById('noise').value = 0.1;
+                document.getElementById('distortion').value = 0.05;
+                
+                currentColorIndex = 0;
+                currentOriginIndex = 0;
+                console.log('Settings reset to defaults');
+            }
+        }
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing Light Rays test...');
+            updateStatus();
+            
+            if (window.LightRays) {
+                initLightRays();
+            } else {
+                setTimeout(() => {
+                    if (window.LightRays) {
+                        initLightRays();
+                    } else {
+                        console.error('LightRays class not found after delay!');
+                        updateStatus();
+                    }
+                }, 500);
+            }
+        });
+        
+        // Start FPS monitoring
+        updateFPS();
+        
+        // Update status every 2 seconds
+        setInterval(updateStatus, 2000);
+        
+        console.log('✨ Light Rays Test Page Ready!');
+    </script>
+</body>
+</html>
