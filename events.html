@@ -578,7 +578,279 @@
                 font-size: 1.5rem !important;
             }
         }
-    </style>
+
+        /* Past Events Card Layout - Left Image, Right Content */
+        .past-event-card {
+            display: flex !important;
+            background: linear-gradient(145deg, rgba(10, 10, 30, 0.95), rgba(5, 5, 22, 0.98)) !important;
+            border-radius: 24px !important;
+            overflow: hidden !important;
+            border: 1px solid rgba(160, 255, 143, 0.15) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+            margin-bottom: 2rem !important;
+            min-height: 300px !important;
+        }
+
+        .past-event-card:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(160, 255, 143, 0.2) !important;
+            border-color: rgba(160, 255, 143, 0.4) !important;
+        }
+
+        .past-event-image {
+            position: relative;
+            width: 40% !important;
+            height: 100% !important;
+            overflow: hidden;
+            flex-shrink: 0;
+            align-self: stretch;
+        }
+
+        .past-event-image .image-placeholder {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(135deg, rgba(160, 255, 143, 0.1) 0%, rgba(127, 230, 90, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .past-event-image .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .past-event-image .placeholder-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            opacity: 0.3;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .event-status {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .past-event-content {
+            width: 60% !important;
+            padding: 2rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+        }
+
+        .past-event-date {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            margin-bottom: 1rem !important;
+            color: #A0FF8F !important;
+            font-weight: 600 !important;
+        }
+
+        .date-day {
+            font-size: 2rem !important;
+            font-weight: 800 !important;
+            color: #A0FF8F !important;
+        }
+
+        .date-month {
+            font-size: 1rem !important;
+            color: #E5E5E5 !important;
+        }
+
+        .date-year {
+            font-size: 0.9rem !important;
+            color: #B3B3B3 !important;
+        }
+
+        .past-event-info {
+            flex: 1;
+        }
+
+        .past-event-title {
+            font-size: 1.8rem !important;
+            font-weight: 700 !important;
+            color: #FFFFFF !important;
+            margin: 0.5rem 0 1rem 0 !important;
+            line-height: 1.3 !important;
+        }
+
+        .past-event-description {
+            color: #E5E5E5 !important;
+            line-height: 1.6 !important;
+            margin-bottom: 1.5rem !important;
+            font-size: 1rem !important;
+        }
+
+        .past-event-stats {
+            display: flex !important;
+            gap: 2rem !important;
+            margin-top: auto !important;
+        }
+
+        .stat-item {
+            text-align: center !important;
+        }
+
+        .stat-number {
+            display: block !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            color: #A0FF8F !important;
+        }
+
+        .stat-label {
+            font-size: 0.8rem !important;
+            color: #B3B3B3 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        /* Upcoming Events Horizontal Layout */
+        .events-grid .event-card {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: stretch !important;
+            min-height: 250px !important;
+            padding: 0 !important;
+        }
+
+        .events-grid .event-date {
+            width: 40% !important;
+            min-width: 200px !important;
+            height: auto !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            border-top-left-radius: 32px !important;
+            border-bottom-left-radius: 32px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: linear-gradient(135deg, rgba(160, 255, 143, 0.1) 0%, rgba(127, 230, 90, 0.05) 100%) !important;
+            color: #A0FF8F !important;
+            font-weight: 700 !important;
+            box-shadow: none !important;
+            position: relative !important;
+            flex-shrink: 0 !important;
+            overflow: hidden !important;
+        }
+
+
+
+        .events-grid .event-content {
+            width: 60% !important;
+            padding: 2rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            background: linear-gradient(145deg, rgba(10, 10, 30, 0.95), rgba(5, 5, 22, 0.98)) !important;
+            border-top-right-radius: 32px !important;
+            border-bottom-right-radius: 32px !important;
+        }
+
+        .events-grid .date-day {
+            display: none !important;
+        }
+
+        .events-grid .date-month {
+            display: none !important;
+        }
+
+        .events-grid .event-category {
+            margin-bottom: 1rem !important;
+        }
+
+        .events-grid .event-title {
+            margin-bottom: 1rem !important;
+        }
+
+        .events-grid .event-meta {
+            margin-bottom: 1.5rem !important;
+            padding: 0 !important;
+            border: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0.6rem !important;
+        }
+
+        .events-grid .event-time,
+        .events-grid .event-location,
+        .events-grid .event-prize {
+            font-size: 0.9rem !important;
+            color: #B3B3B3 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-weight: 500 !important;
+        }
+
+        .events-grid .event-footer {
+            margin-top: auto !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 2rem !important;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .past-event-card {
+                flex-direction: column !important;
+                min-height: auto !important;
+            }
+
+            .past-event-image {
+                width: 100% !important;
+                min-height: 200px !important;
+            }
+
+            .past-event-content {
+                width: 100% !important;
+                padding: 1.5rem !important;
+            }
+
+            .past-event-stats {
+                gap: 1rem !important;
+            }
+
+            .events-grid .event-card {
+                flex-direction: column !important;
+                min-height: auto !important;
+            }
+
+            .events-grid .event-date {
+                width: 100% !important;
+                min-width: auto !important;
+                border-radius: 32px 32px 0 0 !important;
+                padding: 1.5rem !important;
+                min-height: 150px !important;
+            }
+
+            .events-grid .event-content {
+                width: 100% !important;
+                border-radius: 0 0 32px 32px !important;
+                padding: 1.5rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -727,13 +999,14 @@
                         <span class="date-month">SEP</span>
                     </div>
                     <div class="event-content">
-                        <span class="event-category workshop">Workshop</span>
-                        <h3 class="event-title">React.js Fundamentals</h3>
-                        <p class="event-description">Learn the basics of React.js, component lifecycle, and state
-                            management in this hands-on workshop.</p>
+                        <span class="event-category workshop">Ideathon</span>
+                        <h3 class="event-title">Vedathon</h3>
+                        <!-- <p class="event-description">Learn the basics of React.js, component lifecycle, and state
+                            management in this hands-on workshop.</p> -->
                         <div class="event-meta">
-                            <span class="event-time">⏰ 6:00 PM - 8:00 PM</span>
-                            <span class="event-location">📍 Lab 101</span>
+                            <span class="event-time">⏰ Timings: Revealing Soon</span>
+                            <span class="event-location">📍 Location: Revealing Soon</span>
+                            <span class="event-prize">🏆 Prize: Revealing Soon</span>
                         </div>
                         <div class="event-footer">
                             <span class="event-price">Free</span>
@@ -743,7 +1016,7 @@
                 </div>
 
                 <!-- Tech Talk Event -->
-                <div class="event-card" data-category="talk">
+                <!-- <div class="event-card" data-category="talk">
                     <div class="event-date">
                         <span class="date-day">30</span>
                         <span class="date-month">SEP</span>
@@ -762,10 +1035,10 @@
                             <button class="btn btn-small btn-primary">Register</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Networking Event -->
-                <div class="event-card" data-category="networking">
+                <!-- <div class="event-card" data-category="networking">
                     <div class="event-date">
                         <span class="date-day">05</span>
                         <span class="date-month">OCT</span>
@@ -784,10 +1057,10 @@
                             <button class="btn btn-small btn-primary">Register</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Workshop Event -->
-                <div class="event-card" data-category="workshop">
+                <!-- <div class="event-card" data-category="workshop">
                     <div class="event-date">
                         <span class="date-day">10</span>
                         <span class="date-month">OCT</span>
@@ -806,10 +1079,10 @@
                             <button class="btn btn-small btn-primary">Register</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Hackathon Event -->
-                <div class="event-card" data-category="hackathon">
+                <!-- <div class="event-card" data-category="hackathon">
                     <div class="event-date">
                         <span class="date-day">22</span>
                         <span class="date-month">OCT</span>
@@ -828,10 +1101,10 @@
                             <button class="btn btn-small btn-primary">Register</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Tech Talk Event -->
-                <div class="event-card" data-category="talk">
+                <!-- <div class="event-card" data-category="talk">
                     <div class="event-date">
                         <span class="date-day">28</span>
                         <span class="date-month">OCT</span>
@@ -850,7 +1123,7 @@
                             <button class="btn btn-small btn-primary">Register</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -860,7 +1133,7 @@
 
     <!-- Call to Action -->
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="cta-content">
             <h2 class="cta-title">Want to Organize an Event?</h2>
             <p class="cta-subtitle">
@@ -876,8 +1149,8 @@
                 </a>
             </div>
         </div>
-    </div>
-    </section> -->
+    </div> -->
+    </section> 
 
     <!-- Past Events Section -->
     <section class="past-events-section" id="past-events">
@@ -904,20 +1177,21 @@
                 <div class="past-event-card scroll-animate" data-animation="fade-up">
                     <div class="past-event-image">
                         <div class="image-placeholder">
+                            <img src="photos/cv.jpeg" alt="">
                             <span class="placeholder-icon">🏆</span>
                         </div>
                         <div class="event-status completed">Completed</div>
                     </div>
                     <div class="past-event-content">
                         <div class="past-event-date">
-                            <span class="date-day">15</span>
-                            <span class="date-month">AUG</span>
-                            <span class="date-year">2024</span>
+                            <span class="date-day">21</span>
+                            <span class="date-month">September</span>
+                            <span class="date-year">2025</span>
                         </div>
                         <div class="past-event-info">
                             <span class="event-category hackathon">Hackathon</span>
-                            <h3 class="past-event-title">Summer Hackathon 2024</h3>
-                            <p class="past-event-description">48-hour coding marathon with 150+ participants building
+                            <h3 class="past-event-title">Code Veda</h3>
+                            <p class="past-event-description">8-hour coding marathon with 150+ participants building
                                 innovative solutions for real-world problems.</p>
                             <div class="past-event-stats">
                                 <div class="stat-item">
@@ -928,21 +1202,21 @@
                                     <span class="stat-number">25</span>
                                     <span class="stat-label">Projects</span>
                                 </div>
-                                <div class="stat-item">
+                                <!-- <div class="stat-item">
                                     <span class="stat-number">₹50K</span>
                                     <span class="stat-label">Prize Pool</span>
-                                </div>
+                                </div> -->
                             </div>
-                            <div class="past-event-highlights">
+                            <!-- <div class="past-event-highlights">
                                 <span class="highlight">🥇 Winner: AI-powered Healthcare App</span>
                                 <span class="highlight">🎯 Focus: Healthcare & Education</span>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
 
                 <!-- Past Event 2 -->
-                <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="100">
+                <!-- <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="100">
                     <div class="past-event-image">
                         <div class="image-placeholder">
                             <span class="placeholder-icon">🎤</span>
@@ -980,10 +1254,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Past Event 3 -->
-                <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="200">
+                <!-- <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="200">
                     <div class="past-event-image">
                         <div class="image-placeholder">
                             <span class="placeholder-icon">🛠️</span>
@@ -1021,10 +1295,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Past Event 4 -->
-                <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="300">
+                <!-- <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="300">
                     <div class="past-event-image">
                         <div class="image-placeholder">
                             <span class="placeholder-icon">🤝</span>
@@ -1062,16 +1336,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- View More Past Events Button -->
-            <div class="past-events-cta">
+            <!-- <div class="past-events-cta">
                 <a href="#" class="btn btn-outline btn-large">
                     View All Past Events
                     <span class="btn-arrow">→</span>
                 </a>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -1119,8 +1393,8 @@
                     <a href="events.html">Events</a>
                     <a href="gallery.html">Gallery</a>
                     <a href="contact.html">Contact</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
+                    <!-- <a href="#">Privacy</a>
+                    <a href="#">Terms</a> -->
                 </div>
             </div>
             <div class="footer-bottom">

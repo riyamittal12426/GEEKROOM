@@ -83,8 +83,6 @@
       padding: 0;
     }
 
-    .nav-item {}
-
     .nav-link {
       color: #e6efe6;
       text-decoration: none;
@@ -366,10 +364,7 @@
       overflow: hidden;
     }
 
-    p {
-      /* color: #020202; */
 
-    }
 
     .inner {
       --w: 150px;
@@ -416,6 +411,16 @@
           rgba(var(--color-card), 0.2) 0%,
           rgba(var(--color-card), 0.6) 80%,
           rgba(var(--color-card), 0.9) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -485,47 +490,51 @@
     <div class="inner" style="--quantity: 10;">
       <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
         <p>Web Developement</p>
-        <div class="img"></div>
+        <div class="img"><img src="photos/web.jpg" alt=""></div>
 
       </div>
       <div class="card" style="--index: 1;--color-card: 142, 252, 204;">
         <p>Emerging Technologies</p>
-        <div class="img"></div>
+        <div class="img"><img src="photos/em.jpeg" alt=""></div>
 
       </div>
       <div class="card" style="--index: 2;--color-card: 142, 252, 157;">
         <p>AI/ML</p>
-        <div class="img"></div>
+        <div class="img"><img src="photos/ai-ml.jpg" alt="">
+        </div>
 
       </div>
       <div class="card" style="--index: 3;--color-card: 215, 252, 142;">
         <p>PR</p>
-        <div class="img"></div>
+        <div class="img"><img src="photos/pr.jpg" alt=""></div>
 
       </div>
       <div class="card" style="--index: 4;--color-card: 252, 252, 142;">
         <p>Marketing</p>
-        <div class="img"></div>
+        <div class="img"><img src="photos/marketing.jpeg" alt=""></div>
 
       </div>
       <div class="card" style="--index: 5;--color-card: 252, 208, 142;">
-        <div class="img"></div>
+        <p>Web Dev</p>
+        <div class="img"><img src="photos/web.jpg" alt=""></div>
       </div>
       <div class="card" style="--index: 6;--color-card: 252, 142, 142;">
         <p>Media Design</p>
-        <div class="img"></div>
+        <div class="img"><img src="photos/media.jpeg" alt=""></div>
 
       </div>
       <div class="card" style="--index: 7;--color-card: 252, 142, 239;">
-        <p>Video Editing</p>
-        <div class="img"><img src="video-editing.jpg" alt="Video Editing"></div>
+        <p>Emerging tech</p>
+        <div class="img"><img src="photos/em.jpeg" alt="Video Editing"></div>
       </div>
       <div class="card" style="--index: 8;--color-card: 204, 142, 252;">
-        <div class="img"></div>
+        <p>Event</p>
+        <div class="img"><img src="photos/event.jpeg" alt=""></div>
 
       </div>
       <div class="card" style="--index: 9;--color-card: 142, 202, 252;">
-        <div class="img"></div>
+        <p>DSA</p>
+        <div class="img"><img src="photos/dsa.jpeg" alt=""></div>
       </div>
     </div>
   </div>
