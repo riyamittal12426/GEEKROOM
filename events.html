@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - Room Adgips</title>
-    <meta name="description" content="Join upcoming events, workshops, hackathons, and tech talks organized by Room Adgips.">
-    
+    <meta name="description"
+        content="Join upcoming events, workshops, hackathons, and tech talks organized by Room Adgips.">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css?v=4">
     <link rel="stylesheet" href="css/universal-smooth-scroll.css">
-    
+
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+
     <!-- Splash Cursor Effect -->
     <script src="js/splash-cursor.js"></script>
     <script src="js/splash-init.js"></script>
-    
+
     <!-- Enhanced Card Styling with Hover Effects -->
     <style>
         /* Step Ladder Animation for Page Title */
@@ -52,30 +54,73 @@
         }
 
         /* Staggered delay for each letter */
-        .page-title .letter:nth-child(1) { animation-delay: 0.1s; }
-        .page-title .letter:nth-child(2) { animation-delay: 0.15s; }
-        .page-title .letter:nth-child(3) { animation-delay: 0.2s; }
-        .page-title .letter:nth-child(4) { animation-delay: 0.25s; }
-        .page-title .letter:nth-child(5) { animation-delay: 0.3s; }
-        .page-title .letter:nth-child(6) { animation-delay: 0.35s; }
-        .page-title .letter:nth-child(7) { animation-delay: 0.4s; }
-        .page-title .letter:nth-child(8) { animation-delay: 0.45s; }
-        .page-title .letter:nth-child(10) { animation-delay: 0.6s; }
-        .page-title .letter:nth-child(11) { animation-delay: 0.65s; }
-        .page-title .letter:nth-child(12) { animation-delay: 0.7s; }
-        .page-title .letter:nth-child(13) { animation-delay: 0.75s; }
-        .page-title .letter:nth-child(14) { animation-delay: 0.8s; }
-        .page-title .letter:nth-child(15) { animation-delay: 0.85s; }
+        .page-title .letter:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .page-title .letter:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .page-title .letter:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .page-title .letter:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .page-title .letter:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .page-title .letter:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .page-title .letter:nth-child(7) {
+            animation-delay: 0.4s;
+        }
+
+        .page-title .letter:nth-child(8) {
+            animation-delay: 0.45s;
+        }
+
+        .page-title .letter:nth-child(10) {
+            animation-delay: 0.6s;
+        }
+
+        .page-title .letter:nth-child(11) {
+            animation-delay: 0.65s;
+        }
+
+        .page-title .letter:nth-child(12) {
+            animation-delay: 0.7s;
+        }
+
+        .page-title .letter:nth-child(13) {
+            animation-delay: 0.75s;
+        }
+
+        .page-title .letter:nth-child(14) {
+            animation-delay: 0.8s;
+        }
+
+        .page-title .letter:nth-child(15) {
+            animation-delay: 0.85s;
+        }
 
         @keyframes letterAppear {
             0% {
                 opacity: 0;
                 transform: translateY(50px) rotateX(90deg) scale(0.8);
             }
+
             50% {
                 opacity: 0.7;
                 transform: translateY(-10px) rotateX(0deg) scale(1.1);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0) rotateX(0deg) scale(1);
@@ -100,6 +145,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -121,7 +167,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(160, 255, 143, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(127, 230, 90, 0.03) 0%, transparent 50%);
             opacity: 0;
@@ -129,8 +175,13 @@
         }
 
         @keyframes backgroundGlow {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         /* Hover effect for letters */
@@ -145,12 +196,12 @@
             .page-title {
                 font-size: 2.5rem !important;
             }
-            
+
             .page-subtitle {
                 font-size: 1rem !important;
                 padding: 0 1rem !important;
             }
-            
+
             .page-header {
                 padding: 120px 0 80px 0 !important;
             }
@@ -187,7 +238,7 @@
             transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
             z-index: 1 !important;
         }
-        
+
         .events-grid .event-card::before {
             content: "";
             position: absolute;
@@ -195,28 +246,28 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(160, 255, 143, 0.08) 0%, 
-                rgba(127, 230, 90, 0.04) 50%, 
-                rgba(160, 255, 143, 0.08) 100%);
+            background: linear-gradient(135deg,
+                    rgba(160, 255, 143, 0.08) 0%,
+                    rgba(127, 230, 90, 0.04) 50%,
+                    rgba(160, 255, 143, 0.08) 100%);
             border-radius: var(--border-radius);
             opacity: 0;
             /* transition: opacity 0.6s cubic-bezier(0.4, 0.0, 0.2, 1); */
             z-index: -1;
         }
-        
+
         /* Removed rotating border animation */
-        
+
         /* Hover Effects */
         .events-grid:hover .event-card:not(:hover) {
             filter: blur(4px) brightness(0.6) !important;
             transform: scale(0.96) !important;
             opacity: 0.7 !important;
         }
-        
+
         .events-grid .event-card:hover {
             transform: translateY(-20px) scale(1.02) !important;
-            box-shadow: 
+            box-shadow:
                 0 25px 50px rgba(0, 0, 0, 0.3),
                 0 10px 30px rgba(160, 255, 143, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
@@ -238,7 +289,7 @@
             border-radius: 22px !important;
             margin-bottom: 1.5rem !important;
             font-weight: 700 !important;
-            box-shadow: 
+            box-shadow:
                 0 12px 28px rgba(160, 255, 143, 0.4),
                 0 0 0 1px rgba(160, 255, 143, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
@@ -249,7 +300,7 @@
 
         .events-grid .event-card:hover .event-date {
             transform: scale(1.1) rotate(3deg) !important;
-            box-shadow: 
+            box-shadow:
                 0 18px 40px rgba(160, 255, 143, 0.6),
                 0 0 0 1px rgba(160, 255, 143, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
@@ -404,27 +455,27 @@
                 gap: 2rem !important;
                 padding: 0 1rem !important;
             }
-            
+
             .events-grid .event-card {
                 padding: 2rem !important;
                 min-height: 350px !important;
                 border-radius: 24px !important;
                 --border-radius: 24px;
             }
-            
+
             .events-grid .event-date {
                 width: 75px !important;
                 height: 75px !important;
             }
-            
+
             .events-grid .date-day {
                 font-size: 1.8rem !important;
             }
-            
+
             .events-grid .event-title {
                 font-size: 1.4rem !important;
             }
-            
+
             .events-grid:hover .event-card:not(:hover) {
                 filter: none !important;
                 transform: none !important;
@@ -453,25 +504,53 @@
         }
 
         /* Staggered delay for each letter in "All Events" */
-        .all-events-title .letter:nth-child(1) { animation-delay: 0.1s; }
-        .all-events-title .letter:nth-child(2) { animation-delay: 0.2s; }
-        .all-events-title .letter:nth-child(3) { animation-delay: 0.3s; }
-        .all-events-title .letter:nth-child(5) { animation-delay: 0.5s; }
-        .all-events-title .letter:nth-child(6) { animation-delay: 0.6s; }
-        .all-events-title .letter:nth-child(7) { animation-delay: 0.7s; }
-        .all-events-title .letter:nth-child(8) { animation-delay: 0.8s; }
-        .all-events-title .letter:nth-child(9) { animation-delay: 0.9s; }
-        .all-events-title .letter:nth-child(10) { animation-delay: 1.0s; }
+        .all-events-title .letter:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .all-events-title .letter:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .all-events-title .letter:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .all-events-title .letter:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .all-events-title .letter:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .all-events-title .letter:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .all-events-title .letter:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .all-events-title .letter:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .all-events-title .letter:nth-child(10) {
+            animation-delay: 1.0s;
+        }
 
         @keyframes allEventsLetterAppear {
             0% {
                 opacity: 0;
                 transform: translateY(30px) rotateX(90deg) scale(0.8);
             }
+
             50% {
                 opacity: 0.7;
                 transform: translateY(-5px) rotateX(0deg) scale(1.05);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0) rotateX(0deg) scale(1);
@@ -502,6 +581,7 @@
     </style>
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -516,9 +596,7 @@
                 <li class="nav-item">
                     <a href="about.html" class="nav-link">About</a>
                 </li>
-                <li class="nav-item">
-                    <a href="features.html" class="nav-link">Features</a>
-                </li>
+
                 <li class="nav-item">
                     <a href="events.html" class="nav-link active">Events</a>
                 </li>
@@ -561,7 +639,7 @@
         </div>
     </section> -->
 
-  
+
 
     <!-- Featured Event -->
     <!-- <section class="featured-event">
@@ -616,10 +694,19 @@
     <!-- Events Grid -->
     <section class="events-grid-section">
         <div class="container">
-            <h2 class="section-title all-events-title">
-                <span class="letter">A</span>
-                <span class="letter">l</span>
-                <span class="letter">l</span>
+            <div class="events-navigation">
+                <a href="#upcoming-events" class="nav-link active">Upcoming Events</a>
+                <a href="#past-events" class="nav-link">Past Events</a>
+            </div>
+            <h2 class="section-title all-events-title" id="upcoming-events">
+                <span class="letter">U</span>
+                <span class="letter">p</span>
+                <span class="letter">c</span>
+                <span class="letter">o</span>
+                <span class="letter">m</span>
+                <span class="letter">i</span>
+                <span class="letter">n</span>
+                <span class="letter">g</span>
                 <span class="space">&nbsp;</span>
                 <span class="letter">E</span>
                 <span class="letter">v</span>
@@ -629,7 +716,7 @@
                 <span class="letter">s</span>
             </h2>
             <div class="events-grid">
-                
+
                 <!-- Workshop Event -->
                 <div class="event-card" data-category="workshop">
                     <div class="event-date">
@@ -639,7 +726,8 @@
                     <div class="event-content">
                         <span class="event-category workshop">Workshop</span>
                         <h3 class="event-title">React.js Fundamentals</h3>
-                        <p class="event-description">Learn the basics of React.js, component lifecycle, and state management in this hands-on workshop.</p>
+                        <p class="event-description">Learn the basics of React.js, component lifecycle, and state
+                            management in this hands-on workshop.</p>
                         <div class="event-meta">
                             <span class="event-time">⏰ 6:00 PM - 8:00 PM</span>
                             <span class="event-location">📍 Lab 101</span>
@@ -660,7 +748,8 @@
                     <div class="event-content">
                         <span class="event-category talk">Tech Talk</span>
                         <h3 class="event-title">AI in Modern Applications</h3>
-                        <p class="event-description">Explore how AI is transforming modern applications with industry expert John Smith from Google.</p>
+                        <p class="event-description">Explore how AI is transforming modern applications with industry
+                            expert John Smith from Google.</p>
                         <div class="event-meta">
                             <span class="event-time">⏰ 7:00 PM - 8:30 PM</span>
                             <span class="event-location">📍 Auditorium</span>
@@ -681,7 +770,8 @@
                     <div class="event-content">
                         <span class="event-category networking">Networking</span>
                         <h3 class="event-title">Tech Professionals Meetup</h3>
-                        <p class="event-description">Network with industry professionals, share experiences, and build meaningful connections.</p>
+                        <p class="event-description">Network with industry professionals, share experiences, and build
+                            meaningful connections.</p>
                         <div class="event-meta">
                             <span class="event-time">⏰ 5:00 PM - 7:00 PM</span>
                             <span class="event-location">📍 Community Hall</span>
@@ -702,7 +792,8 @@
                     <div class="event-content">
                         <span class="event-category workshop">Workshop</span>
                         <h3 class="event-title">Python for Data Science</h3>
-                        <p class="event-description">Master Python libraries for data analysis including Pandas, NumPy, and Matplotlib.</p>
+                        <p class="event-description">Master Python libraries for data analysis including Pandas, NumPy,
+                            and Matplotlib.</p>
                         <div class="event-meta">
                             <span class="event-time">⏰ 10:00 AM - 4:00 PM</span>
                             <span class="event-location">📍 Lab 201</span>
@@ -723,7 +814,8 @@
                     <div class="event-content">
                         <span class="event-category hackathon">Hackathon</span>
                         <h3 class="event-title">Green Tech Challenge</h3>
-                        <p class="event-description">24-hour hackathon focused on building solutions for environmental challenges and sustainability.</p>
+                        <p class="event-description">24-hour hackathon focused on building solutions for environmental
+                            challenges and sustainability.</p>
                         <div class="event-meta">
                             <span class="event-time">⏰ 48 Hours</span>
                             <span class="event-location">📍 Innovation Center</span>
@@ -744,7 +836,8 @@
                     <div class="event-content">
                         <span class="event-category talk">Tech Talk</span>
                         <h3 class="event-title">Blockchain and Web3</h3>
-                        <p class="event-description">Understanding the future of web with blockchain technology and decentralized applications.</p>
+                        <p class="event-description">Understanding the future of web with blockchain technology and
+                            decentralized applications.</p>
                         <div class="event-meta">
                             <span class="event-time">⏰ 6:30 PM - 8:00 PM</span>
                             <span class="event-location">📍 Seminar Hall</span>
@@ -760,6 +853,226 @@
         </div>
     </section>
 
+
+
+    <!-- Call to Action -->
+
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Want to Organize an Event?</h2>
+            <p class="cta-subtitle">
+                Have an idea for a workshop, talk, or event? We'd love to help you make it happen!
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary btn-large">
+                    Propose an Event
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a href="about.html" class="btn btn-outline btn-large">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+    </section> -->
+
+    <!-- Past Events Section -->
+    <section class="past-events-section" id="past-events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title past-events-title">
+                    <span class="letter">P</span>
+                    <span class="letter">a</span>
+                    <span class="letter">s</span>
+                    <span class="letter">t</span>
+                    <span class="space">&nbsp;</span>
+                    <span class="letter">E</span>
+                    <span class="letter">v</span>
+                    <span class="letter">e</span>
+                    <span class="letter">n</span>
+                    <span class="letter">t</span>
+                    <span class="letter">s</span>
+                </h2>
+                <p class="section-subtitle">Relive the amazing moments from our previous events</p>
+            </div>
+
+            <div class="past-events-grid">
+                <!-- Past Event 1 -->
+                <div class="past-event-card scroll-animate" data-animation="fade-up">
+                    <div class="past-event-image">
+                        <div class="image-placeholder">
+                            <span class="placeholder-icon">🏆</span>
+                        </div>
+                        <div class="event-status completed">Completed</div>
+                    </div>
+                    <div class="past-event-content">
+                        <div class="past-event-date">
+                            <span class="date-day">15</span>
+                            <span class="date-month">AUG</span>
+                            <span class="date-year">2024</span>
+                        </div>
+                        <div class="past-event-info">
+                            <span class="event-category hackathon">Hackathon</span>
+                            <h3 class="past-event-title">Summer Hackathon 2024</h3>
+                            <p class="past-event-description">48-hour coding marathon with 150+ participants building
+                                innovative solutions for real-world problems.</p>
+                            <div class="past-event-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">150+</span>
+                                    <span class="stat-label">Participants</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">25</span>
+                                    <span class="stat-label">Projects</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">₹50K</span>
+                                    <span class="stat-label">Prize Pool</span>
+                                </div>
+                            </div>
+                            <div class="past-event-highlights">
+                                <span class="highlight">🥇 Winner: AI-powered Healthcare App</span>
+                                <span class="highlight">🎯 Focus: Healthcare & Education</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Event 2 -->
+                <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="100">
+                    <div class="past-event-image">
+                        <div class="image-placeholder">
+                            <span class="placeholder-icon">🎤</span>
+                        </div>
+                        <div class="event-status completed">Completed</div>
+                    </div>
+                    <div class="past-event-content">
+                        <div class="past-event-date">
+                            <span class="date-day">22</span>
+                            <span class="date-month">JUL</span>
+                            <span class="date-year">2024</span>
+                        </div>
+                        <div class="past-event-info">
+                            <span class="event-category talk">Tech Talk</span>
+                            <h3 class="past-event-title">Future of Web Development</h3>
+                            <p class="past-event-description">Industry expert Sarah Johnson from Microsoft shared
+                                insights on modern web technologies and future trends.</p>
+                            <div class="past-event-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">200+</span>
+                                    <span class="stat-label">Attendees</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">2.5hrs</span>
+                                    <span class="stat-label">Duration</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">4.8/5</span>
+                                    <span class="stat-label">Rating</span>
+                                </div>
+                            </div>
+                            <div class="past-event-highlights">
+                                <span class="highlight">💡 Topics: React 18, Next.js, Web3</span>
+                                <span class="highlight">🎁 Free swag for all attendees</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Event 3 -->
+                <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="200">
+                    <div class="past-event-image">
+                        <div class="image-placeholder">
+                            <span class="placeholder-icon">🛠️</span>
+                        </div>
+                        <div class="event-status completed">Completed</div>
+                    </div>
+                    <div class="past-event-content">
+                        <div class="past-event-date">
+                            <span class="date-day">10</span>
+                            <span class="date-month">JUN</span>
+                            <span class="date-year">2024</span>
+                        </div>
+                        <div class="past-event-info">
+                            <span class="event-category workshop">Workshop</span>
+                            <h3 class="past-event-title">Full-Stack Development Bootcamp</h3>
+                            <p class="past-event-description">Intensive 3-day workshop covering MERN stack development
+                                from basics to deployment.</p>
+                            <div class="past-event-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">80</span>
+                                    <span class="stat-label">Participants</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">3</span>
+                                    <span class="stat-label">Days</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">5</span>
+                                    <span class="stat-label">Projects</span>
+                                </div>
+                            </div>
+                            <div class="past-event-highlights">
+                                <span class="highlight">🚀 Built complete web applications</span>
+                                <span class="highlight">📜 Certificates for all participants</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Event 4 -->
+                <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="300">
+                    <div class="past-event-image">
+                        <div class="image-placeholder">
+                            <span class="placeholder-icon">🤝</span>
+                        </div>
+                        <div class="event-status completed">Completed</div>
+                    </div>
+                    <div class="past-event-content">
+                        <div class="past-event-date">
+                            <span class="date-day">28</span>
+                            <span class="date-month">MAY</span>
+                            <span class="date-year">2024</span>
+                        </div>
+                        <div class="past-event-info">
+                            <span class="event-category networking">Networking</span>
+                            <h3 class="past-event-title">Alumni Tech Meetup</h3>
+                            <p class="past-event-description">Connecting current students with successful alumni working
+                                in top tech companies worldwide.</p>
+                            <div class="past-event-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">120</span>
+                                    <span class="stat-label">Attendees</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">15</span>
+                                    <span class="stat-label">Alumni</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">50+</span>
+                                    <span class="stat-label">Connections</span>
+                                </div>
+                            </div>
+                            <div class="past-event-highlights">
+                                <span class="highlight">💼 Job opportunities shared</span>
+                                <span class="highlight">🌟 Mentorship programs launched</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Past Events Button -->
+            <div class="past-events-cta">
+                <a href="#" class="btn btn-outline btn-large">
+                    View All Past Events
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Event Guidelines -->
     <section class="event-guidelines">
         <div class="container">
@@ -768,12 +1081,14 @@
                 <div class="guideline-card">
                     <div class="guideline-icon">📝</div>
                     <h3>Registration Required</h3>
-                    <p>Most events require prior registration. Register early to secure your spot as seats are limited.</p>
+                    <p>Most events require prior registration. Register early to secure your spot as seats are limited.
+                    </p>
                 </div>
                 <div class="guideline-card">
                     <div class="guideline-icon">🎫</div>
                     <h3>Bring Your ID</h3>
-                    <p>Valid student or professional ID required for entry. Screenshots of registration confirmations accepted.</p>
+                    <p>Valid student or professional ID required for entry. Screenshots of registration confirmations
+                        accepted.</p>
                 </div>
                 <div class="guideline-card">
                     <div class="guideline-icon">💻</div>
@@ -789,27 +1104,6 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Want to Organize an Event?</h2>
-                <p class="cta-subtitle">
-                    Have an idea for a workshop, talk, or event? We'd love to help you make it happen!
-                </p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary btn-large">
-                        Propose an Event
-                        <span class="btn-arrow">→</span>
-                    </a>
-                    <a href="about.html" class="btn btn-outline btn-large">
-                        Learn More
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -819,7 +1113,6 @@
                 </div>
                 <div class="footer-links">
                     <a href="about.html">About</a>
-                    <a href="features.html">Features</a>
                     <a href="events.html">Events</a>
                     <a href="contact.html">Contact</a>
                     <a href="#">Privacy</a>
@@ -836,12 +1129,12 @@
     <script src="js/main.js"></script>
     <script>
         // Event filtering functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const eventCards = document.querySelectorAll('.event-card');
 
             filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     // Remove active class from all buttons
                     filterBtns.forEach(b => b.classList.remove('active'));
                     // Add active class to clicked button
@@ -901,8 +1194,9 @@
             }
         });
     </script>
-    
+
     <!-- Universal Smooth Scrolling -->
     <script src="js/universal-smooth-scroll.js"></script>
 </body>
+
 </html>
