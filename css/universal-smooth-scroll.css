@@ -1,0 +1,240 @@
+/* Universal Smooth Scrolling Styles */
+
+/* Enable smooth scrolling for the entire site */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced smooth scrolling with custom easing */
+* {
+    scroll-behavior: smooth;
+}
+
+/* Universal scroll to top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--secondary-color, #A0FF8F), #8FFF7A);
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(160, 255, 143, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top svg {
+    width: 20px;
+    height: 20px;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(160, 255, 143, 0.4);
+}
+
+.scroll-to-top:active {
+    transform: translateY(-1px) scale(1.05);
+}
+
+/* Universal navbar scroll effects */
+.navbar {
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth focus transitions */
+a:focus,
+button:focus {
+    outline: 2px solid var(--secondary-color, #A0FF8F);
+    outline-offset: 2px;
+    transition: outline 0.2s ease;
+}
+
+/* Smooth hover transitions for all interactive elements */
+a, button, .btn, .nav-link {
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Prevent layout shift during smooth scrolling */
+body {
+    overflow-x: hidden;
+}
+
+/* Smooth scrolling for mobile devices */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scroll-to-top svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html,
+    * {
+        scroll-behavior: auto !important;
+    }
+    
+    .scroll-to-top {
+        transition: opacity 0.2s ease, visibility 0.2s ease !important;
+        transform: none !important;
+    }
+    
+    .navbar {
+        transition: background 0.2s ease !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .scroll-to-top {
+        background: #000000;
+        color: #FFFFFF;
+        border: 2px solid #FFFFFF;
+    }
+}
+
+/* Print styles - hide scroll elements */
+@media print {
+    .scroll-to-top,
+    .navbar {
+        display: none !important;
+    }
+}
+
+/* Loading state - prevent scrolling until page is ready */
+body.loading {
+    overflow: hidden;
+}
+
+/* Smooth transitions for page changes */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.page-transition.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced link hover effects */
+a:not(.btn):not(.nav-link) {
+    position: relative;
+}
+
+a:not(.btn):not(.nav-link):hover {
+    color: var(--secondary-color, #A0FF8F);
+}
+
+/* Smooth scrollbar styling (webkit browsers) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--secondary-color, #A0FF8F), #8FFF7A);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #8FFF7A, var(--secondary-color, #A0FF8F));
+}
+
+/* Firefox scrollbar styling */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color, #A0FF8F) rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth selection highlighting */
+::selection {
+    background: rgba(160, 255, 143, 0.3);
+    color: inherit;
+}
+
+::-moz-selection {
+    background: rgba(160, 255, 143, 0.3);
+    color: inherit;
+}
+
+/* Performance optimizations */
+.scroll-to-top,
+.navbar {
+    will-change: transform, opacity;
+}
+
+/* Ensure smooth scrolling works with position: sticky elements */
+.sticky-element {
+    position: sticky;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Smooth page load animation */
+@keyframes pageLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: pageLoad 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--secondary-color, #A0FF8F);
+    color: #000000;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1001;
+    transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+    top: 6px;
+}
