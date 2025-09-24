@@ -158,10 +158,19 @@
 }
 
 .lightbox-content {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 70%;
+    max-height: 80%;
     position: relative;
     animation: lightboxContentScale 0.3s ease-out;
+}
+
+.lightbox-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    max-width: 800px;
+    max-height: 600px;
 }
 
 @keyframes lightboxContentScale {
@@ -238,6 +247,17 @@
     .gallery-item:hover {
         transform: translate3d(0, -4px, 0);
     }
+
+    /* Responsive lightbox for tablets */
+    .lightbox-content {
+        max-width: 85%;
+        max-height: 75%;
+    }
+
+    .lightbox-image {
+        max-width: 600px;
+        max-height: 450px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -260,6 +280,17 @@
     .gallery-item:hover .gallery-image {
         transform: none;
         filter: brightness(0.8) contrast(1.1);
+    }
+
+    /* Mobile lightbox optimization */
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 70%;
+    }
+
+    .lightbox-image {
+        max-width: 350px;
+        max-height: 280px;
     }
 }
 
