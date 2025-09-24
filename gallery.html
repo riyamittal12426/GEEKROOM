@@ -18,6 +18,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/universal-smooth-scroll.css">
+    <link rel="stylesheet" href="css/instant-load.css">
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -366,13 +367,11 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/instant-gallery.js"></script>
     <script src="js/universal-smooth-scroll.js"></script>
-    <script src="js/scroll-animations.js"></script>
-    <script src="js/enhanced-animations.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Masonry Gallery JavaScript -->
+    <!-- Gallery JavaScript -->
     <script>
         // ========================================
         // GALLERY CONFIGURATION - ADD YOUR IMAGES HERE
@@ -479,93 +478,12 @@
             }
         ];
 
-        // Simple Gallery Class
-        class SimpleGallery {
-            constructor(container, items) {
-                this.container = container;
-                this.items = items;
-                this.init();
-            }
-
-            init() {
-                this.render();
-            }
-
-            render() {
-                this.container.innerHTML = '';
-
-                this.items.forEach((item, index) => {
-                    const element = this.createItemElement(item);
-                    this.container.appendChild(element);
-
-                    // Animate item in
-                    gsap.fromTo(element,
-                        { opacity: 0, y: 30 },
-                        { opacity: 1, y: 0, duration: 0.6, delay: index * 0.1, ease: 'power2.out' }
-                    );
-                });
-            }
-
-            createItemElement(item) {
-                const element = document.createElement('div');
-                element.className = 'gallery-item';
-                element.dataset.id = item.id;
-
-                element.innerHTML = `
-                    <img class="gallery-image" src="${item.image}" alt="${item.title}" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-info">
-                            <h3>${item.title}</h3>
-                            <p>${item.description}</p>
-                        </div>
-                    </div>
-                `;
-
-                return element;
-            }
-
-
-        }
-
+        // Gallery will be initialized by instant-gallery.js
+        // This ensures instant loading with preloaded images
+        
         document.addEventListener('DOMContentLoaded', function () {
-            const container = document.getElementById('gallery-grid');
-            const gallery = new SimpleGallery(container, galleryData);
-
-            // Lightbox functionality
-            const lightbox = document.getElementById('lightbox');
-            const lightboxClose = document.getElementById('lightbox-close');
-            const lightboxImage = document.getElementById('lightbox-image');
-
-            container.addEventListener('click', function (e) {
-                const item = e.target.closest('.gallery-item');
-                if (item) {
-                    const img = item.querySelector('.gallery-image');
-                    lightboxImage.src = img.src;
-                    lightboxImage.alt = img.alt;
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-
-            // Close lightbox
-            lightboxClose.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', function (e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    closeLightbox();
-                }
-            });
+            // Gallery is automatically initialized by instant-gallery.js
+            console.log('Gallery page loaded - using instant gallery implementation');
         });
     </script>
 </body>
