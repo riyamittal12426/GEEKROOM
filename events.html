@@ -736,6 +736,45 @@
             letter-spacing: 0.5px !important;
         }
 
+        .event-actions {
+            margin-top: 1.5rem !important;
+            display: flex !important;
+            justify-content: flex-start !important;
+        }
+
+        .btn-small {
+            padding: 10px 20px !important;
+            font-size: 0.9rem !important;
+            border-radius: 12px !important;
+            background: linear-gradient(135deg, #A0FF8F 0%, #7FE65A 100%) !important;
+            color: #000000 !important;
+            border: none !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            box-shadow: 0 4px 15px rgba(160, 255, 143, 0.3) !important;
+        }
+
+        .btn-small:hover {
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 8px 25px rgba(160, 255, 143, 0.4) !important;
+        }
+
+        .btn-arrow {
+            transition: transform 0.3s ease !important;
+            font-size: 1rem !important;
+        }
+
+        .btn-small:hover .btn-arrow {
+            transform: translateX(3px) !important;
+        }
+
         /* Upcoming Events Horizontal Layout */
         .events-grid .event-card {
             display: flex !important;
@@ -871,7 +910,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">Geek Room <span class="accent">Adgips</span></a>
+                <a href="index.html"><span class="accent">Geek Room</span> <span class="white-text">Adgips</span></a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
@@ -883,9 +922,6 @@
 
                 <li class="nav-item">
                     <a href="events.html" class="nav-link active">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="vedathon.html" class="nav-link">Vedathon</a>
                 </li>
                 <li class="nav-item">
                     <a href="team.html" class="nav-link">Team</a>
@@ -1190,48 +1226,52 @@
 
             <div class="past-events-grid">
                 <!-- Past Event 1 -->
-                <a href="gallery.html#gallery-grid" class="past-event-card-link">
-                    <div class="past-event-card scroll-animate" data-animation="fade-up">
-                        <div class="past-event-image">
-                            <div class="image-placeholder">
-                                <img src="photos/cv.jpeg" alt="">
-                                <span class="placeholder-icon">🏆</span>
-                            </div>
-                            <div class="event-status completed">Completed</div>
+                <div class="past-event-card scroll-animate" data-animation="fade-up">
+                    <div class="past-event-image">
+                        <div class="image-placeholder">
+                            <img src="photos/cv.jpeg" alt="">
+                            <span class="placeholder-icon">🏆</span>
                         </div>
-                        <div class="past-event-content">
-                            <div class="past-event-date">
-                                <span class="date-day">21</span>
-                                <span class="date-month">September</span>
-                                <span class="date-year">2025</span>
-                            </div>
-                            <div class="past-event-info">
-                                <span class="event-category hackathon">Hackathon</span>
-                                <h3 class="past-event-title">Code Veda</h3>
-                                <p class="past-event-description">8-hour coding marathon with 150+ participants building
-                                    innovative solutions for real-world problems.</p>
-                                <div class="past-event-stats">
-                                    <div class="stat-item">
-                                        <span class="stat-number">150+</span>
-                                        <span class="stat-label">Participants</span>
-                                    </div>
-                                    <div class="stat-item">
-                                        <span class="stat-number">25</span>
-                                        <span class="stat-label">Projects</span>
-                                    </div>
-                                    <!-- <div class="stat-item">
-                                        <span class="stat-number">₹50K</span>
-                                        <span class="stat-label">Prize Pool</span>
-                                    </div> -->
+                        <div class="event-status completed">Completed</div>
+                    </div>
+                    <div class="past-event-content">
+                        <div class="past-event-date">
+                            <span class="date-day">21</span>
+                            <span class="date-month">September</span>
+                            <span class="date-year">2025</span>
+                        </div>
+                        <div class="past-event-info">
+                            <span class="event-category hackathon">Hackathon</span>
+                            <h3 class="past-event-title">Code Veda</h3>
+                            <p class="past-event-description">8-hour coding marathon with 150+ participants building
+                                innovative solutions for real-world problems.</p>
+                            <div class="past-event-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">150+</span>
+                                    <span class="stat-label">Participants</span>
                                 </div>
-                                <!-- <div class="past-event-highlights">
-                                    <span class="highlight">🥇 Winner: AI-powered Healthcare App</span>
-                                    <span class="highlight">🎯 Focus: Healthcare & Education</span>
+                                <div class="stat-item">
+                                    <span class="stat-number">25</span>
+                                    <span class="stat-label">Projects</span>
+                                </div>
+                                <!-- <div class="stat-item">
+                                    <span class="stat-number">₹50K</span>
+                                    <span class="stat-label">Prize Pool</span>
                                 </div> -->
+                            </div>
+                            <!-- <div class="past-event-highlights">
+                                <span class="highlight">🥇 Winner: AI-powered Healthcare App</span>
+                                <span class="highlight">🎯 Focus: Healthcare & Education</span>
+                            </div> -->
+                            <div class="event-actions">
+                                <a href="code-veda.html" class="btn btn-small btn-primary">
+                                    View Details
+                                    <span class="btn-arrow">→</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
 
                 <!-- Past Event 2 -->
                 <!-- <div class="past-event-card scroll-animate" data-animation="fade-up" data-delay="100">
@@ -1404,7 +1444,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <a href="index.html">Geek Room <span class="accent">Adgips</span></a>
+                    <a href="index.html"><span class="accent">Geek Room</span> <span class="white-text">Adgips</span></a>
                 </div>
                 <div class="footer-links">
                     <a href="about.html">About</a>

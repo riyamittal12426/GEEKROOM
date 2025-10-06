@@ -91,13 +91,9 @@
         }
 
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            max-width: 1300px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 40px;
-            align-items: start;
         }
 
         .contact-form-section {
@@ -146,25 +142,16 @@
 
         @media (max-width: 1024px) {
             .contact-grid {
-                gap: 60px;
                 padding: 0 30px;
-            }
-            .contact-form-section {
-                padding: 40px;
             }
         }
 
         @media (max-width: 768px) {
             .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
                 padding: 0 20px;
             }
             .page-header {
                 padding: 140px 0 80px;
-            }
-            .contact-form-section {
-                padding: 30px;
             }
         }
     </style>
@@ -181,7 +168,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
+                <a href="index.html"><span class="accent">Geek Room</span> <span class="white-text">Adgips</span></a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
@@ -193,9 +180,6 @@
 
                 <li class="nav-item">
                     <a href="events.html" class="nav-link">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="vedathon.html" class="nav-link">Vedathon</a>
                 </li>
                 <li class="nav-item">
                     <a href="team.html" class="nav-link">Team</a>
@@ -226,71 +210,7 @@
     <!-- Contact Content -->
     <section class="contact-content">
         <div class="container">
-            <div class="contact-grid">
-                <!-- Contact Form -->
-                <div class="contact-form-section" data-animate="slide-right">
-                    <h2 class="section-title">Send us a Message</h2>
-                    <form class="modern-contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <div class="input-wrapper">
-                                    <input type="text" id="name" name="name" required>
-                                    <label for="name">Full Name</label>
-                                    <div class="input-highlight"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-wrapper">
-                                    <input type="email" id="email" name="email" required>
-                                    <label for="email">Email Address</label>
-                                    <div class="input-highlight"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <div class="input-wrapper">
-                                    <input type="tel" id="phone" name="phone">
-                                    <label for="phone">Phone Number</label>
-                                    <div class="input-highlight"></div>
-                                </div>
-                            </div>
-                            <!-- <div class="form-group">
-                                <div class="input-wrapper">
-                                    <select id="interest" name="interest">
-                                        <option value="" disabled selected></option>
-                                        <option value="web-development">Web Development</option>
-                                        <option value="mobile-development">Mobile Development</option>
-                                        <option value="data-science">Data Science & AI</option>
-                                        <option value="cybersecurity">Cybersecurity</option>
-                                        <option value="ui-ux">UI/UX Design</option>
-                                        <option value="blockchain">Blockchain</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <label for="interest">Area of Interest</label>
-                                    <div class="input-highlight"></div>
-                                </div>
-                            </div> -->
-                        </div>
-                        <div class="form-group full-width">
-                            <div class="input-wrapper">
-                                <textarea id="message" name="message" rows="5" required></textarea>
-                                <label for="message">Your Message</label>
-                                <div class="input-highlight"></div>
-                            </div>
-                        </div>
-                        <button type="submit" class="modern-btn modern-btn-primary">
-                            <span class="btn-text">Send Message</span>
-                            <span class="btn-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                            <div class="btn-ripple"></div>
-                        </button>
-                    </form>
-                </div>
-
+            <div style="max-width: 800px; margin: 0 auto;">
                 <!-- Contact Info -->
                 <div class="contact-info-section" data-animate="slide-left">
                     <h2 class="section-title">Join Our Community</h2>
@@ -481,7 +401,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <a href="index.html">GeekRoom <span class="accent">Adgips</span></a>
+                    <a href="index.html"><span class="accent">Geek Room</span> <span class="white-text">Adgips</span></a>
                 </div>
                 <div class="footer-links">
                     <a href="about.html">About</a>

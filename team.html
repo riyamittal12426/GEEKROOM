@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +20,150 @@
     
     <!-- SplitText Animation Styles -->
     <style>
+        /* New Card Design Styles */
+        .card {
+            width: 230px;
+            border-radius: 20px;
+            background: #1b233d;
+            padding: 5px;
+            overflow: hidden;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 0 auto;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card .top-section {
+            height: 150px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
+            position: relative;
+        }
+
+        .card .top-section .border {
+            border-bottom-right-radius: 10px;
+            height: 30px;
+            width: 130px;
+            background: white;
+            background: #1b233d;
+            position: relative;
+            transform: skew(-40deg);
+            box-shadow: -10px -10px 0 0 #1b233d;
+        }
+
+        .card .top-section .border::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            top: 0;
+            right: -15px;
+            background: rgba(255, 255, 255, 0);
+            border-top-left-radius: 10px;
+            box-shadow: -5px -5px 0 2px #1b233d;
+        }
+
+        .card .top-section::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background: rgba(255, 255, 255, 0);
+            height: 15px;
+            width: 15px;
+            border-top-left-radius: 15px;
+            box-shadow: -5px -5px 0 2px #1b233d;
+        }
+
+        .card .top-section .icons {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card .top-section .icons .logo {
+            height: 100%;
+            aspect-ratio: 1;
+            padding: 7px 0 7px 15px;
+        }
+
+        .card .top-section .icons .logo .svg {
+            height: 100%;
+        }
+
+        .card .top-section .icons .social-media {
+            height: 100%;
+            padding: 8px 15px;
+            display: flex;
+            gap: 7px;
+        }
+
+        .card .top-section .icons .social-media .svg {
+            height: 100%;
+            fill: #1b233d;
+        }
+
+        .card .top-section .icons .social-media .svg:hover {
+            fill: white;
+        }
+
+        .card .bottom-section {
+            margin-top: 15px;
+            padding: 10px 5px;
+        }
+
+        .card .bottom-section .title {
+            display: block;
+            font-size: 17px;
+            font-weight: bolder;
+            color: white;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .card .bottom-section .row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .card .bottom-section .row .item {
+            flex: 30%;
+            text-align: center;
+            padding: 5px;
+            color: rgba(170, 222, 243, 0.721);
+        }
+
+        .card .bottom-section .row .item .big-text {
+            font-size: 12px;
+            display: block;
+        }
+
+        .card .bottom-section .row .item .regular-text {
+            font-size: 9px;
+        }
+
+        .card .bottom-section .row .item:nth-child(2) {
+            border-left: 1px solid rgba(255, 255, 255, 0.126);
+            border-right: 1px solid rgba(255, 255, 255, 0.126);
+        }
+
+        /* Update team grid to accommodate new card size */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
         /* Force team heading to be visible */
         #team-hero-title {
             opacity: 1 !important;
@@ -108,7 +252,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html"><span class="accent">Geek Room Adgips</span></a>
+                <a href="index.html"><span class="accent">Geek Room</span> <span class="white-text">Adgips</span></a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
@@ -119,9 +263,6 @@
                 </li>
                 <li class="nav-item">
                     <a href="events.html" class="nav-link">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="vedathon.html" class="nav-link">Vedathon</a>
                 </li>
                 <li class="nav-item">
                     <a href="team.html" class="nav-link active">Team</a>
@@ -191,139 +332,307 @@
             
             <div class="team-grid">
                 <!-- Core Member 1 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-green-200 via-green-300 to-green-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-green-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">AM</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Ananya Malhotra</span>
-                        <p class="text-gray-600">Full Stack Developer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">React</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Node.js</span>
-                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">AWS</span>
+                <div class="card">
+                    <div class="top-section">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-green-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-green-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">ANANYA MALHOTRA</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">React</span>
+                                <span class="regular-text">Framework</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Node.js</span>
+                                <span class="regular-text">Backend</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">AWS</span>
+                                <span class="regular-text">Cloud</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Core Member 2 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-blue-200 via-blue-300 to-blue-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-blue-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">RS</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Rohit Sharma</span>
-                        <p class="text-gray-600">AI Engineer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Python</span>
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">TensorFlow</span>
-                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">PyTorch</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(59, 130, 246) 0%, rgb(147, 197, 253) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-blue-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-blue-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">ROHIT SHARMA</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">Python</span>
+                                <span class="regular-text">Language</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">AI/ML</span>
+                                <span class="regular-text">Expertise</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">PyTorch</span>
+                                <span class="regular-text">Framework</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Core Member 3 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-purple-200 via-purple-300 to-purple-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-purple-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">AK</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Arjun Kumar</span>
-                        <p class="text-gray-600">Mobile Developer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Flutter</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">React Native</span>
-                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Kotlin</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(147, 51, 234) 0%, rgb(196, 181, 253) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-purple-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-purple-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">ARJUN KUMAR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">Flutter</span>
+                                <span class="regular-text">Mobile</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">React</span>
+                                <span class="regular-text">Native</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Kotlin</span>
+                                <span class="regular-text">Android</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Core Member 4 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-orange-200 via-orange-300 to-orange-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-orange-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">SN</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Sneha Nair</span>
-                        <p class="text-gray-600">DevOps Engineer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Docker</span>
-                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Kubernetes</span>
-                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs">Jenkins</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(249, 115, 22) 0%, rgb(254, 215, 170) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-orange-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-orange-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">SNEHA NAIR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">Docker</span>
+                                <span class="regular-text">Container</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">K8s</span>
+                                <span class="regular-text">Orchestration</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">CI/CD</span>
+                                <span class="regular-text">Pipeline</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Core Member 5 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-pink-200 via-pink-300 to-pink-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-pink-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">PG</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Priya Gupta</span>
-                        <p class="text-gray-600">UX Designer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Figma</span>
-                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Adobe XD</span>
-                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs">Prototyping</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(236, 72, 153) 0%, rgb(251, 207, 232) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-pink-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-pink-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">PRIYA GUPTA</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">Figma</span>
+                                <span class="regular-text">Design</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">UX</span>
+                                <span class="regular-text">Research</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Proto</span>
+                                <span class="regular-text">Typing</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Core Member 6 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-teal-200 via-teal-300 to-teal-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-teal-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">KM</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Kiran Mehta</span>
-                        <p class="text-gray-600">Visual Designer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Illustrator</span>
-                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Photoshop</span>
-                            <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-xs">Branding</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(20, 184, 166) 0%, rgb(153, 246, 228) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-teal-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-teal-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">KIRAN MEHTA</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">AI</span>
+                                <span class="regular-text">Illustrator</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Brand</span>
+                                <span class="regular-text">Identity</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">PS</span>
+                                <span class="regular-text">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Core Member 7 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-indigo-200 via-indigo-300 to-indigo-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-indigo-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">TA</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Tanvi Agarwal</span>
-                        <p class="text-gray-600">Motion Designer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">After Effects</span>
-                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Lottie</span>
-                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">Cinema 4D</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(99, 102, 241) 0%, rgb(196, 181, 253) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-indigo-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-indigo-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">TANVI AGARWAL</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">AE</span>
+                                <span class="regular-text">After Effects</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Lottie</span>
+                                <span class="regular-text">Animation</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">C4D</span>
+                                <span class="regular-text">Cinema 4D</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Core Member 8 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-red-200 via-red-300 to-red-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-red-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">VK</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Vikram Kumar</span>
-                        <p class="text-gray-600">Backend Developer</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Django</span>
-                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">PostgreSQL</span>
-                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Redis</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(239, 68, 68) 0%, rgb(252, 165, 165) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-red-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-red-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">VIKRAM KUMAR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">Django</span>
+                                <span class="regular-text">Backend</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">SQL</span>
+                                <span class="regular-text">Database</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Redis</span>
+                                <span class="regular-text">Cache</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -339,41 +648,275 @@
             
             <div class="team-grid">
                 <!-- Lead 1 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-yellow-200 via-yellow-300 to-yellow-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-yellow-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">AC</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Ayush Choudhary</span>
-                        <p class="text-gray-600">Founder & President</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Leadership</span>
-                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Strategy</span>
-                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Vision</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(234, 179, 8) 0%, rgb(254, 240, 138) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-yellow-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-yellow-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">AYUSH CHOUDHARY</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">Leader</span>
+                                <span class="regular-text">President</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Vision</span>
+                                <span class="regular-text">Strategy</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Founder</span>
+                                <span class="regular-text">Geek Room</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Lead 2 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-emerald-200 via-emerald-300 to-emerald-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-                    <div class="w-28 h-28 bg-emerald-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
-                        <span class="text-white font-bold text-2xl">NK</span>
-                    </div>
-                    <div class="z-10 group-hover:-translate-y-10 transition-all duration-500">
-                        <span class="text-2xl font-semibold text-gray-800">Nisha Kapoor</span>
-                        <p class="text-gray-600">Technical Lead</p>
-                        <div class="mt-2 flex flex-wrap justify-center gap-1">
-                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">System Design</span>
-                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">Mentoring</span>
-                            <span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded-full text-xs">Architecture</span>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(16, 185, 129) 0%, rgb(167, 243, 208) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <a class="bg-emerald-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-emerald-500" href="#">Connect</a>
+                    <div class="bottom-section">
+                        <span class="title">NISHA KAPOOR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">System</span>
+                                <span class="regular-text">Design</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Tech</span>
+                                <span class="regular-text">Lead</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Mentor</span>
+                                <span class="regular-text">Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(16, 185, 129) 0%, rgb(167, 243, 208) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-section">
+                        <span class="title">NISHA KAPOOR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">System</span>
+                                <span class="regular-text">Design</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Tech</span>
+                                <span class="regular-text">Lead</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Mentor</span>
+                                <span class="regular-text">Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- this is card -->
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(16, 185, 129) 0%, rgb(167, 243, 208) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-section">
+                        <span class="title">NISHA KAPOOR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">System</span>
+                                <span class="regular-text">Design</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Tech</span>
+                                <span class="regular-text">Lead</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Mentor</span>
+                                <span class="regular-text">Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- this is card -->
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(16, 185, 129) 0%, rgb(167, 243, 208) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-section">
+                        <span class="title">NISHA KAPOOR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">System</span>
+                                <span class="regular-text">Design</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Tech</span>
+                                <span class="regular-text">Lead</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Mentor</span>
+                                <span class="regular-text">Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- this is card -->
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(16, 185, 129) 0%, rgb(167, 243, 208) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-section">
+                        <span class="title">NISHA KAPOOR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">System</span>
+                                <span class="regular-text">Design</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Tech</span>
+                                <span class="regular-text">Lead</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Mentor</span>
+                                <span class="regular-text">Guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- this is card -->
+                <div class="card">
+                    <div class="top-section" style="background: linear-gradient(45deg, rgb(16, 185, 129) 0%, rgb(167, 243, 208) 100%);">
+                        <div class="border"></div>
+                        <div class="icons">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 94 94" class="svg">
+                                    <path fill="white" d="M38.0481 4.82927C38.0481 2.16214 40.018 0 42.4481 0H51.2391C53.6692 0 55.6391 2.16214 55.6391 4.82927V40.1401C55.6391 48.8912 53.2343 55.6657 48.4248 60.4636C43.6153 65.2277 36.7304 67.6098 27.7701 67.6098C18.8099 67.6098 11.925 65.2953 7.11548 60.6663C2.37183 56.0036 3.8147e-06 49.2967 3.8147e-06 40.5456V4.82927C3.8147e-06 2.16213 1.96995 0 4.4 0H13.2405C15.6705 0 17.6405 2.16214 17.6405 4.82927V39.1265C17.6405 43.7892 18.4805 47.2018 20.1605 49.3642C21.8735 51.5267 24.4759 52.6079 27.9678 52.6079C31.4596 52.6079 34.0127 51.5436 35.6268 49.4149C37.241 47.2863 38.0481 43.8399 38.0481 39.0758V4.82927Z"></path>
+                                    <path fill="white" d="M86.9 61.8682C86.9 64.5353 84.9301 66.6975 82.5 66.6975H73.6595C71.2295 66.6975 69.2595 64.5353 69.2595 61.8682V4.82927C69.2595 2.16214 71.2295 0 73.6595 0H82.5C84.9301 0 86.9 2.16214 86.9 4.82927V61.8682Z"></path>
+                                    <path fill="white" d="M2.86102e-06 83.2195C2.86102e-06 80.5524 1.96995 78.3902 4.4 78.3902H83.6C86.0301 78.3902 88 80.5524 88 83.2195V89.1707C88 91.8379 86.0301 94 83.6 94H4.4C1.96995 94 0 91.8379 0 89.1707L2.86102e-06 83.2195Z"></path>
+                                </svg>
+                            </div>
+                            <div class="social-media">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-section">
+                        <span class="title">NISHA KAPOOR</span>
+                        <div class="row row1">
+                            <div class="item">
+                                <span class="big-text">System</span>
+                                <span class="regular-text">Design</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Tech</span>
+                                <span class="regular-text">Lead</span>
+                            </div>
+                            <div class="item">
+                                <span class="big-text">Mentor</span>
+                                <span class="regular-text">Guide</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Lead 3 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-cyan-200 via-cyan-300 to-cyan-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                <!-- <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-cyan-200 via-cyan-300 to-cyan-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
                     <div class="w-28 h-28 bg-cyan-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
                         <span class="text-white font-bold text-2xl">RV</span>
                     </div>
@@ -387,10 +930,10 @@
                         </div>
                     </div>
                     <a class="bg-cyan-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-cyan-500" href="#">Connect</a>
-                </div>
+                </div> -->
 
                 <!-- Lead 4 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-rose-200 via-rose-300 to-rose-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                <!-- <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-rose-200 via-rose-300 to-rose-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
                     <div class="w-28 h-28 bg-rose-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
                         <span class="text-white font-bold text-2xl">MS</span>
                     </div>
@@ -404,10 +947,10 @@
                         </div>
                     </div>
                     <a class="bg-rose-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-rose-500" href="#">Connect</a>
-                </div>
-
+                </div> -->
+                
                 <!-- Co-lead 1 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-violet-200 via-violet-300 to-violet-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                <!-- <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-violet-200 via-violet-300 to-violet-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
                     <div class="w-28 h-28 bg-violet-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
                         <span class="text-white font-bold text-2xl">AJ</span>
                     </div>
@@ -421,10 +964,10 @@
                         </div>
                     </div>
                     <a class="bg-violet-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-violet-500" href="#">Connect</a>
-                </div>
+                </div> -->
 
                 <!-- Co-lead 2 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-lime-200 via-lime-300 to-lime-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                <!-- <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-lime-200 via-lime-300 to-lime-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
                     <div class="w-28 h-28 bg-lime-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
                         <span class="text-white font-bold text-2xl">SP</span>
                     </div>
@@ -438,10 +981,10 @@
                         </div>
                     </div>
                     <a class="bg-lime-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-lime-500" href="#">Connect</a>
-                </div>
+                </div> -->
 
                 <!-- Co-lead 3 -->
-                <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-slate-200 via-slate-300 to-slate-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+                <!-- <div class="group before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl before:bg-gradient-to-bl from-slate-200 via-slate-300 to-slate-600 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
                     <div class="w-28 h-28 bg-slate-600 mt-8 rounded-full border-4 border-slate-50 z-10 group-hover:scale-150 group-hover:-translate-x-24 group-hover:-translate-y-20 transition-all duration-500 flex items-center justify-center">
                         <span class="text-white font-bold text-2xl">DK</span>
                     </div>
@@ -455,7 +998,7 @@
                         </div>
                     </div>
                     <a class="bg-slate-600 px-4 py-1 text-slate-50 rounded-md z-10 hover:scale-125 transition-all duration-500 hover:bg-slate-500" href="#">Connect</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -512,7 +1055,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <a href="index.html">Geek Room <span class="accent">Adgips</span></a>
+                    <a href="index.html"><span class="accent">Geek Room</span> <span class="white-text">Adgips</span></a>
                 </div>
                 <div class="footer-links">
                     <a href="about.html">About</a>
@@ -758,7 +1301,7 @@
                         targetSection.classList.add('active');
                         
                         // Animate cards in the new section
-                        const cards = targetSection.querySelectorAll('.group');
+                        const cards = targetSection.querySelectorAll('.card');
                         gsap.fromTo(cards,
                             { opacity: 0, y: 30, scale: 0.95 },
                             { 
@@ -775,7 +1318,7 @@
             });
 
             // Animate member cards on scroll
-            const memberCards = document.querySelectorAll('.group');
+            const memberCards = document.querySelectorAll('.card');
             
             memberCards.forEach((card, index) => {
                 gsap.fromTo(card,
@@ -824,3 +1367,4 @@
     <script src="js/universal-smooth-scroll.js"></script>
 </body>
 </html>
+
