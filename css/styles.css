@@ -759,6 +759,10 @@ section {
     color: var(--secondary-color);
 }
 
+.white-text {
+    color: white;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
