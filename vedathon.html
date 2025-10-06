@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedathon - Geek Room Adgips</title>
+    <meta name="description"
+        content="Join Vedathon, an innovative ideathon organized by Geek Room Adgips. Showcase your creativity and problem-solving skills.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css?v=4">
+    <link rel="stylesheet" href="css/universal-smooth-scroll.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Splash Cursor Effect -->
+    <script src="js/splash-cursor.js"></script>
+    <script src="js/splash-init.js"></script>
+
+    <!-- Vedathon Specific Styles -->
+    <style>
+        /* Banner Section */
+        .vedathon-banner {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin-top: 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+        }
+
+        .banner-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 350%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            opacity: 0;
+            animation: bannerFadeIn 1.5s ease-out 0.3s forwards;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.05) 0%,
+                rgba(0, 0, 0, 0.1) 50%,
+                rgba(0, 0, 0, 0.2) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* Ensure banner doesn't get too tall on large screens */
+        @media (min-width: 1200px) {
+            .vedathon-banner {
+                max-height: 500px;
+            }
+        }
+
+        /* Hero Section */
+        .vedathon-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                radial-gradient(ellipse at top, rgba(160, 255, 143, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(127, 230, 90, 0.06) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 1) 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .vedathon-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(160,255,143,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: rgba(74, 144, 226, 0.25);
+            color: #5A9BFF;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(74, 144, 226, 0.4);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .vedathon-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #A0FF8F 0%, #7FE65A 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(160, 255, 143, 0.3);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .vedathon-subtitle {
+            font-size: 1.3rem;
+            color: #E5E5E5;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: linear-gradient(145deg, rgba(15, 15, 35, 0.95), rgba(8, 8, 25, 0.98));
+            border: 2px solid rgba(160, 255, 143, 0.2);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            min-width: 180px;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(160, 255, 143, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(160, 255, 143, 0.5);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(160, 255, 143, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #A0FF8F;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(160, 255, 143, 0.4);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #E5E5E5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .btn-hero {
+            padding: 18px 36px;
+            font-size: 1.1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #A0FF8F 0%, #7FE65A 100%);
+            color: #000000;
+            box-shadow: 0 8px 25px rgba(160, 255, 143, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(160, 255, 143, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #A0FF8F;
+            border: 2px solid #A0FF8F;
+        }
+
+        .btn-outline:hover {
+            background: #A0FF8F;
+            color: #000000;
+            transform: translateY(-3px);
+        }
+
+        /* Event Details Section */
+        .event-details {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(10, 10, 30, 0.95), rgba(5, 5, 22, 0.98));
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .detail-card {
+            background: linear-gradient(145deg, rgba(15, 15, 35, 0.95), rgba(8, 8, 25, 0.98));
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(160, 255, 143, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(160, 255, 143, 0.2);
+            border-color: rgba(160, 255, 143, 0.4);
+        }
+
+        .detail-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .detail-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .detail-content {
+            color: #E5E5E5;
+            line-height: 1.6;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #A0FF8F, #7FE65A);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #A0FF8F;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(160, 255, 143, 0.6);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: linear-gradient(145deg, rgba(15, 15, 35, 0.95), rgba(8, 8, 25, 0.98));
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(160, 255, 143, 0.15);
+        }
+
+        .timeline-time {
+            font-size: 0.9rem;
+            color: #A0FF8F;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: #E5E5E5;
+            font-size: 0.95rem;
+        }
+
+        /* Registration Section */
+        .registration-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(10, 10, 30, 0.95), rgba(5, 5, 22, 0.98));
+            text-align: center;
+        }
+
+        .registration-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(15, 15, 35, 0.95), rgba(8, 8, 25, 0.98));
+            border-radius: 32px;
+            padding: 3rem;
+            border: 1px solid rgba(160, 255, 143, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .registration-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #A0FF8F;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(160, 255, 143, 0.4);
+        }
+
+        .price-note {
+            color: #B3B3B3;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .registration-features {
+            text-align: center;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: #E5E5E5;
+            text-align: center;
+            width: 100%;
+        }
+
+        .feature-icon {
+            color: #A0FF8F;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bannerFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Tablet Responsiveness */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .vedathon-banner {
+                height: 350px;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .vedathon-banner {
+                height: 250px;
+                margin-top: 0;
+            }
+
+            .banner-img {
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .vedathon-hero {
+                min-height: 50vh;
+                padding: 60px 0;
+            }
+
+            .vedathon-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+
+            .hero-stats {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+                margin: 2rem 0;
+            }
+
+            .stat-item {
+                min-width: 140px;
+                padding: 1.5rem 1rem;
+                flex: 1;
+                max-width: 160px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn-hero {
+                width: 200px;
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 4rem !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 20px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Geek Room <span class="accent">Adgips</span></a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="vedathon.html" class="nav-link active">Vedathon</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-hamburger" id="nav-hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner Section -->
+    <section class="vedathon-banner">
+        <div class="banner-image">
+            <img src="photos/vd.jpg" alt="Vedathon - Innovation is Knocking" class="banner-img">
+            <div class="banner-overlay"></div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="vedathon-hero">
+        <div class="hero-content">
+            <p class="vedathon-subtitle">
+                Unleash your creativity and innovation in our premier ideathon. Transform your ideas into impactful solutions for real-world challenges and compete in this November MNC event.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">1 November</span>
+                    <span class="stat-label">2025</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Free</span>
+                    <span class="stat-label">Entry</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">OPS Tree Global Noida</span>
+                    <span class="stat-label">Venue</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">TBA</span>
+                    <span class="stat-label">Prize Pool</span>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#registration" class="btn-hero btn-primary">Register Now</a>
+                <a href="#details" class="btn-hero btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section class="event-details" id="details">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Event Details</h2>
+                <p class="section-subtitle">Everything you need to know about Vedathon</p>
+            </div>
+
+            <div class="details-grid">
+                <!-- <div class="detail-card">
+                    <span class="detail-icon">💡</span>
+                    <h3 class="detail-title">What is Vedathon?</h3>
+                    <p class="detail-content">
+                        Vedathon is an innovative ideathon where participants brainstorm, conceptualize, and present creative solutions to real-world problems. It's all about ideas, innovation, and impact.
+                    </p>
+                </div> -->
+
+                <div class="detail-card">
+                    <span class="detail-icon">📅</span>
+                    <h3 class="detail-title">When & Where</h3>
+                    <p class="detail-content">
+                        <strong>Date:</strong> November 1, 2025<br>
+                        <strong>Time:</strong> Revealing Soon<br>
+                        <strong>Venue:</strong> OPS Tree Global Noida<br>
+                        <strong>Duration:</strong> Full Day Event
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <span class="detail-icon">👥</span>
+                    <h3 class="detail-title">Who Can Participate</h3>
+                    <p class="detail-content">
+                        Open to all students and innovators. No prior experience required. Individual participants and teams (2-4 members) are welcome.
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <span class="detail-icon">🏆</span>
+                    <h3 class="detail-title">Prizes & Recognition</h3>
+                    <p class="detail-content">
+                        Exciting prizes for top ideas, certificates for all participants, mentorship opportunities, and potential funding for outstanding concepts.
+                    </p>
+                </div>
+
+                <!-- <div class="detail-card">
+                    <span class="detail-icon">🎯</span>
+                    <h3 class="detail-title">Focus Areas</h3>
+                    <p class="detail-content">
+                        TBA 
+                </div> -->
+
+                <!-- <div class="detail-card">
+                    <span class="detail-icon">🚀</span>
+                    <h3 class="detail-title">What You'll Gain</h3>
+                    <p class="detail-content">
+                        Network with like-minded innovators, get feedback from industry experts, develop presentation skills, and turn your ideas into reality.
+                    </p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Event Timeline</h2>
+                <p class="section-subtitle">Follow the journey from registration to results</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">Registration Opens</div>
+                        <div class="timeline-title">Sign Up Now</div>
+                        <div class="timeline-desc">Registration is now open! Secure your spot and get ready to innovate.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">September 20</div>
+                        <div class="timeline-title">Registration Closes</div>
+                        <div class="timeline-desc">Last day to register. Make sure you don't miss out on this amazing opportunity.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">September 25 - Morning</div>
+                        <div class="timeline-title">Opening Ceremony</div>
+                        <div class="timeline-desc">Welcome address, problem statements reveal, and team formation.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">September 25 - Afternoon</div>
+                        <div class="timeline-title">Ideation Phase</div>
+                        <div class="timeline-desc">Brainstorming sessions, concept development, and mentor consultations.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">September 25 - Evening</div>
+                        <div class="timeline-title">Pitch Presentations</div>
+                        <div class="timeline-desc">Present your ideas to the judging panel and showcase your innovation.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-time">September 25 - Night</div>
+                        <div class="timeline-title">Results & Awards</div>
+                        <div class="timeline-desc">Winner announcements, prize distribution, and closing ceremony.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section" id="registration">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Registration</h2>
+                <p class="section-subtitle">Join the innovation revolution</p>
+            </div>
+
+            <div class="registration-card">
+                <div class="registration-price">FREE</div>
+                <p class="price-note">No registration fee required</p>
+
+                <div class="registration-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Full day event participation</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Meals and refreshments included</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Certificate of participation</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Networking opportunities</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Mentorship from industry experts</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Chance to win exciting prizes</span>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-hero btn-primary" onclick="alert('Registration will open soon! Stay tuned.')">
+                    Register Now
+                </a>
+                
+                <p style="margin-top: 1rem; color: #B3B3B3; font-size: 0.9rem;">
+                    Registration opens soon. Follow us for updates!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">Geek Room <span class="accent">Adgips</span></a>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Geek Room Adgips. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/universal-smooth-scroll.js"></script>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.detail-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
