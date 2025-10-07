@@ -159,6 +159,49 @@
         </div>
     </nav>
 
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+        <a href="index.html" class="bottom-nav-item active" data-page="home">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="about.html" class="bottom-nav-item" data-page="about">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <span class="nav-label">About</span>
+        </a>
+        <a href="events.html" class="bottom-nav-item" data-page="events">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span class="nav-label">Events</span>
+        </a>
+        <a href="team.html" class="bottom-nav-item" data-page="team">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span class="nav-label">Team</span>
+        </a>
+        <a href="contact.html" class="bottom-nav-item" data-page="contact">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="nav-label">Contact</span>
+        </a>
+    </nav>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background">
@@ -441,76 +484,74 @@
     <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
     
-    <!-- Universal Mobile Navigation -->
-    <script src="js/universal-mobile-nav.js"></script>
-    
-    <!-- Enhanced Mobile Navigation -->
+    <!-- Mobile Bottom Navigation Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('🏠 Homepage Mobile Navigation Loading...');
+            console.log('📱 Initializing Mobile Bottom Navigation...');
             
-            // Get elements
-            const hamburger = document.getElementById('nav-hamburger');
-            const navMenu = document.getElementById('nav-menu');
+            const bottomNav = document.getElementById('mobile-bottom-nav');
+            const navItems = document.querySelectorAll('.bottom-nav-item');
             
-            if (!hamburger || !navMenu) {
-                console.error('❌ Homepage: Hamburger or NavMenu not found!');
+            if (!bottomNav) {
+                console.error('❌ Bottom nav not found!');
                 return;
             }
             
-            console.log('✅ Homepage: Hamburger and NavMenu found');
+            console.log('✅ Bottom navigation found with', navItems.length, 'items');
             
-            // Enhanced click event with better touch support
-            hamburger.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('🍔 Homepage: Hamburger clicked!');
-                
-                // Toggle classes
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                
-                console.log('📱 Homepage: Menu active:', navMenu.classList.contains('active'));
-            });
-            
-            // Touch events for better mobile support
-            hamburger.addEventListener('touchstart', function(e) {
-                console.log('👆 Homepage: Touch start on hamburger');
-            });
-            
-            hamburger.addEventListener('touchend', function(e) {
-                e.preventDefault();
-                console.log('👆 Homepage: Touch end on hamburger');
-            });
-            
-            // Close menu when clicking on nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    console.log('🔗 Homepage: Nav link clicked, closing menu');
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
+            // Highlight current page
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            navItems.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
                 }
             });
             
-            // Debug info
-            console.log('📱 Homepage: Screen width:', window.innerWidth);
-            console.log('🍔 Homepage: Hamburger display:', window.getComputedStyle(hamburger).display);
+            // Add touch feedback
+            navItems.forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-4px) scale(0.95)';
+                });
+                
+                item.addEventListener('touchend', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                item.addEventListener('click', function(e) {
+                    console.log('� Navigating to:', this.getAttribute('href'));
+                    
+                    // Visual feedback
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
             
-            // Add better touch handling
-            hamburger.style.touchAction = 'manipulation';
-            hamburger.style.userSelect = 'none';
+            // Hide on scroll down, show on scroll up
+            let lastScrollTop = 0;
+            let scrollTimeout;
             
-            console.log('✅ Homepage: Enhanced Mobile Navigation Loaded!');
+            window.addEventListener('scroll', function() {
+                clearTimeout(scrollTimeout);
+                
+                scrollTimeout = setTimeout(() => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        // Scrolling down
+                        bottomNav.style.transform = 'translateY(100%)';
+                    } else {
+                        // Scrolling up
+                        bottomNav.style.transform = 'translateY(0)';
+                    }
+                    
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                }, 100);
+            });
+            
+            console.log('✅ Mobile Bottom Navigation Initialized!');
         });
     </script>
     
@@ -592,86 +633,451 @@
         });
     </script>
     
-    <!-- Emergency Mobile Navigation CSS -->
+    <!-- Comprehensive Mobile Responsive CSS -->
     <style>
+        /* Mobile First - Base styles for all screen sizes */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
+        /* Mobile Bottom Navigation - Hidden on desktop */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(160, 255, 143, 0.2);
+            padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+            z-index: 10000;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-bottom-nav {
+                display: none !important;
+            }
+            
+            body {
+                padding-bottom: 0 !important;
+            }
+        }
+        
         @media (max-width: 768px) {
-            /* Ensure hamburger is visible */
-            .nav-hamburger {
+            .mobile-bottom-nav {
                 display: flex !important;
-                flex-direction: column !important;
-                cursor: pointer !important;
-                padding: 10px !important;
-                z-index: 1001 !important;
-                position: relative !important;
-                background: rgba(0, 0, 0, 0.8) !important;
-                border-radius: 5px !important;
+                justify-content: space-around;
+                align-items: center;
+                gap: 4px;
+                transition: transform 0.3s ease;
+            }
+        }
+        
+        .bottom-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            min-width: 60px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: rgba(160, 255, 143, 0.2);
+            position: relative;
+        }
+        
+        .bottom-nav-item:hover,
+        .bottom-nav-item:active {
+            color: #A0FF8F;
+            background: rgba(160, 255, 143, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .bottom-nav-item.active {
+            color: #A0FF8F;
+        }
+        
+        .bottom-nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: #A0FF8F;
+            border-radius: 0 0 3px 3px;
+        }
+        
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+            stroke-width: 2;
+        }
+        
+        .nav-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Add bottom padding to body to prevent content being hidden */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+        }
+        
+        /* Tablet and below (768px) */
+        @media (max-width: 768px) {
+            /* Container padding */
+            .container {
+                padding: 0 1rem !important;
+                max-width: 100% !important;
             }
             
-            .nav-hamburger .bar {
-                width: 25px !important;
-                height: 3px !important;
-                background: #A0FF8F !important;
-                margin: 3px 0 !important;
-                transition: 0.3s !important;
-                display: block !important;
+            .nav-container {
+                padding: 1rem 1.5rem !important;
             }
             
-            /* Hide desktop menu */
+            /* Navbar Logo */
+            .nav-logo a {
+                font-size: 1.2rem !important;
+            }
+            
+            .nav-logo a img {
+                width: 35px !important;
+                height: 35px !important;
+            }
+            
+            /* Hide Hamburger Menu on mobile */
+            .nav-hamburger {
+                display: none !important;
+            }
+            
+            /* Show Mobile Bottom Navigation */
+            .mobile-bottom-nav {
+                display: flex !important;
+            }
+            
+            /* Hide desktop navigation on mobile */
             .nav-menu {
                 display: none !important;
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 100% !important;
-                height: 100vh !important;
-                background: rgba(0, 0, 0, 0.95) !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
-                z-index: 1000 !important;
             }
             
-            .nav-menu.active {
-                display: flex !important;
+            /* Hero Section */
+            .hero {
+                min-height: 100vh !important;
+                padding: 80px 0 40px !important;
             }
             
-            .nav-menu .nav-item {
+            .hero-container {
+                padding: 0 1rem !important;
+            }
+            
+            .hero-content {
+                text-align: center !important;
+                padding: 2rem 0 !important;
+            }
+            
+            /* GeekRoom Description */
+            .geekroom-description {
+                padding: 2rem 1.5rem !important;
+                margin: 2rem auto !important;
+            }
+            
+            .geekroom-description img {
+                width: 80px !important;
+                height: 80px !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .society-title {
+                font-size: 2rem !important;
                 margin: 1rem 0 !important;
             }
             
-            .nav-menu .nav-link {
-                font-size: 1.5rem !important;
-                color: #ffffff !important;
-                padding: 1rem 2rem !important;
-                border-radius: 10px !important;
-                transition: all 0.3s ease !important;
+            .society-text {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+                margin: 1rem 0 !important;
             }
             
-            .nav-menu .nav-link:hover {
-                background: rgba(160, 255, 143, 0.2) !important;
-                color: #A0FF8F !important;
+            /* Society Highlights */
+            .society-highlights {
+                flex-direction: column !important;
+                gap: 1rem !important;
+                margin-top: 1.5rem !important;
             }
             
-            /* Ensure buttons are touchable */
-            .btn, .hero-buttons a {
-                min-height: 44px !important;
-                padding: 12px 24px !important;
-                font-size: 16px !important;
-                touch-action: manipulation !important;
-                cursor: pointer !important;
+            .highlight-item {
+                flex-direction: row !important;
+                justify-content: flex-start !important;
+                gap: 0.75rem !important;
+                padding: 0.75rem !important;
             }
             
+            .highlight-icon {
+                width: 24px !important;
+                height: 24px !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .highlight-text {
+                font-size: 0.9rem !important;
+                text-align: left !important;
+            }
+            
+            /* Hero Buttons */
             .hero-buttons {
                 flex-direction: column !important;
                 gap: 1rem !important;
                 align-items: center !important;
                 width: 100% !important;
+                margin-top: 2rem !important;
+                padding: 0 1rem !important;
             }
             
             .hero-buttons .btn {
                 width: 100% !important;
-                max-width: 280px !important;
+                max-width: 320px !important;
+                min-height: 50px !important;
+                padding: 14px 24px !important;
+                font-size: 1rem !important;
                 text-align: center !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                touch-action: manipulation !important;
+                cursor: pointer !important;
+                border-radius: 12px !important;
+            }
+            
+            /* Scroll Indicator */
+            .scroll-indicator {
+                bottom: 30px !important;
+            }
+            
+            /* Features Preview */
+            .features-preview {
+                padding: 3rem 0 !important;
+            }
+            
+            .features-preview-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                padding: 0 1rem !important;
+            }
+            
+            .preview-card {
+                padding: 2rem 1.5rem !important;
+            }
+            
+            .preview-card h3 {
+                font-size: 1.25rem !important;
+            }
+            
+            .preview-card p {
+                font-size: 0.95rem !important;
+            }
+            
+            .preview-icon {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            
+            /* Event Highlight */
+            .event-highlight {
+                padding: 3rem 0 !important;
+            }
+            
+            .event-card {
+                flex-direction: column !important;
+                padding: 2rem 1.5rem !important;
+            }
+            
+            .event-info {
+                text-align: center !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .event-info h3 {
+                font-size: 1.75rem !important;
+            }
+            
+            .event-details {
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+                align-items: center !important;
+            }
+            
+            .event-actions {
+                width: 100% !important;
+                text-align: center !important;
+            }
+            
+            .event-actions .btn {
+                width: 100% !important;
+                max-width: 280px !important;
+            }
+            
+            /* Footer */
+            .footer {
+                padding: 2rem 0 !important;
+            }
+            
+            .footer-content {
+                flex-direction: column !important;
+                gap: 1.5rem !important;
+                text-align: center !important;
+            }
+            
+            .footer-links {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            
+            .footer-links a {
+                font-size: 1rem !important;
+            }
+        }
+        
+        /* Mobile phones (480px and below) */
+        @media (max-width: 480px) {
+            /* Even smaller adjustments */
+            .society-title {
+                font-size: 1.75rem !important;
+            }
+            
+            .society-text {
+                font-size: 0.95rem !important;
+            }
+            
+            .society-text br {
+                display: none !important;
+            }
+            
+            .geekroom-description {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .geekroom-description img {
+                width: 60px !important;
+                height: 60px !important;
+            }
+            
+            .highlight-text {
+                font-size: 0.85rem !important;
+            }
+            
+            .hero-buttons .btn {
+                font-size: 0.95rem !important;
+                padding: 12px 20px !important;
+            }
+            
+            .section-title {
+                font-size: 1.75rem !important;
+            }
+            
+            .section-subtitle {
+                font-size: 0.95rem !important;
+            }
+            
+            .preview-card h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            .preview-card p {
+                font-size: 0.9rem !important;
+            }
+            
+            .event-info h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            .event-info p {
+                font-size: 0.9rem !important;
+            }
+        }
+        
+        /* Extra small devices (360px and below) */
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 0.75rem !important;
+            }
+            
+            .nav-logo a {
+                font-size: 1rem !important;
+            }
+            
+            .nav-logo a img {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            
+            .society-title {
+                font-size: 1.5rem !important;
+            }
+            
+            .hero-buttons .btn {
+                font-size: 0.9rem !important;
+                padding: 10px 16px !important;
+                max-width: 100% !important;
+            }
+        }
+        
+        /* Landscape mode mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                min-height: auto !important;
+                padding: 100px 0 40px !important;
+            }
+            
+            .geekroom-description {
+                padding: 1.5rem !important;
+            }
+            
+            .society-highlights {
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+            }
+            
+            .highlight-item {
+                flex: 1 1 45% !important;
+            }
+        }
+        
+        /* Fix text selection and improve touch targets */
+        @media (max-width: 768px) {
+            a, button, .btn {
+                min-height: 44px !important;
+                min-width: 44px !important;
+            }
+            
+            /* Prevent text size adjustment on orientation change */
+            html {
+                -webkit-text-size-adjust: 100%;
+                -moz-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+            
+            /* Smooth scrolling */
+            html {
+                scroll-behavior: smooth !important;
+            }
+            
+            /* Prevent horizontal scroll */
+            body {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
             }
         }
     </style>
