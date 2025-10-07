@@ -4273,11 +4273,9 @@ body .page-subtitle {
     color: rgba(255, 255, 255, 0.95);
     background: rgba(255, 255, 255, 0.08);
     font-weight: 600;
-    border: 1px solid rgba(160, 255, 143, 0.5);
+    border: 1px solid rgba(160, 255, 143, 0.4);
     box-shadow: 
-        0 0 0 1px rgba(160, 255, 143, 0.3),
-        0 0 20px rgba(160, 255, 143, 0.4),
-        0 0 40px rgba(160, 255, 143, 0.2),
+        0 0 0 1px rgba(160, 255, 143, 0.2),
         0 4px 12px rgba(160, 255, 143, 0.15);
 }
 
@@ -4285,9 +4283,7 @@ body .page-subtitle {
     transform: translateY(-1px);
     border-color: rgba(160, 255, 143, 0.6);
     box-shadow: 
-        0 0 0 1px rgba(160, 255, 143, 0.4),
-        0 0 25px rgba(160, 255, 143, 0.5),
-        0 0 50px rgba(160, 255, 143, 0.3),
+        0 0 0 1px rgba(160, 255, 143, 0.3),
         0 6px 20px rgba(160, 255, 143, 0.2);
 }
 
@@ -4298,17 +4294,12 @@ body .page-subtitle {
 
 .mini-nav-tab.active .tab-icon {
     opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(160, 255, 143, 0.6)) 
-            drop-shadow(0 0 12px rgba(160, 255, 143, 0.4));
+    filter: drop-shadow(0 0 4px rgba(160, 255, 143, 0.4));
 }
 
 .mini-nav-tab .tab-label {
     font-size: 14px;
     letter-spacing: 0.02em;
-}
-
-.mini-nav-tab.active .tab-label {
-    text-shadow: 0 0 10px rgba(160, 255, 143, 0.3);
 }
 
 .mini-nav-tab .tab-count {
@@ -4325,9 +4316,8 @@ body .page-subtitle {
 }
 
 .mini-nav-tab.active .tab-count {
-    background: rgba(160, 255, 143, 0.3);
+    background: rgba(160, 255, 143, 0.25);
     color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 8px rgba(160, 255, 143, 0.4);
 }
 
 /* Team Grid for New Cards */
