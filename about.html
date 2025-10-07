@@ -97,7 +97,41 @@
 
     .nav-hamburger {
       display: none;
-      /* Show on mobile with media queries */
+      flex-direction: column;
+      cursor: pointer;
+      padding: 12px;
+      background: rgba(160, 255, 143, 0.2);
+      border: 2px solid #A0FF8F;
+      border-radius: 6px;
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+      align-items: center;
+      touch-action: manipulation;
+      user-select: none;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .nav-hamburger:hover {
+      background: rgba(160, 255, 143, 0.3);
+      transform: scale(1.05);
+    }
+
+    .nav-hamburger:active {
+      background: rgba(160, 255, 143, 0.4);
+      transform: scale(0.95);
+    }
+
+    .nav-hamburger .bar {
+      display: block;
+      width: 28px;
+      height: 4px;
+      background: #A0FF8F;
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 3px;
+      box-shadow: 0 0 5px rgba(160, 255, 143, 0.3);
     }
 
     /* section layout */
@@ -325,6 +359,47 @@
     .footer-bottom p {
       color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 992px) {
+      .nav-hamburger {
+        display: flex !important;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        backdrop-filter: blur(20px);
+        padding: 2rem 0;
+        z-index: 999;
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+      
+      .nav-menu li {
+        margin: 1rem 0;
+      }
+      
+      .nav-hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .nav-hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .nav-hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
     }
 
     @media (max-width: 768px) {
@@ -626,6 +701,79 @@
 
   <!-- Universal Smooth Scrolling -->
   <script src="js/universal-smooth-scroll.js"></script>
+  
+  <!-- Mobile Navigation -->
+  <script src="js/main.js"></script>
+  
+  <!-- Enhanced Mobile Navigation for About Page -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('📄 About Page Mobile Navigation Loading...');
+      
+      // Get elements
+      const hamburger = document.getElementById('nav-hamburger');
+      const navMenu = document.getElementById('nav-menu');
+      
+      if (!hamburger || !navMenu) {
+        console.error('❌ About Page: Hamburger or NavMenu not found!');
+        return;
+      }
+      
+      console.log('✅ About Page: Hamburger and NavMenu found');
+      
+      // Enhanced click event with better touch support
+      hamburger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('🍔 About Page: Hamburger clicked!');
+        
+        // Toggle classes
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        
+        console.log('📱 About Page: Menu active:', navMenu.classList.contains('active'));
+      });
+      
+      // Touch events for better mobile support
+      hamburger.addEventListener('touchstart', function(e) {
+        console.log('👆 About Page: Touch start on hamburger');
+      });
+      
+      hamburger.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        console.log('👆 About Page: Touch end on hamburger');
+      });
+      
+      // Close menu when clicking on nav links
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          console.log('🔗 About Page: Nav link clicked, closing menu');
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        }
+      });
+      
+      // Debug info
+      console.log('📱 About Page: Screen width:', window.innerWidth);
+      console.log('🍔 About Page: Hamburger display:', window.getComputedStyle(hamburger).display);
+      
+      // Add better touch handling
+      hamburger.style.touchAction = 'manipulation';
+      hamburger.style.userSelect = 'none';
+      
+      console.log('✅ About Page: Enhanced Mobile Navigation Loaded!');
+    });
+  </script>
 </body>
 
 </html>

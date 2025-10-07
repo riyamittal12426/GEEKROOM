@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Page Responsive Test</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #111;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .device-test {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .device-frame {
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #222;
+            position: relative;
+        }
+        
+        .device-frame.mobile {
+            width: 375px;
+            height: 600px;
+        }
+        
+        .device-frame.tablet {
+            width: 768px;
+            height: 500px;
+        }
+        
+        .device-frame.desktop {
+            width: 1200px;
+            height: 400px;
+        }
+        
+        .device-label {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            background: #007bff;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10;
+        }
+        
+        .device-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transform-origin: top left;
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .success { background: #28a745; }
+        .error { background: #dc3545; }
+        .warning { background: #ffc107; color: #000; }
+        .info { background: #17a2b8; }
+        
+        .responsive-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .info-card {
+            background: #222;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        
+        .info-card h4 {
+            color: #A0FF8F;
+            margin-bottom: 10px;
+        }
+        
+        .current-viewport {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #A0FF8F;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1000;
+            border: 1px solid #333;
+        }
+        
+        @media (max-width: 768px) {
+            .device-frame.desktop,
+            .device-frame.tablet {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .device-frame.mobile {
+                width: 100%;
+                height: 400px;
+            }
+            
+            .device-test {
+                flex-direction: column;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="current-viewport" id="viewport-info">
+        Viewport: <span id="viewport-size"></span>
+    </div>
+
+    <div class="test-header">
+        <h1>Team Page Responsive Design Test</h1>
+        <p>Testing team page responsiveness across different devices and screen sizes</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Quick Actions</h2>
+        <a href="team.html" class="btn" target="_blank">Open Team Page</a>
+        <button class="btn" onclick="refreshFrames()">Refresh Frames</button>
+        <button class="btn" onclick="testCurrentDevice()">Test Current Device</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Responsive Breakpoints Applied</h2>
+        <div id="breakpoint-status" class="status info">Applied comprehensive responsive design...</div>
+        
+        <div class="responsive-info">
+            <div class="info-card">
+                <h4>🖥️ Large Desktop (1200px+)</h4>
+                <ul>
+                    <li>4-column grid layout</li>
+                    <li>Max card width: 300px</li>
+                    <li>Larger gaps and padding</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>💻 Desktop (992-1199px)</h4>
+                <ul>
+                    <li>3-column grid layout</li>
+                    <li>Max card width: 280px</li>
+                    <li>Standard spacing</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>📱 Tablet (768-991px)</h4>
+                <ul>
+                    <li>2-column grid layout</li>
+                    <li>Responsive card sizing</li>
+                    <li>Adjusted image heights</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>📱 Mobile Large (576-767px)</h4>
+                <ul>
+                    <li>2-column compact grid</li>
+                    <li>Smaller cards and images</li>
+                    <li>Reduced font sizes</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>📱 Mobile Small (≤575px)</h4>
+                <ul>
+                    <li>Single column layout</li>
+                    <li>Full-width cards</li>
+                    <li>Optimized for touch</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h4>📱 Extra Small (≤400px)</h4>
+                <ul>
+                    <li>Compact single column</li>
+                    <li>Minimal padding</li>
+                    <li>Optimized spacing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Device Preview Frames</h2>
+        <p>Preview how the team page looks on different devices:</p>
+        
+        <div class="device-test">
+            <div class="device-frame mobile">
+                <div class="device-label">Mobile (375x600)</div>
+                <iframe src="team.html" id="mobile-frame"></iframe>
+            </div>
+            
+            <div class="device-frame tablet">
+                <div class="device-label">Tablet (768x500)</div>
+                <iframe src="team.html" id="tablet-frame"></iframe>
+            </div>
+            
+            <div class="device-frame desktop">
+                <div class="device-label">Desktop (1200x400)</div>
+                <iframe src="team.html" id="desktop-frame"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Responsive Features Added</h2>
+        <div class="status success">✅ Comprehensive responsive breakpoints implemented</div>
+        
+        <ul style="margin-top: 15px;">
+            <li>✅ <strong>Flexible Grid System:</strong> Auto-adjusting columns based on screen size</li>
+            <li>✅ <strong>Responsive Cards:</strong> Cards adapt width and content to screen size</li>
+            <li>✅ <strong>Optimized Images:</strong> Profile images scale appropriately</li>
+            <li>✅ <strong>Mobile-First Design:</strong> Touch-friendly interactions</li>
+            <li>✅ <strong>Typography Scaling:</strong> Text sizes adjust for readability</li>
+            <li>✅ <strong>Navigation Fixes:</strong> Mobile hamburger menu</li>
+            <li>✅ <strong>Landscape Support:</strong> Special handling for landscape orientation</li>
+            <li>✅ <strong>Wide Screen Support:</strong> Optimized for ultrawide displays</li>
+        </ul>
+    </div>
+
+    <script>
+        // Update viewport information
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            
+            document.getElementById('viewport-size').textContent = 
+                `${width}×${height} (${devicePixelRatio}x)`;
+            
+            // Determine current breakpoint
+            let breakpoint = '';
+            if (width >= 1200) breakpoint = 'Large Desktop';
+            else if (width >= 992) breakpoint = 'Desktop';
+            else if (width >= 768) breakpoint = 'Tablet';
+            else if (width >= 576) breakpoint = 'Mobile Large';
+            else if (width >= 400) breakpoint = 'Mobile Small';
+            else breakpoint = 'Extra Small';
+            
+            document.getElementById('breakpoint-status').innerHTML = 
+                `Current breakpoint: <strong>${breakpoint}</strong> (${width}px wide)`;
+            document.getElementById('breakpoint-status').className = 'status info';
+        }
+        
+        // Refresh iframes
+        function refreshFrames() {
+            document.getElementById('mobile-frame').src = 'team.html?' + Date.now();
+            document.getElementById('tablet-frame').src = 'team.html?' + Date.now();
+            document.getElementById('desktop-frame').src = 'team.html?' + Date.now();
+        }
+        
+        // Test current device
+        function testCurrentDevice() {
+            window.open('team.html', '_blank');
+        }
+        
+        // Initialize
+        updateViewportInfo();
+        
+        // Update on resize
+        window.addEventListener('resize', updateViewportInfo);
+        
+        // Auto-refresh frames every 30 seconds
+        setInterval(refreshFrames, 30000);
+        
+        console.log('🎯 Team Page Responsive Test loaded');
+        console.log('📱 Current viewport:', window.innerWidth + '×' + window.innerHeight);
+    </script>
+</body>
+</html>

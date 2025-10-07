@@ -41,9 +41,11 @@
     
     <!-- SplitText Animation Styles -->
     <style>
-        /* New Card Design Styles */
+        /* New Card Design Styles - Responsive */
         .card {
-            width: 230px;
+            width: 100%;
+            max-width: 280px;
+            min-width: 250px;
             border-radius: 20px;
             background: #1b233d;
             padding: 5px;
@@ -177,70 +179,62 @@
             border-right: 1px solid rgba(255, 255, 255, 0.126);
         }
 
-        /* Update team grid to accommodate new card size */
+        /* Responsive team grid */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            padding: 2rem 0;
+            padding: 2rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-items: center;
         }
 
         .profile-img {
             position: absolute;
             top: 25px;
             right: 0px;
-            width: 260px;
+            width: calc(100% - 10px);
+            max-width: 260px;
             height: 140px;
             border-radius: 10px;
             object-fit: cover;
-            opacity: 1; /* Show images immediately */
-            transition: opacity 0.3s ease-in-out;
+            opacity: 1 !important; /* Always show images */
+            display: block !important; /* Force display */
             z-index: 10;
-            /* Ensure images are loaded and displayed properly */
             background-color: transparent;
             image-rendering: -webkit-optimize-contrast;
+            transition: transform 0.3s ease; /* Only animate transform, not opacity */
         }
         
-        .profile-img.loaded {
-            opacity: 1;
+        /* Hover effect for images */
+        .card:hover .profile-img {
+            transform: scale(1.02);
         }
         
-        /* Loading state for cards - more subtle */
-        .card.loading .profile-img {
-            opacity: 0.3;
-            filter: blur(1px);
-        }
-        
-        /* Show a subtle loading indicator on the card */
-        .card.loading .top-section::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 30px;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-top: 2px solid rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            z-index: 15;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Ensure cards show content even during loading */
+        /* Ensure cards always show content */
         .card {
             min-height: 250px;
             position: relative;
+            opacity: 1 !important; /* Always visible */
+            display: block !important; /* Always displayed */
         }
         
         /* Make sure the card content is always visible */
         .card .bottom-section {
             position: relative;
             z-index: 20;
+            opacity: 1 !important;
+        }
+        
+        /* Remove any loading state interference */
+        .card.loading {
+            opacity: 1 !important;
+        }
+        
+        .card.loading .profile-img {
+            opacity: 1 !important;
+            filter: none !important;
         }
 
         /* Force team heading to be visible */
@@ -299,15 +293,411 @@
         }
         
         /* Responsive font sizes */
-        @media (max-width: 768px) {
+        /* COMPREHENSIVE RESPONSIVE DESIGN */
+        
+        /* Large Desktop */
+        @media (min-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2.5rem;
+                padding: 3rem 2rem;
+            }
+            
+            .card {
+                max-width: 300px;
+            }
+        }
+        
+        /* Desktop */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .card {
+                max-width: 280px;
+            }
+        }
+        
+        /* Tablet */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 2rem 1rem;
+            }
+            
+            .card {
+                max-width: 300px;
+                min-width: 260px;
+            }
+            
+            .profile-img {
+                width: calc(100% - 8px);
+                height: 130px;
+            }
+            
             #team-hero-title {
                 font-size: 3.5rem !important;
+            }
+            
+            .hero-section {
+                padding: 120px 0 80px;
+            }
+        }
+        
+        /* Mobile Large */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .card {
+                max-width: 220px;
+                min-width: 200px;
+            }
+            
+            .card .top-section {
+                height: 130px;
+            }
+            
+            .profile-img {
+                width: calc(100% - 6px);
+                height: 120px;
+                top: 20px;
+            }
+            
+            .card .bottom-section {
+                padding: 12px;
+            }
+            
+            .card .bottom-section .title {
+                font-size: 0.9rem;
+            }
+            
+            .card .bottom-section .row .item .big-text {
+                font-size: 10px;
+            }
+            
+            .card .bottom-section .row .item .regular-text {
+                font-size: 8px;
+            }
+            
+            #team-hero-title {
+                font-size: 3rem !important;
+            }
+            
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+        }
+        
+        /* Mobile Small */
+        @media (max-width: 575px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem 0.5rem;
+            }
+            
+            .card {
+                max-width: 280px;
+                min-width: 250px;
+                width: 100%;
+            }
+            
+            .card .top-section {
+                height: 140px;
+            }
+            
+            .profile-img {
+                width: calc(100% - 8px);
+                height: 130px;
+                top: 22px;
+            }
+            
+            .card .bottom-section {
+                padding: 15px;
+            }
+            
+            .card .bottom-section .title {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .card .bottom-section .row .item .big-text {
+                font-size: 11px;
+            }
+            
+            .card .bottom-section .row .item .regular-text {
+                font-size: 9px;
+            }
+            
+            #team-hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .hero-section {
+                padding: 80px 0 50px;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
+        /* Extra Small Mobile */
+        @media (max-width: 400px) {
+            .team-grid {
+                padding: 1rem 0.25rem;
+                gap: 0.8rem;
+            }
+            
+            .card {
+                max-width: 260px;
+                min-width: 240px;
+            }
+            
+            .card .top-section {
+                height: 130px;
+            }
+            
+            .profile-img {
+                height: 120px;
+                top: 20px;
+            }
+            
+            .card .bottom-section {
+                padding: 12px;
+            }
+            
+            .card .bottom-section .title {
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+            }
+            
+            .card .bottom-section .row .item .big-text {
+                font-size: 10px;
+            }
+            
+            .card .bottom-section .row .item .regular-text {
+                font-size: 8px;
+            }
+            
+            #team-hero-title {
+                font-size: 2rem !important;
+            }
+            
+            .hero-section {
+                padding: 70px 0 40px;
+            }
+            
+            .container {
+                padding: 0 0.5rem;
+            }
+        }
+        
+        /* Landscape orientation fixes for mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero-section {
+                padding: 60px 0 30px;
+            }
+            
+            #team-hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .team-grid {
+                padding: 1rem 0.5rem;
+            }
+        }
+        
+        /* Ensure cards never overflow */
+        .card {
+            box-sizing: border-box;
+        }
+        
+        .card * {
+            box-sizing: border-box;
+        }
+        
+        /* Fix for very wide screens */
+        @media (min-width: 1600px) {
+            .team-grid {
+                grid-template-columns: repeat(5, 1fr);
+                max-width: 1600px;
+            }
+        }
+        
+        /* Additional responsive fixes */
+        .team-section {
+            padding: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .team-section {
+                padding: 1.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                text-align: center;
+                margin-bottom: 1.5rem;
             }
         }
         
         @media (max-width: 480px) {
-            #team-hero-title {
-                font-size: 2.5rem !important;
+            .team-section {
+                padding: 1rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* Responsive navigation fixes */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(0, 0, 0, 0.95);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                backdrop-filter: blur(20px);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+            
+            .nav-hamburger {
+                display: flex !important;
+                flex-direction: column;
+                cursor: pointer;
+                padding: 8px;
+                background: rgba(160, 255, 143, 0.1);
+                border-radius: 4px;
+                position: relative;
+                z-index: 1000;
+            }
+            
+            .nav-hamburger .bar {
+                display: block !important;
+                width: 25px;
+                height: 3px;
+                background-color: #A0FF8F !important;
+                margin: 3px 0;
+                transition: 0.3s;
+                border-radius: 2px;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .nav-hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .nav-hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+        
+        /* Mobile hamburger override */
+        @media (max-width: 768px) {
+            .nav-hamburger {
+                display: flex !important;
+                flex-direction: column;
+                cursor: pointer;
+                padding: 12px;
+                background: rgba(160, 255, 143, 0.2) !important;
+                border: 2px solid #A0FF8F;
+                border-radius: 6px;
+                position: relative;
+                z-index: 1000;
+                min-width: 44px;
+                min-height: 44px;
+                justify-content: center;
+                align-items: center;
+                touch-action: manipulation;
+                user-select: none;
+            }
+            
+            .nav-hamburger .bar {
+                display: block !important;
+                width: 28px;
+                height: 4px;
+                background-color: #A0FF8F !important;
+                margin: 3px 0;
+                transition: 0.3s;
+                border-radius: 3px;
+                opacity: 1 !important;
+                visibility: visible !important;
+                box-shadow: 0 0 5px rgba(160, 255, 143, 0.3);
+            }
+        }
+        
+        /* Footer responsive */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+        
+        /* Join team section responsive */
+        @media (max-width: 768px) {
+            .join-team-section {
+                padding: 3rem 0;
+            }
+            
+            .join-title {
+                font-size: 2.5rem;
+            }
+            
+            .join-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .join-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn-large {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
     </style>
@@ -324,6 +714,41 @@
     
     <!-- Splash Cursor Effect - Desktop Only -->
     <script src="js/mobile-splash-detector.js"></script>
+    
+    <!-- Critical CSS to ensure team cards are visible immediately -->
+    <style>
+        /* CRITICAL: Force team cards and images to be visible on first load */
+        .card {
+            opacity: 1 !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        .profile-img {
+            opacity: 1 !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        /* Override any loading states that might hide content */
+        .card.loading {
+            opacity: 1 !important;
+            display: block !important;
+        }
+        
+        .card.loading .profile-img {
+            opacity: 1 !important;
+            filter: none !important;
+            display: block !important;
+        }
+        
+        /* Ensure card content is always visible */
+        .card .top-section,
+        .card .bottom-section {
+            opacity: 1 !important;
+            display: block !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -434,17 +859,17 @@
                     <div class="bottom-section">
                         <span class="title">SUMIT THAKUR</span>
                         <div class="row row1">
-                            <div class="item">
+                            <!-- <div class="item">
                                 <span class="big-text">React</span>
                                 <span class="regular-text">Framework</span>
-                            </div>
+                            </div> -->
+                            <!-- <div class="item"> -->
+                                <!-- <span class="big-text">Node.js</span> -->
+                                <!-- <span class="regular-text">Backend</span> -->
+                            <!-- </div> -->
                             <div class="item">
-                                <span class="big-text">Node.js</span>
-                                <span class="regular-text">Backend</span>
-                            </div>
-                            <div class="item">
-                                <span class="big-text">AWS</span>
-                                <span class="regular-text">Cloud</span>
+                                <!-- <span class="big-text">AWS</span> -->
+                                <span class="regular-text">President</span>
                             </div>
                         </div>
                     </div>
@@ -475,17 +900,17 @@
                     <div class="bottom-section">
                         <span class="title">SHAURYA PRATAP SINGH</span>
                         <div class="row row1">
-                            <div class="item">
+                            <!-- <div class="item">
                                 <span class="big-text">Python</span>
                                 <span class="regular-text">Language</span>
-                            </div>
+                            </div> -->
+                            <!-- <div class="item"> -->
+                                <!-- <span class="big-text">AI/ML</span> -->
+                                <!-- <span class="regular-text">Expertise</span> -->
+                            <!-- </div> -->
                             <div class="item">
-                                <span class="big-text">AI/ML</span>
-                                <span class="regular-text">Expertise</span>
-                            </div>
-                            <div class="item">
-                                <span class="big-text">PyTorch</span>
-                                <span class="regular-text">Framework</span>
+                                <!-- <span class="big-text">PyTorch</span> -->
+                                <span class="regular-text">Vice President</span>
                             </div>
                         </div>
                     </div>
@@ -514,17 +939,17 @@
                     <div class="bottom-section">
                         <span class="title">SAMPREETI RASTOGI</span>
                         <div class="row row1">
-                            <div class="item">
+                            <!-- <div class="item">
                                 <span class="big-text">Flutter</span>
                                 <span class="regular-text">Mobile</span>
-                            </div>
+                            </div> -->
+                            <!-- <div class="item"> -->
+                                <!-- <span class="big-text">React</span> -->
+                                <!-- <span class="regular-text">Native</span> -->
+                            <!-- </div> -->
                             <div class="item">
-                                <span class="big-text">React</span>
-                                <span class="regular-text">Native</span>
-                            </div>
-                            <div class="item">
-                                <span class="big-text">Kotlin</span>
-                                <span class="regular-text">Android</span>
+                                <!-- <span class="big-text">Kotlin</span> -->
+                                <span class="regular-text">General Secretary</span>
                             </div>
                         </div>
                     </div>
@@ -1343,70 +1768,123 @@
     <script src="js/main.js"></script>
     
     <script>
-        // Preload team images to prevent placeholder cards on first load
-        function preloadTeamImages() {
+        // Immediate fix for team cards - run as soon as script loads
+        (function() {
+            console.log('Immediate team card visibility fix...');
+            
+            // Use MutationObserver to ensure we catch the images as soon as they're added to DOM
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        const profileImages = document.querySelectorAll('.profile-img');
+                        const cards = document.querySelectorAll('.card');
+                        
+                        if (profileImages.length > 0) {
+                            console.log(`Found ${profileImages.length} images, making them visible immediately`);
+                            
+                            profileImages.forEach(img => {
+                                img.style.opacity = '1';
+                                img.style.display = 'block';
+                            });
+                            
+                            cards.forEach(card => {
+                                card.classList.remove('loading');
+                                card.style.opacity = '1';
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+            
+            // Stop observing after 3 seconds (images should be loaded by then)
+            setTimeout(() => {
+                observer.disconnect();
+            }, 3000);
+        })();
+        
+        // Ensure team images are always visible and properly loaded
+        function ensureTeamImagesVisible() {
             const profileImages = document.querySelectorAll('.profile-img');
             const cards = document.querySelectorAll('.card');
             
-            console.log(`Found ${profileImages.length} team images to preload`);
+            console.log(`Ensuring ${profileImages.length} team images are visible`);
             
-            // Add loading class to all cards
-            cards.forEach(card => card.classList.add('loading'));
-            
-            let loadedCount = 0;
-            let totalImages = profileImages.length;
-            
+            // First, ensure all images are visible immediately
             profileImages.forEach((img, index) => {
-                // Create a new image to preload
-                const preloadImg = new Image();
+                img.style.opacity = '1';
+                img.style.display = 'block';
                 
-                preloadImg.onload = function() {
-                    loadedCount++;
-                    console.log(`Image ${index + 1}/${totalImages} loaded: ${img.src}`);
-                    
-                    // Make the original image visible
-                    img.style.opacity = '1';
-                    img.classList.add('loaded');
-                    
-                    // Remove loading state from parent card
-                    const parentCard = img.closest('.card');
-                    if (parentCard) {
-                        parentCard.classList.remove('loading');
-                    }
-                    
-                    // If all images are loaded, clean up
-                    if (loadedCount === totalImages) {
-                        console.log('All team images loaded successfully!');
-                    }
-                };
+                // Ensure parent card is not in loading state
+                const parentCard = img.closest('.card');
+                if (parentCard) {
+                    parentCard.classList.remove('loading');
+                }
                 
-                preloadImg.onerror = function() {
-                    loadedCount++;
-                    console.warn(`Failed to load image ${index + 1}: ${img.src}`);
-                    
-                    // Still show the image and remove loading state
-                    img.style.opacity = '1';
-                    
-                    const parentCard = img.closest('.card');
+                // Add error handling for missing images
+                img.onerror = function() {
+                    console.warn(`Image failed to load: ${img.src}`);
+                    // Keep the card visible even if image is missing
+                    img.style.opacity = '0';
                     if (parentCard) {
                         parentCard.classList.remove('loading');
                     }
                 };
                 
-                // Start preloading by setting the src
-                preloadImg.src = img.src;
+                // Confirm when image loads successfully
+                if (img.complete && img.naturalHeight !== 0) {
+                    console.log(`Image ${index + 1} already loaded: ${img.src}`);
+                } else {
+                    img.onload = function() {
+                        console.log(`Image ${index + 1} loaded successfully: ${img.src}`);
+                        img.style.opacity = '1';
+                    };
+                }
             });
             
-            // Fallback timeout to ensure cards are shown even if some images fail
-            setTimeout(() => {
-                console.log('Fallback: Ensuring all cards are visible');
-                cards.forEach(card => card.classList.remove('loading'));
-                profileImages.forEach(img => {
-                    if (!img.classList.contains('loaded')) {
-                        img.style.opacity = '1';
-                    }
-                });
-            }, 2000);
+            // Ensure all cards are visible (remove any loading states)
+            cards.forEach((card, index) => {
+                card.classList.remove('loading');
+                console.log(`Card ${index + 1} made visible`);
+            });
+            
+            console.log('All team cards ensured to be visible');
+        }
+        
+        // Run immediate fixes even before DOM is fully loaded
+        function runImmediateFixes() {
+            console.log('Running immediate team card fixes...');
+            
+            const profileImages = document.querySelectorAll('.profile-img');
+            const cards = document.querySelectorAll('.card');
+            
+            // Force all images to be visible
+            profileImages.forEach(img => {
+                img.style.cssText += 'opacity: 1 !important; display: block !important;';
+            });
+            
+            // Force all cards to be visible
+            cards.forEach(card => {
+                card.style.cssText += 'opacity: 1 !important; display: block !important;';
+                card.classList.remove('loading');
+            });
+            
+            console.log(`Made ${profileImages.length} images and ${cards.length} cards visible`);
+        }
+        
+        // Run fixes immediately
+        runImmediateFixes();
+        
+        // Run fixes again when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', runImmediateFixes);
+        } else {
+            runImmediateFixes();
         }
         
         // Team Page Specific Functionality
@@ -1423,9 +1901,9 @@
                 console.log('Team heading made visible immediately');
             }
             
-            // Fix team card image loading issue
-            console.log('Initializing team image preloading...');
-            preloadTeamImages();
+            // Ensure team images are visible immediately
+            console.log('Ensuring team images are visible...');
+            ensureTeamImagesVisible();
             
             // Initialize GSAP
             gsap.registerPlugin(ScrollTrigger);
@@ -1700,6 +2178,66 @@
     
     <!-- Universal Smooth Scrolling -->
     <script src="js/universal-smooth-scroll.js"></script>
+    
+    <!-- Mobile Navigation Fix -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🍔 Mobile Navigation Script Loading...');
+            
+            // Get elements
+            const hamburger = document.getElementById('nav-hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (!hamburger || !navMenu) {
+                console.error('❌ Hamburger or NavMenu not found!');
+                return;
+            }
+            
+            console.log('✅ Hamburger and NavMenu found');
+            
+            // Add click event to hamburger
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('🍔 Hamburger clicked!');
+                
+                // Toggle classes
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                console.log('📱 Menu active:', navMenu.classList.contains('active'));
+            });
+            
+            // Close menu when clicking on nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('🔗 Nav link clicked, closing menu');
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+            
+            // Debug info
+            console.log('📱 Screen width:', window.innerWidth);
+            console.log('🍔 Hamburger display:', window.getComputedStyle(hamburger).display);
+            
+            // Add visual feedback for touch
+            hamburger.style.touchAction = 'manipulation';
+            hamburger.style.userSelect = 'none';
+            
+            console.log('✅ Mobile Navigation Script Loaded Successfully!');
+        });
+    </script>
 </body>
 </html>
 

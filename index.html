@@ -323,6 +323,76 @@
     <script src="js/enhanced-animations.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Enhanced Mobile Navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🏠 Homepage Mobile Navigation Loading...');
+            
+            // Get elements
+            const hamburger = document.getElementById('nav-hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (!hamburger || !navMenu) {
+                console.error('❌ Homepage: Hamburger or NavMenu not found!');
+                return;
+            }
+            
+            console.log('✅ Homepage: Hamburger and NavMenu found');
+            
+            // Enhanced click event with better touch support
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('🍔 Homepage: Hamburger clicked!');
+                
+                // Toggle classes
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                console.log('📱 Homepage: Menu active:', navMenu.classList.contains('active'));
+            });
+            
+            // Touch events for better mobile support
+            hamburger.addEventListener('touchstart', function(e) {
+                console.log('👆 Homepage: Touch start on hamburger');
+            });
+            
+            hamburger.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                console.log('👆 Homepage: Touch end on hamburger');
+            });
+            
+            // Close menu when clicking on nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('🔗 Homepage: Nav link clicked, closing menu');
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+            
+            // Debug info
+            console.log('📱 Homepage: Screen width:', window.innerWidth);
+            console.log('🍔 Homepage: Hamburger display:', window.getComputedStyle(hamburger).display);
+            
+            // Add better touch handling
+            hamburger.style.touchAction = 'manipulation';
+            hamburger.style.userSelect = 'none';
+            
+            console.log('✅ Homepage: Enhanced Mobile Navigation Loaded!');
+        });
+    </script>
 </body>
 
 </html>

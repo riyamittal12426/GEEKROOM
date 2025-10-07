@@ -1,101 +1,165 @@
-# Team Page Loading Fix - Documentation
+# Team Page Loading Fix - COMPREHENSIVE SOLUTION
 
 ## Problem Description
-The team page was showing placeholder colored cards instead of actual team member photos and information on first load. Users had to hard refresh (Ctrl+F5) to see the actual team member cards with photos.
+The team page was showing placeholder colored cards instead of actual team member photos and information on first load. Users had to hard refresh (Ctrl+F5) to see the actual team member cards with photos. This issue persisted even after initial fixes.
 
 ## Root Cause Analysis
-The issue was caused by:
-1. **Image Loading Delay**: Team member photos were taking time to load, especially on slower connections
-2. **No Loading States**: The cards showed their background gradients while images were loading, making them appear as placeholder cards
-3. **Missing Image Preloading**: Critical team images weren't being preloaded in the browser
-4. **Race Condition**: The DOM was ready before images finished loading, causing cards to appear incomplete
+The issue was caused by multiple factors:
+1. **JavaScript Loading Race Condition**: Scripts were adding 'loading' classes before images loaded
+2. **CSS Opacity Issues**: Images were being hidden by CSS during loading states
+3. **Image Loading Delays**: Team member photos took time to load on slower connections
+4. **Missing Fallback Mechanisms**: No proper fallback when JavaScript failed
+5. **Complex Loading States**: Multiple loading states interfered with each other
 
-## Solution Implemented
+## COMPREHENSIVE SOLUTION IMPLEMENTED
 
-### 1. Image Preloading in HTML Head
-Added `<link rel="preload">` tags for all team member images:
+### 1. Critical CSS Override (Most Important Fix)
+Added critical CSS in the `<head>` section to force visibility:
 ```html
-<link rel="preload" as="image" href="photos/1.jpg">
-<link rel="preload" as="image" href="photos/shaurya.jpg">
-<!-- ... all team member photos ... -->
+<!-- Critical CSS to ensure team cards are visible immediately -->
+<style>
+    /* CRITICAL: Force team cards and images to be visible on first load */
+    .card {
+        opacity: 1 !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    .profile-img {
+        opacity: 1 !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    /* Override any loading states that might hide content */
+    .card.loading {
+        opacity: 1 !important;
+        display: block !important;
+    }
+    
+    .card.loading .profile-img {
+        opacity: 1 !important;
+        filter: none !important;
+        display: block !important;
+    }
+</style>
 ```
 
-This tells the browser to start downloading images as soon as possible, even before the page is fully parsed.
+### 2. Multiple JavaScript Safety Mechanisms
+Implemented multiple layers of protection:
 
-### 2. Enhanced CSS for Loading States
-```css
-.profile-img {
-    opacity: 1; /* Show images immediately when available */
-    transition: opacity 0.3s ease-in-out;
-    image-rendering: -webkit-optimize-contrast;
-}
-
-.card.loading .profile-img {
-    opacity: 0.3;
-    filter: blur(1px); /* Subtle loading state */
-}
-
-.card.loading .top-section::after {
-    /* Small loading spinner */
-    content: '';
-    position: absolute;
-    /* spinner styles */
-}
-```
-
-### 3. JavaScript Image Preloading System
-Added a comprehensive image preloading function:
-
+**A. Immediate Execution with MutationObserver:**
 ```javascript
-function preloadTeamImages() {
+// Run as soon as script loads
+(function() {
+    const observer = new MutationObserver(function(mutations) {
+        const profileImages = document.querySelectorAll('.profile-img');
+        const cards = document.querySelectorAll('.card');
+        
+        profileImages.forEach(img => {
+            img.style.opacity = '1';
+            img.style.display = 'block';
+        });
+        
+        cards.forEach(card => {
+            card.classList.remove('loading');
+            card.style.opacity = '1';
+        });
+    });
+    
+    observer.observe(document.body, { childList: true, subtree: true });
+})();
+```
+
+**B. Immediate Fixes Function:**
+```javascript
+function runImmediateFixes() {
     const profileImages = document.querySelectorAll('.profile-img');
     const cards = document.querySelectorAll('.card');
     
-    // Add loading class to cards
-    cards.forEach(card => card.classList.add('loading'));
-    
-    profileImages.forEach((img, index) => {
-        const preloadImg = new Image();
-        
-        preloadImg.onload = function() {
-            // Make image visible and remove loading state
-            img.style.opacity = '1';
-            img.classList.add('loaded');
-            
-            const parentCard = img.closest('.card');
-            if (parentCard) {
-                parentCard.classList.remove('loading');
-            }
-        };
-        
-        preloadImg.onerror = function() {
-            // Still show card even if image fails
-            const parentCard = img.closest('.card');
-            if (parentCard) {
-                parentCard.classList.remove('loading');
-            }
-        };
-        
-        preloadImg.src = img.src;
+    // Force all images to be visible
+    profileImages.forEach(img => {
+        img.style.cssText += 'opacity: 1 !important; display: block !important;';
     });
     
-    // Fallback timeout ensures cards are always shown
-    setTimeout(() => {
-        cards.forEach(card => card.classList.remove('loading'));
-        profileImages.forEach(img => {
-            if (!img.classList.contains('loaded')) {
-                img.style.opacity = '1';
-            }
-        });
-    }, 2000);
+    // Force all cards to be visible
+    cards.forEach(card => {
+        card.style.cssText += 'opacity: 1 !important; display: block !important;';
+        card.classList.remove('loading');
+    });
 }
 ```
 
-### 4. Improved Loading UX
-- Cards now show a subtle loading state instead of appearing broken
-- Images fade in smoothly when loaded
-- Fallback ensures content is always visible within 2 seconds
-- Loading spinner indicates that content is being loaded
+**C. Enhanced Image Visibility Assurance:**
+```javascript
+function ensureTeamImagesVisible() {
+    const profileImages = document.querySelectorAll('.profile-img');
+    const cards = document.querySelectorAll('.card');
+    
+    // Ensure all images are visible immediately
+    profileImages.forEach((img, index) => {
+        img.style.opacity = '1';
+        img.style.display = 'block';
+        
+        const parentCard = img.closest('.card');
+        if (parentCard) {
+            parentCard.classList.remove('loading');
+        }
+        
+        // Add error handling
+        img.onerror = function() {
+            console.warn(`Image failed to load: ${img.src}`);
+            img.style.opacity = '0'; // Hide broken image
+            if (parentCard) {
+                parentCard.classList.remove('loading');
+            }
+        };
+    });
+    
+    // Ensure all cards are visible
+    cards.forEach(card => {
+        card.classList.remove('loading');
+    });
+}
+```
+
+### 3. Enhanced CSS for Reliability
+```css
+.profile-img {
+    position: absolute;
+    top: 25px;
+    right: 0px;
+    width: 260px;
+    height: 140px;
+    border-radius: 10px;
+    object-fit: cover;
+    opacity: 1 !important; /* Always show images */
+    display: block !important; /* Force display */
+    z-index: 10;
+    transition: transform 0.3s ease; /* Only animate transform */
+}
+
+/* Remove problematic loading states */
+.card.loading .profile-img {
+    opacity: 1 !important;
+    filter: none !important;
+}
+```
+
+### 4. Image Preloading in HTML Head
+Maintained the original preload approach:
+```html
+<link rel="preload" as="image" href="photos/1.jpg">
+<link rel="preload" as="image" href="photos/shaurya.jpg">
+<!-- ... all 19 team member photos ... -->
+```
+
+### 5. Multiple Execution Triggers
+- Immediate execution when script loads
+- Before DOM ready
+- On DOM ready
+- With MutationObserver for dynamic content
+- Multiple fallback timers
 
 ## Files Modified
 1. `team.html` - Added preload links, enhanced CSS, and JavaScript fixes
