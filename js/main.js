@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 600);
         
         // Simulate navigation or show modal
-        setTimeout(() => {
-            alert('Welcome to GeekRoom Adgips! Feature coming soon...');
-        }, 300);
+        // setTimeout(() => {
+        //     // alert('Welcome to GeekRoom Adgips! Feature coming soon...');
+        // }, 300);
     }
     
     if (heroCTA) heroCTA.addEventListener('click', handleCTAClick);

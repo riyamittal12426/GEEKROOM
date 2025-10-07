@@ -114,6 +114,8 @@ class SplashCursor {
     }
 
     try {
+      this.isActive = true; // Mark as active
+      
       this.initShaders();
       console.log('Shaders initialized');
       
@@ -129,10 +131,11 @@ class SplashCursor {
       this.setupEventListeners();
       console.log('Event listeners setup');
       
-      this.updateFrame();
+      this.startAnimationLoop();
       console.log('Animation loop started');
     } catch (error) {
       console.error('Error during WebGL initialization:', error);
+      this.isActive = false;
       this.fallbackEffect();
     }
   }
@@ -698,59 +701,153 @@ class SplashCursor {
   }
 
   setupEventListeners() {
-    // Mouse events
-    window.addEventListener('mousedown', (e) => {
-      const pointer = this.pointers[0];
-      const posX = this.scaleByPixelRatio(e.clientX);
-      const posY = this.scaleByPixelRatio(e.clientY);
-      this.updatePointerDownData(pointer, -1, posX, posY);
-      this.clickSplat(pointer);
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      const pointer = this.pointers[0];
-      const posX = this.scaleByPixelRatio(e.clientX);
-      const posY = this.scaleByPixelRatio(e.clientY);
-      const color = pointer.color;
-      this.updatePointerMoveData(pointer, posX, posY, color);
-    });
-
-    // Touch events
-    window.addEventListener('touchstart', (e) => {
-      const touches = e.targetTouches;
-      const pointer = this.pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        const posX = this.scaleByPixelRatio(touches[i].clientX);
-        const posY = this.scaleByPixelRatio(touches[i].clientY);
-        this.updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+    // Store event handlers for cleanup
+    this.eventHandlers = {
+      mousedown: (e) => {
+        if (!this.isActive) return;
+        const pointer = this.pointers[0];
+        const posX = this.scaleByPixelRatio(e.clientX);
+        const posY = this.scaleByPixelRatio(e.clientY);
+        this.updatePointerDownData(pointer, -1, posX, posY);
+        this.clickSplat(pointer);
+      },
+      
+      mousemove: (e) => {
+        if (!this.isActive) return;
+        const pointer = this.pointers[0];
+        const posX = this.scaleByPixelRatio(e.clientX);
+        const posY = this.scaleByPixelRatio(e.clientY);
+        const color = pointer.color;
+        this.updatePointerMoveData(pointer, posX, posY, color);
+      },
+      
+      touchstart: (e) => {
+        if (!this.isActive) return;
+        const touches = e.targetTouches;
+        const pointer = this.pointers[0];
+        for (let i = 0; i < touches.length; i++) {
+          const posX = this.scaleByPixelRatio(touches[i].clientX);
+          const posY = this.scaleByPixelRatio(touches[i].clientY);
+          this.updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+        }
+      },
+      
+      touchmove: (e) => {
+        if (!this.isActive) return;
+        // Don't preventDefault to avoid conflicts with smooth scrolling
+        const touches = e.targetTouches;
+        const pointer = this.pointers[0];
+        for (let i = 0; i < touches.length; i++) {
+          const posX = this.scaleByPixelRatio(touches[i].clientX);
+          const posY = this.scaleByPixelRatio(touches[i].clientY);
+          this.updatePointerMoveData(pointer, posX, posY, pointer.color);
+        }
+      },
+      
+      touchend: (e) => {
+        if (!this.isActive) return;
+        const pointer = this.pointers[0];
+        this.updatePointerUpData(pointer);
+      },
+      
+      webglcontextlost: (e) => {
+        console.warn('WebGL context lost! Preventing default...');
+        e.preventDefault();
+        this.isActive = false;
+      },
+      
+      webglcontextrestored: () => {
+        console.log('WebGL context restored! Reinitializing...');
+        this.handleContextRestore();
       }
-    });
+    };
 
-    window.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      const touches = e.targetTouches;
-      const pointer = this.pointers[0];
-      for (let i = 0; i < touches.length; i++) {
-        const posX = this.scaleByPixelRatio(touches[i].clientX);
-        const posY = this.scaleByPixelRatio(touches[i].clientY);
-        this.updatePointerMoveData(pointer, posX, posY, pointer.color);
+    // Add mouse events
+    window.addEventListener('mousedown', this.eventHandlers.mousedown);
+    window.addEventListener('mousemove', this.eventHandlers.mousemove);
+
+    // Add touch events (passive to not block scrolling)
+    window.addEventListener('touchstart', this.eventHandlers.touchstart, { passive: true });
+    window.addEventListener('touchmove', this.eventHandlers.touchmove, { passive: true });
+    window.addEventListener('touchend', this.eventHandlers.touchend, { passive: true });
+    
+    // Add WebGL context recovery
+    this.canvas.addEventListener('webglcontextlost', this.eventHandlers.webglcontextlost, false);
+    this.canvas.addEventListener('webglcontextrestored', this.eventHandlers.webglcontextrestored, false);
+    
+    console.log('✓ Event listeners attached with context recovery');
+  }
+  
+  handleContextRestore() {
+    try {
+      // Reinitialize WebGL
+      this.gl = this.canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: false });
+      
+      if (!this.gl) {
+        console.error('Failed to restore WebGL context');
+        return;
       }
-    }, { passive: false });
+      
+      // Recompile shaders and recreate resources
+      this.init();
+      console.log('✓ WebGL context successfully restored');
+    } catch (error) {
+      console.error('Failed to restore splash cursor:', error);
+    }
+  }
+  
+  removeEventListeners() {
+    if (!this.eventHandlers) return;
+    
+    window.removeEventListener('mousedown', this.eventHandlers.mousedown);
+    window.removeEventListener('mousemove', this.eventHandlers.mousemove);
+    window.removeEventListener('touchstart', this.eventHandlers.touchstart);
+    window.removeEventListener('touchmove', this.eventHandlers.touchmove);
+    window.removeEventListener('touchend', this.eventHandlers.touchend);
+    
+    if (this.canvas) {
+      this.canvas.removeEventListener('webglcontextlost', this.eventHandlers.webglcontextlost);
+      this.canvas.removeEventListener('webglcontextrestored', this.eventHandlers.webglcontextrestored);
+    }
+    
+    console.log('✓ Event listeners removed');
+  }
 
-    window.addEventListener('touchend', (e) => {
-      const pointer = this.pointers[0];
-      this.updatePointerUpData(pointer);
-    });
+  startAnimationLoop() {
+    this.isAnimating = true;
+    this.updateFrame();
+  }
+  
+  stopAnimationLoop() {
+    this.isAnimating = false;
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
+      this.animationId = null;
+    }
   }
 
   updateFrame = () => {
-    const dt = this.calcDeltaTime();
-    if (this.resizeCanvas()) this.initFramebuffers();
-    this.updateColors(dt);
-    this.applyInputs();
-    this.step(dt);
-    this.render(null);
-    requestAnimationFrame(this.updateFrame);
+    // Stop if not active or not animating
+    if (!this.isActive || !this.isAnimating) {
+      console.warn('Animation stopped - cursor inactive');
+      return;
+    }
+    
+    try {
+      const dt = this.calcDeltaTime();
+      if (this.resizeCanvas()) this.initFramebuffers();
+      this.updateColors(dt);
+      this.applyInputs();
+      this.step(dt);
+      this.render(null);
+      
+      // Continue animation loop
+      this.animationId = requestAnimationFrame(this.updateFrame);
+    } catch (error) {
+      console.error('Error in animation frame:', error);
+      this.isActive = false;
+      this.stopAnimationLoop();
+    }
   }
 
   calcDeltaTime() {
@@ -1149,9 +1246,27 @@ class SplashCursor {
   }
 
   destroy() {
+    console.log('Destroying splash cursor...');
+    
+    // Stop animation
+    this.isActive = false;
+    this.stopAnimationLoop();
+    
+    // Remove event listeners
+    this.removeEventListeners();
+    
+    // Clean up WebGL resources
+    if (this.gl) {
+      const ext = this.gl.getExtension('WEBGL_lose_context');
+      if (ext) ext.loseContext();
+    }
+    
+    // Remove canvas
     if (this.canvas && this.canvas.parentNode) {
       this.canvas.parentNode.removeChild(this.canvas);
     }
+    
+    console.log('✓ Splash cursor destroyed');
   }
 }
 

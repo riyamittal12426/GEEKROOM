@@ -65,10 +65,44 @@
         }
     }
     
+    // Health check - monitor if splash cursor stops working
+    function setupHealthCheck() {
+        setInterval(() => {
+            if (window.DISABLE_SPLASH_CURSOR) return;
+            
+            const instance = window.splashCursorInstance;
+            if (instance) {
+                // Check if cursor is supposed to be active but isn't animating
+                if (instance.isActive === false && window.splashActive === true) {
+                    console.warn('⚠️ Splash cursor stopped working! Attempting recovery...');
+                    
+                    // Try to recover
+                    if (typeof instance.startAnimationLoop === 'function') {
+                        instance.isActive = true;
+                        instance.startAnimationLoop();
+                        console.log('✓ Animation loop restarted');
+                    } else {
+                        // Full reinitialization
+                        console.log('Reinitializing splash cursor...');
+                        attemptInit();
+                    }
+                }
+            } else if (window.splashActive === true) {
+                // Instance was destroyed, recreate
+                console.warn('⚠️ Splash cursor instance lost! Recreating...');
+                attemptInit();
+            }
+        }, 5000); // Check every 5 seconds
+    }
+    
     // Start initialization attempt
     attemptInit();
+    
+    // Start health monitoring after initialization
+    setTimeout(setupHealthCheck, 3000);
     
     // Export init function for manual calls
     window.initUniversalSplashCursor = attemptInit;
     
+    console.log('✓ Splash cursor initialization complete with health monitoring');
 })();
