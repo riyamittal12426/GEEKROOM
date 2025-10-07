@@ -559,10 +559,20 @@
         function setupFormAnimations() {
             const inputWrappers = document.querySelectorAll('.input-wrapper');
             
+            if (inputWrappers.length === 0) {
+                console.log('No input wrappers found, skipping form animations');
+                return;
+            }
+            
             inputWrappers.forEach(wrapper => {
                 const input = wrapper.querySelector('input, select, textarea');
                 const label = wrapper.querySelector('label');
                 const highlight = wrapper.querySelector('.input-highlight');
+                
+                if (!input || !label || !highlight) {
+                    console.log('Missing form elements, skipping wrapper');
+                    return;
+                }
                 
                 // Focus animations
                 input.addEventListener('focus', () => {
@@ -624,99 +634,73 @@
 
         // FAQ interactions
         function setupFAQInteractions() {
-            const faqItems = document.querySelectorAll('.faq-item');
+            console.log('Setting up FAQ interactions...');
             
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                const answer = item.querySelector('.faq-answer');
-                const toggle = item.querySelector('.faq-toggle svg');
+            const faqItems = document.querySelectorAll('.faq-item');
+            console.log('FAQ Setup: Found', faqItems.length, 'FAQ items');
+            
+            if (faqItems.length === 0) {
+                console.error('No FAQ items found!');
+                return;
+            }
+            
+            faqItems.forEach((item, index) => {
+                console.log('Setting up FAQ item', index);
                 
-                // Set initial state
-                gsap.set(answer, { height: 0, opacity: 0 });
+                // Make entire card clickable
+                item.style.cursor = 'pointer';
                 
-                question.addEventListener('click', () => {
-                    const isOpen = item.classList.contains('active');
+                item.addEventListener('click', function(e) {
+                    console.log('FAQ item clicked:', index);
+                    
+                    const isOpen = this.classList.contains('active');
                     
                     // Close all other items
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item && otherItem.classList.contains('active')) {
-                            const otherAnswer = otherItem.querySelector('.faq-answer');
-                            const otherToggle = otherItem.querySelector('.faq-toggle svg');
-                            
-                            gsap.to(otherAnswer, {
-                                height: 0,
-                                opacity: 0,
-                                duration: 0.3,
-                                ease: "power2.inOut"
-                            });
-                            
-                            gsap.to(otherToggle, {
-                                rotation: 0,
-                                duration: 0.3,
-                                ease: "power2.inOut"
-                            });
-                            
                             otherItem.classList.remove('active');
+                            console.log('Closed another FAQ item');
                         }
                     });
                     
                     // Toggle current item
                     if (isOpen) {
-                        gsap.to(answer, {
-                            height: 0,
-                            opacity: 0,
-                            duration: 0.3,
-                            ease: "power2.inOut"
-                        });
-                        
-                        gsap.to(toggle, {
-                            rotation: 0,
-                            duration: 0.3,
-                            ease: "power2.inOut"
-                        });
-                        
-                        item.classList.remove('active');
+                        this.classList.remove('active');
+                        console.log('Closed FAQ item', index);
                     } else {
-                        gsap.to(answer, {
-                            height: 'auto',
-                            opacity: 1,
-                            duration: 0.4,
-                            ease: "power2.inOut"
-                        });
-                        
-                        gsap.to(toggle, {
-                            rotation: 180,
-                            duration: 0.3,
-                            ease: "power2.inOut"
-                        });
-                        
-                        item.classList.add('active');
+                        this.classList.add('active');
+                        console.log('Opened FAQ item', index);
                     }
                 });
 
                 // Hover effects
-                question.addEventListener('mouseenter', () => {
-                    gsap.to(item, {
-                        y: -2,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
+                item.addEventListener('mouseenter', () => {
+                    if (!item.classList.contains('active')) {
+                        item.style.transform = 'translateY(-2px)';
+                    }
                 });
 
-                question.addEventListener('mouseleave', () => {
-                    gsap.to(item, {
-                        y: 0,
-                        duration: 0.3,
-                        ease: "power2.out"
-                    });
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0)';
                 });
             });
+            
+            console.log('FAQ interactions setup complete!');
         }
 
         // Button animations and interactions
         function setupButtonAnimations() {
             const modernBtn = document.querySelector('.modern-btn');
+            if (!modernBtn) {
+                console.log('No .modern-btn found, skipping button animations');
+                return;
+            }
+            
             const ripple = modernBtn.querySelector('.btn-ripple');
+            if (!ripple) {
+                console.log('No .btn-ripple found, skipping button animations');
+                return;
+            }
             
             modernBtn.addEventListener('click', function(e) {
                 const rect = this.getBoundingClientRect();
@@ -757,13 +741,15 @@
         }
 
         // Enhanced contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = this.querySelector('.modern-btn');
-            const btnText = submitBtn.querySelector('.btn-text');
-            const btnIcon = submitBtn.querySelector('.btn-icon');
-            const originalText = btnText.textContent;
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('.modern-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const btnIcon = submitBtn.querySelector('.btn-icon');
+                const originalText = btnText.textContent;
             
             // Disable button and show loading state
             submitBtn.disabled = true;
@@ -817,7 +803,10 @@
                     });
                 }, 2000);
             }, 1500);
-        });
+            });
+        } else {
+            console.log('No contact form found on this page');
+        }
 
         // Success notification
         function showSuccessNotification() {
@@ -868,6 +857,58 @@
                 scrub: true
             }
         });
+    </script>
+    
+    <!-- Standalone FAQ Script -->
+    <script>
+        // Simple standalone FAQ initialization
+        (function() {
+            console.log('=== Standalone FAQ Init ===');
+            
+            function initFAQ() {
+                const faqItems = document.querySelectorAll('.faq-item');
+                console.log('Found FAQ items:', faqItems.length);
+                
+                if (faqItems.length === 0) {
+                    console.error('No FAQ items found!');
+                    return;
+                }
+                
+                faqItems.forEach((item, index) => {
+                    item.style.cursor = 'pointer';
+                    item.style.transition = 'transform 0.3s ease';
+                    
+                    item.onclick = function() {
+                        console.log('Clicked FAQ:', index);
+                        const isOpen = this.classList.contains('active');
+                        
+                        // Close all
+                        faqItems.forEach(otherItem => {
+                            otherItem.classList.remove('active');
+                        });
+                        
+                        // Open this one if it was closed
+                        if (!isOpen) {
+                            this.classList.add('active');
+                            console.log('Opened FAQ:', index);
+                        } else {
+                            console.log('Closed FAQ:', index);
+                        }
+                    };
+                    
+                    console.log('FAQ item', index, 'setup complete');
+                });
+                
+                console.log('=== FAQ Init Complete ===');
+            }
+            
+            // Run immediately if DOM is ready, otherwise wait
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initFAQ);
+            } else {
+                initFAQ();
+            }
+        })();
     </script>
     
     <!-- Enhanced CSS for modern styling -->
@@ -1133,11 +1174,12 @@
             border-radius: var(--contact-radius);
             margin-bottom: 1rem;
             overflow: hidden;
-            transition: var(--contact-transition);
+            transition: all 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
         }
 
         .faq-item:hover {
-            /* border-color: rgba(160, 255, 143, 0.25); */
+            border-color: rgba(160, 255, 143, 0.25);
         }
 
         .faq-question {
@@ -1145,7 +1187,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 2rem;
-            cursor: pointer;
             transition: var(--contact-transition);
         }
 
@@ -1159,14 +1200,32 @@
 
         .faq-toggle {
             color: var(--contact-secondary);
-            transition: var(--contact-transition);
+            transition: transform 0.3s ease;
             flex-shrink: 0;
             margin-left: 1rem;
         }
 
+        .faq-toggle svg {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle svg {
+            transform: rotate(180deg);
+        }
+
         .faq-answer {
-            padding: 0 2rem 2rem;
+            padding: 0 2rem;
             overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            opacity: 1;
+            padding: 0 2rem 2rem;
         }
 
         .faq-answer p {
