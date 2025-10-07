@@ -18,6 +18,27 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/universal-smooth-scroll.css">
     
+    <!-- Preload critical team member images -->
+    <link rel="preload" as="image" href="photos/1.jpg">
+    <link rel="preload" as="image" href="photos/shaurya.jpg">
+    <link rel="preload" as="image" href="photos/sam.jpg">
+    <link rel="preload" as="image" href="photos/vidhi.jpg">
+    <link rel="preload" as="image" href="photos/ayush.jpg">
+    <link rel="preload" as="image" href="photos/riya.jpg">
+    <link rel="preload" as="image" href="photos/chetan.jpg">
+    <link rel="preload" as="image" href="photos/revant.jpg">
+    <link rel="preload" as="image" href="photos/dharmesh.jpg">
+    <link rel="preload" as="image" href="photos/aditi.jpg">
+    <link rel="preload" as="image" href="photos/aryan.jpg">
+    <link rel="preload" as="image" href="photos/nikhil.jpg">
+    <link rel="preload" as="image" href="photos/preksha.jpg">
+    <link rel="preload" as="image" href="photos/animesh.jpg">
+    <link rel="preload" as="image" href="photos/himanshu.jpg">
+    <link rel="preload" as="image" href="photos/shahil1.jpg">
+    <link rel="preload" as="image" href="photos/mohit.jpg">
+    <link rel="preload" as="image" href="photos/mahak.jpg">
+    <link rel="preload" as="image" href="photos/saanvi.jpg">
+    
     <!-- SplitText Animation Styles -->
     <style>
         /* New Card Design Styles */
@@ -173,6 +194,38 @@
             border-radius: 10px;
             object-fit: cover;
             /* border: 2px solid white; */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 10;
+        }
+        
+        .profile-img.loaded {
+            opacity: 1;
+        }
+        
+        /* Loading state for cards */
+        .card.loading .profile-img {
+            opacity: 0;
+        }
+        
+        /* Show a subtle loading indicator on the card */
+        .card.loading .top-section::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 50px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 5;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Force team heading to be visible */
@@ -1275,6 +1328,72 @@
     <script src="js/main.js"></script>
     
     <script>
+        // Preload team images to prevent placeholder cards on first load
+        function preloadTeamImages() {
+            const profileImages = document.querySelectorAll('.profile-img');
+            const cards = document.querySelectorAll('.card');
+            
+            console.log(`Found ${profileImages.length} team images to preload`);
+            
+            // Add loading class to all cards
+            cards.forEach(card => card.classList.add('loading'));
+            
+            let loadedCount = 0;
+            let totalImages = profileImages.length;
+            
+            profileImages.forEach((img, index) => {
+                // Create a new image to preload
+                const preloadImg = new Image();
+                
+                preloadImg.onload = function() {
+                    loadedCount++;
+                    console.log(`Image ${index + 1}/${totalImages} loaded: ${img.src}`);
+                    
+                    // Make the original image visible
+                    img.style.opacity = '1';
+                    img.classList.add('loaded');
+                    
+                    // Remove loading state from parent card
+                    const parentCard = img.closest('.card');
+                    if (parentCard) {
+                        parentCard.classList.remove('loading');
+                    }
+                    
+                    // If all images are loaded, clean up
+                    if (loadedCount === totalImages) {
+                        console.log('All team images loaded successfully!');
+                    }
+                };
+                
+                preloadImg.onerror = function() {
+                    loadedCount++;
+                    console.warn(`Failed to load image ${index + 1}: ${img.src}`);
+                    
+                    // Still show the image and remove loading state
+                    img.style.opacity = '1';
+                    
+                    const parentCard = img.closest('.card');
+                    if (parentCard) {
+                        parentCard.classList.remove('loading');
+                    }
+                };
+                
+                // Start preloading by setting the src
+                preloadImg.src = img.src;
+            });
+            
+            // Fallback timeout to ensure cards are shown even if some images fail
+            setTimeout(() => {
+                console.log('Fallback: Ensuring all cards are visible');
+                cards.forEach(card => card.classList.remove('loading'));
+                profileImages.forEach(img => {
+                    if (!img.classList.contains('loaded')) {
+                        img.style.opacity = '1';
+                    }
+                });
+            }, 2000);
+        }
+        
         // Team Page Specific Functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Immediate visibility fix for team heading
@@ -1288,6 +1407,10 @@
                 teamHeading.style.mozOsxFontSmoothing = 'grayscale';
                 console.log('Team heading made visible immediately');
             }
+            
+            // Fix team card image loading issue
+            console.log('Initializing team image preloading...');
+            preloadTeamImages();
             
             // Initialize GSAP
             gsap.registerPlugin(ScrollTrigger);
