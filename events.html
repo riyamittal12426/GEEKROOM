@@ -1777,27 +1777,27 @@
             }
             
             // Add a visible marker at the top of past events
-            const marker = document.createElement('div');
-            marker.innerHTML = '🎯 PAST EVENTS SECTION IS HERE 🎯';
-            marker.style.cssText = `
-                background: red !important;
-                color: white !important;
-                text-align: center !important;
-                padding: 1rem !important;
-                font-size: 2rem !important;
-                font-weight: bold !important;
-                position: relative !important;
-                z-index: 9999 !important;
-                margin: 2rem 0 !important;
-                border: 3px solid yellow !important;
-            `;
+            // const marker = document.createElement('div');
+            // marker.innerHTML = '🎯 PAST EVENTS SECTION IS HERE 🎯';
+            // marker.style.cssText = `
+            //     background: black !important;
+            //     color: white !important;
+            //     text-align: center !important;
+            //     padding: 1rem !important;
+            //     font-size: 2rem !important;
+            //     font-weight: bold !important;
+            //     position: relative !important;
+            //     z-index: 9999 !important;
+            //     margin: 2rem 0 !important;
+            //     border: 3px solid yellow !important;
+            // `;
             
             if (pastEventsSection) {
                 pastEventsSection.insertBefore(marker, pastEventsSection.firstChild);
                 console.log('✅ Visual marker added to Past Events section');
             }
             
-            console.log('🚨 Past Events Section Visibility Check Complete');
+            // console.log('🚨 Past Events Section Visibility Check Complete');
         });
     </script>
     
