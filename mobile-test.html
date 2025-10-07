@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Test - GeekRoom</title>
+    
+    <!-- Mobile Splash Detector Test -->
+    <script src="js/mobile-splash-detector.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #111;
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .mobile {
+            background: #28a745;
+            color: white;
+        }
+        
+        .desktop {
+            background: #007bff;
+            color: white;
+        }
+        
+        .info {
+            background: #ffc107;
+            color: black;
+        }
+        
+        .content {
+            height: 200vh;
+            background: linear-gradient(45deg, #333, #666);
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .scroll-test {
+            height: 100px;
+            overflow-y: auto;
+            border: 1px solid #555;
+            padding: 10px;
+            background: #222;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                -webkit-overflow-scrolling: touch !important;
+                overflow-x: hidden;
+                scroll-behavior: smooth;
+            }
+            
+            * {
+                touch-action: manipulation;
+            }
+            
+            .test-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Splash Cursor Test</h1>
+    
+    <div class="test-section">
+        <h2>Device Detection Results</h2>
+        <div id="device-info" class="status info">Detecting device...</div>
+        <div id="splash-status" class="status info">Checking splash cursor status...</div>
+        <div id="user-agent" class="status info">Loading user agent...</div>
+        <div id="screen-info" class="status info">Loading screen info...</div>
+        <div id="touch-info" class="status info">Loading touch info...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Scrolling Test</h2>
+        <p>Try scrolling this page to test smooth scrolling behavior:</p>
+        <div class="content">
+            <h3>Test Content Area</h3>
+            <p>This is a long content area to test scrolling behavior. The page should scroll smoothly without any interference from splash cursor effects on mobile devices.</p>
+            
+            <div class="scroll-test">
+                <h4>Scrollable Area</h4>
+                <p>Line 1 - This is a test line</p>
+                <p>Line 2 - This is a test line</p>
+                <p>Line 3 - This is a test line</p>
+                <p>Line 4 - This is a test line</p>
+                <p>Line 5 - This is a test line</p>
+                <p>Line 6 - This is a test line</p>
+                <p>Line 7 - This is a test line</p>
+                <p>Line 8 - This is a test line</p>
+                <p>Line 9 - This is a test line</p>
+                <p>Line 10 - This is a test line</p>
+            </div>
+            
+            <p>More content to scroll through...</p>
+            <p>Keep scrolling to test the behavior...</p>
+            <p>The splash cursor should be disabled on mobile devices.</p>
+            <p>This ensures optimal scrolling performance.</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Instructions</h2>
+        <ul>
+            <li><strong>Desktop:</strong> You should see splash cursor effects when moving your mouse</li>
+            <li><strong>Mobile:</strong> No splash cursor effects, smooth scrolling enabled</li>
+            <li><strong>Touch Device:</strong> No splash cursor effects, optimized for touch interaction</li>
+        </ul>
+    </div>
+
+    <script>
+        // Test and display device detection results
+        document.addEventListener('DOMContentLoaded', function() {
+            const deviceInfo = document.getElementById('device-info');
+            const splashStatus = document.getElementById('splash-status');
+            const userAgent = document.getElementById('user-agent');
+            const screenInfo = document.getElementById('screen-info');
+            const touchInfo = document.getElementById('touch-info');
+            
+            // Wait a moment for mobile detection to complete
+            setTimeout(function() {
+                const isMobile = window.isMobileDevice ? window.isMobileDevice() : false;
+                const splashDisabled = window.DISABLE_SPLASH_CURSOR || false;
+                const splashActive = window.splashActive || false;
+                
+                // Device type
+                if (isMobile) {
+                    deviceInfo.textContent = 'Device Type: Mobile/Touch Device Detected';
+                    deviceInfo.className = 'status mobile';
+                } else {
+                    deviceInfo.textContent = 'Device Type: Desktop Device Detected';
+                    deviceInfo.className = 'status desktop';
+                }
+                
+                // Splash cursor status
+                if (splashDisabled) {
+                    splashStatus.textContent = 'Splash Cursor: Disabled (Mobile Optimization Active)';
+                    splashStatus.className = 'status mobile';
+                } else if (splashActive) {
+                    splashStatus.textContent = 'Splash Cursor: Active (Desktop Mode)';
+                    splashStatus.className = 'status desktop';
+                } else {
+                    splashStatus.textContent = 'Splash Cursor: Inactive';
+                    splashStatus.className = 'status info';
+                }
+                
+                // User agent
+                userAgent.textContent = 'User Agent: ' + navigator.userAgent.substring(0, 100) + '...';
+                
+                // Screen info
+                screenInfo.textContent = `Screen: ${window.innerWidth}x${window.innerHeight}, Device Pixel Ratio: ${window.devicePixelRatio || 1}`;
+                
+                // Touch info
+                const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                const hasOrientation = typeof window.orientation !== 'undefined';
+                touchInfo.textContent = `Touch Support: ${hasTouch}, Orientation API: ${hasOrientation}, Max Touch Points: ${navigator.maxTouchPoints || 0}`;
+                
+            }, 500);
+        });
+        
+        // Log any splash cursor related messages
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const message = args.join(' ');
+            if (message.includes('Splash') || message.includes('Mobile') || message.includes('cursor')) {
+                const logDiv = document.createElement('div');
+                logDiv.textContent = 'Console: ' + message;
+                logDiv.className = 'status info';
+                logDiv.style.fontSize = '12px';
+                logDiv.style.marginTop = '5px';
+                document.querySelector('.test-section').appendChild(logDiv);
+            }
+        };
+    </script>
+</body>
+</html>

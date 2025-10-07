@@ -15,9 +15,8 @@
     <link rel="stylesheet" href="css/styles.css?v=3">
     <link rel="stylesheet" href="css/universal-smooth-scroll.css">
     
-    <!-- Splash Cursor Effect -->
-    <script src="js/splash-cursor.js"></script>
-    <script src="js/splash-init.js"></script>
+    <!-- Splash Cursor Effect - Desktop Only -->
+    <script src="js/mobile-splash-detector.js"></script>
     
     <!-- Enhanced Critical CSS for Contact Page -->
     <style>
@@ -303,10 +302,11 @@
                         </div>
                     </div>
                     <div class="faq-answer">
-                        <p>Simply fill out the contact form above or join our Discord server. We welcome all skill levels and backgrounds! Our community is open to anyone passionate about technology and learning.</p>
+                        <!-- <p>Joining GeekRoom Adgips is easy! We welcome all skill levels and backgrounds! Our community is open to anyone passionate about technology and learning.</p> -->
+                        <p></p>
                     </div>
                 </div>
-                <div class="faq-item" data-animate="fade-up" data-delay="0.2">
+                <!-- <div class="faq-item" data-animate="fade-up" data-delay="0.2">
                     <div class="faq-question">
                         <h4>Is there a membership fee?</h4>
                         <div class="faq-toggle">
@@ -318,7 +318,7 @@
                     <div class="faq-answer">
                         <p>No, GeekRoom Adgips is completely free to join. We believe in making technology education accessible to everyone and removing financial barriers to learning.</p>
                     </div>
-                </div>
+                </div> -->
                 <div class="faq-item" data-animate="fade-up" data-delay="0.3">
                     <div class="faq-question">
                         <h4>What events do you organize?</h4>
@@ -1123,8 +1123,20 @@
             font-weight: 600;
         }
 
-        /* Responsive Design */
+        /* Mobile Scrolling Optimization */
         @media (max-width: 768px) {
+            /* Ensure proper touch scrolling on mobile */
+            html, body {
+                -webkit-overflow-scrolling: touch !important;
+                overflow-x: hidden;
+                scroll-behavior: smooth;
+            }
+            
+            /* Prevent any potential interference with mobile scrolling */
+            * {
+                touch-action: manipulation;
+            }
+            
             .form-row {
                 grid-template-columns: 1fr;
                 gap: 1rem;

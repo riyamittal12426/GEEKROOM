@@ -3,6 +3,12 @@ console.log('Loading SplashCursor script...');
 
 class SplashCursor {
   constructor(options = {}) {
+    // Check if device is mobile and abort initialization
+    if (this.isMobileDevice()) {
+      console.log('Mobile device detected - Splash cursor initialization aborted');
+      return null;
+    }
+    
     this.config = {
       SIM_RESOLUTION: options.SIM_RESOLUTION || 128,
       DYE_RESOLUTION: options.DYE_RESOLUTION || 1440,
@@ -31,6 +37,28 @@ class SplashCursor {
     this.colorUpdateTimer = 0.0;
 
     this.init();
+  }
+
+  // Mobile detection method
+  isMobileDevice() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // Check for mobile user agents
+    const mobileRegex = /android|avantgo|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i;
+    
+    // Check screen size
+    const isSmallScreen = window.innerWidth <= 768 || window.innerHeight <= 768;
+    
+    // Check touch capability
+    const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    // Check for specific mobile indicators
+    const isMobileUserAgent = mobileRegex.test(userAgent);
+    
+    // Check orientation API (usually available on mobile)
+    const hasOrientationAPI = typeof window.orientation !== 'undefined';
+    
+    return isMobileUserAgent || (isSmallScreen && hasTouchScreen) || hasOrientationAPI;
   }
 
   createPointer() {
