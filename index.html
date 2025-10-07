@@ -162,8 +162,13 @@
                     Empowering the next generation of tech innovators through hands-on learning,
                     collaboration, and industry-relevant projects at ADGIPS.
                 </p> -->
-                <div class="hero-buttons">
-                    <a href="https://vision.hack2skill.com/event/vedathon/?utm_source=Refferal&utm_medium=Ayush" class="btn btn-primary" id="hero-cta" target="_blank" rel="noopener noreferrer">
+                <div class="hero-buttons" style="position: relative; z-index: 100;">
+                    <a href="https://vision.hack2skill.com/event/vedathon/?utm_source=Refferal&utm_medium=Ayush" 
+                       class="btn btn-primary vedathon-register-btn" 
+                       id="hero-cta" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       onclick="console.log('Direct onclick fired!'); return true;">
                         Vedathon - Register Now
                         <!-- <span class="btn-arrow">→</span> -->
                     </a>
@@ -430,8 +435,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('📱 Homepage: Initializing Mobile Button Fixes...');
             
-            // Fix all buttons and links for mobile
-            const buttons = document.querySelectorAll('.btn, .hero-buttons a, .nav-link');
+            // Fix all buttons and links for mobile (EXCEPT Vedathon button)
+            const buttons = document.querySelectorAll('.btn:not(.vedathon-register-btn), .nav-link');
             
             buttons.forEach(button => {
                 // Add touch-friendly styles
@@ -462,19 +467,32 @@
                 });
             });
             
-            // Special handling for hero buttons
-            const heroButtons = document.querySelectorAll('.hero-buttons a');
-            heroButtons.forEach(btn => {
+            // Vedathon button - minimal handling, let it work naturally
+            const vedathonBtn = document.querySelector('.vedathon-register-btn');
+            if (vedathonBtn) {
+                console.log('✅ Vedathon button found, URL:', vedathonBtn.href);
+                
+                // Simple click logger - don't interfere
+                vedathonBtn.addEventListener('click', function(e) {
+                    console.log('🎯 VEDATHON BUTTON CLICKED!');
+                    console.log('Target URL:', this.href);
+                    console.log('Will open in new tab');
+                    // Don't prevent default - let browser handle it naturally
+                });
+            }
+            
+            // Special handling for OTHER hero buttons (not Vedathon)
+            const otherHeroButtons = document.querySelectorAll('.hero-buttons a:not(.vedathon-register-btn)');
+            otherHeroButtons.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     console.log('🚀 Hero button clicked:', this.href);
                     
-                    // Only force navigation for internal links (not external or target="_blank")
+                    // Only force navigation for internal links
                     if (this.href && !e.defaultPrevented && !this.target && !this.href.startsWith('http')) {
                         setTimeout(() => {
                             window.location.href = this.href;
                         }, 100);
                     }
-                    // External links and target="_blank" will work naturally
                 });
             });
             
