@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Loading Test - GeekRoom</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .test-info {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #111;
+            border-radius: 8px;
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            background: #333;
+        }
+        
+        .success { background: #28a745; }
+        .error { background: #dc3545; }
+        .warning { background: #ffc107; color: #000; }
+        
+        .team-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .preview-card {
+            width: 230px;
+            height: 250px;
+            border-radius: 20px;
+            background: #1b233d;
+            padding: 5px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .preview-top {
+            height: 150px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
+            position: relative;
+        }
+        
+        .preview-img {
+            position: absolute;
+            top: 25px;
+            right: 0px;
+            width: 200px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #ccc;
+        }
+        
+        .preview-bottom {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Team Page Loading Test</h1>
+    
+    <div class="test-info">
+        <h2>Loading Test Results</h2>
+        <div id="test-status" class="status">Running tests...</div>
+        <div id="image-status" class="status">Checking image loading...</div>
+        <div id="preload-status" class="status">Checking preload support...</div>
+    </div>
+    
+    <div class="test-info">
+        <h2>Controls</h2>
+        <button class="btn" onclick="testNormalLoad()">Test Normal Load</button>
+        <button class="btn" onclick="testSlowLoad()">Test Slow Load</button>
+        <button class="btn" onclick="clearCache()">Clear Cache & Reload</button>
+        <button class="btn" onclick="window.location.href='team.html'">Go to Team Page</button>
+    </div>
+    
+    <div class="team-preview">
+        <div class="preview-card">
+            <div class="preview-top">
+                <div class="preview-img" id="img1">Loading...</div>
+            </div>
+            <div class="preview-bottom">Sample Card 1</div>
+        </div>
+        
+        <div class="preview-card">
+            <div class="preview-top" style="background: linear-gradient(45deg, rgb(59, 130, 246) 0%, rgb(147, 197, 253) 100%);">
+                <div class="preview-img" id="img2">Loading...</div>
+            </div>
+            <div class="preview-bottom">Sample Card 2</div>
+        </div>
+        
+        <div class="preview-card">
+            <div class="preview-top" style="background: linear-gradient(45deg, rgb(168, 85, 247) 0%, rgb(196, 181, 253) 100%);">
+                <div class="preview-img" id="img3">Loading...</div>
+            </div>
+            <div class="preview-bottom">Sample Card 3</div>
+        </div>
+    </div>
+
+    <script>
+        // Test functions
+        function updateStatus(elementId, message, className = '') {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = 'status ' + className;
+        }
+        
+        function testImageLoading() {
+            const testImages = ['photos/1.jpg', 'photos/shaurya.jpg', 'photos/sam.jpg'];
+            let loadedCount = 0;
+            let errorCount = 0;
+            
+            updateStatus('image-status', 'Testing image loading...', 'warning');
+            
+            testImages.forEach((src, index) => {
+                const img = new Image();
+                
+                img.onload = function() {
+                    loadedCount++;
+                    document.getElementById(`img${index + 1}`).innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">`;
+                    
+                    if (loadedCount + errorCount === testImages.length) {
+                        updateStatus('image-status', `Images loaded: ${loadedCount}/${testImages.length} successful`, loadedCount === testImages.length ? 'success' : 'warning');
+                    }
+                };
+                
+                img.onerror = function() {
+                    errorCount++;
+                    document.getElementById(`img${index + 1}`).textContent = 'Failed to load';
+                    
+                    if (loadedCount + errorCount === testImages.length) {
+                        updateStatus('image-status', `Images loaded: ${loadedCount}/${testImages.length} successful`, loadedCount === testImages.length ? 'success' : 'error');
+                    }
+                };
+                
+                img.src = src;
+            });
+        }
+        
+        function testPreloadSupport() {
+            const supportsPreload = 'HTMLLinkElement' in window && 'relList' in HTMLLinkElement.prototype && 'supports' in HTMLLinkElement.prototype.relList;
+            updateStatus('preload-status', `Preload support: ${supportsPreload ? 'Supported' : 'Not supported'}`, supportsPreload ? 'success' : 'warning');
+        }
+        
+        function testNormalLoad() {
+            updateStatus('test-status', 'Testing normal load speed...', 'warning');
+            testImageLoading();
+        }
+        
+        function testSlowLoad() {
+            updateStatus('test-status', 'Simulating slow connection...', 'warning');
+            // Simulate slow loading by adding delays
+            setTimeout(testImageLoading, 1000);
+        }
+        
+        function clearCache() {
+            if ('caches' in window) {
+                caches.keys().then(names => {
+                    names.forEach(name => {
+                        caches.delete(name);
+                    });
+                });
+            }
+            location.reload(true);
+        }
+        
+        // Run tests on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStatus('test-status', 'Page loaded, starting tests...', 'success');
+            testPreloadSupport();
+            setTimeout(testNormalLoad, 500);
+        });
+        
+        // Log page load performance
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log(`Page load time: ${loadTime}ms`);
+            
+            if (loadTime > 3000) {
+                updateStatus('test-status', `Page load time: ${loadTime}ms (Slow)`, 'warning');
+            } else {
+                updateStatus('test-status', `Page load time: ${loadTime}ms (Good)`, 'success');
+            }
+        });
+    </script>
+</body>
+</html>
