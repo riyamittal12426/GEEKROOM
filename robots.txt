@@ -1,0 +1,33 @@
+# robots.txt for Geek Room Adgips
+
+User-agent: *
+Allow: /
+
+# Disallow test and debug files
+Disallow: /*test*.html
+Disallow: /*debug*.html
+Disallow: /mobile-nav-debug.html
+Disallow: /hamburger-test.html
+Disallow: /homepage-nav-test.html
+Disallow: /events-nav-test.html
+Disallow: /events-headings-test.html
+Disallow: /past-events-fix-test.html
+Disallow: /team-fix-test.html
+Disallow: /team-loading-test.html
+Disallow: /team-responsive-test.html
+Disallow: /impossible-to-miss-test.html
+Disallow: /site-mobile-nav-status.html
+
+# Disallow documentation files
+Disallow: /*.md
+
+# Allow all other pages
+Allow: /index.html
+Allow: /about.html
+Allow: /events.html
+Allow: /team.html
+Allow: /gallery.html
+Allow: /contact.html
+
+# Sitemap location
+Sitemap: https://geekroomadgips.com/sitemap.xml

@@ -1,12 +1,10 @@
 // SplitText Animation - Vanilla JS Implementation
-console.log('Loading SplitText Animation script...');
 
 class SplitTextAnimation {
   constructor(element, options = {}) {
     this.element = typeof element === 'string' ? document.querySelector(element) : element;
     
     if (!this.element) {
-      console.error('SplitTextAnimation: Element not found');
       return;
     }
 
@@ -34,7 +32,6 @@ class SplitTextAnimation {
   }
 
   async init() {
-    console.log('Initializing SplitText Animation...');
     
     // Wait for fonts to load
     await this.waitForFonts();
@@ -78,8 +75,6 @@ class SplitTextAnimation {
   setupAnimation() {
     if (!this.element || !this.fontsLoaded) return;
 
-    console.log('Setting up SplitText animation for:', this.element);
-
     // Clean up existing instance
     this.cleanup();
 
@@ -109,11 +104,8 @@ class SplitTextAnimation {
       let targets = this.getTargets();
       
       if (!targets || targets.length === 0) {
-        console.warn('No targets found for animation');
         return;
       }
-
-      console.log(`Animating ${targets.length} ${this.config.splitType}:`, targets);
 
       // Create animation
       this.tween = gsap.fromTo(
@@ -129,13 +121,9 @@ class SplitTextAnimation {
             start: start,
             once: this.config.once,
             fastScrollEnd: true,
-            anticipatePin: 0.4,
-            onEnter: () => {
-              console.log('SplitText animation triggered');
-            }
+            anticipatePin: 0.4
           },
           onComplete: () => {
-            console.log('SplitText animation completed');
             if (this.config.onComplete) {
               this.config.onComplete();
             }
@@ -148,9 +136,8 @@ class SplitTextAnimation {
       // Store reference for cleanup
       this.element._splitTextInstance = this;
 
-      console.log('SplitText animation setup complete');
     } catch (error) {
-      console.error('Error setting up SplitText animation:', error);
+      // Silently handle animation errors
     }
   }
 
@@ -242,4 +229,3 @@ function createSplitTextAnimation(selector, options = {}) {
 // Export for global use
 window.SplitTextAnimation = SplitTextAnimation;
 window.createSplitTextAnimation = createSplitTextAnimation;
-console.log('SplitTextAnimation class exported to window object');

@@ -7,6 +7,27 @@
     <title>Geek Room Adgips - Where Innovation Meets Excellence</title>
     <meta name="description"
         content="Geek Room Adgips - A professional platform for technology enthusiasts and innovators.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geekroomadgips.com/">
+    <meta property="og:title" content="Geek Room Adgips - Where Innovation Meets Excellence">
+    <meta property="og:description" content="A premier tech community where innovation meets collaboration. Join us for workshops, hackathons, and tech events.">
+    <meta property="og:image" content="https://geekroomadgips.com/photos/1.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://geekroomadgips.com/">
+    <meta property="twitter:title" content="Geek Room Adgips - Where Innovation Meets Excellence">
+    <meta property="twitter:description" content="A premier tech community where innovation meets collaboration. Join us for workshops, hackathons, and tech events.">
+    <meta property="twitter:image" content="https://geekroomadgips.com/photos/1.jpg">
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="tech community, innovation, hackathons, workshops, programming, technology events, coding, geek room">
+    <meta name="author" content="Geek Room Adgips">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://geekroomadgips.com/">
+    <meta name="theme-color" content="#A0FF8F">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,8 +41,14 @@
     <link rel="stylesheet" href="css/universal-smooth-scroll.css">
 
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" 
+            integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" 
+            integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
 
     <!-- Performance Hints for Preloading -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -259,7 +286,7 @@
                     <span class="letter">a</span>
                     <span class="letter">m</span>
                 </h2>
-                <p class="team-subtitle">Meet the brilliant minds driving innovation at Room Adgips</p>
+                <p class="team-subtitle">Meet the brilliant minds driving innovation at Geek Room Adgips</p>
             </div>
             <!-- <div class="team-actions">
                 <a href="team.html" class="btn team-btn-primary">
@@ -449,12 +476,6 @@
                 });
             });
             
-            // Fix viewport and touch issues
-            const viewport = document.querySelector('meta[name="viewport"]');
-            if (viewport) {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
-            }
-            
             // Prevent double-tap zoom on buttons
             let lastTouchEnd = 0;
             document.addEventListener('touchend', function(event) {
@@ -464,8 +485,6 @@
                 }
                 lastTouchEnd = now;
             }, false);
-            
-            console.log('✅ Homepage: Mobile Button Fixes Applied!');
         });
     </script>
     

@@ -29,17 +29,14 @@ const imagesToCache = [
 
 // Install event - AGGRESSIVE CACHING
 self.addEventListener('install', function(event) {
-    console.log('🚀 Installing TURBO cache service worker...');
     event.waitUntil(
         Promise.all([
             // Cache static resources
             caches.open(STATIC_CACHE).then(function(cache) {
-                console.log('📦 Caching static resources...');
                 return cache.addAll(urlsToCache);
             }),
             // Cache images separately with high compression
             caches.open(IMAGE_CACHE).then(function(cache) {
-                console.log('🖼️ AGGRESSIVELY caching all images...');
                 return Promise.all(
                     imagesToCache.map(url => {
                         return fetch(url, {
@@ -50,13 +47,12 @@ self.addEventListener('install', function(event) {
                                 return cache.put(url, response);
                             }
                         }).catch(err => {
-                            console.log('⚠️ Failed to cache image:', url);
+                            // Silently handle cache errors
                         });
                     })
                 );
             })
         ]).then(function() {
-            console.log('✅ TURBO CACHE COMPLETE - All resources cached!');
             self.skipWaiting();
         })
     );
@@ -64,19 +60,16 @@ self.addEventListener('install', function(event) {
 
 // Activate event - clean up old caches
 self.addEventListener('activate', function(event) {
-    console.log('🔄 Activating TURBO cache...');
     event.waitUntil(
         caches.keys().then(function(cacheNames) {
             return Promise.all(
                 cacheNames.map(function(cacheName) {
                     if (cacheName !== STATIC_CACHE && cacheName !== IMAGE_CACHE) {
-                        console.log('🗑️ Deleting old cache:', cacheName);
                         return caches.delete(cacheName);
                     }
                 })
             );
         }).then(function() {
-            console.log('⚡ TURBO CACHE ACTIVE!');
             self.clients.claim();
         })
     );
@@ -92,7 +85,6 @@ self.addEventListener('fetch', function(event) {
             caches.open(IMAGE_CACHE).then(function(cache) {
                 return cache.match(event.request).then(function(response) {
                     if (response) {
-                        console.log('�️ INSTANT from cache:', url);
                         return response;
                     }
                     
@@ -116,7 +108,6 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
             if (response) {
-                console.log('⚡ INSTANT from cache:', url);
                 return response;
             }
             

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team - Geek Room Adgips</title>
-    <meta name="description" content="Meet the amazing team behind Room Adgips - our core members, leads, and innovators driving technological excellence.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,42 +40,127 @@
     
     <!-- SplitText Animation Styles -->
     <style>
-        /* New Card Design Styles - Responsive */
+        /* Subtle pulse animation for profile images */
+        @keyframes imageGlow {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(80, 246, 255, 0.2);
+            }
+        }
+        
+        /* ========================================
+           MODERN TEAM CARD DESIGN - COMPLETELY REDESIGNED
+           ======================================== */
+        
+        /* Modern Card Container */
         .card {
             width: 100%;
-            max-width: 280px;
-            min-width: 250px;
+            max-width: 340px;
+            min-width: 300px;
             border-radius: 20px;
-            background: #1b233d;
-            padding: 5px;
+            background: linear-gradient(145deg, rgba(20, 25, 40, 0.95) 0%, rgba(15, 20, 35, 0.98) 100%);
+            padding: 0;
             overflow: hidden;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 
+                        0 0 0 1px rgba(160, 255, 143, 0.15);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             margin: 0 auto;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Animated border gradient */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, 
+                rgba(160, 255, 143, 0.3) 0%, 
+                rgba(80, 246, 255, 0.3) 50%,
+                rgba(160, 255, 143, 0.3) 100%
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Shine effect on hover */
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(160, 255, 143, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .card:hover::after {
+            opacity: 1;
         }
 
         .card:hover {
-            transform: scale(1.05);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(160, 255, 143, 0.25), 
+                        0 0 0 2px rgba(160, 255, 143, 0.4);
         }
 
+        /* Top Section with Image Background */
         .card .top-section {
-            height: 150px;
-            border-radius: 15px;
+            height: 220px;
+            border-radius: 20px 20px 0 0;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
+            background: linear-gradient(135deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* Decorative corner */
         .card .top-section .border {
             border-bottom-right-radius: 10px;
-            height: 30px;
-            width: 130px;
-            background: white;
-            background: #1b233d;
+            height: 35px;
+            width: 140px;
+            background: rgba(15, 20, 35, 0.95);
             position: relative;
             transform: skew(-40deg);
-            box-shadow: -10px -10px 0 0 #1b233d;
+            box-shadow: -10px -10px 0 0 rgba(15, 20, 35, 0.95);
+            z-index: 50;
         }
 
         .card .top-section .border::before {
@@ -88,30 +172,34 @@
             right: -15px;
             background: rgba(255, 255, 255, 0);
             border-top-left-radius: 10px;
-            box-shadow: -5px -5px 0 2px #1b233d;
+            box-shadow: -5px -5px 0 2px rgba(15, 20, 35, 0.95);
         }
 
         .card .top-section::before {
             content: "";
             position: absolute;
-            top: 30px;
+            top: 35px;
             left: 0;
             background: rgba(255, 255, 255, 0);
             height: 15px;
             width: 15px;
             border-top-left-radius: 15px;
-            box-shadow: -5px -5px 0 2px #1b233d;
+            box-shadow: -5px -5px 0 2px rgba(15, 20, 35, 0.95);
+            z-index: 50;
         }
 
+        /* Icons Container */
         .card .top-section .icons {
             position: absolute;
             top: 0;
             width: 100%;
-            height: 30px;
+            height: 35px;
             display: flex;
             justify-content: space-between;
+            z-index: 100;
         }
 
+        /* Logo Icon */
         .card .top-section .icons .logo {
             height: 100%;
             aspect-ratio: 1;
@@ -120,114 +208,194 @@
 
         .card .top-section .icons .logo .svg {
             height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
         }
 
+        .card:hover .top-section .icons .logo .svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Social Media Icons */
         .card .top-section .icons .social-media {
             height: 100%;
             padding: 8px 15px;
             display: flex;
-            gap: 7px;
+            gap: 10px;
+            align-items: center;
         }
 
         .card .top-section .icons .social-media .svg {
-            height: 100%;
-            fill: #1b233d;
+            height: 18px;
+            width: 18px;
+            fill: rgba(15, 20, 35, 0.8);
+            transition: all 0.3s ease;
         }
 
-        .card .top-section .icons .social-media .svg:hover {
-            fill: white;
+        .card .top-section .icons .social-media a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
+        .card .top-section .icons .social-media a:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card .top-section .icons .social-media a:hover .svg {
+            fill: rgb(4, 159, 187);
+        }
+
+        /* Profile Image - Modern Styling */
+        .profile-img {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 290px;
+            height: 160px;
+            border-radius: 16px;
+            object-fit: cover;
+            opacity: 1 !important;
+            display: block !important;
+            z-index: 10;
+            image-rendering: -webkit-optimize-contrast;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4),
+                        0 0 0 3px rgba(255, 255, 255, 0.15);
+            border: none;
+            filter: brightness(0.95) contrast(1.05);
+        }
+        
+        /* Enhanced hover effect for images */
+        .card:hover .profile-img {
+            box-shadow: 0 12px 32px rgba(160, 255, 143, 0.4),
+                        0 0 0 3px rgba(160, 255, 143, 0.5);
+            filter: brightness(1.05) contrast(1.1) saturate(1.1);
+            transform: translateX(-50%) translateY(-4px);
+        }
+
+        /* Bottom Section - Information Card */
         .card .bottom-section {
-            margin-top: 15px;
-            padding: 10px 5px;
+            margin-top: 0;
+            padding: 25px 20px 20px;
+            background: linear-gradient(135deg, rgba(20, 25, 40, 0.6) 0%, rgba(15, 20, 35, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 20px 20px;
+            border-top: 1px solid rgba(160, 255, 143, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .card:hover .bottom-section {
+            background: linear-gradient(135deg, rgba(20, 25, 40, 0.8) 0%, rgba(15, 20, 35, 0.95) 100%);
+            border-top-color: rgba(160, 255, 143, 0.3);
         }
 
+        /* Name Title */
         .card .bottom-section .title {
             display: block;
-            font-size: 17px;
-            font-weight: bolder;
-            color: white;
+            font-size: 19px;
+            font-weight: 700;
+            color: #FFFFFF;
             text-align: center;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #FFFFFF 0%, rgba(160, 255, 143, 0.9) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card:hover .bottom-section .title {
+            text-shadow: 0 0 20px rgba(160, 255, 143, 0.5);
+            transform: translateY(-2px);
         }
 
+        /* Role/Position Row */
         .card .bottom-section .row {
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
+            justify-content: center;
+            margin-top: 12px;
+            gap: 0;
         }
 
         .card .bottom-section .row .item {
-            flex: 30%;
+            flex: 1;
             text-align: center;
-            padding: 5px;
-            color: rgba(170, 222, 243, 0.721);
+            padding: 12px 15px;
+            background: linear-gradient(135deg, rgba(160, 255, 143, 0.08) 0%, rgba(80, 246, 255, 0.08) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(160, 255, 143, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card .bottom-section .row .item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(160, 255, 143, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card:hover .bottom-section .row .item {
+            background: linear-gradient(135deg, rgba(160, 255, 143, 0.15) 0%, rgba(80, 246, 255, 0.15) 100%);
+            border-color: rgba(160, 255, 143, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(160, 255, 143, 0.2);
+        }
+
+        .card:hover .bottom-section .row .item::before {
+            opacity: 1;
         }
 
         .card .bottom-section .row .item .big-text {
-            font-size: 12px;
+            font-size: 14px;
             display: block;
+            font-weight: 700;
+            color: rgba(160, 255, 143, 1);
+            margin-bottom: 4px;
+            text-shadow: 0 0 10px rgba(160, 255, 143, 0.3);
         }
 
         .card .bottom-section .row .item .regular-text {
-            font-size: 19px;
+            font-size: 11px;
+            color: rgba(160, 255, 143, 0.8);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }
 
-        .card .bottom-section .row .item:nth-child(2) {
-            border-left: 1px solid rgba(255, 255, 255, 0.126);
-            border-right: 1px solid rgba(255, 255, 255, 0.126);
-        }
-
-        /* Responsive team grid */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 2rem 1rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            justify-items: center;
-        }
-
-        .profile-img {
-            position: absolute;
-            top: 25px;
-            right: 0px;
-            width: calc(100% - 10px);
-            max-width: 260px;
-            height: 140px;
-            border-radius: 10px;
-            object-fit: cover;
-            opacity: 1 !important; /* Always show images */
-            display: block !important; /* Force display */
-            z-index: 10;
-            background-color: transparent;
-            image-rendering: -webkit-optimize-contrast;
-            transition: transform 0.3s ease; /* Only animate transform, not opacity */
-        }
-        
-        /* Hover effect for images */
-        .card:hover .profile-img {
-            transform: scale(1.02);
-        }
-        
-        /* Ensure cards always show content */
+        /* Ensure cards are always visible */
         .card {
-            min-height: 250px;
+            min-height: 340px;
             position: relative;
-            opacity: 1 !important; /* Always visible */
-            display: block !important; /* Always displayed */
+            opacity: 1 !important;
+            display: block !important;
         }
         
-        /* Make sure the card content is always visible */
         .card .bottom-section {
             position: relative;
             z-index: 20;
             opacity: 1 !important;
         }
         
-        /* Remove any loading state interference */
         .card.loading {
             opacity: 1 !important;
         }
@@ -235,6 +403,66 @@
         .card.loading .profile-img {
             opacity: 1 !important;
             filter: none !important;
+        }
+
+        /* Responsive Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem 2.5rem;
+            padding: 3rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            place-items: center;
+            width: 100%;
+        }
+
+        /* Container centering - ensure proper alignment */
+        .team-section .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Team Section Styling */
+        .team-section {
+            padding: 60px 0;
+            background: linear-gradient(180deg, #000000 0%, #0a0e1a 50%, #000000 100%);
+            position: relative;
+        }
+
+        .team-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(160, 255, 143, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 0%, rgba(160, 255, 143, 0.9) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(160, 255, 143, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Force team heading to be visible */
@@ -253,7 +481,6 @@
         }
         
         .team-heading-visible {
-            opacity: 1 !important;
             visibility: visible !important;
             transform: none !important;
             text-shadow: none !important;
@@ -298,26 +525,38 @@
         /* Large Desktop */
         @media (min-width: 1200px) {
             .team-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 2.5rem;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 3rem 2.5rem;
                 padding: 3rem 2rem;
+                justify-items: center;
+                justify-content: center;
             }
             
             .card {
-                max-width: 300px;
+                max-width: 340px;
             }
         }
         
         /* Desktop */
         @media (min-width: 992px) and (max-width: 1199px) {
             .team-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 2.5rem 2rem;
                 padding: 2.5rem 1.5rem;
+                justify-items: center;
+                justify-content: center;
             }
             
             .card {
-                max-width: 280px;
+                max-width: 320px;
+            }
+
+            .card .top-section {
+                height: 210px;
+            }
+
+            .profile-img {
+                height: 155px;
             }
         }
         
@@ -325,22 +564,33 @@
         @media (min-width: 768px) and (max-width: 991px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+                gap: 2rem 1.5rem;
                 padding: 2rem 1rem;
+                justify-items: center;
+                justify-content: center;
             }
             
             .card {
-                max-width: 300px;
-                min-width: 260px;
+                max-width: 340px;
+                min-width: 300px;
+            }
+
+            .card .top-section {
+                height: 200px;
             }
             
             .profile-img {
-                width: calc(100% - 8px);
-                height: 130px;
+                width: calc(100% - 25px);
+                height: 150px;
+                top: 42px;
+            }
+
+            .card .bottom-section .title {
+                font-size: 18px;
             }
             
             #team-hero-title {
-                font-size: 3.5rem !important;
+                font-size: 4rem !important;
             }
             
             .hero-section {
@@ -352,39 +602,47 @@
         @media (min-width: 576px) and (max-width: 767px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+                gap: 1.5rem 1rem;
                 padding: 1.5rem 0.5rem;
+                justify-items: center;
+                justify-content: center;
             }
             
             .card {
-                max-width: 220px;
-                min-width: 200px;
+                max-width: 280px;
+                min-width: 260px;
             }
             
             .card .top-section {
-                height: 130px;
+                height: 190px;
             }
             
             .profile-img {
-                width: calc(100% - 6px);
-                height: 120px;
-                top: 20px;
+                width: calc(100% - 20px);
+                height: 140px;
+                top: 40px;
             }
             
             .card .bottom-section {
-                padding: 12px;
+                padding: 20px 15px 18px;
             }
             
             .card .bottom-section .title {
-                font-size: 0.9rem;
+                font-size: 16px;
+                letter-spacing: 0.8px;
+                margin-bottom: 12px;
             }
             
+            .card .bottom-section .row .item {
+                padding: 10px 12px;
+            }
+
             .card .bottom-section .row .item .big-text {
-                font-size: 10px;
+                font-size: 12px;
             }
             
             .card .bottom-section .row .item .regular-text {
-                font-size: 8px;
+                font-size: 10px;
             }
             
             #team-hero-title {
@@ -400,33 +658,36 @@
         @media (max-width: 575px) {
             .team-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 1rem 0.5rem;
+                gap: 1.5rem;
+                padding: 1.5rem 1rem;
+                justify-items: center;
+                justify-content: center;
             }
             
             .card {
-                max-width: 280px;
-                min-width: 250px;
+                max-width: 340px;
+                min-width: 280px;
                 width: 100%;
+                margin: 0 auto;
             }
             
             .card .top-section {
-                height: 140px;
+                height: 200px;
             }
             
             .profile-img {
-                width: calc(100% - 8px);
-                height: 130px;
-                top: 22px;
+                width: calc(100% - 25px);
+                height: 150px;
+                top: 42px;
             }
             
             .card .bottom-section {
-                padding: 15px;
+                padding: 22px 18px 20px;
             }
             
             .card .bottom-section .title {
-                font-size: 1rem;
-                margin-bottom: 15px;
+                font-size: 17px;
+                margin-bottom: 14px;
             }
             
             .card .bottom-section .row .item .big-text {
@@ -458,21 +719,22 @@
             }
             
             .card {
-                max-width: 260px;
+                max-width: 270px;
                 min-width: 240px;
             }
             
             .card .top-section {
-                height: 130px;
+                height: 140px;
             }
             
             .profile-img {
+                width: calc(100% - 10px);
                 height: 120px;
-                top: 20px;
+                top: 15px;
             }
             
             .card .bottom-section {
-                padding: 12px;
+                padding: 14px 8px;
             }
             
             .card .bottom-section .title {
@@ -572,12 +834,17 @@
                 left: -100%;
                 top: 70px;
                 flex-direction: column;
-                background-color: rgba(0, 0, 0, 0.95);
+                background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(15, 20, 35, 0.98) 100%);
                 width: 100%;
+                height: calc(100vh - 70px);
                 text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
                 backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                z-index: 999;
+                padding: 2rem 0;
+                overflow-y: auto;
             }
             
             .nav-menu.active {
@@ -585,46 +852,120 @@
             }
             
             .nav-menu li {
-                margin: 1rem 0;
+                margin: 1.5rem 0;
+                opacity: 0;
+                transform: translateX(-20px);
+                animation: slideInFromLeft 0.4s ease forwards;
+            }
+            
+            .nav-menu.active li:nth-child(1) { animation-delay: 0.1s; }
+            .nav-menu.active li:nth-child(2) { animation-delay: 0.15s; }
+            .nav-menu.active li:nth-child(3) { animation-delay: 0.2s; }
+            .nav-menu.active li:nth-child(4) { animation-delay: 0.25s; }
+            .nav-menu.active li:nth-child(5) { animation-delay: 0.3s; }
+            .nav-menu.active li:nth-child(6) { animation-delay: 0.35s; }
+            
+            @keyframes slideInFromLeft {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
             }
             
             .nav-hamburger {
                 display: flex !important;
                 flex-direction: column;
                 cursor: pointer;
-                padding: 8px;
-                background: rgba(160, 255, 143, 0.1);
-                border-radius: 4px;
+                padding: 10px;
+                background: rgba(160, 255, 143, 0.15);
+                border: 2px solid rgba(160, 255, 143, 0.4);
+                border-radius: 6px;
                 position: relative;
-                z-index: 1000;
+                z-index: 1001;
+                min-width: 48px;
+                min-height: 48px;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 10px rgba(160, 255, 143, 0.2);
+            }
+            
+            .nav-hamburger:hover {
+                background: rgba(160, 255, 143, 0.25);
+                border-color: rgba(160, 255, 143, 0.6);
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(160, 255, 143, 0.3);
+            }
+            
+            .nav-hamburger:active {
+                transform: scale(0.95);
             }
             
             .nav-hamburger .bar {
                 display: block !important;
-                width: 25px;
+                width: 26px;
                 height: 3px;
                 background-color: #A0FF8F !important;
                 margin: 3px 0;
-                transition: 0.3s;
-                border-radius: 2px;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                border-radius: 3px;
                 opacity: 1 !important;
                 visibility: visible !important;
+                box-shadow: 0 0 8px rgba(160, 255, 143, 0.4);
             }
             
             .nav-hamburger.active .bar:nth-child(2) {
                 opacity: 0;
+                transform: translateX(20px);
             }
             
             .nav-hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
+                transform: translateY(9px) rotate(45deg);
             }
             
             .nav-hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            
+            /* Make nav links more visible and interactive on mobile */
+            .nav-menu .nav-link {
+                display: block;
+                padding: 1.25rem 2rem;
+                font-size: 1.25rem;
+                font-weight: 500;
+                color: #FFFFFF !important;
+                border-bottom: 1px solid rgba(160, 255, 143, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+            }
+            
+            .nav-menu .nav-link::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #A0FF8F, transparent);
+                transition: width 0.3s ease;
+            }
+            
+            .nav-menu .nav-link:hover::before,
+            .nav-menu .nav-link.active::before {
+                width: 40px;
+            }
+            
+            .nav-menu .nav-link:hover,
+            .nav-menu .nav-link.active {
+                background: rgba(160, 255, 143, 0.15);
+                color: #A0FF8F !important;
+                padding-left: 3rem;
+                text-shadow: 0 0 10px rgba(160, 255, 143, 0.5);
             }
         }
         
-        /* Mobile hamburger override */
+        /* Enhanced mobile hamburger for smaller screens */
         @media (max-width: 768px) {
             .nav-hamburger {
                 display: flex !important;
@@ -632,16 +973,23 @@
                 cursor: pointer;
                 padding: 12px;
                 background: rgba(160, 255, 143, 0.2) !important;
-                border: 2px solid #A0FF8F;
-                border-radius: 6px;
+                border: 2px solid #A0FF8F !important;
+                border-radius: 8px;
                 position: relative;
-                z-index: 1000;
-                min-width: 44px;
-                min-height: 44px;
+                z-index: 1001;
+                min-width: 50px;
+                min-height: 50px;
                 justify-content: center;
                 align-items: center;
                 touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
                 user-select: none;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-hamburger:active {
+                transform: scale(0.9);
+                background: rgba(160, 255, 143, 0.3) !important;
             }
             
             .nav-hamburger .bar {
@@ -649,12 +997,25 @@
                 width: 28px;
                 height: 4px;
                 background-color: #A0FF8F !important;
-                margin: 3px 0;
-                transition: 0.3s;
+                margin: 3.5px 0;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 border-radius: 3px;
                 opacity: 1 !important;
                 visibility: visible !important;
-                box-shadow: 0 0 5px rgba(160, 255, 143, 0.3);
+                box-shadow: 0 0 10px rgba(160, 255, 143, 0.5);
+            }
+            
+            .nav-hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            
+            .nav-hamburger.active .bar:nth-child(1) {
+                transform: translateY(11px) rotate(45deg);
+            }
+            
+            .nav-hamburger.active .bar:nth-child(3) {
+                transform: translateY(-11px) rotate(-45deg);
             }
         }
         
@@ -703,8 +1064,14 @@
     </style>
     
     <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" 
+            integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" 
+            integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
     
     <!-- Simple SplitText Implementation -->
     <script src="js/simple-split-text.js"></script>
@@ -2021,8 +2388,6 @@
                         chars.push(span);
                     });
                     
-                    console.log(`Created ${chars.length} character spans for animation`);
-                    
                     // Animate characters with GSAP
                     gsap.fromTo(chars, 
                         {
@@ -2041,7 +2406,6 @@
                             stagger: 0.08,
                             delay: 0.5,
                             onComplete: function() {
-                                console.log('Team heading animation completed!');
                                 
                                 // Add hover effects after animation completes
                                 chars.forEach((char, index) => {
@@ -2084,12 +2448,7 @@
             
             // Debug function to check if everything is loaded
             function checkDependencies() {
-                console.log('=== Team Page Debug Info ===');
-                console.log('GSAP loaded:', !!window.gsap);
-                console.log('ScrollTrigger loaded:', !!window.ScrollTrigger);
-                console.log('Team heading element:', !!document.getElementById('team-hero-title'));
-                console.log('Document ready state:', document.readyState);
-                console.log('============================');
+                // Debug information removed for production
             }
 
             // Initialize SplitText Animation for Team Heading (fallback)
@@ -2103,7 +2462,6 @@
                 // This function is now replaced by SplitText animation
                 // Keeping for backward compatibility but it won't do anything
                 // since the letter spans have been replaced with plain text
-                console.log('Legacy animateHeroTitle called - now using SplitText animation');
             }
 
             // Counter animation for stats
@@ -2212,64 +2570,134 @@
     <!-- Universal Smooth Scrolling -->
     <script src="js/universal-smooth-scroll.js"></script>
     
-    <!-- Mobile Navigation Fix -->
+    <!-- Mobile Navigation - Improved Implementation -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🍔 Mobile Navigation Script Loading...');
+        (function() {
+            'use strict';
             
-            // Get elements
-            const hamburger = document.getElementById('nav-hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            
-            if (!hamburger || !navMenu) {
-                console.error('❌ Hamburger or NavMenu not found!');
-                return;
+            // Wait for DOM to be fully loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initHamburgerMenu);
+            } else {
+                initHamburgerMenu();
             }
             
-            console.log('✅ Hamburger and NavMenu found');
-            
-            // Add click event to hamburger
-            hamburger.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+            function initHamburgerMenu() {
+                console.log('🍔 Initializing hamburger menu...');
                 
-                console.log('🍔 Hamburger clicked!');
+                // Get elements
+                const hamburger = document.getElementById('nav-hamburger');
+                const navMenu = document.getElementById('nav-menu');
+                const navLinks = document.querySelectorAll('.nav-link');
+                const body = document.body;
                 
-                // Toggle classes
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                
-                console.log('📱 Menu active:', navMenu.classList.contains('active'));
-            });
-            
-            // Close menu when clicking on nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    console.log('🔗 Nav link clicked, closing menu');
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
+                // Verify elements exist
+                if (!hamburger) {
+                    console.error('❌ Hamburger element not found');
+                    return;
                 }
-            });
-            
-            // Debug info
-            console.log('📱 Screen width:', window.innerWidth);
-            console.log('🍔 Hamburger display:', window.getComputedStyle(hamburger).display);
-            
-            // Add visual feedback for touch
-            hamburger.style.touchAction = 'manipulation';
-            hamburger.style.userSelect = 'none';
-            
-            console.log('✅ Mobile Navigation Script Loaded Successfully!');
-        });
+                
+                if (!navMenu) {
+                    console.error('❌ Nav menu element not found');
+                    return;
+                }
+                
+                console.log('✅ Elements found successfully');
+                
+                // Prevent default behavior and improve touch handling
+                hamburger.style.touchAction = 'manipulation';
+                hamburger.style.webkitTapHighlightColor = 'transparent';
+                hamburger.style.userSelect = 'none';
+                
+                // Toggle menu function
+                function toggleMenu(e) {
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                    
+                    const isActive = hamburger.classList.contains('active');
+                    
+                    if (isActive) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                }
+                
+                // Open menu
+                function openMenu() {
+                    hamburger.classList.add('active');
+                    navMenu.classList.add('active');
+                    body.style.overflow = 'hidden'; // Prevent background scrolling
+                    console.log('📱 Menu opened');
+                }
+                
+                // Close menu
+                function closeMenu() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    body.style.overflow = ''; // Restore scrolling
+                    console.log('📱 Menu closed');
+                }
+                
+                // Click event for hamburger
+                hamburger.addEventListener('click', toggleMenu);
+                
+                // Touch events for better mobile responsiveness
+                let touchStarted = false;
+                
+                hamburger.addEventListener('touchstart', function(e) {
+                    touchStarted = true;
+                }, { passive: true });
+                
+                hamburger.addEventListener('touchend', function(e) {
+                    if (touchStarted) {
+                        e.preventDefault();
+                        toggleMenu(e);
+                        touchStarted = false;
+                    }
+                });
+                
+                // Close menu when nav links are clicked
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        console.log('🔗 Nav link clicked');
+                        closeMenu();
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    const isClickInsideNav = navMenu.contains(e.target);
+                    const isClickOnHamburger = hamburger.contains(e.target);
+                    
+                    if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+                
+                // Close menu on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        closeMenu();
+                    }
+                });
+                
+                // Handle window resize - close menu if viewport becomes desktop size
+                let resizeTimer;
+                window.addEventListener('resize', function() {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function() {
+                        if (window.innerWidth > 992 && navMenu.classList.contains('active')) {
+                            closeMenu();
+                        }
+                    }, 250);
+                });
+                
+                console.log('✅ Hamburger menu initialized successfully');
+            }
+        })();
     </script>
 </body>
 </html>

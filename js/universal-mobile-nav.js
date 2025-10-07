@@ -12,13 +12,13 @@
         navMenuSelector: '#nav-menu',
         navLinkSelector: '.nav-link',
         activeClass: 'active',
-        debugMode: true
+        debugMode: false
     };
     
     // Debug logger
     function log(message) {
         if (CONFIG.debugMode) {
-            console.log(`🍔 Mobile Nav: ${message}`);
+            // Debug disabled in production
         }
     }
     

@@ -54,12 +54,12 @@ html {
 }
 
 /* Universal navbar scroll effects */
-.navbar {
+nav.navbar {
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.navbar.scrolled {
-    background: rgba(0, 0, 0, 0.95) !important;
+nav.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -102,16 +102,16 @@ body {
 @media (prefers-reduced-motion: reduce) {
     html,
     * {
-        scroll-behavior: auto !important;
+        scroll-behavior: auto;
     }
     
     .scroll-to-top {
-        transition: opacity 0.2s ease, visibility 0.2s ease !important;
-        transform: none !important;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        transform: none;
     }
     
     .navbar {
-        transition: background 0.2s ease !important;
+        transition: background 0.2s ease;
     }
 }
 
@@ -128,7 +128,7 @@ body {
 @media print {
     .scroll-to-top,
     .navbar {
-        display: none !important;
+        display: none;
     }
 }
 
