@@ -205,29 +205,32 @@ class SitePreloader {
     }
 
     setupNavigationInterception() {
-        // Intercept all navigation clicks
-        document.addEventListener('click', (e) => {
+        // DISABLED: Instant navigation causes FOUC
+        // Just preload resources, let browser handle navigation normally
+        console.log('📄 Navigation preloading enabled (standard navigation)');
+        
+        // Preload pages on hover for faster perceived loading
+        document.addEventListener('mouseover', (e) => {
             const link = e.target.closest('a[href]');
             if (!link) return;
             
             const href = link.getAttribute('href');
             
-            // Only handle internal links
+            // Only handle internal HTML links
             if (href.startsWith('http') || href.startsWith('//')) return;
             if (href.startsWith('#')) return;
+            if (!href.endsWith('.html')) return;
             
-            // Check if we have this route cached
-            if (this.cache.has(href)) {
-                e.preventDefault();
-                this.navigateInstantly(href);
-            }
-        });
-
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', (e) => {
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            if (this.cache.has(currentPath)) {
-                this.navigateInstantly(currentPath, false);
+            // Preload this page if not already cached
+            if (!this.cache.has(href)) {
+                console.log(`🔄 Hover preloading: ${href}`);
+                fetch(href).then(r => r.text()).then(html => {
+                    this.cache.set(href, {
+                        type: 'html',
+                        content: html,
+                        timestamp: Date.now()
+                    });
+                }).catch(err => console.warn('Hover preload failed:', err));
             }
         });
     }
