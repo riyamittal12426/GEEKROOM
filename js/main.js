@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.toggle('active');
     });
     
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // Close mobile menu when clicking on a navbar link (not events navigation links)
+    document.querySelectorAll('.nav-menu .nav-link').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');

@@ -1115,6 +1115,163 @@
             opacity: 1 !important;
             display: block !important;
         }
+        
+        /* Professional Events Navigation Styles */
+        .events-navigation-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+        
+        .events-navigation {
+            display: flex;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 4px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .events-navigation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(160, 255, 143, 0.05) 0%, rgba(127, 230, 90, 0.02) 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        
+        .events-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            white-space: nowrap;
+            min-width: 140px;
+            justify-content: center;
+        }
+        
+        .events-nav-btn:hover {
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-1px);
+        }
+        
+        .events-nav-btn.active {
+            color: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.08);
+            font-weight: 600;
+            border: 1px solid rgba(160, 255, 143, 0.4);
+            box-shadow: 
+                0 0 0 1px rgba(160, 255, 143, 0.2),
+                0 4px 12px rgba(160, 255, 143, 0.15);
+        }
+        
+        .events-nav-btn.active:hover {
+            transform: translateY(-1px);
+            border-color: rgba(160, 255, 143, 0.6);
+            box-shadow: 
+                0 0 0 1px rgba(160, 255, 143, 0.3),
+                0 6px 20px rgba(160, 255, 143, 0.2);
+        }
+        
+        .nav-icon {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        .events-nav-btn.active .nav-icon {
+            opacity: 1;
+            filter: drop-shadow(0 0 4px rgba(160, 255, 143, 0.4));
+        }
+        
+        .nav-text {
+            font-size: 14px;
+            letter-spacing: 0.02em;
+        }
+        
+        .nav-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+        
+        .events-nav-btn.active .nav-count {
+            background: rgba(160, 255, 143, 0.25);
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        @media (max-width: 768px) {
+            .events-navigation-container {
+                margin-bottom: 3rem;
+                padding: 0 0.5rem;
+            }
+            
+            .events-navigation {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .events-nav-btn {
+                flex: 1;
+                min-width: unset;
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+            
+            .nav-text {
+                font-size: 13px;
+            }
+            
+            .nav-icon {
+                font-size: 14px;
+            }
+            
+            .nav-count {
+                width: 18px;
+                height: 18px;
+                font-size: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .events-nav-btn {
+                gap: 6px;
+                padding: 8px 12px;
+            }
+            
+            .nav-text {
+                font-size: 12px;
+            }
+            
+            .nav-icon {
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1173,7 +1330,7 @@
     </section>
 
     <!-- Team Mini Navbar -->
-    <section class="team-mini-navbar">
+    <!-- <section class="team-mini-navbar">
         <div class="container">
             <div class="mini-nav-wrapper">
                 <div class="mini-nav-tabs">
@@ -1190,7 +1347,24 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+       <div class="container">
+            <!-- Professional Events Navigation -->
+            <div class="events-navigation-container">
+                <div class="events-navigation">
+                    <button class="events-nav-btn active" data-target="upcoming-events">
+                        <span class="nav-icon">📅</span>
+                        <span class="nav-text">Upcoming Events</span>
+                        <span class="nav-count">1</span>
+                    </button>
+                    <button class="events-nav-btn" data-target="past-events">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">Past Events</span>
+                        <span class="nav-count">3</span>
+                    </button>
+                </div>
+            </div>
 
     <!-- Council Members -->
     <section id="council-members" class="team-section active">
@@ -2482,6 +2656,92 @@
                         }
                     });
                 });
+            }
+
+            // Events Navigation Functionality
+            const eventsNavigation = document.querySelector('.events-navigation');
+            const eventsNavButtons = document.querySelectorAll('.events-nav-btn');
+            
+            if (eventsNavigation && eventsNavButtons.length > 0) {
+                console.log('✅ Events Navigation: Found', eventsNavButtons.length, 'navigation buttons');
+                
+                // Function to switch between sections
+                function switchToSection(targetSectionId, activeButton) {
+                    console.log('🔄 Events Navigation: Switching to', targetSectionId);
+                    
+                    // Update active states
+                    eventsNavButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    activeButton.classList.add('active');
+                    
+                    // Get target section
+                    const targetSection = document.getElementById(targetSectionId);
+                    if (!targetSection) {
+                        console.error('❌ Target section not found:', targetSectionId);
+                        return;
+                    }
+                    
+                    // Calculate scroll position accounting for fixed navbar and some padding
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight || 80;
+                    const offsetTop = targetSection.offsetTop - navbarHeight - 20;
+                    
+                    console.log('📍 Scrolling to position:', offsetTop);
+                    
+                    // Smooth scroll to target section
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Add subtle visual feedback
+                    targetSection.style.background = 'rgba(160, 255, 143, 0.03)';
+                    targetSection.style.border = '1px solid rgba(160, 255, 143, 0.2)';
+                    targetSection.style.borderRadius = '16px';
+                    targetSection.style.padding = '1.5rem';
+                    targetSection.style.transition = 'all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)';
+                    
+                    // Remove highlight after animation
+                    setTimeout(() => {
+                        targetSection.style.background = '';
+                        targetSection.style.border = '';
+                        targetSection.style.borderRadius = '';
+                        targetSection.style.padding = '';
+                    }, 2500);
+                    
+                    console.log('✅ Events Navigation: Switched to', targetSectionId);
+                }
+                
+                // Add click handlers to navigation buttons
+                eventsNavButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const targetSectionId = this.getAttribute('data-target');
+                        
+                        console.log('🖱️ Events Navigation: Clicked button for', targetSectionId);
+                        
+                        switchToSection(targetSectionId, this);
+                    }, true);
+                });
+                
+                // Add smooth hover animation for buttons
+                eventsNavButtons.forEach(button => {
+                    button.addEventListener('mouseenter', function() {
+                        if (!this.classList.contains('active')) {
+                            this.style.background = 'rgba(255, 255, 255, 0.08)';
+                        }
+                    });
+                    
+                    button.addEventListener('mouseleave', function() {
+                        if (!this.classList.contains('active')) {
+                            this.style.background = '';
+                        }
+                    });
+                });
+                
+                console.log('✅ Events Navigation: Fully initialized');
             }
 
             // Team mini navbar switching

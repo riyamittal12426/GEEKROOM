@@ -4207,67 +4207,127 @@ body .page-subtitle {
     letter-spacing: 0.5px;
 }
 
-/* Team Mini Navbar */
+/* Team Mini Navbar - Professional Minimal Design */
 .team-mini-navbar {
     padding: 60px 0 40px;
-    background: rgba(255, 255, 255, 0.01);
+    background: transparent;
+    display: flex;
+    justify-content: center;
 }
 
 .mini-nav-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .mini-nav-tabs {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 4px;
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.mini-nav-tabs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(160, 255, 143, 0.05) 0%, rgba(127, 230, 90, 0.02) 100%);
+    border-radius: inherit;
+    pointer-events: none;
 }
 
 .mini-nav-tab {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(160, 255, 143, 0.1);
-    color: var(--text-secondary);
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: var(--transition);
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    font-size: 1rem;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
     font-weight: 500;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+    min-width: 140px;
+    justify-content: center;
 }
 
 .mini-nav-tab:hover {
-    background: rgba(160, 255, 143, 0.1);
-    border-color: rgba(160, 255, 143, 0.3);
-    color: var(--text-primary);
-    transform: translateY(-2px);
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
 }
 
 .mini-nav-tab.active {
-    background: var(--secondary-color);
-    color: #000;
-    border-color: var(--secondary-color);
-    box-shadow: 0 4px 20px rgba(160, 255, 143, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.08);
+    font-weight: 600;
+    border: 1px solid rgba(160, 255, 143, 0.5);
+    box-shadow: 
+        0 0 0 1px rgba(160, 255, 143, 0.3),
+        0 0 20px rgba(160, 255, 143, 0.4),
+        0 0 40px rgba(160, 255, 143, 0.2),
+        0 4px 12px rgba(160, 255, 143, 0.15);
+}
+
+.mini-nav-tab.active:hover {
+    transform: translateY(-1px);
+    border-color: rgba(160, 255, 143, 0.6);
+    box-shadow: 
+        0 0 0 1px rgba(160, 255, 143, 0.4),
+        0 0 25px rgba(160, 255, 143, 0.5),
+        0 0 50px rgba(160, 255, 143, 0.3),
+        0 6px 20px rgba(160, 255, 143, 0.2);
 }
 
 .mini-nav-tab .tab-icon {
-    font-size: 1.2rem;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.mini-nav-tab.active .tab-icon {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(160, 255, 143, 0.6)) 
+            drop-shadow(0 0 12px rgba(160, 255, 143, 0.4));
+}
+
+.mini-nav-tab .tab-label {
+    font-size: 14px;
+    letter-spacing: 0.02em;
+}
+
+.mini-nav-tab.active .tab-label {
+    text-shadow: 0 0 10px rgba(160, 255, 143, 0.3);
 }
 
 .mini-nav-tab .tab-count {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 0.3rem 0.6rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    font-size: 11px;
     font-weight: 600;
+    margin-left: 4px;
 }
 
 .mini-nav-tab.active .tab-count {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(160, 255, 143, 0.3);
+    color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 8px rgba(160, 255, 143, 0.4);
 }
 
 /* Team Grid for New Cards */
@@ -4286,21 +4346,58 @@ body .page-subtitle {
 
 /* Responsive Design for Mini Navbar */
 @media (max-width: 768px) {
+    .team-mini-navbar {
+        padding: 40px 0 30px;
+    }
+    
+    .mini-nav-wrapper {
+        padding: 0 0.5rem;
+    }
+    
     .mini-nav-tabs {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
+        width: 100%;
+        max-width: 400px;
     }
     
     .mini-nav-tab {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
+        flex: 1;
+        min-width: unset;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .mini-nav-tab .tab-label {
+        font-size: 13px;
+    }
+    
+    .mini-nav-tab .tab-icon {
+        font-size: 14px;
+    }
+    
+    .mini-nav-tab .tab-count {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
     }
     
     .team-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mini-nav-tab {
+        gap: 6px;
+        padding: 8px 12px;
+    }
+    
+    .mini-nav-tab .tab-label {
+        font-size: 12px;
+    }
+    
+    .mini-nav-tab .tab-icon {
+        font-size: 13px;
     }
 }
 

@@ -1139,166 +1139,68 @@
     </section> -->
 
     <!-- Events Grid -->
-    <section class="events-grid-section">
+    <section class="events-grid-section" style="padding: 4rem 0;">
         <div class="container">
-            <div class="events-navigation">
-                <a href="#upcoming-events" class="nav-link active">Upcoming Events</a>
-                <a href="#past-events" class="nav-link">Past Events</a>
+            <!-- Professional Events Navigation -->
+            <div class="events-navigation-container">
+                <div class="events-navigation">
+                    <button class="events-nav-btn active" data-target="upcoming-events">
+                        <span class="nav-icon">📅</span>
+                        <span class="nav-text">Upcoming Events</span>
+                        <span class="nav-count">1</span>
+                    </button>
+                    <button class="events-nav-btn" data-target="past-events">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">Past Events</span>
+                        <span class="nav-count">3</span>
+                    </button>
+                </div>
             </div>
-            <h2 class="section-title all-events-title" id="upcoming-events">
-                <span class="letter">U</span>
-                <span class="letter">p</span>
-                <span class="letter">c</span>
-                <span class="letter">o</span>
-                <span class="letter">m</span>
-                <span class="letter">i</span>
-                <span class="letter">n</span>
-                <span class="letter">g</span>
-                <span class="space">&nbsp;</span>
-                <span class="letter">E</span>
-                <span class="letter">v</span>
-                <span class="letter">e</span>
-                <span class="letter">n</span>
-                <span class="letter">t</span>
-                <span class="letter">s</span>
-            </h2>
-            <div class="events-grid">
-
-                <!-- Workshop Event -->
-                <a href="vedathon.html" class="event-card-link">
-                    <div class="event-card" data-category="workshop">
-                        <div class="event-date">
-                            <img src="photos/vd.jpg" alt="Vedathon - Innovation is Knocking" style="width: 100%; height: 100%; object-fit: contain; object-position: center; border-radius: 32px 0 0 32px; background: #000000;">
-                        </div>
-                        <div class="event-content">
-                            <span class="event-category workshop">Ideathon</span>
-                            <h3 class="event-title">Vedathon</h3>
-                            <!-- <p class="event-description">Learn the basics of React.js, component lifecycle, and state
-                                management in this hands-on workshop.</p> -->
-                            <div class="event-meta">
-                                <span class="event-time">⏰ Timings: Revealing Soon</span>
-                                <span class="event-location">📍 Location: Revealing Soon</span>
-                                <span class="event-prize">🏆 Prize: Revealing Soon</span>
+            <!-- Upcoming Events Section -->
+            <section id="upcoming-events" style="padding: 2rem 0; margin-bottom: 3rem;">
+                <h2 class="section-title all-events-title">
+                    <span class="letter">U</span>
+                    <span class="letter">p</span>
+                    <span class="letter">c</span>
+                    <span class="letter">o</span>
+                    <span class="letter">m</span>
+                    <span class="letter">i</span>
+                    <span class="letter">n</span>
+                    <span class="letter">g</span>
+                    <span class="space">&nbsp;</span>
+                    <span class="letter">E</span>
+                    <span class="letter">v</span>
+                    <span class="letter">e</span>
+                    <span class="letter">n</span>
+                    <span class="letter">t</span>
+                    <span class="letter">s</span>
+                </h2>
+                <div class="events-grid">
+                    <!-- Workshop Event -->
+                    <a href="vedathon.html" class="event-card-link">
+                        <div class="event-card" data-category="workshop">
+                            <div class="event-date">
+                                <img src="photos/vd.jpg" alt="Vedathon - Innovation is Knocking" style="width: 100%; height: 100%; object-fit: contain; object-position: center; border-radius: 32px 0 0 32px; background: #000000;">
                             </div>
-                            <div class="event-footer">
-                                <span class="event-price">Free</span>
-                                <span class="btn btn-small btn-primary">Learn More</span>
+                            <div class="event-content">
+                                <span class="event-category workshop">Ideathon</span>
+                                <h3 class="event-title">Vedathon</h3>
+                                <!-- <p class="event-description">Learn the basics of React.js, component lifecycle, and state
+                                    management in this hands-on workshop.</p> -->
+                                <div class="event-meta">
+                                    <span class="event-time">⏰ Timings: Revealing Soon</span>
+                                    <span class="event-location">📍 Location: Revealing Soon</span>
+                                    <span class="event-prize">🏆 Prize: Revealing Soon</span>
+                                </div>
+                                <div class="event-footer">
+                                    <span class="event-price">Free</span>
+                                    <span class="btn btn-small btn-primary">Learn More</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-
-                <!-- Tech Talk Event -->
-                <!-- <div class="event-card" data-category="talk">
-                    <div class="event-date">
-                        <span class="date-day">30</span>
-                        <span class="date-month">SEP</span>
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category talk">Tech Talk</span>
-                        <h3 class="event-title">AI in Modern Applications</h3>
-                        <p class="event-description">Explore how AI is transforming modern applications with industry
-                            expert John Smith from Google.</p>
-                        <div class="event-meta">
-                            <span class="event-time">⏰ 7:00 PM - 8:30 PM</span>
-                            <span class="event-location">📍 Auditorium</span>
-                        </div>
-                        <div class="event-footer">
-                            <span class="event-price">Free</span>
-                            <button class="btn btn-small btn-primary">Register</button>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Networking Event -->
-                <!-- <div class="event-card" data-category="networking">
-                    <div class="event-date">
-                        <span class="date-day">05</span>
-                        <span class="date-month">OCT</span>
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category networking">Networking</span>
-                        <h3 class="event-title">Tech Professionals Meetup</h3>
-                        <p class="event-description">Network with industry professionals, share experiences, and build
-                            meaningful connections.</p>
-                        <div class="event-meta">
-                            <span class="event-time">⏰ 5:00 PM - 7:00 PM</span>
-                            <span class="event-location">📍 Community Hall</span>
-                        </div>
-                        <div class="event-footer">
-                            <span class="event-price">₹200</span>
-                            <button class="btn btn-small btn-primary">Register</button>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Workshop Event -->
-                <!-- <div class="event-card" data-category="workshop">
-                    <div class="event-date">
-                        <span class="date-day">10</span>
-                        <span class="date-month">OCT</span>
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category workshop">Workshop</span>
-                        <h3 class="event-title">Python for Data Science</h3>
-                        <p class="event-description">Master Python libraries for data analysis including Pandas, NumPy,
-                            and Matplotlib.</p>
-                        <div class="event-meta">
-                            <span class="event-time">⏰ 10:00 AM - 4:00 PM</span>
-                            <span class="event-location">📍 Lab 201</span>
-                        </div>
-                        <div class="event-footer">
-                            <span class="event-price">₹500</span>
-                            <button class="btn btn-small btn-primary">Register</button>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Hackathon Event -->
-                <!-- <div class="event-card" data-category="hackathon">
-                    <div class="event-date">
-                        <span class="date-day">22</span>
-                        <span class="date-month">OCT</span>
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category hackathon">Hackathon</span>
-                        <h3 class="event-title">Green Tech Challenge</h3>
-                        <p class="event-description">24-hour hackathon focused on building solutions for environmental
-                            challenges and sustainability.</p>
-                        <div class="event-meta">
-                            <span class="event-time">⏰ 48 Hours</span>
-                            <span class="event-location">📍 Innovation Center</span>
-                        </div>
-                        <div class="event-footer">
-                            <span class="event-price">Free</span>
-                            <button class="btn btn-small btn-primary">Register</button>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Tech Talk Event -->
-                <!-- <div class="event-card" data-category="talk">
-                    <div class="event-date">
-                        <span class="date-day">28</span>
-                        <span class="date-month">OCT</span>
-                    </div>
-                    <div class="event-content">
-                        <span class="event-category talk">Tech Talk</span>
-                        <h3 class="event-title">Blockchain and Web3</h3>
-                        <p class="event-description">Understanding the future of web with blockchain technology and
-                            decentralized applications.</p>
-                        <div class="event-meta">
-                            <span class="event-time">⏰ 6:30 PM - 8:00 PM</span>
-                            <span class="event-location">📍 Seminar Hall</span>
-                        </div>
-                        <div class="event-footer">
-                            <span class="event-price">Free</span>
-                            <button class="btn btn-small btn-primary">Register</button>
-                        </div>
-                    </div>
-                </div> -->
-
-            </div>
+                    </a>
+                </div>
+            </section>
         </div>
     </section>
 
@@ -1357,7 +1259,7 @@
                     </div>
                     <div class="past-event-content">
                         <div class="past-event-date">
-                            <span class="date-day">21</span>
+                            <span class="date-day">13</span>
                             <span class="date-month">September</span>
                             <span class="date-year">2025</span>
                         </div>
@@ -1368,11 +1270,11 @@
                                 innovative solutions for real-world problems.</p>
                             <div class="past-event-stats">
                                 <div class="stat-item">
-                                    <span class="stat-number">150+</span>
+                                    <span class="stat-number">2000+</span>
                                     <span class="stat-label">Participants</span>
                                 </div>
                                 <div class="stat-item">
-                                    <span class="stat-number">25</span>
+                                    <span class="stat-number">250</span>
                                     <span class="stat-label">Projects</span>
                                 </div>
                                 <!-- <div class="stat-item">
@@ -1590,98 +1492,190 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🎉 Events Navigation: Initializing...');
             
-            // Get navigation elements
-            const navLinks = document.querySelectorAll('.events-navigation .nav-link');
+            // Get navigation elements - updated for new button structure
+            const eventsNavigation = document.querySelector('.events-navigation');
+            const navButtons = document.querySelectorAll('.events-nav-btn');
             const upcomingSection = document.getElementById('upcoming-events');
             const pastSection = document.getElementById('past-events');
             
-            if (!navLinks.length || !upcomingSection || !pastSection) {
+            if (!eventsNavigation || !navButtons.length || !upcomingSection || !pastSection) {
                 console.error('❌ Events Navigation: Required elements not found');
+                console.log('Found eventsNavigation:', !!eventsNavigation);
+                console.log('Found navButtons:', navButtons.length);
+                console.log('Found upcomingSection:', !!upcomingSection);
+                console.log('Found pastSection:', !!pastSection);
                 return;
             }
             
-            console.log('✅ Events Navigation: Found', navLinks.length, 'navigation links');
+            console.log('✅ Events Navigation: Found', navButtons.length, 'navigation buttons');
             
-            // Add CSS for smooth transitions and active states
+            // Add professional minimal styles for navigation buttons
             const style = document.createElement('style');
             style.textContent = `
-                .events-navigation {
+                .events-navigation-container {
                     display: flex;
                     justify-content: center;
-                    gap: 2rem;
-                    margin-bottom: 3rem;
-                    padding: 1rem;
-                    background: rgba(0, 0, 0, 0.3);
-                    border-radius: 50px;
-                    backdrop-filter: blur(10px);
-                    border: 1px solid rgba(160, 255, 143, 0.2);
-                    max-width: 400px;
-                    margin-left: auto;
-                    margin-right: auto;
+                    margin-bottom: 4rem;
+                    padding: 0 1rem;
                 }
                 
-                .events-navigation .nav-link {
-                    color: #fff;
-                    text-decoration: none;
-                    padding: 12px 24px;
-                    border-radius: 30px;
-                    transition: all 0.3s ease;
-                    font-weight: 500;
-                    border: 2px solid transparent;
+                .events-navigation {
+                    display: flex;
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    border-radius: 12px;
+                    padding: 4px;
+                    backdrop-filter: blur(20px);
                     position: relative;
                     overflow: hidden;
                 }
                 
-                .events-navigation .nav-link:hover {
-                    color: #A0FF8F;
-                    border-color: rgba(160, 255, 143, 0.3);
-                    background: rgba(160, 255, 143, 0.1);
-                    transform: translateY(-2px);
-                }
-                
-                .events-navigation .nav-link.active {
-                    background: linear-gradient(45deg, #A0FF8F, #7fd67f);
-                    color: #000;
-                    border-color: #A0FF8F;
-                    font-weight: 600;
-                    box-shadow: 0 0 20px rgba(160, 255, 143, 0.4);
-                }
-                
-                .events-navigation .nav-link.active::before {
+                .events-navigation::before {
                     content: '';
                     position: absolute;
                     top: 0;
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background: linear-gradient(45deg, rgba(255,255,255,0.2), transparent);
+                    background: linear-gradient(135deg, rgba(160, 255, 143, 0.05) 0%, rgba(127, 230, 90, 0.02) 100%);
                     border-radius: inherit;
+                    pointer-events: none;
+                }
+                
+                .events-nav-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 20px;
+                    border: none;
+                    background: transparent;
+                    color: rgba(255, 255, 255, 0.7);
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+                    font-family: 'Inter', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    position: relative;
+                    z-index: 1;
+                    white-space: nowrap;
+                    min-width: 140px;
+                    justify-content: center;
+                }
+                
+                .events-nav-btn:hover {
+                    color: rgba(255, 255, 255, 0.9);
+                    background: rgba(255, 255, 255, 0.05);
+                    transform: translateY(-1px);
+                }
+                
+                .events-nav-btn.active {
+                    color: #1a1a1a;
+                    background: linear-gradient(135deg, #A0FF8F 0%, #7FE65A 100%);
+                    font-weight: 600;
+                    box-shadow: 
+                        0 4px 12px rgba(160, 255, 143, 0.3),
+                        0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+                
+                .events-nav-btn.active:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 
+                        0 6px 20px rgba(160, 255, 143, 0.4),
+                        0 4px 8px rgba(0, 0, 0, 0.15);
+                }
+                
+                .nav-icon {
+                    font-size: 16px;
+                    opacity: 0.8;
+                }
+                
+                .events-nav-btn.active .nav-icon {
+                    opacity: 1;
+                }
+                
+                .nav-text {
+                    font-size: 14px;
+                    letter-spacing: 0.02em;
+                }
+                
+                .nav-count {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 20px;
+                    height: 20px;
+                    background: rgba(255, 255, 255, 0.15);
+                    border-radius: 50%;
+                    font-size: 11px;
+                    font-weight: 600;
+                    margin-left: 4px;
+                }
+                
+                .events-nav-btn.active .nav-count {
+                    background: rgba(0, 0, 0, 0.15);
+                    color: #1a1a1a;
                 }
                 
                 @media (max-width: 768px) {
-                    .events-navigation {
-                        gap: 1rem;
-                        margin-bottom: 2rem;
-                        padding: 0.5rem;
+                    .events-navigation-container {
+                        margin-bottom: 3rem;
+                        padding: 0 0.5rem;
                     }
                     
-                    .events-navigation .nav-link {
-                        padding: 10px 20px;
+                    .events-navigation {
+                        width: 100%;
+                        max-width: 400px;
+                    }
+                    
+                    .events-nav-btn {
+                        flex: 1;
+                        min-width: unset;
+                        padding: 10px 16px;
+                        font-size: 13px;
+                    }
+                    
+                    .nav-text {
+                        font-size: 13px;
+                    }
+                    
+                    .nav-icon {
                         font-size: 14px;
+                    }
+                    
+                    .nav-count {
+                        width: 18px;
+                        height: 18px;
+                        font-size: 10px;
+                    }
+                }
+                
+                @media (max-width: 480px) {
+                    .events-nav-btn {
+                        gap: 6px;
+                        padding: 8px 12px;
+                    }
+                    
+                    .nav-text {
+                        font-size: 12px;
+                    }
+                    
+                    .nav-icon {
+                        font-size: 13px;
                     }
                 }
             `;
             document.head.appendChild(style);
             
             // Function to switch between sections
-            function switchToSection(targetSectionId, activeLink) {
+            function switchToSection(targetSectionId, activeButton) {
                 console.log('🔄 Events Navigation: Switching to', targetSectionId);
                 
                 // Update active states
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
                 });
-                activeLink.classList.add('active');
+                activeButton.classList.add('active');
                 
                 // Get target section
                 const targetSection = document.getElementById(targetSectionId);
@@ -1690,20 +1684,24 @@
                     return;
                 }
                 
-                // Smooth scroll to target section
-                const offsetTop = targetSection.offsetTop - 100; // Account for fixed navbar
+                // Calculate scroll position accounting for fixed navbar and some padding
+                const navbarHeight = document.querySelector('.navbar').offsetHeight || 80;
+                const offsetTop = targetSection.offsetTop - navbarHeight - 20;
                 
+                console.log('📍 Scrolling to position:', offsetTop);
+                
+                // Smooth scroll to target section
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
                 
-                // Add visual feedback
-                targetSection.style.background = 'rgba(160, 255, 143, 0.05)';
+                // Add subtle visual feedback
+                targetSection.style.background = 'rgba(160, 255, 143, 0.03)';
                 targetSection.style.border = '1px solid rgba(160, 255, 143, 0.2)';
-                targetSection.style.borderRadius = '20px';
-                targetSection.style.padding = '2rem';
-                targetSection.style.transition = 'all 0.3s ease';
+                targetSection.style.borderRadius = '16px';
+                targetSection.style.padding = '1.5rem';
+                targetSection.style.transition = 'all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1)';
                 
                 // Remove highlight after animation
                 setTimeout(() => {
@@ -1711,34 +1709,35 @@
                     targetSection.style.border = '';
                     targetSection.style.borderRadius = '';
                     targetSection.style.padding = '';
-                }, 2000);
+                }, 2500);
                 
                 console.log('✅ Events Navigation: Switched to', targetSectionId);
             }
             
-            // Add click handlers to navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+            // Add click handlers to navigation buttons - prevent event bubbling
+            navButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation(); // Prevent other click handlers from interfering
                     
-                    const href = this.getAttribute('href');
-                    const targetSectionId = href.substring(1); // Remove the # symbol
+                    const targetSectionId = this.getAttribute('data-target');
                     
-                    console.log('🖱️ Events Navigation: Clicked', href);
+                    console.log('🖱️ Events Navigation: Clicked button for', targetSectionId);
                     
                     switchToSection(targetSectionId, this);
-                });
+                }, true); // Use capture phase to execute before other handlers
             });
             
             // Handle URL hash changes (for direct links)
             function handleHashChange() {
                 const hash = window.location.hash;
-                if (hash) {
+                if (hash && (hash === '#upcoming-events' || hash === '#past-events')) {
                     const targetSectionId = hash.substring(1);
-                    const correspondingLink = document.querySelector(`a[href="${hash}"]`);
+                    const correspondingButton = document.querySelector(`[data-target="${targetSectionId}"]`);
                     
-                    if (correspondingLink && correspondingLink.classList.contains('nav-link')) {
-                        switchToSection(targetSectionId, correspondingLink);
+                    if (correspondingButton) {
+                        console.log('🔗 Hash change detected:', hash);
+                        switchToSection(targetSectionId, correspondingButton);
                     }
                 }
             }
@@ -1748,8 +1747,29 @@
             
             // Handle initial page load with hash
             if (window.location.hash) {
-                setTimeout(handleHashChange, 100);
+                setTimeout(handleHashChange, 500); // Increased delay to ensure page is loaded
             }
+            
+            // Set default active state for upcoming events if no hash
+            const upcomingButton = document.querySelector('[data-target="upcoming-events"]');
+            if (upcomingButton && !window.location.hash) {
+                upcomingButton.classList.add('active');
+            }
+            
+            // Add smooth hover animation for buttons
+            navButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.background = 'rgba(255, 255, 255, 0.08)';
+                    }
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.background = '';
+                    }
+                });
+            });
             
             console.log('✅ Events Navigation: Fully initialized');
         });
