@@ -89,6 +89,16 @@
             box-shadow: 0 12px 40px rgba(34, 197, 94, 0.7);
         }
 
+        /* Hide any scroll indicator arrows on vedathon banner */
+        .vedathon-banner::after,
+        .vedathon-banner::before,
+        .vedathon-banner .scroll-indicator,
+        .vedathon-banner .arrow-down {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
         /* Ensure banner doesn't get too tall on large screens */
         @media (min-width: 1200px) {
             .vedathon-banner {
@@ -600,7 +610,7 @@
     <section class="vedathon-banner">
         <div class="banner-overlay"></div>
         <a href="https://vision.hack2skill.com/event/vedathon/?utm_source=Refferal&utm_medium=Ayush" class="banner-cta">
-            Register Now for Vedathon →
+            Register Now for Vedathon
         </a>
     </section>
 
