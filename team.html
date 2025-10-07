@@ -430,6 +430,10 @@
             padding: 60px 0;
             background: linear-gradient(180deg, #000000 0%, #0a0e1a 50%, #000000 100%);
             position: relative;
+            /* CRITICAL: Override external CSS - show all sections by default */
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
 
         .team-section::before {
@@ -1350,24 +1354,24 @@
     </section> -->
 
        <div class="container">
-            <!-- Professional Events Navigation -->
+            <!-- Professional Team Navigation -->
             <div class="events-navigation-container">
                 <div class="events-navigation">
-                    <button class="events-nav-btn active" data-target="upcoming-events">
-                        <span class="nav-icon">📅</span>
-                        <span class="nav-text">Upcoming Events</span>
-                        <span class="nav-count">1</span>
-                    </button>
-                    <button class="events-nav-btn" data-target="past-events">
-                        <span class="nav-icon">📋</span>
-                        <span class="nav-text">Past Events</span>
+                    <button class="events-nav-btn active" data-target="council-members">
+                        <span class="nav-icon"></span>
+                        <span class="nav-text">Council Members</span>
                         <span class="nav-count">3</span>
+                    </button>
+                    <button class="events-nav-btn" data-target="leads">
+                        <span class="nav-icon">⭐</span>
+                        <span class="nav-text">Core Team</span>
+                        <span class="nav-count">16</span>
                     </button>
                 </div>
             </div>
 
     <!-- Council Members -->
-    <section id="council-members" class="team-section active">
+    <section id="council-members" class="team-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Council Members</h2>
@@ -2744,27 +2748,36 @@
                 console.log('✅ Events Navigation: Fully initialized');
             }
 
-            // Team mini navbar switching
+            // Team mini navbar switching (DISABLED - both sections now visible)
             const miniNavTabs = document.querySelectorAll('.mini-nav-tab');
             const teamSections = document.querySelectorAll('.team-section');
 
+            // NOTE: Mini navbar is commented out, but keeping this code for reference
+            // Both Council Members and Core Team sections are now always visible
             miniNavTabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     
-                    // Remove active class from all tabs and sections
+                    // Remove active class from all tabs
                     miniNavTabs.forEach(t => t.classList.remove('active'));
-                    teamSections.forEach(s => s.classList.remove('active'));
                     
                     // Add active class to clicked tab
                     this.classList.add('active');
                     
-                    // Show corresponding section
+                    // Scroll to the target section instead of hiding/showing
                     const targetSection = document.getElementById(category);
                     if (targetSection) {
-                        targetSection.classList.add('active');
+                        // Calculate scroll position accounting for fixed navbar
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight || 80;
+                        const offsetTop = targetSection.offsetTop - navbarHeight - 20;
                         
-                        // Animate cards in the new section
+                        // Smooth scroll to target section
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Animate cards in the section
                         const cards = targetSection.querySelectorAll('.card');
                         gsap.fromTo(cards,
                             { opacity: 0, y: 30, scale: 0.95 },
