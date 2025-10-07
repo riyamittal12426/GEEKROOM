@@ -3,16 +3,53 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Code Veda - Hackathon Details | Geek Room Adgips</title>
-    <meta name="description"
-        content="Code Veda - 8-hour coding marathon with 150+ participants building innovative solutions for real-world problems.">
+    <meta name="description" content="Code Veda - 8-hour coding marathon with 150+ participants building innovative solutions for real-world problems.">
+    
+    <!-- Performance optimization meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#0A0A1E">
+    <meta name="msapplication-TileColor" content="#0A0A1E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- TURBO CACHING + AGGRESSIVE PRELOADING -->
+    <meta http-equiv="cache-control" content="max-age=31536000, immutable, stale-while-revalidate=86400">
+    <meta http-equiv="expires" content="31536000">
+    <meta http-equiv="pragma" content="cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    
+    <!-- INSTANT PRELOAD WITH AGGRESSIVE CACHING -->
+    <link rel="preload" href="photos/cv.jpeg" as="image" importance="high" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/1.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/2.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/3.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/4.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/5.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/6.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
+    <link rel="preload" href="css/styles.css?v=6" as="style" importance="high" fetchpriority="high">
+    <link rel="preload" href="js/main.js?v=6" as="script" importance="high" fetchpriority="high">
+    
+    <!-- PRELOAD ALL REMAINING IMAGES WITH CACHING -->
+    <link rel="preload" href="photos/7.jpg" as="image" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/8.jpg" as="image" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/9.jpg" as="image" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/10.jpg" as="image" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/11.jpg" as="image" fetchpriority="high" crossorigin>
+    <link rel="preload" href="photos/12.jpg" as="image" fetchpriority="high" crossorigin>
+    
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css?v=4">
     <link rel="stylesheet" href="css/universal-smooth-scroll.css">
@@ -30,13 +67,18 @@
         /* Event Hero Section */
         .event-hero {
             min-height: 70vh;
-            background: linear-gradient(135deg, rgba(10, 10, 30, 0.95), rgba(5, 5, 22, 0.98)),
-                        url('photos/cv.jpeg') center/cover;
+            background: linear-gradient(135deg, rgba(10, 10, 30, 0.95), rgba(5, 5, 22, 0.98));
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .event-hero.loaded {
+            background: linear-gradient(135deg, rgba(10, 10, 30, 0.95), rgba(5, 5, 22, 0.98)),
+                        url('photos/cv.jpeg') center/cover;
+            transition: background 0.5s ease;
         }
 
         .event-hero::before {
@@ -202,7 +244,172 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            opacity: 1 !important; /* FORCE VISIBLE - NO WAITING */
+        }
+
+        .gallery-item img.loaded {
+            opacity: 1 !important;
+        }
+
+        .gallery-item .image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, rgba(160, 255, 143, 0.1), rgba(127, 230, 90, 0.1)),
+                              url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMUExQTJFIiBmaWxsLW9wYWNpdHk9IjAuNSIgcng9IjQiLz4KPHBhdGggZD0iTTcgN0wxMyAxM00xMyA3TDcgMTMiIHN0cm9rZT0iI0EwRkY4RiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHN2Zz4K');
+            background-size: cover, 40px 40px;
+            background-position: center, center;
+            background-repeat: no-repeat, no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            border-radius: 12px;
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-item .image-placeholder::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(160, 255, 143, 0.3);
+            border-top: 2px solid #A0FF8F;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 6px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .gallery-item .image-placeholder.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+
+        /* Prevent layout shift */
+        .gallery-item img[data-src] {
+            background: linear-gradient(135deg, rgba(160, 255, 143, 0.05), rgba(127, 230, 90, 0.05));
+        }
+
+        /* Performance optimizations */
+        .gallery-item {
+            contain: layout style paint;
+            transform: translateZ(0); /* Force hardware acceleration */
+            backface-visibility: hidden;
+        }
+
+        .gallery-item:hover {
+            will-change: transform, box-shadow;
+        }
+
+        .gallery-item img {
+            transform: translateZ(0); /* Force GPU acceleration */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* Critical CSS optimizations */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            transform: translateZ(0); /* Force hardware acceleration for entire page */
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.1s ease;
+        }
+
+        body.loaded {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* AGGRESSIVE IMAGE OPTIMIZATION */
+        img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            content-visibility: auto;
+            will-change: opacity;
+        }
+
+        .event-hero {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        /* Reduce repaints during scroll */
+        .gallery-grid {
+            transform: translateZ(0);
+            will-change: scroll-position;
+        }
+
+        /* Loading overlay for preloading */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 10, 30, 0.98), rgba(5, 5, 22, 0.98));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loader-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #A0FF8F;
+            margin-bottom: 1rem;
+        }
+
+        .loader-progress {
+            width: 300px;
+            height: 4px;
+            background: rgba(160, 255, 143, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .loader-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #A0FF8F, #7FE65A);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .loader-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
         }
 
         .gallery-item:hover img {
@@ -315,6 +522,17 @@
 </head>
 
 <body>
+    <!-- Page Loading Overlay -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <h2 class="loader-title">Code Veda</h2>
+            <div class="loader-progress">
+                <div class="loader-progress-bar" id="progressBar"></div>
+            </div>
+            <p class="loader-text" id="loaderText">Preloading gallery images... 0%</p>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -485,84 +703,96 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="photos/1.jpg" alt="Code Veda Opening Ceremony">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/1.jpg" alt="Code Veda Opening Ceremony" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Opening Ceremony - Setting the stage for innovation</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/2.jpg" alt="Teams brainstorming">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/2.jpg" alt="Teams brainstorming" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Teams brainstorming creative solutions</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/3.jpg" alt="Intensive coding session">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/3.jpg" alt="Intensive coding session" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Intensive coding and development</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/4.jpg" alt="Mentor guidance">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/4.jpg" alt="Mentor guidance" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Industry experts providing guidance</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/5.jpg" alt="Team collaboration">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/5.jpg" alt="Team collaboration" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Collaborative problem solving</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/6.jpg" alt="Final presentations">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/6.jpg" alt="Final presentations" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Final project presentations</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/7.jpg" alt="Winners announcement">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/7.jpg" alt="Winners announcement" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Winners announcement ceremony</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/8.jpg" alt="Team celebration">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/8.jpg" alt="Team celebration" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Celebrating achievement and innovation</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/9.jpg" alt="Networking session">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/9.jpg" alt="Networking session" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Networking and knowledge sharing</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/10.jpg" alt="Code Veda group photo">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/10.jpg" alt="Code Veda group photo" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">All participants - Code Veda 2025</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/11.jpg" alt="Technical demonstrations">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/11.jpg" alt="Technical demonstrations" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Technical demonstrations and demos</div>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="photos/12.jpg" alt="Awards ceremony">
+                    <div class="image-placeholder">Loading...</div>
+                    <img src="photos/12.jpg" alt="Awards ceremony" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Awards ceremony and recognition</div>
                     </div>
@@ -617,88 +847,416 @@
     <script src="js/universal-smooth-scroll.js"></script>
 
     <script>
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // TURBO AGGRESSIVE CACHING + PRELOADING
+        let imagesLoaded = 0;
+        let totalImages = 0;
+        let pageFullyLoaded = false;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // Critical performance tracking
+        const perfStart = performance.now();
+        
+        // INSTANT CACHE WARMING - Start immediately
+        (function warmCache() {
+            console.log('🔥 WARMING BROWSER CACHE...');
+            const imageUrls = [
+                'photos/cv.jpeg', 'photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg',
+                'photos/4.jpg', 'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg',
+                'photos/8.jpg', 'photos/9.jpg', 'photos/10.jpg', 'photos/11.jpg', 'photos/12.jpg'
+            ];
+            
+            // Trigger browser cache with invisible requests
+            imageUrls.forEach((url, index) => {
+                setTimeout(() => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', url, true);
+                    xhr.responseType = 'blob';
+                    xhr.onload = () => console.log(`🔥 Warmed cache: ${url}`);
+                    xhr.send();
+                }, index * 10); // Stagger requests
             });
-        }, observerOptions);
+        })();
+        
+        // Update loading progress
+        function updateLoadingProgress() {
+            const percentage = Math.round((imagesLoaded / totalImages) * 100);
+            const progressBar = document.getElementById('progressBar');
+            const loaderText = document.getElementById('loaderText');
+            
+            if (progressBar) {
+                progressBar.style.width = percentage + '%';
+            }
+            
+            if (loaderText) {
+                if (percentage < 100) {
+                    loaderText.textContent = `Loading essential images... ${percentage}%`;
+                } else {
+                    loaderText.textContent = `Page ready! Gallery loading continues...`;
+                }
+            }
+        }
+        
+        // TURBO LOADING WITH CACHING - Load ALL images with localStorage cache
+        function preloadCriticalImages() {
+            // Load ALL images immediately with caching
+            const criticalImages = [
+                'photos/cv.jpeg', 'photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg',
+                'photos/4.jpg', 'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg',
+                'photos/8.jpg', 'photos/9.jpg', 'photos/10.jpg', 'photos/11.jpg', 'photos/12.jpg'
+            ];
+            
+            totalImages = criticalImages.length;
+            
+            // Check if images are cached in localStorage
+            const cacheKey = 'code-veda-images-v1';
+            const cachedData = localStorage.getItem(cacheKey);
+            
+            if (cachedData) {
+                console.log('🚀 INSTANT LOAD - Images from localStorage cache!');
+                const cachedImages = JSON.parse(cachedData);
+                
+                // Load from cache immediately
+                criticalImages.forEach((url, index) => {
+                    if (cachedImages[url]) {
+                        const img = new Image();
+                        img.onload = () => {
+                            imagesLoaded++;
+                            updateProgress(url, index);
+                            if (imagesLoaded === 4) initializePage();
+                        };
+                        img.src = cachedImages[url]; // Use cached base64 data
+                        return;
+                    }
+                });
+            }
+            
+            // Load with aggressive caching
+            criticalImages.forEach((url, index) => {
+                const img = new Image();
+                
+                // MAXIMUM PRIORITY LOADING
+                img.loading = 'eager';
+                img.decoding = 'sync';
+                img.fetchPriority = 'high';
+                img.crossOrigin = 'anonymous'; // For caching
+                
+                img.onload = () => {
+                    imagesLoaded++;
+                    console.log(`⚡ CACHED loaded ${url} (${imagesLoaded}/${totalImages})`);
+                    
+                    // Cache to localStorage for next visit
+                    try {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        canvas.width = img.naturalWidth;
+                        canvas.height = img.naturalHeight;
+                        ctx.drawImage(img, 0, 0);
+                        
+                        const dataURL = canvas.toDataURL('image/jpeg', 0.8);
+                        let cachedImages = {};
+                        try {
+                            cachedImages = JSON.parse(localStorage.getItem('code-veda-images-v1') || '{}');
+                        } catch(e) {}
+                        cachedImages[url] = dataURL;
+                        localStorage.setItem('code-veda-images-v1', JSON.stringify(cachedImages));
+                        console.log(`💾 Cached ${url} to localStorage`);
+                    } catch(e) {
+                        console.log('Cache storage full, continuing...');
+                    }
+                    
+                    updateProgress(url, index);
+                    
+                    // Show page after first few images (don't wait for all)
+                    if (imagesLoaded === 4) {
+                        initializePage();
+                    }
+                };
+                
+                img.onerror = () => {
+                    console.warn(`❌ Failed to load ${url}`);
+                    imagesLoaded++;
+                    updateLoadingProgress();
+                    if (imagesLoaded === 4) {
+                        initializePage();
+                    }
+                };
+                
+                img.src = url;
+            });
+        }
 
-        // Observe elements for animation
-        document.querySelectorAll('.detail-card, .winner-card, .gallery-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
+        // Progress update helper
+        function updateProgress(url, index) {
+            updateLoadingProgress();
+            
+            // Hero background special handling
+            if (url === 'photos/cv.jpeg') {
+                document.querySelector('.event-hero').classList.add('loaded');
+            }
+            
+            // Show each image immediately as it loads
+            const galleryImg = document.querySelector(`img[src="${url}"]`);
+            if (galleryImg) {
+                galleryImg.classList.add('loaded');
+                const placeholder = galleryImg.parentNode.querySelector('.image-placeholder');
+                if (placeholder) {
+                    placeholder.classList.add('hidden');
+                }
+                // Animate the gallery item immediately
+                const galleryItem = galleryImg.closest('.gallery-item');
+                if (galleryItem) {
+                    galleryItem.style.opacity = '1';
+                    galleryItem.style.transform = 'translateY(0)';
+                }
+            }
+        }
+
+        // All images load immediately - no background loading needed
+
+        // Initialize page immediately for instant display
+        function initializePage() {
+            pageFullyLoaded = true;
+            const perfEnd = performance.now();
+            console.log(`⚡ Page ready in ${(perfEnd - perfStart).toFixed(2)}ms`);
+            
+            // Hide loading overlay INSTANTLY
+            const pageLoader = document.getElementById('pageLoader');
+            if (pageLoader) {
+                pageLoader.style.display = 'none';
+            }
+            
+            // Show ALL content immediately - no waiting
+            document.body.style.opacity = '1';
+            document.body.style.visibility = 'visible';
+
+            // Trigger all animations immediately with no delay
+            document.querySelectorAll('.detail-card, .winner-card, .gallery-item').forEach((el, index) => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                el.style.transition = 'all 0.2s ease';
+            });
+            
+            console.log('⚡ INSTANT PAGE LOAD COMPLETE!');
+        }
+
+        // Enhanced modal with instant loading
+        function createImageModal(img, caption) {
+            const modal = document.createElement('div');
+            modal.className = 'gallery-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                cursor: pointer;
+                opacity: 0;
+                transition: opacity 0.2s ease;
+                backdrop-filter: blur(10px);
+            `;
+            
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                max-width: 95vw;
+                max-height: 95vh;
+                text-align: center;
+                cursor: default;
+                position: relative;
+            `;
+            
+            const modalImg = document.createElement('img');
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            modalImg.style.cssText = `
+                max-width: 100%;
+                max-height: 85vh;
+                object-fit: contain;
+                border-radius: 12px;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+                transition: transform 0.3s ease;
+            `;
+            
+            const modalCaption = document.createElement('p');
+            modalCaption.textContent = caption.textContent;
+            modalCaption.style.cssText = `
+                color: white;
+                margin-top: 1.5rem;
+                font-size: 1.2rem;
+                font-weight: 500;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            `;
+            
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                background: rgba(160, 255, 143, 0.9);
+                border: none;
+                color: #000;
+                font-size: 2rem;
+                cursor: pointer;
+                padding: 8px 12px;
+                border-radius: 50%;
+                transition: all 0.2s ease;
+                font-weight: bold;
+                line-height: 1;
+                box-shadow: 0 4px 15px rgba(160, 255, 143, 0.3);
+            `;
+            
+            closeBtn.onmouseover = () => {
+                closeBtn.style.transform = 'scale(1.1)';
+                closeBtn.style.boxShadow = '0 6px 20px rgba(160, 255, 143, 0.5)';
+            };
+            closeBtn.onmouseout = () => {
+                closeBtn.style.transform = 'scale(1)';
+                closeBtn.style.boxShadow = '0 4px 15px rgba(160, 255, 143, 0.3)';
+            };
+            
+            modalContent.appendChild(modalImg);
+            modalContent.appendChild(modalCaption);
+            modalContent.appendChild(closeBtn);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // Animate in
+            requestAnimationFrame(() => {
+                modal.style.opacity = '1';
+                modalImg.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    modalImg.style.transform = 'scale(1)';
+                }, 200);
+            });
+            
+            // Close handlers
+            const closeModal = () => {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    if (document.body.contains(modal)) {
+                        document.body.removeChild(modal);
+                    }
+                }, 200);
+            };
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            closeBtn.addEventListener('click', closeModal);
+            
+            // Keyboard support
+            const handleKeydown = (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    document.removeEventListener('keydown', handleKeydown);
+                }
+            };
+            document.addEventListener('keydown', handleKeydown);
+        }
+
+        // TURBO SERVICE WORKER REGISTRATION
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw-code-veda.js', { scope: '/' })
+                .then(function(registration) {
+                    console.log('🚀 TURBO Service Worker registered:', registration.scope);
+                    
+                    // Force update if available
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                console.log('🔄 New cache available, reloading...');
+                                window.location.reload();
+                            }
+                        });
+                    });
+                })
+                .catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+
+        // Initialize everything immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('⚡ STARTING TURBO CACHED LOAD!');
+            
+            // Hide page loader IMMEDIATELY
+            const pageLoader = document.getElementById('pageLoader');
+            if (pageLoader) {
+                pageLoader.style.display = 'none';
+            }
+            
+            // Show body immediately
+            document.body.classList.add('loaded');
+            document.body.style.opacity = '1';
+            document.body.style.visibility = 'visible';
+            
+            // Start TURBO cached loading
+            preloadCriticalImages();
+            
+            // Set up animations with initial state - MAKE VISIBLE IMMEDIATELY
+            document.querySelectorAll('.detail-card, .winner-card, .gallery-item').forEach(el => {
+                el.style.opacity = '1'; // Make visible immediately!
+                el.style.transform = 'translateY(0px)'; // No transform delay
+                el.style.transition = 'all 0.2s ease';
+            });
+
+            // Set up gallery click handler with instant response
+            document.querySelector('.gallery-grid').addEventListener('click', function(e) {
+                const galleryItem = e.target.closest('.gallery-item');
+                if (!galleryItem) return;
+
+                const img = galleryItem.querySelector('img');
+                const caption = galleryItem.querySelector('.gallery-caption');
+                
+                // Images should be preloaded, so open modal immediately
+                createImageModal(img, caption);
+            });
         });
 
-        // Gallery item click to view larger image
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                const caption = this.querySelector('.gallery-caption');
-                
-                // Create modal overlay
-                const modal = document.createElement('div');
-                modal.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0.9);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 9999;
-                    cursor: pointer;
-                `;
-                
-                // Create modal content
-                const modalContent = document.createElement('div');
-                modalContent.style.cssText = `
-                    max-width: 90%;
-                    max-height: 90%;
-                    text-align: center;
-                `;
-                
-                const modalImg = document.createElement('img');
-                modalImg.src = img.src;
-                modalImg.alt = img.alt;
-                modalImg.style.cssText = `
-                    max-width: 100%;
-                    max-height: 80vh;
-                    object-fit: contain;
-                    border-radius: 12px;
-                `;
-                
-                const modalCaption = document.createElement('p');
-                modalCaption.textContent = caption.textContent;
-                modalCaption.style.cssText = `
-                    color: white;
-                    margin-top: 1rem;
-                    font-size: 1.1rem;
-                    font-weight: 500;
-                `;
-                
-                modalContent.appendChild(modalImg);
-                modalContent.appendChild(modalCaption);
-                modal.appendChild(modalContent);
-                document.body.appendChild(modal);
-                
-                // Close modal on click
-                modal.addEventListener('click', () => {
-                    document.body.removeChild(modal);
-                });
+        // Additional performance optimizations
+        
+        // Cache DOM queries
+        const heroSection = document.querySelector('.event-hero');
+        
+        // Critical resource hints - Service Worker for aggressive caching
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw-code-veda.js')
+                    .then(registration => {
+                        console.log('🔧 Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('❌ Service Worker registration failed:', error);
+                    });
             });
+        }
+
+        // Memory management
+        window.addEventListener('beforeunload', () => {
+            // Clean up any remaining resources
+            console.log('🧹 Cleaning up resources...');
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            const loadTime = performance.now() - perfStart;
+            console.log(`⚡ Total page load time: ${loadTime.toFixed(2)}ms`);
+            
+            // Report performance metrics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_load_time', {
+                    'custom_parameter': loadTime
+                });
+            }
         });
     </script>
 </body>
