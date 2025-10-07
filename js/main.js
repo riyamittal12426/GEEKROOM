@@ -103,7 +103,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const joinCTA = document.getElementById('join-cta');
     
     function handleCTAClick(e) {
-        e.preventDefault();
+        // DON'T prevent default if it's an external link with target="_blank"
+        const isExternalLink = this.href && this.href.startsWith('http') && this.target === '_blank';
+        
+        if (!isExternalLink) {
+            e.preventDefault();
+        }
         
         // Create ripple effect
         const ripple = document.createElement('span');
@@ -123,13 +128,17 @@ document.addEventListener('DOMContentLoaded', function() {
             ripple.remove();
         }, 600);
         
-        // Simulate navigation or show modal
-        setTimeout(() => {
-            alert('Welcome to GeekRoom Adgips! Feature coming soon...');
-        }, 300);
+        // For external links, let them open naturally
+        // For internal links, prevent and handle navigation if needed
+        // setTimeout(() => {
+        //     // alert('Welcome to GeekRoom Adgips! Feature coming soon...');
+        // }, 300);
     }
     
-    if (heroCTA) heroCTA.addEventListener('click', handleCTAClick);
+    if (heroCTA) {
+        console.log('🎯 Hero CTA found:', heroCTA.href);
+        heroCTA.addEventListener('click', handleCTAClick);
+    }
     if (joinCTA) joinCTA.addEventListener('click', handleCTAClick);
     
     // Typing Effect for Hero Title (optional)

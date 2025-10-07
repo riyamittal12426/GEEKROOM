@@ -31,6 +31,13 @@
     
     // Function to conditionally load splash cursor scripts
     function conditionallyLoadSplashCursor() {
+        // Prevent multiple initializations
+        if (window.SPLASH_LOADER_INITIALIZED) {
+            console.log('Splash cursor loader already initialized - skipping');
+            return;
+        }
+        window.SPLASH_LOADER_INITIALIZED = true;
+        
         if (isMobileDevice()) {
             console.log('Mobile/Touch device detected - Splash cursor disabled for optimal scrolling');
             
@@ -66,20 +73,40 @@
             document.head.appendChild(style);
             
         } else {
-            console.log('Desktop device detected - Splash cursor enabled');
+            console.log('Desktop device detected - Loading splash cursor...');
             window.DISABLE_SPLASH_CURSOR = false;
             
-            // Load splash cursor scripts for desktop
+            // Load splash cursor scripts for desktop with proper sequencing
             const splashScript = document.createElement('script');
             splashScript.src = 'js/splash-cursor.js';
+            splashScript.async = false; // Ensure sequential loading
+            
             splashScript.onload = function() {
-                console.log('Splash cursor script loaded');
+                console.log('✓ Splash cursor script loaded');
                 
-                // Load initialization script
-                const splashInitScript = document.createElement('script');
-                splashInitScript.src = 'js/splash-init.js';
-                document.head.appendChild(splashInitScript);
+                // Wait briefly for script to be fully parsed and class to be available
+                setTimeout(() => {
+                    // Load initialization script after splash cursor is ready
+                    const splashInitScript = document.createElement('script');
+                    splashInitScript.src = 'js/splash-init.js';
+                    splashInitScript.async = false; // Ensure sequential loading
+                    
+                    splashInitScript.onload = function() {
+                        console.log('✓ Splash init script loaded and executed');
+                    };
+                    
+                    splashInitScript.onerror = function() {
+                        console.error('❌ Failed to load splash-init.js');
+                    };
+                    
+                    document.head.appendChild(splashInitScript);
+                }, 100); // Small delay to ensure SplashCursor class is defined
             };
+            
+            splashScript.onerror = function() {
+                console.error('❌ Failed to load splash-cursor.js');
+            };
+            
             document.head.appendChild(splashScript);
         }
     }

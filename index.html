@@ -72,7 +72,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html">
-                    <!-- <div class="logo-icon">A</div> -->
+                    <img src="photos/gr_logo.png" alt="Geek Room Logo">
                     <span class="accent">Geek Room</span> <span class="white-text">Adgips</span>
                 </a>
             </div>
@@ -122,6 +122,7 @@
 
                 <!-- Room Society Description -->
                 <div class="geekroom-description">
+                    <img src="photos/gr_logo.png" alt="Geek Room Logo">
                     <h2 class="society-title">Geek Room</h2>
                     <p class="society-text">
                         A premier tech community where innovation meets collaboration.<br>
@@ -157,14 +158,19 @@
                 </div>
 
 
-                <p class="hero-subtitle">
+                <!-- <p class="hero-subtitle">
                     Empowering the next generation of tech innovators through hands-on learning,
                     collaboration, and industry-relevant projects at ADGIPS.
-                </p>
-                <div class="hero-buttons" style="opacity: 0; transform: translateY(30px);">
-                    <a href="about.html" class="btn btn-primary" id="hero-cta">
-                        Discover Geek Room
-                        <span class="btn-arrow">→</span>
+                </p> -->
+                <div class="hero-buttons" style="position: relative; z-index: 100;">
+                    <a href="https://vision.hack2skill.com/event/vedathon/?utm_source=Refferal&utm_medium=Ayush" 
+                       class="btn btn-primary vedathon-register-btn" 
+                       id="hero-cta" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       onclick="console.log('Direct onclick fired!'); return true;">
+                        Vedathon - Register Now
+                        <!-- <span class="btn-arrow">→</span> -->
                     </a>
                     <a href="events.html" class="btn btn-outline">
                         View Events
@@ -288,7 +294,7 @@
                 </h2>
                 <p class="team-subtitle">Meet the brilliant minds driving innovation at Geek Room Adgips</p>
             </div>
-            <!-- <div class="team-actions">
+           <div class="team-actions">
                 <a href="team.html" class="btn team-btn-primary">
                     <span>Core Members</span>
                     <div class="btn-glow"></div>
@@ -429,8 +435,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('📱 Homepage: Initializing Mobile Button Fixes...');
             
-            // Fix all buttons and links for mobile
-            const buttons = document.querySelectorAll('.btn, .hero-buttons a, .nav-link');
+            // Fix all buttons and links for mobile (EXCEPT Vedathon button)
+            const buttons = document.querySelectorAll('.btn:not(.vedathon-register-btn), .nav-link');
             
             buttons.forEach(button => {
                 // Add touch-friendly styles
@@ -461,14 +467,28 @@
                 });
             });
             
-            // Special handling for hero buttons
-            const heroButtons = document.querySelectorAll('.hero-buttons a');
-            heroButtons.forEach(btn => {
+            // Vedathon button - minimal handling, let it work naturally
+            const vedathonBtn = document.querySelector('.vedathon-register-btn');
+            if (vedathonBtn) {
+                console.log('✅ Vedathon button found, URL:', vedathonBtn.href);
+                
+                // Simple click logger - don't interfere
+                vedathonBtn.addEventListener('click', function(e) {
+                    console.log('🎯 VEDATHON BUTTON CLICKED!');
+                    console.log('Target URL:', this.href);
+                    console.log('Will open in new tab');
+                    // Don't prevent default - let browser handle it naturally
+                });
+            }
+            
+            // Special handling for OTHER hero buttons (not Vedathon)
+            const otherHeroButtons = document.querySelectorAll('.hero-buttons a:not(.vedathon-register-btn)');
+            otherHeroButtons.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     console.log('🚀 Hero button clicked:', this.href);
                     
-                    // Force navigation if needed
-                    if (this.href && !e.defaultPrevented) {
+                    // Only force navigation for internal links
+                    if (this.href && !e.defaultPrevented && !this.target && !this.href.startsWith('http')) {
                         setTimeout(() => {
                             window.location.href = this.href;
                         }, 100);

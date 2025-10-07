@@ -199,7 +199,6 @@ const galleryData = [
     { id: 9, title: 'Gallery Image 9', description: 'Beautiful moment captured', image: 'photos/9.jpg' },
     { id: 10, title: 'Gallery Image 10', description: 'Beautiful moment captured', image: 'photos/10.jpg' },
     { id: 11, title: 'Gallery Image 11', description: 'Beautiful moment captured', image: 'photos/11.jpg' },
-    { id: 12, title: 'Gallery Image 12', description: 'Beautiful moment captured', image: 'photos/12.jpeg' },
     { id: 13, title: 'Gallery Image 13', description: 'Beautiful moment captured', image: 'photos/13.jpg' }
 ];
 
