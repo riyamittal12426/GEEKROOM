@@ -36,7 +36,6 @@
     <link rel="preload" href="photos/1.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
     <link rel="preload" href="photos/2.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
     <link rel="preload" href="photos/3.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
-    <link rel="preload" href="photos/4.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
     <link rel="preload" href="photos/5.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
     <link rel="preload" href="photos/6.jpg" as="image" importance="high" fetchpriority="high" crossorigin>
     <link rel="preload" href="css/styles.css?v=6" as="style" importance="high" fetchpriority="high">
@@ -537,7 +536,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html">
-                    <img src="photos/gr_logo.jpeg" alt="Geek Room Logo">
+                    <img src="photos/gr_logo.png" alt="Geek Room Logo">
                     <span class="accent">Geek Room</span> <span class="white-text">Adgips</span>
                 </a>
             </div>
@@ -730,14 +729,6 @@
 
                 <div class="gallery-item">
                     <div class="image-placeholder">Loading...</div>
-                    <img src="photos/4.jpg" alt="Mentor guidance" loading="eager" decoding="sync" fetchpriority="high">
-                    <div class="gallery-overlay">
-                        <div class="gallery-caption">Industry experts providing guidance</div>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="image-placeholder">Loading...</div>
                     <img src="photos/5.jpg" alt="Team collaboration" loading="eager" decoding="sync" fetchpriority="high">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Collaborative problem solving</div>
@@ -754,7 +745,7 @@
 
                 <div class="gallery-item">
                     <div class="image-placeholder">Loading...</div>
-                    <img src="photos/7.jpg" alt="Winners announcement" loading="eager" decoding="sync" fetchpriority="high">
+                    <img src="photos/7.jpg" alt="Winners announcement" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Winners announcement ceremony</div>
                     </div>
@@ -762,7 +753,7 @@
 
                 <div class="gallery-item">
                     <div class="image-placeholder">Loading...</div>
-                    <img src="photos/8.jpg" alt="Team celebration" loading="eager" decoding="sync" fetchpriority="high">
+                    <img src="photos/8.jpg" alt="Team celebration" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Celebrating achievement and innovation</div>
                     </div>
@@ -770,7 +761,7 @@
 
                 <div class="gallery-item">
                     <div class="image-placeholder">Loading...</div>
-                    <img src="photos/9.jpg" alt="Networking session" loading="eager" decoding="sync" fetchpriority="high">
+                    <img src="photos/9.jpg" alt="Networking session" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Networking and knowledge sharing</div>
                     </div>
@@ -778,7 +769,7 @@
 
                 <div class="gallery-item">
                     <div class="image-placeholder">Loading...</div>
-                    <img src="photos/10.jpg" alt="Code Veda group photo" loading="eager" decoding="sync" fetchpriority="high">
+                    <img src="photos/10.jpg" alt="Code Veda group photo" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">All participants - Code Veda 2025</div>
                     </div>
@@ -786,7 +777,7 @@
 
                 <div class="gallery-item">
                     <div class="image-placeholder">Loading...</div>
-                    <img src="photos/11.jpg" alt="Technical demonstrations" loading="eager" decoding="sync" fetchpriority="high">
+                    <img src="photos/11.jpg" alt="Technical demonstrations" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Technical demonstrations and demos</div>
                     </div>
@@ -794,7 +785,7 @@
 
                 <div class="gallery-item">
                     <div class="image-placeholder">Loading...</div>
-                    <img src="photos/12.jpg" alt="Awards ceremony" loading="eager" decoding="sync" fetchpriority="high">
+                    <img src="photos/12.jpg" alt="Awards ceremony" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <div class="gallery-caption">Awards ceremony and recognition</div>
                     </div>
@@ -862,7 +853,7 @@
             console.log('🔥 WARMING BROWSER CACHE...');
             const imageUrls = [
                 'photos/cv.jpeg', 'photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg',
-                'photos/4.jpg', 'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg',
+                'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg',
                 'photos/8.jpg', 'photos/9.jpg', 'photos/10.jpg', 'photos/11.jpg', 'photos/12.jpg'
             ];
             
@@ -902,7 +893,7 @@
             // Load ALL images immediately with caching
             const criticalImages = [
                 'photos/cv.jpeg', 'photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg',
-                'photos/4.jpg', 'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg',
+                'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg',
                 'photos/8.jpg', 'photos/9.jpg', 'photos/10.jpg', 'photos/11.jpg', 'photos/12.jpg'
             ];
             
@@ -923,7 +914,7 @@
                         img.onload = () => {
                             imagesLoaded++;
                             updateProgress(url, index);
-                            if (imagesLoaded === 4) initializePage();
+                            if (imagesLoaded === 3) initializePage();
                         };
                         img.src = cachedImages[url]; // Use cached base64 data
                         return;
@@ -967,8 +958,8 @@
                     
                     updateProgress(url, index);
                     
-                    // Show page after first few images (don't wait for all)
-                    if (imagesLoaded === 4) {
+                    // Show page after first 3 critical images for faster display
+                    if (imagesLoaded === 3) {
                         initializePage();
                     }
                 };
@@ -977,7 +968,7 @@
                     console.warn(`❌ Failed to load ${url}`);
                     imagesLoaded++;
                     updateLoadingProgress();
-                    if (imagesLoaded === 4) {
+                    if (imagesLoaded === 3) {
                         initializePage();
                     }
                 };
@@ -1059,7 +1050,11 @@
                 opacity: 0;
                 transition: opacity 0.2s ease;
                 backdrop-filter: blur(10px);
+                overflow: hidden;
             `;
+            
+            // Prevent body scrolling when modal is open
+            document.body.style.overflow = 'hidden';
             
             const modalContent = document.createElement('div');
             modalContent.style.cssText = `
@@ -1142,6 +1137,8 @@
             // Close handlers
             const closeModal = () => {
                 modal.style.opacity = '0';
+                // Restore body scrolling
+                document.body.style.overflow = 'auto';
                 setTimeout(() => {
                     if (document.body.contains(modal)) {
                         document.body.removeChild(modal);
@@ -1222,6 +1219,30 @@
                 // Images should be preloaded, so open modal immediately
                 createImageModal(img, caption);
             });
+            
+            // Optimize lazy-loaded images with Intersection Observer
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            // Hide placeholder when image loads
+                            img.addEventListener('load', () => {
+                                const placeholder = img.parentNode.querySelector('.image-placeholder');
+                                if (placeholder) {
+                                    placeholder.classList.add('hidden');
+                                }
+                            });
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px' // Start loading 50px before entering viewport
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
         });
 
         // Additional performance optimizations
