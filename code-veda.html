@@ -492,28 +492,179 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            /* Hero Section Mobile */
+            .event-hero {
+                min-height: 60vh;
+                padding: 100px 0 60px;
+            }
+            
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .event-badge {
+                font-size: 0.8rem;
+                padding: 10px 20px;
+                margin-bottom: 1.5rem;
+            }
+            
             .event-title {
                 font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .event-subtitle {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+                margin-bottom: 1.5rem;
             }
 
             .event-date-info {
                 flex-direction: column;
                 align-items: center;
                 gap: 1rem;
+                margin: 2rem 0;
             }
 
             .date-info-item {
                 min-width: 200px;
+                width: 90%;
+                max-width: 280px;
+                padding: 1.2rem;
             }
-
+            
+            .date-info-number {
+                font-size: 1.8rem;
+            }
+            
+            .date-info-label {
+                font-size: 0.8rem;
+            }
+            
+            /* Gallery Mobile - Full Width Images */
             .gallery-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .gallery-item {
+                width: 100%;
+                aspect-ratio: 16/10;
+                border-radius: 12px;
+            }
+            
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+            
+            /* Details Grid Mobile */
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .detail-card {
+                padding: 2rem;
+            }
+            
+            .detail-icon {
+                font-size: 2.5rem;
+            }
+            
+            .detail-title {
+                font-size: 1.3rem;
             }
 
             .winners-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .winner-card {
+                padding: 2rem;
+            }
+            
+            /* Section Padding Mobile */
+            .event-details-section,
+            .gallery-section,
+            .winners-section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            /* CTA Section Mobile */
+            .cta {
+                padding: 60px 0;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .cta-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .btn-large {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+        
+        /* Extra Small Mobile (480px and below) */
+        @media (max-width: 480px) {
+            .event-title {
+                font-size: 2rem;
+            }
+            
+            .event-subtitle {
+                font-size: 1rem;
+            }
+            
+            .date-info-item {
+                min-width: 150px;
+            }
+            
+            .date-info-number {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-item {
+                aspect-ratio: 4/3;
+            }
+            
+            .detail-card,
+            .winner-card {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
             }
         }
     </style>

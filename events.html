@@ -721,7 +721,7 @@
             overflow: hidden !important;
             border: 1px solid rgba(160, 255, 143, 0.15) !important;
             transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
-            min-height: 300px !important;
+            min-height: 250px !important;
         }
 
         .past-event-card-link:hover .past-event-card {
@@ -992,7 +992,13 @@
 
             .past-event-image {
                 width: 100% !important;
-                min-height: 200px !important;
+                min-height: 150px !important;
+                max-height: 150px !important;
+            }
+
+            .past-event-image img {
+                height: 150px !important;
+                object-fit: cover !important;
             }
 
             .past-event-content {
@@ -1002,6 +1008,67 @@
 
             .past-event-stats {
                 gap: 1rem !important;
+                flex-wrap: wrap !important;
+            }
+
+            .past-event-stats span {
+                font-size: 0.85rem !important;
+            }
+            
+            .past-event-title {
+                font-size: 1.5rem !important;
+            }
+            
+            .past-event-description {
+                font-size: 0.9rem !important;
+            }
+            
+            .stat-item {
+                flex: 1 1 auto !important;
+            }
+            
+            .stat-number {
+                font-size: 1.2rem !important;
+            }
+        }
+
+        /* Extra Small Mobile */
+        @media (max-width: 480px) {
+            .past-event-image {
+                min-height: 120px !important;
+                max-height: 120px !important;
+            }
+
+            .past-event-image img {
+                height: 120px !important;
+            }
+
+            .past-event-content {
+                padding: 1rem !important;
+            }
+
+            .past-event-title {
+                font-size: 1.3rem !important;
+            }
+
+            .past-event-description {
+                font-size: 0.85rem !important;
+            }
+            
+            .past-event-date {
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .date-day {
+                font-size: 1.5rem !important;
+            }
+            
+            .stat-number {
+                font-size: 1rem !important;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem !important;
             }
 
             .events-grid .event-card {
